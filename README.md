@@ -1,1 +1,1 @@
-# event_management_system
+Dieses Repo wird im Rahmen des Moduls "Teamorientierte Softwareentwicklung" verwendet. Es handelt sich dabei um ein webserverbasiertes Veranstaltungsmanagementsystem.
