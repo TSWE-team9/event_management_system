@@ -5,10 +5,10 @@ echo 'Das ist ein Test der MySQL Datenbank des Systems.Es wird eine einfache Tab
 //Verbindung zur Datenbank auf dem Server herstellen
 $pdo = new PDO("mysql:host=localhost;port=3306;dbname=vms_db", "dbuser", "dbuser123");
 
-$result = $pdo->query("select * from veranstaltung");
+$result = $pdo->query("select V_ID, V_name from veranstaltung");
 
 foreach ($result as $row) {
-    print $row["id"]. " ";
-    print $row["name"];
+    print $row["V_ID"]. " ";
+    print $row["V_name"];
     print "<br/>";
 }
