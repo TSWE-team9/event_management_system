@@ -1,6 +1,7 @@
 <?php
 
-echo 'Das ist ein Test der MySQL Datenbank des Systems.Es wird eine einfache Tabellenabfrage gemacht.';
+echo 'Das ist ein Test der MySQL Datenbank des Systems. ';
+echo 'Es wird eine einfache Datenbankabfrage durchgeführt. ';
 print "<br/>";
 
 //Verbindung zur Datenbank auf dem Server herstellen
