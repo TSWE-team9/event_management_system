@@ -1,14 +1,21 @@
 <?php
 
 echo 'Das ist ein Test der MySQL Datenbank des Systems.Es wird eine einfache Tabellenabfrage gemacht.';
+echo "<br>";
 
 //Verbindung zur Datenbank auf dem Server herstellen
-$pdo = new PDO("mysql:host=localhost;port=3306;dbname=vms_db", "dbuser", "dbuser123");
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$port = "3306";
 
-$result = $pdo->query("select * from veranstaltung");
+$pdo = new PDO("mysql:host=$host;port=$port;dbname=$db", $user, $pw);
+
+
+$result = $pdo->query("select R_ID, Bezeichnung from Raum");
 
 foreach ($result as $row) {
-    print $row["id"]. " ";
-    print $row["name"];
-    print "<br/>";
+    echo $row["R_ID"] . " " . $row["Bezeichnung"];
+    echo "<br>";
 }
