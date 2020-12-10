@@ -18,5 +18,5 @@ $result = $pdo->query("select R_ID, Bezeichnung from Raum");
 foreach ($result as $row){
     echo $row["R_ID"] . " " . $row["Bezeichnung"];
     echo "<br>";
-};
+}
 
