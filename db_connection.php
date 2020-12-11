@@ -1,5 +1,7 @@
 <?php
 
+//Zugangsdaten zur Datenbank
+
 $host = '132.231.36.109';
 $db = 'vms_db';
 $user = 'dbuser';
