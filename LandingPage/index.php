@@ -1,3 +1,4 @@
+<?php include('register.php') ?>
 <!DOCTYPE html>
 <html lang="de">
     <head>
@@ -27,12 +28,16 @@
             <button class="accordion">Registrieren als Teilnehmer</button>
               <div class="panel">
                 <form action="#" method="post">
+                    <?php include('errors_t.php'); ?>
                   <br>
                   <label for="email">E-Mail-Adresse</label>
                   <input type="email" placeholder="E-Mail-Adresse" name="email" required>
 
                   <label for="passwort">Passwort</label>
-                  <input type="password" placeholder="Passwort" name="passwort" required>
+                  <input type="password" placeholder="Passwort" name="passwort_1" required>
+
+                    <label for="passwort">Passwort</label>
+                    <input type="password" placeholder="Passwort" name="passwort_2" required>
 
                   <label for="vorname">Vorname</label>
                   <input type="text" placeholder="Vorname" name="vorname" required>
@@ -45,13 +50,16 @@
 
                   <label for="geschlecht">Geschlecht</label>
                   <select name="geschlecht" required>
-                    <option value="mann">männlich</option>
-                    <option value="weiblich">weiblich</option>
-                    <option value="divers">divers</option>
+                    <option value=1>männlich</option>
+                    <option value=2>weiblich</option>
+                    <option value=3>divers</option>
                   </select>
 
-                  <label for="straße">Straße und Hausnummer</label>
-                  <input type="text" placeholder="Straße und Hausnummer" name="straße" required>
+                  <label for="straße">Straße</label>
+                  <input type="text" placeholder="Straße" name="straße" required>
+
+                    <label for="straße">Hausnummer</label>
+                    <input type="text" placeholder="Hausnummer" name="hnummer" required>
 
                   <label for="postleitzahl">Postleitzahl</label>
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" required>
@@ -65,7 +73,7 @@
                   <label for="telefonnummer">Telefonnummer</label>
                   <input type="text" placeholder="Telefonnummer" name="telefonnummer">
                   <br>
-                  <button class="login-button" type="submit" name="submit">Registrieren</button>
+                  <button class="login-button" type="submit" name="reg_user_t">Registrieren</button>
                   <br>
                 </form>
               </div>
@@ -73,12 +81,16 @@
             <button class="accordion">Registrieren als Veranstalter</button>
               <div class="panel">
                 <form action="#" method="post">
+                    <?php include('errors_v.php'); ?>
                   <br>
                   <label for="email">E-Mail-Adresse</label>
                   <input type="email" placeholder="E-Mail-Adresse" name="email" required>
 
                   <label for="passwort">Passwort</label>
-                  <input type="password" placeholder="Passwort" name="passwort" required>
+                  <input type="password" placeholder="Passwort" name="passwort_1" required>
+
+                    <label for="passwort">Passwort</label>
+                    <input type="password" placeholder="Passwort" name="passwort_2" required>
 
                   <label for="vorname">Vorname</label>
                   <input type="text" placeholder="Vorname" name="vorname" required>
@@ -92,8 +104,11 @@
                   <label for="firmenname">Firmenname</label>
                   <input type="text" placeholder="Firmenname" name="firmenname" required>
 
-                  <label for="straße">Straße und Hausnummer</label>
-                  <input type="text" placeholder="Straße und Hausnummer" name="straße" required>
+                    <label for="straße">Straße</label>
+                    <input type="text" placeholder="Straße" name="straße" required>
+
+                    <label for="straße">Hausnummer</label>
+                    <input type="text" placeholder="Hausnummer" name="hnummer" required>
 
                   <label for="postleitzahl">Postleitzahl</label>
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" required>
@@ -107,7 +122,7 @@
                   <label for="telefonnummer">Telefonnummer</label>
                   <input type="text" placeholder="Telefonnummer" name="telefonnummer">
                   <br>
-                  <button class="login-button" type="submit" name="submit">Registrieren</button>
+                  <button class="login-button" type="submit" name="reg_user_v">Registrieren</button>
                   <br>
                 </form>
               </div>
