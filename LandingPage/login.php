@@ -58,18 +58,17 @@ while($sql->fetch()) {
             break;
 
         case 3:
-            header("Location:");
+            header("Location: StartseiteBetreiber.html");
             break;
 
         case 4:
-            header("Location: ");
+            header("Location: StartseiteBetreiber.html");
             break;
 
         default:
             header("Location: ");
     }
 
-    header("Location: index.php");
 
 }
 
