@@ -49,32 +49,28 @@ while($sql->fetch()) {
 
     //Weiterleitung zur jeweiligen Startseite
     switch ($res_rolle){
+        //Veranstalter ist Rolle 1
         case 1:
-            header("Location: ");
+            header("Location: ../Startseiten/VeranstalterStartseite.html");
             break;
-
+        //Teilnehmer ist Rolle 2
         case 2:
-            header("Location: ");
+            header("Location: ../Startseiten/TeilnehmerStartseite.html");
             break;
-
+        //Betreiber ist Rolle 3
         case 3:
-            header("Location: StartseiteBetreiber.html");
+            header("Location: ../Startseiten/StartseiteBetreiber.html");
             break;
-
+        //Admin ist Rolle 4
         case 4:
-            header("Location: StartseiteBetreiber.html");
+            header("Location: ../Startseiten/StartseiteBetreiber.html");
             break;
-
-        default:
-            header("Location: ");
     }
-
 
 }
 
 //Falls die Anmeldung misslingt, wird eine Fehlermeldung ausgegeben
-echo "Es ist ein Fehler beim Login aufgetreten. Versuchen Sie es erneut.";
-header("Location: index.php");
+echo "Es ist ein Fehler beim Login aufgetreten. Versuchen Sie es bitte erneut.";
 $sql->close();
 
 
