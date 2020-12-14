@@ -12,7 +12,7 @@
             <br>
              <button class="accordion">Login</button>
                 <div class="panel">
-                  <form action="#" method="post">
+                  <form action="login.php" method="post">
                     <br>
                     <label for="email">E-Mail-Adresse</label>
                     <input type="email" placeholder="E-Mail-Adresse" name="email">

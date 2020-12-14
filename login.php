@@ -30,14 +30,16 @@ if($conn->connect_error){
 //Überprüfung ob Mail und Passwort einen Eintrag in der Datenbank haben
 $query = "Select E_mail, Passwort , B_ID, Rolle FROM Benutzerkonto WHERE E_mail=? AND passwort=?";
 $sql = $conn->prepare($query);
-$sql->bind_param("ss", $_POST["email"], $_POST["passwort"]);
+$pw = md5($_POST["passwort"]);
+$email = strtolower($_POST["email"]);
+$sql->bind_param("ss", $email, $pw);
 $sql->execute();
 $sql->bind_result($res_email, $res_passwort, $res_b_id, $res_rolle);
 
 while($sql->fetch()) {
 
     //Abspeichern von Benutzerdaten in Session-Variablen
-    if ($res_email == $_POST["email"] && $res_passwort == $_POST["passwort"]) {
+    if ($res_email == $email && $res_passwort == $pw) {
         $_SESSION["email"] = $res_email;
         $_SESSION["passwort"] = $res_passwort;
         $_SESSION["b_id"] = $res_b_id;
@@ -45,12 +47,35 @@ while($sql->fetch()) {
     }
 
 
-    //Weiterleitung zur Startseite - Unterscheidung nach Rolle noch hinzufügen, Switch
+    //Weiterleitung zur jeweiligen Startseite
+    switch ($res_rolle){
+        case 1:
+            header("Location: ");
+            break;
+
+        case 2:
+            header("Location: ");
+            break;
+
+        case 3:
+            header("Location:");
+            break;
+
+        case 4:
+            header("Location: ");
+            break;
+
+        default:
+            header("Location: ");
+    }
+
     header("Location: index.php");
 
 }
 
+//Falls die Anmeldung misslingt, wird eine Fehlermeldung ausgegeben
 echo "Es ist ein Fehler beim Login aufgetreten. Versuchen Sie es erneut.";
+header("Location: index.php");
 $sql->close();
 
 
