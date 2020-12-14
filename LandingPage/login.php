@@ -70,14 +70,13 @@ while($sql->fetch()) {
 }
 
 //Falls die Anmeldung misslingt, wird eine Fehlermeldung ausgegeben
-echo "Es ist ein Fehler beim Login aufgetreten. Versuchen Sie es bitte erneut.";
+echo "Es ist ein Fehler beim Login aufgetreten. Bitte kehren Sie zur Startseite zurück und versuchen es erneut!";
 $sql->close();
-
-
 ?>
 
-
 </body>
+<br>
+<a href="index.php">Zurück zur Startseite</a>
 
 </html>
 
