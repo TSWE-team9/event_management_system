@@ -3,7 +3,7 @@
     <head>
         <title>Landing Page</title>
         <meta charset="utf-8"/>
-        <link href="./css.css" type="text/css" rel="stylesheet">
+        <link href="css.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
