@@ -20,6 +20,8 @@
 
     </ul>
 </nav>
+
+<p>Veranstaltungen</p>
 <!--<footer>
    <div>
        <a href="#">Impressum</a>
