@@ -10,13 +10,13 @@
 <body>
 <nav>
     <ul>
-        <li><a class= "active" href="#">Startseite</a></li>
-        <li><a href="#">Angebot einholen</a></li>
+        <li><a class="active" href="#">Startseite</a></li>
+        <li><a href="TeilnehmerAngebot">Veranstaltungsangebot</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a href="#">Meine Veranstaltungen</a></li>
+        <li><a href="TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="text-align: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li > <a href="#"> <i class="fas fa-user-circle"></i> </a></li>
+        <li > <a href="TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>
