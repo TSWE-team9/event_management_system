@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
+    <title>Raum Hinzufügen</title>
 </head>
 
 <body>
@@ -22,7 +22,9 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Error Variable zunächst false
 $error = false;
+
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Zuweisung der im Formular eingegebenen Daten
