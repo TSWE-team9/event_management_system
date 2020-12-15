@@ -51,19 +51,19 @@ while($sql->fetch()) {
     switch ($res_rolle){
         //Veranstalter ist Rolle 1
         case 1:
-            header("Location: ../Startseiten/VeranstalterStartseite.html");
+            header("Location: ../UserSeiten/Veranstalter/VeranstalterStartseite.html");
             break;
         //Teilnehmer ist Rolle 2
         case 2:
-            header("Location: ../Startseiten/TeilnehmerStartseite.html");
+            header("Location: ../UserSeiten/Teilnehmer/TeilnehmerStartseite.html");
             break;
         //Betreiber ist Rolle 3
         case 3:
-            header("Location: ../Startseiten/StartseiteBetreiber.html");
+            header("Location: ../UserSeiten/Betreiber_Admin/StartseiteBetreiber.html");
             break;
         //Admin ist Rolle 4
         case 4:
-            header("Location: ../Startseiten/StartseiteBetreiber.html");
+            header("Location: ../UserSeiten/Betreiber_Admin/StartseiteBetreiber.html");
             break;
     }
 
