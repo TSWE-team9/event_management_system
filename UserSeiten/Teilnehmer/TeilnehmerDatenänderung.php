@@ -52,32 +52,36 @@
                 <label for="email2">E-Mail bestätigen</label>
                 <input type="email" placeholder="neue E-Mail-Adresse" name="email2" required>
                 <br>
-                <button class="button" type="submit" name="änderung-email_user_t">E-Mail ändern</button>
+                <button class="button" type="submit" name="änderung_email_user_t">E-Mail ändern</button>
         </div>
 
-    <button class="accordion">Kontaktdaten ändern</button>  
+    <button class="accordion">Kontaktdaten aktualisieren</button>  
         <div class="panel">
             <form action="#" method="post">
 
-                <label for=""></label>
-                <input type="text" placeholder="" name="">
+                <label for="straße">Straße</label>
+                <input type="text" placeholder="Straße" name="straße">
 
-                <label for=""></label>
-                <input type="text" placeholder="" name="">
+                <label for="hnummer">Hausnummer</label>
+                <input type="text" placeholder="Hausnummer" name="hnummer" required>
 
-                <label for=""></label>
-                <input type="text" placeholder="" name="">
+                <label for="postleitzahl">Postleitzahl</label>
+                <input type="text" placeholder="Postleitzahl" name="postleitzahl">
 
-                <label for=""></label>
-                <input type="text" placeholder="" name="">
+                <label for="ort">Ort</label>
+                <input type="text" placeholder="Ort" name="ort">
 
-                <label for=""></label>
-                <input type="text" placeholder="" name="">
+                <label for="land">Land</label>
+                <input type="text" placeholder="Land" name="land">
 
-                <label for=""></label>
-                <input type="text" placeholder="" name="">
+                <label for="telefonnummer">Telefonnummer</label>
+                <input type="text" placeholder="Telefonnummer" name="telefonnummer">
+                <br>
+                <button class="button" tyep="submit" name="änderung_daten_user_t">Kontaktdaten ändern</button>
             </form>
         </div>
+
+    <button id="löschen" href="#">Konto löschen</button>
 </div>
 
 
@@ -90,13 +94,13 @@
             this.classList.toggle("active");
             var panel = this.nextElementSibling;
             if (panel.style.maxHeight) {
-            panel.style.maxHeight = null;
+              panel.style.maxHeight = null;
             } else {
-            panel.style.maxHeight = panel.scrollHeight + "px";
-        }
+              panel.style.maxHeight = panel.scrollHeight + "px";
+            }
         });
     }
-            </script>
+    </script>
 <!--<footer>
    <div>
        <a href="#">Impressum</a>
