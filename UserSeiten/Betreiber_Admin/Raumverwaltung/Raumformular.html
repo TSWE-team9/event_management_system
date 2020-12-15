@@ -15,16 +15,16 @@
     </h3>
 <!--    <label style="position: relative" > Verpflichtend </label>-->
 
-        <form action="#">
-    <label for="Raumbezeichnung">Raumbezeichnung <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text"/>
+        <form action="raum_erstellen.php" method="post">
+    <label for="Raumbezeichnung">Raumbezeichnung (nur Buchstaben / Leerzeichen und "-") <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text" maxlength="30"/>
     <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="0" />
     <label for="RaumGröße">Raumgröße in Quadratmetern</label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
-    <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1"/>
+    <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
     <fieldset id = "Status">
         <label for = "Status"> Raumstatus</label>
-    <input type= "radio" id="aktiv" name="Status" value="aktiv">
+    <input type= "radio" id="aktiv" name="Status" value="1">
     <label for="aktiv"> aktiv</label>
-    <input type="radio" id="inaktiv" name="Status" value="inaktiv">
+    <input type="radio" id="inaktiv" name="Status" value="2">
     <label for="inaktiv"> inaktiv</label>
     </fieldset>
 <!--    <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
