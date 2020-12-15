@@ -3,10 +3,11 @@
 * {
     margin: 0;
     padding: 0;
+
 }
 
 body {
-    background: url("Hintergrund.png")  fixed ;
+    background: url("HintergrundRaum.png")  fixed ;
     /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
     background-size: cover;
     width: 100vw;
