@@ -31,13 +31,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $error = "";
     $error_occured = false;
 
-//Abspeichern der zu ändernden Daten (man muss was eingeben? -> wäre einfacher)
+//Abspeichern der zu ändernden Daten
     $R_ID = $_POST["Raum-ID"];
     $bezeichnung = $_POST["Raumbezeichnung"];
     $kapazitaet = $_POST["RaumKapazität"];
     $groesse = $_POST["RaumGröße"];
     $preis = number_format((float)$_POST["Preis"], 2, '.', '');
-    $status = $_POST["Status"];
+    //$status = $_POST["Status"];
 
 //Abfrage, ob Raum ID des zu ändernden Raums existiert
     $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID";
@@ -48,11 +48,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_occured = true;
     }
 
-//Abfrage, ob durch die Änderung der Kapazität des Raumes Veranstaltungen (auch bearbeitete Angebote?) existieren,
-//deren Teilnehmerzahl dann zu groß geworden ist ->trotzdem ändern lassen?? lt. Pflichtenheft ja aber das ist kompliziert
+//Abfrage, ob durch die Änderung der Kapazität des Raumes aktive Veranstaltungen oder Angebote existieren,
+//deren Teilnehmerzahl dann zu groß geworden ist
     $check_query2 = "SELECT V_ID, Titel, Veranstalter, Teilnehmer_max, Beginn FROM Veranstaltung WHERE Ort = $R_ID AND Status = 1 AND Teilnehmer_max > $kapazitaet
                      UNION
-                     SELECT BeAr_ID, 'Angebot bearbeitet', Veranstalter, Teilnehmer_gepl, Beginn FROM Anfrage_Angebot WHERE R_ID = $R_ID AND Status = 2 AND Teilnehmer_gepl > $kapazitaet";
+                     SELECT BeAr_ID, 'Angebot bearbeitet', Veranstalter, Teilnehmer_gepl, Beginn FROM Anfrage_Angebot WHERE R_ID = $R_ID AND Teilnehmer_gepl > $kapazitaet AND Status IN (2, 3)";
     $res2 = $conn->query($check_query2);
     $show_table = false;
 
@@ -81,11 +81,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-//Update Befehl und Überprüfung (nur wenn kein Fehler), ob es funktioniert hat (evtl Ausgabe)
+//Update Befehl und Überprüfung (nur wenn kein Fehler), ob es funktioniert hat
     if($error_occured == false) {
 
 
-        $update_query = "UPDATE Raum SET Bezeichnung = '$bezeichnung', Kapazitaet = $kapazitaet, Groesse = $groesse, Preis = $preis, Status = $status
+        $update_query = "UPDATE Raum SET Bezeichnung = '$bezeichnung', Kapazitaet = $kapazitaet, Groesse = $groesse, Preis = $preis
                      WHERE R_ID = $R_ID";
 
         if ($conn->query($update_query) === TRUE) {
@@ -158,14 +158,14 @@ if($show_table){
         <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="0" />
         <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
         <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
-        <fieldset id = "Status">
+        <!--<fieldset id = "Status">
             <label for = "Status"> Raumstatus</label>
             <input type= "radio" id="aktiv" name="Status" value="1">
             <label for="aktiv"> aktiv</label>
             <input type="radio" id="inaktiv" name="Status" value="2">
             <label for="inaktiv"> inaktiv</label>
         </fieldset>
-        <!--    <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
+           <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
         <!--    <form action="select.html">-->
         <!--    <label>Raumstatus:-->
         <!--        <select name="Status" size="2">-->
