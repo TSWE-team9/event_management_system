@@ -23,6 +23,17 @@
 
                     <button class="login-button" type="submit" name="submit">Anmelden</button>
                   </form>
+                  <button class="accordion">Passwort vergessen</button>
+                    <div class="panel">
+                      <form action="#" method="post">
+                        <p>Geben Sie ihre E-Mail-Adresse an. Ihnen wird dann ein neues Passwort zugesendet, mit welchem Sie sich anmelden können.</p>
+
+                        <label for="email">E-Mail-Adresse</label>
+                        <input type="email" placeholder="E-Mail-Adresse" name="email">
+
+                        <button class="login-button" type="submit" name="pw_reset">Passwort anfordern</button>
+                      </form>
+                    </div>
                 </div>
 
             <button class="accordion">Registrieren als Teilnehmer</button>
@@ -36,8 +47,8 @@
                   <label for="passwort">Passwort</label>
                   <input type="password" placeholder="Passwort" name="passwort_1" required>
 
-                    <label for="passwort">Passwort</label>
-                    <input type="password" placeholder="Passwort" name="passwort_2" required>
+                  <label for="passwort">Passwort</label>
+                  <input type="password" placeholder="Passwort" name="passwort_2" required>
 
                   <label for="vorname">Vorname</label>
                   <input type="text" placeholder="Vorname" name="vorname" required>
@@ -58,8 +69,8 @@
                   <label for="straße">Straße</label>
                   <input type="text" placeholder="Straße" name="straße" required>
 
-                    <label for="hnummer">Hausnummer</label>
-                    <input type="text" placeholder="Hausnummer" name="hnummer" required>
+                  <label for="hnummer">Hausnummer</label>
+                  <input type="text" placeholder="Hausnummer" name="hnummer" required>
 
                   <label for="postleitzahl">Postleitzahl</label>
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" required>
@@ -89,8 +100,8 @@
                   <label for="passwort">Passwort</label>
                   <input type="password" placeholder="Passwort" name="passwort_1" required>
 
-                    <label for="passwort">Passwort</label>
-                    <input type="password" placeholder="Passwort" name="passwort_2" required>
+                  <label for="passwort">Passwort</label>
+                  <input type="password" placeholder="Passwort" name="passwort_2" required>
 
                   <label for="vorname">Vorname</label>
                   <input type="text" placeholder="Vorname" name="vorname" required>
@@ -104,11 +115,11 @@
                   <label for="firmenname">Firmenname</label>
                   <input type="text" placeholder="Firmenname" name="firmenname" required>
 
-                    <label for="straße">Straße</label>
-                    <input type="text" placeholder="Straße" name="straße" required>
+                  <label for="straße">Straße</label>
+                  <input type="text" placeholder="Straße" name="straße" required>
 
-                    <label for="straße">Hausnummer</label>
-                    <input type="text" placeholder="Hausnummer" name="hnummer" required>
+                  <label for="straße">Hausnummer</label>
+                  <input type="text" placeholder="Hausnummer" name="hnummer" required>
 
                   <label for="postleitzahl">Postleitzahl</label>
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" required>
