@@ -53,6 +53,20 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
     padding-left:5px;
 }
 
+/* derzeit nicht genutzt */
+#pwreset{
+    background-color: white;
+    color: blue;
+    cursor: pointer;
+    padding: 18px;
+    width: 500px;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+    margin: 5px;
+}
+
 #veranstaltungen {
     background-color: rgba(61, 199, 102, 0.733);
     color: #444;
@@ -97,4 +111,12 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+input:invalid{
+    color:red;
+}
+
+input:invalid{
+    color:green;
 }

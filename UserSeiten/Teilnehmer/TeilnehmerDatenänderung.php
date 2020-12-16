@@ -30,13 +30,13 @@
             <form action="#" method="post">
                 <br>
                 <label for="passwortalt">altes Passwort</label>
-                <input type="password" placeholder="altes Passwort" name="passwortalt" required>
+                <input type="password" placeholder="altes Passwort" name="passwortalt" pattern=".{10,50}" required>
 
                 <label for="passwortneu1">neues Passwort</label>
-                <input type="password" placeholder="neues Passwort" name="passwortneu1" required>
+                <input type="password" placeholder="neues Passwort" name="passwortneu1" pattern=".{10,50}" required>
 
                 <label for="passwortneu2">neues Passwort</label>
-                <input type="password" placeholder="neues Passwort" name="passwortneu2" required>
+                <input type="password" placeholder="neues Passwort" name="passwortneu2" pattern=".{10,50}" required>
                 <br>
                 <button class="button" type="submit" name="änderung_pw_user_t">Passwort ändern</button>
             </form>
@@ -47,10 +47,10 @@
             <form action="#" method="post">
                 <br>
                 <label for="email1">Neue E-Mail</label>
-                <input type="email" placeholder="neue E-Mail-Adresse" name="email1" required>
+                <input type="email" placeholder="neue E-Mail-Adresse" name="email1" maxlength="50" required>
 
                 <label for="email2">E-Mail bestätigen</label>
-                <input type="email" placeholder="neue E-Mail-Adresse" name="email2" required>
+                <input type="email" placeholder="neue E-Mail-Adresse" name="email2" maxlength="50" required>
                 <br>
                 <button class="button" type="submit" name="änderung_email_user_t">E-Mail ändern</button>
             </form>
@@ -61,22 +61,22 @@
             <form action="#" method="post">
 
                 <label for="straße">Straße</label>
-                <input type="text" placeholder="Straße" name="straße">
+                <input type="text" placeholder="Straße" name="straße" pattern="[A-Za-z]{1,50}">
 
                 <label for="hnummer">Hausnummer</label>
-                <input type="text" placeholder="Hausnummer" name="hnummer">
+                <input type="text" placeholder="Hausnummer" name="hnummer" pattern="[0-9]{1,50}">
 
                 <label for="postleitzahl">Postleitzahl</label>
-                <input type="text" placeholder="Postleitzahl" name="postleitzahl">
+                <input type="text" placeholder="Postleitzahl" name="postleitzahl" pattern="[0-9]{1,50}">
 
                 <label for="ort">Ort</label>
-                <input type="text" placeholder="Ort" name="ort">
+                <input type="text" placeholder="Ort" name="ort" pattern="[A-Za-z]{1,50}">
 
                 <label for="land">Land</label>
-                <input type="text" placeholder="Land" name="land">
+                <input type="text" placeholder="Land" name="land" pattern="[A-Za-z]{1,50}">
 
                 <label for="telefonnummer">Telefonnummer</label>
-                <input type="text" placeholder="Telefonnummer" name="telefonnummer">
+                <input type="text" placeholder="Telefonnummer" name="telefonnummer" pattern="[0-9]{1,50}">
                 <br>
                 <button class="button" type="submit" name="änderung_daten_user_t">Kontaktdaten ändern</button>
             </form>
