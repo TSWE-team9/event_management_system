@@ -14,7 +14,7 @@
         <li><a href="TeilnehmerAngebot">Veranstaltungsangebot</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a class="active" href="#">Meine Veranstaltungen</a></li>
+        <li><a class="active">Meine Veranstaltungen</a></li>
         <li style="text-align: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li > <a href="TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 

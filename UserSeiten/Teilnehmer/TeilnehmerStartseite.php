@@ -10,7 +10,7 @@
 <body>
 <nav>
     <ul>
-        <li><a class="active" href="#">Startseite</a></li>
+        <li><a class="active">Startseite</a></li>
         <li><a href="TeilnehmerAngebot">Veranstaltungsangebot</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
