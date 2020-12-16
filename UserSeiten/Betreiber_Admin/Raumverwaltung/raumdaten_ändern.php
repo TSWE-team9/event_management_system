@@ -56,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 //Error Variable (zunächst false)
     $error = false;
 
-//Abspeichern der zu ändernden Daten (man muss was eingeben?)
+//Abspeichern der zu ändernden Daten (man muss was eingeben? -> wäre einfacher)
     $R_ID = $_POST[""];
     $bezeichnung = $_POST[""];
     $kapazitaet = $_POST[""];
@@ -66,22 +66,43 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //Abfrage, ob Raum ID des zu ändernden Raums existiert
     $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID";
-    $res = $conn->query($check_query);
+    $res1 = $conn->query($check_query);
 
-    if ($res->num_rows == 0) {
+    if ($res1->num_rows == 0) {
         echo "Fehler: Angegebene Raum_ID existiert nicht";
         echo "<br>";
         $error = true;
     }
 
-//Abfrage, ob es möglich ist, die Raumdaten zu ändern (laufende Veranstaltungen etc)
+//Abfrage, ob durch die Änderung der Kapazität des Raumes Veranstaltungen (auch bearbeitete Angebote?) existieren,
+//deren Teilnehmerzahl dann zu groß geworden ist ->trotzdem ändern lassen?? lt. Pflichtenheft ja aber das ist kompliziert
+    $check_query2 = "SELECT V_ID, Titel, Veranstalter, Teilnehmer_max, Beginn FROM Veranstaltung WHERE Status = 1 AND Teilnehmer_max > $kapazitaet
+                     UNION
+                     SELECT BeAr_ID, 'Angebot bearbeitet', Veranstalter, Teilnehmer_gepl, Beginn FROM Anfrage_Angebot WHERE Status = 2 AND Teilnehmer_gepl > $kapazitaet";
+    $res2 = $conn->query($check_query2);
+
+    if($res2->num_rows > 0){
+        echo "Es existieren folgende Veranstaltungen und Angebote, die durch die Änderung der Kapazität betroffen sind:";
+        echo "<br>";
+
+        echo "<table border=\"1\">";
+        echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
+        while($i = $res2->fetch_row()){
+            echo "<tr>";
+            foreach ($i as $item){
+                echo "<td>$item</td>";
+            }
+            echo "</tr>\n";
+        }
+        echo "</table>\n";
+    }
 
 
 //Abfrage um bereits existierende Bezeichnung zu finden
     $check_query = "SELECT R_ID FROM Raum WHERE Bezeichnung = '$bezeichnung'";
-    $res = $conn->query($check_query);
+    $res3 = $conn->query($check_query);
 
-    if ($res->num_rows > 0) {
+    if ($res3->num_rows > 0) {
         echo "Fehler: Raumbezeichnung existiert bereits.";
         echo "<br>";
         $error = true;
