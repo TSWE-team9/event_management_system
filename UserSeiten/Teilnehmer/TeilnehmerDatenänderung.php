@@ -11,7 +11,7 @@
 <nav>
     <ul>
         <li><a href="TeilnehmerStartseite.php">Startseite</a></li>
-        <li><a href="TeilnehmerAngebot">Veranstaltungsangebot</a></li>
+        <li><a href="TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
         <li><a href="TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
@@ -53,6 +53,7 @@
                 <input type="email" placeholder="neue E-Mail-Adresse" name="email2" required>
                 <br>
                 <button class="button" type="submit" name="änderung_email_user_t">E-Mail ändern</button>
+            </form>
         </div>
 
     <button class="accordion">Kontaktdaten aktualisieren</button>  
@@ -63,7 +64,7 @@
                 <input type="text" placeholder="Straße" name="straße">
 
                 <label for="hnummer">Hausnummer</label>
-                <input type="text" placeholder="Hausnummer" name="hnummer" required>
+                <input type="text" placeholder="Hausnummer" name="hnummer">
 
                 <label for="postleitzahl">Postleitzahl</label>
                 <input type="text" placeholder="Postleitzahl" name="postleitzahl">
@@ -77,7 +78,7 @@
                 <label for="telefonnummer">Telefonnummer</label>
                 <input type="text" placeholder="Telefonnummer" name="telefonnummer">
                 <br>
-                <button class="button" tyep="submit" name="änderung_daten_user_t">Kontaktdaten ändern</button>
+                <button class="button" type="submit" name="änderung_daten_user_t">Kontaktdaten ändern</button>
             </form>
         </div>
 
