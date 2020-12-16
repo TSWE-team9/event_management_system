@@ -156,7 +156,7 @@ if($show_table){
         <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
         <label for="Raumbezeichnung">Raumbezeichnung (nur Buchstaben / Leerzeichen und "-") <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text" maxlength="30"/>
         <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="0" />
-        <label for="RaumGröße">Raumgröße in Quadratmetern</label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
+        <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
         <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
         <fieldset id = "Status">
             <label for = "Status"> Raumstatus</label>
@@ -177,7 +177,7 @@ if($show_table){
 
 
 
-        <button id="Ändern">Ändern</button>
+        <button id="Hinzufügen">Ändern</button>
             <a href="#" type="button" class="Abbrechen">Abrechen</a>
 
 
