@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Raumverwaltung</title>
- <link rel="stylesheet" type="text/css" href="Startseite.css" media="screen">!
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen">
     <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
 </head>
 <body>
@@ -69,9 +69,13 @@ $res = $conn->query("SELECT R_ID, Bezeichnung, Kapazitaet, Preis, Status FROM Ra
     </tbody>
 </table>
 <!--Buttons um Funktionen zur Raumverwaltung ausführen zu können-->
-<button style="float: right"  type="submit" class="Button" formaction="raum_erstellen.php"> Raum Hinzufügen &#10010</button>
-<button style="float: left" type="submit" class="Button" formaction="Raumlöschen.php">Raum Löschen &#10006</button>
-<button  type="submit" class="Button" formaction="raumdaten_ändern.php">Raumdaten ändern &#9998</button>
+<a href="raumdaten_ändern.php" id="Hinzufügen" style="float: right" type="button" class="Button">Raum Hinzufügen &#10010</a>
+<a href="raumdaten_ändern.php" id="Löschen"style="float: left" type="button" class="Button">Raum Löschen &#10006</a>
+<a href="raumdaten_ändern.php"style="position: center" id="Ändern"type="button" class="Button">Raumdaten ändern &#9998</a>
+
+<!--<button style="float: right"  type="submit" class="Button" formaction="raum_erstellen.php"> Raum Hinzufügen &#10010</button>-->
+<!--<button style="float: left" type="submit" class="Button" formaction="Raumlöschen.php">Raum Löschen &#10006</button>-->
+<!--<button  type="submit" class="Button" formaction="raumdaten_ändern.php">Raumdaten ändern &#9998</button>-->
 <div class="footer">
     <div id="button"></div>
     <div id="container">
