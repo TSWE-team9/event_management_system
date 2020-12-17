@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
+    <link href="teilnehmer.css" type="text/css" rel="stylesheet">
     <title>Title</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -21,7 +22,6 @@
     </ul>
 </nav>
 
-<link href="teilnehmer.css" type="text/css" rel="stylesheet">
 
 <div class="box">
 
