@@ -92,29 +92,45 @@ h1 {
     .container th:nth-child(5) { display: none; }
 }
 /*css für buttons*/
-.Button   {
-    display:block;
-    line-height: 24pt;
-    padding: 0 20px;
-    border: none;
-    background: #f45702;
-    color: white;
-    letter-spacing: 2px;
-    transition: 0.2s all ease-in-out;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    margin-right: 310px;
-    margin-left:310px;
+ #Hinzufügen{
+
+
+    margin-right: 300px;
+    margin-left:00px;
+
+
+}
+ #Löschen  {
+
+    margin-right: 200px;
+    margin-left:300px;
     font-size: 16px;
-    margin-bottom: 40px;
-
-
-
 
 }
-.Button:hover {
-    background: white;
-    color: #f45702;
-    border-bottom: 2px solid #f45702;
+#Ändern {
+
+    margin-right: 850px;
+    margin-left:800px;
+
 }
+    #Hinzufügen, #Ändern, #Löschen {
+            display:block;
+            line-height: 24pt;
+            padding: 0 20px;
+            border: 1px;
+            background: #f45702;
+            color: white;
+            letter-spacing: 2px;
+            transition: 0.2s all ease-in,out;
+            border-bottom: 2px solid transparent;
+            outline: none;
+            font-size: 16px;
+            margin-bottom: 40px;
+            text-decoration: none;}
+
+    #Ändern:hover, #Löschen:hover, #Hinzufügen:hover {
+        background: white;
+        color: #f45702;
+        border-bottom: 2px solid #f45702;
+    }
 
