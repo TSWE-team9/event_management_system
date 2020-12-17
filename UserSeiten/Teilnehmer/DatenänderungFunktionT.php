@@ -16,7 +16,22 @@ session_start();
 $curr_pw = $_SESSION["passwort"];
 $curr_bid = $_SESSION["b_id"];
 
+
+
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
+
+$query = "SELECT Strasse, Haus_nr, PLZ, Ort, Land FROM Teilnehmerkonto WHERE B_ID = $curr_bid";
+$res = $db->prepare($query);
+$res->execute();
+$res->bind_result($Street,$Hausnr,$PLZ,$Ort,$Land);
+
+while($res->fetch()) {
+    $_SESSION["Strasse"] = $Street;
+    $_SESSION["Hausnummer"] = $Hausnr;
+    $_SESSION["PLZ"] = $PLZ;
+    $_SESSION["Ort"] = $Ort;
+    $_SESSION["Land"] = $Land;
+}
 
 
 if (isset($_POST['änderung_pw_user_t'])) {
