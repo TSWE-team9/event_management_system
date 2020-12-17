@@ -69,7 +69,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     //Nur wenn keine Fehler vorliegen ($error_occured) wird der gewählte Raum inaktiv gesetzt
     if($error_occured == false && $status_inaktiv == false){
 
-        $update_query = "UPDATE Raum SET Status = 2";
+        $update_query = "UPDATE Raum SET Status = 2 WHERE R_ID = $R_ID";
         if ($conn->query($update_query) === TRUE) {
             echo "<br>" . "Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt).";
 
