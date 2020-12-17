@@ -8,7 +8,7 @@
     </head>
 
     <body>
-        <div class="login-box">            
+        <div class="login-box">
           <img id="logo" src="img/vmslogo.png">
             <br>
              <button class="accordion">Login</button>

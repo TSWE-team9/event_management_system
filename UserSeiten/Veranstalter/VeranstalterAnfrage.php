@@ -11,7 +11,7 @@
 <nav>
     <ul>
         <li><a href="VeranstalterStartseite.php">Startseite</a></li>
-        <li><a class="active">Angebot einholen</a></li>
+        <li><a class="active" href="VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
         <li><a href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>

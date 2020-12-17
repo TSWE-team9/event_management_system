@@ -16,7 +16,7 @@
         <li><a href="#">Hilfe</a></li>
         <li><a href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="text-align: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li > <a class="active"> <i class="fas fa-user-circle"></i> </a></li>
+        <li > <a class="active" href="VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>

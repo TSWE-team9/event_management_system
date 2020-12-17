@@ -10,8 +10,8 @@
 <body>
 <nav>
     <ul>
-        <li><a class="active">Startseite</a></li>
-        <li><a href="TeilnehmerAngebot">Veranstaltungsangebot</a></li>
+        <li><a class="active" href="TeilnehmerStartseite.php">Startseite</a></li>
+        <li><a href="TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
         <li><a href="TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
