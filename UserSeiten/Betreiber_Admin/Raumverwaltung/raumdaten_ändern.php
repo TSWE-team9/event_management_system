@@ -30,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 //Error_occured Variable (zunächst false)
     $error = "";
     $error_occured = false;
+    $query_status = "";
 
 //Abspeichern der zu ändernden Daten
     $R_ID = $_POST["Raum-ID"];
@@ -89,7 +90,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      WHERE R_ID = $R_ID";
 
         if ($conn->query($update_query) === TRUE) {
-            echo "<br>" . "Die Raumdaten wurden erfolgreich geändert.";
+            $query_status = "Die Raumdaten wurden erfolgreich geändert.";
 
         } else {
             $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
@@ -121,8 +122,12 @@ echo "<table border=\"1\">";
 
 echo "<br><br>";
 
-//Fehlermeldung wird ausgegeben
-echo $error;
+//Fehlermeldung oder Erfolgsmeldung wird ausgegeben
+if($error_occured){
+    echo $error;
+} else {
+    echo $query_status;
+}
 
 echo "<br><br>";
 
