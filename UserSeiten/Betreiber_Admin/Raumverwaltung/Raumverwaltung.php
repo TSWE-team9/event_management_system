@@ -26,6 +26,23 @@
     </div>
 </div>
 
+<?php
+//Zugangsdaten zur Datenbank
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+$res = $conn->query("SELECT R_ID, Bezeichnung, Kapazitaet, Preis, Status FROM Raum");
+
+?>
 
  <h1> Raumverwaltung</h1>
 <!--Tabelle mit allen Räumen und ihren Eigenschaften-->
@@ -40,13 +57,15 @@
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>PhpCode</td>
-        <td>PhpCode</td>
-        <td>PhpCode</td>
-        <td>PhpCode</td>
-        <td>PhpCode</td>
-    </tr>
+    <?php
+    while($i = $res->fetch_row()){
+        echo "<tr>";
+        foreach($i as $item){
+            echo "<td>$item</td>";
+        }
+        echo"</tr>";
+    }
+    ?>
     </tbody>
 </table>
 <!--Buttons um Funktionen zur Raumverwaltung ausführen zu können-->
