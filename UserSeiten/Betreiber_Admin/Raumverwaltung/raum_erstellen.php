@@ -138,7 +138,7 @@ echo "<br><br>";
 
 
         <button id="Hinzufügen">Hinzufügen</button>
-        <a href="#" type="button" class="Abbrechen">Abrechen</a>
+        <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abrechen</a>
 
 
     </form>

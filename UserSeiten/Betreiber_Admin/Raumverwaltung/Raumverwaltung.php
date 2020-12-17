@@ -69,8 +69,8 @@ $res = $conn->query("SELECT R_ID, Bezeichnung, Kapazitaet, Preis, Status FROM Ra
     </tbody>
 </table>
 <!--Buttons um Funktionen zur Raumverwaltung ausführen zu können-->
-<a href="raumdaten_ändern.php" id="Hinzufügen" style="float: right" type="button" class="Button">Raum Hinzufügen &#10010</a>
-<a href="raumdaten_ändern.php" id="Löschen"style="float: left" type="button" class="Button">Raum Löschen &#10006</a>
+<a href="raum_erstellen.php" id="Hinzufügen" style="float: right" type="button" class="Button">Raum Hinzufügen &#10010</a>
+<a href="Raumlöschen.php" id="Löschen"style="float: left" type="button" class="Button">Raum Löschen &#10006</a>
 <a href="raumdaten_ändern.php"style="position: center" id="Ändern"type="button" class="Button">Raumdaten ändern &#9998</a>
 
 <!--<button style="float: right"  type="submit" class="Button" formaction="raum_erstellen.php"> Raum Hinzufügen &#10010</button>-->

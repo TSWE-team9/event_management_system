@@ -183,7 +183,7 @@ if($show_table){
 
 
         <button id="Hinzufügen">Ändern</button>
-            <a href="#" type="button" class="Abbrechen">Abrechen</a>
+            <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abrechen</a>
 
 
     </form>

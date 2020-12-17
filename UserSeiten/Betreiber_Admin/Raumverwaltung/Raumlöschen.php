@@ -132,7 +132,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--            <method="post">-->
 <!--            <input type="submit"  class="Löschen"  name="ausfuehren" value="Löschen"/>-->
 <!--            </method>-->
-            <a href="#" type="button" class="Abbrechen">Abbrechen</a>
+            <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abbrechen</a>
 
 
 </form>
