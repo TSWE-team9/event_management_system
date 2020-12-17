@@ -12,14 +12,15 @@ session_start();
     <body>
 
 <?php
-
+//Variablen festgelegt
 $curr_pw = $_SESSION["passwort"];
 $curr_bid = $_SESSION["b_id"];
 
-
-
+//datenbankverbindung
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
 
+
+//Sessionvariablen initiiert
 $query = "SELECT Strasse, Haus_nr, PLZ, Ort, Land FROM Teilnehmerkonto WHERE B_ID = $curr_bid";
 $res = $db->prepare($query);
 $res->execute();
@@ -33,7 +34,7 @@ while($res->fetch()) {
     $_SESSION["Land"] = $Land;
 }
 
-
+//pw ändern
 if (isset($_POST['änderung_pw_user_t'])) {
 
 
@@ -57,6 +58,8 @@ if (isset($_POST['änderung_pw_user_t'])) {
 
 }
 
+
+//email ändern
 if (isset($_POST['änderung_email_user_t'])) {
 
     $email_1 = mysqli_real_escape_string($db, $_POST['email1']);
@@ -70,6 +73,8 @@ if (isset($_POST['änderung_email_user_t'])) {
     }
 }
 
+
+//daten ändern
 if (isset($_POST['änderung_daten_user_t'])) {
 
     $street = mysqli_real_escape_string($db, $_POST['straße']);
@@ -86,6 +91,8 @@ if (isset($_POST['änderung_daten_user_t'])) {
 
 }
 
+
+//account löschen
 if (isset($_POST['del_account'])) {
 
     $query_check = 'SELECT Titel from Veranstaltung JOIN Teilnehmerliste_offen T on Veranstaltung.V_ID = T.V_ID 
