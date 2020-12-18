@@ -1,9 +1,8 @@
 html {
     overflow-y: scroll;
 }
-
 body {
-    background-color: grey;
+    background-color: white;
 }
 
 #logo {
@@ -121,6 +120,6 @@ input:invalid{
     color:red;
 }
 
-input:invalid{
+input:valid{
     color:green;
 }
