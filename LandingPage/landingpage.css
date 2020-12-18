@@ -2,7 +2,7 @@ html {
     overflow-y: scroll;
 }
 body {
-    background-color: white;
+    background-color:white;
 }
 
 #logo {
@@ -62,7 +62,7 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
     color: blue;
     cursor: pointer;
     padding: 18px;
-    width: 500px;
+    width: 450px;
     border: none;
     text-align: center;
     outline: none;
@@ -75,7 +75,7 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
     color: #444;
     cursor: pointer;
     padding: 18px;
-    width: 500px;
+    width: 450px;
     border: none;
     text-align: center;
     outline: none;
@@ -88,7 +88,7 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
     color: #444;
     cursor: pointer;
     padding: 18px;
-    width: 500px;
+    width: 450px;
     border: none;
     text-align: center;
     outline: none;
