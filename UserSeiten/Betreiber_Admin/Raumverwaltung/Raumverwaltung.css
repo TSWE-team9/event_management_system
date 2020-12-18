@@ -7,6 +7,7 @@ body {
     line-height: 1.42em;
     color:black;
     background: url("HintergrundRaumseite.jpg") fixed ;
+    background-size: 100% auto;
 }
 /*Css Überschrift*/
 h1 {
@@ -45,7 +46,7 @@ h1 {
     width: 50%;
     margin: 0 auto;
     display: table;
-    padding: 0 0 40px 0;
+    padding: 0 0 5em 0;
 
 }
 
@@ -95,37 +96,37 @@ h1 {
  #Hinzufügen{
 
 
-    margin-right: 300px;
-    margin-left:00px;
+    margin-right:0em;
+    margin-left:0em;
 
 
 }
  #Löschen  {
+    margin-right: 0em;
+    margin-left:0em;
 
-    margin-right: 200px;
-    margin-left:300px;
-    font-size: 16px;
 
 }
 #Ändern {
 
-    margin-right: 850px;
-    margin-left:800px;
+    margin-right: 0em;
+    margin-left: 0em;
 
 }
     #Hinzufügen, #Ändern, #Löschen {
-            display:block;
-            line-height: 24pt;
-            padding: 0 20px;
-            border: 1px;
+            display:inline-block;
+        margin-left: 7em ;
+            line-height: 2em;
+            padding: 0 3em;
+            border: 1em;
             background: #f45702;
             color: white;
             letter-spacing: 2px;
             transition: 0.2s all ease-in,out;
             border-bottom: 2px solid transparent;
             outline: none;
-            font-size: 16px;
-            margin-bottom: 40px;
+            font-size: 1em;
+            margin-bottom: 3em;
             text-decoration: none;}
 
     #Ändern:hover, #Löschen:hover, #Hinzufügen:hover {
@@ -133,4 +134,10 @@ h1 {
         color: #f45702;
         border-bottom: 2px solid #f45702;
     }
-
+/*    Anpassung bei größeren Ausgabegeräten*/
+@media all and (min-width:120em) {
+    #Hinzufügen, #Ändern, #Löschen {
+        display: inline-block;
+        margin-left: 16em ;
+    }
+}
