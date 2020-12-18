@@ -93,26 +93,9 @@ h1 {
     .container th:nth-child(5) { display: none; }
 }
 /*css für buttons*/
- #Hinzufügen{
 
 
-    margin-right:0em;
-    margin-left:0em;
 
-
-}
- #Löschen  {
-    margin-right: 0em;
-    margin-left:0em;
-
-
-}
-#Ändern {
-
-    margin-right: 0em;
-    margin-left: 0em;
-
-}
     #Hinzufügen, #Ändern, #Löschen {
             display:inline-block;
         margin-left: 7em ;
