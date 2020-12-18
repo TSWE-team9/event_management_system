@@ -42,7 +42,7 @@ h1 {
 .container {
     text-align: left;
     overflow: hidden;
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
     display: table;
     padding: 0 0 40px 0;
