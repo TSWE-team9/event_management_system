@@ -8,6 +8,7 @@
 <body>
 
 <?php
+date_default_timezone_set('Europe/Berlin');
 
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';
@@ -41,17 +42,21 @@ if($conn->query($check_query)->num_rows == 0){
 }
 
 //Abfrage und Speichern der Daten Beginn, Dauer und Teilnehmerzahl für die Anfrage
-$data_query = "SELECT Beginn, Dauer, Teilnehmer_gepl FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
+$data_query = "SELECT Beginn, Dauer, Teilnehmer_gepl, Beginn+Dauer-1 FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
 $res = $conn->prepare($data_query);
 $res->execute();
-$res->bind_result($Beginn, $Dauer, $Teilnehmerzahl);
+$res->bind_result($Beginn, $Dauer, $Teilnehmerzahl, $Ende);
 $res->fetch();
+$Beginn = date("Y-m-d", strtotime($Beginn));
+$Ende = date("Y-m-d" , strtotime($Ende));
 echo $Beginn;
+echo "<br>";
+echo $Ende;
 echo $Dauer;
 echo $Teilnehmerzahl;
 
 
-//$beginn = date("Y-m-d", strtotime('2020-12-22'));
+$beginn = date("Y-m-d", strtotime('2020-12-22'));
 //$ende = date("Y-m-d", strtotime('2020-12-23'));
 //$dauer = 2;
 //$teilnehmerzahl = 30;
@@ -59,8 +64,8 @@ echo $Teilnehmerzahl;
 
 //Überprüfung ob Regeln für Veranstaltungen eingehalten wurden (Dauer=max 7 Tage; Keine Veranstaltungen über Wochenende hinaus)
 //$unix_timestamp = strtotime($beginn);
-//$wochentag = date("w", '2020-12-22');
-    $wochentag = "Tuesday";
+$wochentag = date("l", $beginn);
+    echo $wochentag;
 
     switch ($wochentag) {
         case "Monday":
@@ -119,12 +124,12 @@ echo $Teilnehmerzahl;
 
         $res = $conn->query($query);
 
-        if ($res->num_rows == 0) {
-            $query_status = "Für den eingegebenen Zeitraum sind keine freien Räume verfügbar";
-        } else {
+        //if ($res->num_rows == 0) {
+            //$query_status = "Für den eingegebenen Zeitraum sind keine freien Räume verfügbar";
+        //} else {
 
-            echo "<br>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
-            echo "<br><br>";
+            echo "<br>". "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
+            echo"<br><br>";
             echo "<table border=\"1\">";
             echo "<th>R_ID</th><th>Bezeichnung</th>";
             while ($i = $res->fetch_row()) {
@@ -135,9 +140,10 @@ echo $Teilnehmerzahl;
                 echo "</tr>\n";
             }
             echo "</table>\n";
-            echo "<br><br>";
+            echo"<br><br>";
+
         }
-    }
+    //}
 }
 
 
