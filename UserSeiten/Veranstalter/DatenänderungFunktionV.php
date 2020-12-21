@@ -22,23 +22,25 @@ $errors_d = array();
 //datenbankverbindung
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
 
+echo $curr_pw;
+echo $curr_bid;
 
 //Sessionvariablen initiiert
-$query = "SELECT Strasse, Haus_nr, PLZ, Ort, Land, Tel_nr FROM Teilnehmerkonto WHERE B_ID = $curr_bid";
+$query = "SELECT Strasse, Haus_nr, PLZ, Ort, Land, Tel_nr FROM Veranstalterkonto WHERE B_ID = $curr_bid";
 $res = $db->prepare($query);
 $res->execute();
-$res->bind_result($Street,$Hausnr,$PLZ,$Ort,$Land,$Tel);
+$res->bind_result($StreetV,$HausnrV,$PLZV,$OrtV,$LandV,$TelV);
 
 while($res->fetch()) {
-    $_SESSION["Strasse"] = $Street;
-    $_SESSION["Hausnummer"] = $Hausnr;
-    $_SESSION["PLZ"] = $PLZ;
-    $_SESSION["Ort"] = $Ort;
-    $_SESSION["Land"] = $Land;
-    $_SESSION["Telnummer"] = $Tel;
+    $_SESSION["StrasseV"] = $StreetV;
+    $_SESSION["HausnummerV"] = $HausnrV;
+    $_SESSION["PLZV"] = $PLZV;
+    $_SESSION["OrtV"] = $OrtV;
+    $_SESSION["LandV"] = $LandV;
+    $_SESSION["TelnummerV"] = $TelV;
 }
 //passwort ändern
-if (isset($_POST['änderung_pw_user_t'])) {
+if (isset($_POST['änderung_pw_user_v'])) {
 
 
     $password_1 = md5(mysqli_real_escape_string($db, $_POST['passwortalt']));
@@ -49,7 +51,7 @@ if (isset($_POST['änderung_pw_user_t'])) {
     if ($password_1== $curr_pw) {
 
         if ($password_2 != $password_3) {
-            array_push($errors_p, "passwort stimmt nicht überein");
+            array_push($errors_p, "neues passwort stimmt nicht überein");
         }else {
             $query = "Update Benutzerkonto Set Passwort=md5($password_2) Where B_ID=$curr_bid";
             mysqli_query($db, $query);
@@ -64,7 +66,7 @@ if (isset($_POST['änderung_pw_user_t'])) {
 
 
 //email ändern
-if (isset($_POST['änderung_email_user_t'])) {
+if (isset($_POST['änderung_email_user_v'])) {
 
     $email_1 = mysqli_real_escape_string($db, $_POST['email1']);
     $email_2 = mysqli_real_escape_string($db, $_POST['email2']);
@@ -80,7 +82,7 @@ if (isset($_POST['änderung_email_user_t'])) {
 
 
 //daten ändern
-if (isset($_POST['änderung_daten_user_t'])) {
+if (isset($_POST['änderung_daten_user_v'])) {
 
     $street = $_POST['straße'];
     $hnummer = $_POST['hnummer'];
@@ -89,7 +91,7 @@ if (isset($_POST['änderung_daten_user_t'])) {
     $land = $_POST['land'];
     $tel = $_POST['telefonnummer'];
 
-    $query_t = "Update Teilnehmerkonto Set Strasse='$street', Haus_nr='$hnummer', PLZ=$plz, Ort='$ort',
+    $query_t = "Update Veranstalterkonto Set Strasse='$street', Haus_nr='$hnummer', PLZ=$plz, Ort='$ort',
                 Land='$land', Tel_nr=$tel Where B_ID=$curr_bid";
     mysqli_query($db, $query_t);
     array_push($errors_d, "Daten wurde geändert zu: " . $street . " ". $hnummer . " ". $plz . "...");
@@ -99,7 +101,7 @@ if (isset($_POST['änderung_daten_user_t'])) {
 
 
 //account löschen
-if (isset($_POST['acc_löschen'])) {
+if (isset($_POST['del_account'])) {
 
     $query_check = 'SELECT Titel from Veranstaltung JOIN Teilnehmerliste_offen T on Veranstaltung.V_ID = T.V_ID 
                     Where Status = 1 or 2 or 3 And B_ID = $curr_bid';

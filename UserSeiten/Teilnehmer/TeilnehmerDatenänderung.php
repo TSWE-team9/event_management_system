@@ -64,7 +64,7 @@
     <button class="accordion">Kontaktdaten aktualisieren</button>  
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_d) > 0){include('errorsDatenänderung.php');} ?>
+                <?php if (count($errors_d) > 0){include('errorsDatenänderungV.php');} ?>
 
                 <label for="straße">Straße</label>
                 <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['Strasse'];?>' pattern="[A-Za-z]{1,50}">
