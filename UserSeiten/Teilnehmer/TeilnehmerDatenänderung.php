@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link href="teilnehmer.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="../modal.css" type="text/css">
     <title>Title</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -16,8 +17,8 @@
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
         <li><a href="TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="text-align: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li> <a class="active" href="TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li style="float: right;"> <a class="active" href="TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>
@@ -82,11 +83,26 @@
             </form>
         </div>
 
-    <button id="löschen" href="#">Konto löschen</button>
+    <button id="löschen" onclick="document.getElementById('id01').style.display='block'">Konto löschen</button>
+    
+    <div id="id01" class="modal">
+        <div class="modal_content">
+            <div class="modal_container">
+                <h1>Kontolöschung</h1>
+                <p>Wollen Sie ihr Konto wircklich löschen?</p>
+                <div class="modal_clearfix">
+                    <button class="modal_btnconfirm" href="#" onclick="document.getElementById('id01').style.display='none'">Löschen</button>
+                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
 <script>
+
+    // Accordion code
     var acc = document.getElementsByClassName("accordion");
     var i;
             
@@ -101,31 +117,18 @@
             }
         });
     }
-    </script>
-<!--<footer>
-   <div>
-       <a href="#">Impressum</a>
-        <a href="#">AGB</a> <br>
-   VMS
-  < /div>
-</footer>-->
 
-<div class="footer">
-    <div id="button"></div>
-    <div id="container">
-        <div id="cont">
-            <!--         <div class="footer_center">-->
-            <!--                <h3>VMS</h3>-->
-            <!--             <a href="AGB">AGB </a>-->
-            <a class ="impressum " href="#"> Impressum </a>
-            <a class ="agb"   href="#">AGB</a>
+    // Get the modal
+    var modal = document.getElementById('id01');
 
-            <!-- agb col-xs-12 col-sm-3 col-sm-pull-6 -->
-        </div>
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 
-    </div>
-</div>
-
+</script>
 
 </body>
 </html>

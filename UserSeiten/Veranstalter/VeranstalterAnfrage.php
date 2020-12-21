@@ -66,30 +66,5 @@
     </form>
 </div>
 
-<!--<footer>
-   <div>
-       <a href="#">Impressum</a>
-        <a href="#">AGB</a> <br>
-   VMS
-  < /div>
-</footer>-->
-
-<div class="footer">
-    <div id="button"></div>
-    <div id="container">
-        <div id="cont">
-            <!--         <div class="footer_center">-->
-            <!--                <h3>VMS</h3>-->
-            <!--             <a href="AGB">AGB </a>-->
-            <a class ="impressum " href="#"> Impressum </a>
-            <a class ="agb"   href="#">AGB</a>
-
-            <!-- agb col-xs-12 col-sm-3 col-sm-pull-6 -->
-        </div>
-
-    </div>
-</div>
-
-
 </body>
 </html>

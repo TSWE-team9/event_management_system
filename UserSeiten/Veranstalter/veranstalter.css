@@ -12,13 +12,12 @@ html {
 }
 
 .button {
-    width:150px;
+    width:350px;
     height: 50px;
     font-size:18px;
     background-color:rgba(53, 47, 47, 0.5);
     color:#fff;
     border:rgb(172, 77, 77) solid 1px;
-    border-radius: 5px;
 }
 
 .button:hover {
