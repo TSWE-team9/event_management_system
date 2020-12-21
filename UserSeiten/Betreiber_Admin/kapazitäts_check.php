@@ -168,6 +168,7 @@ if($Ende < $Beginn){
         if ($res2->num_rows == 0) {
             $query_status = "Für den eingegebenen Zeitraum sind keine freien Räume verfügbar";
             //Weiterleitung zu Formular V2"
+            echo "<a href='KapazitätenabfrageV2.php'>Erneute Überprüfung mit anderen Daten</a>";
 
         } else {
 
@@ -192,6 +193,7 @@ if($Ende < $Beginn){
 
 
             //Reservierungsformular muss hier erscheinen
+            echo "<a href=''>Reservierungsformular</a>";
 
 
 
