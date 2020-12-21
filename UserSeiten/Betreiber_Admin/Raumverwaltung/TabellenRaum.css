@@ -1,3 +1,4 @@
+
 .container th  {
     font-size:0.7em;
     line-height:0;
@@ -50,3 +51,18 @@
     .container td:nth-child(5),
     .container th:nth-child(5) { display: none; }
 }
+  /*Ausgabe der Fehlermeldung */
+    .error {
+
+        margin: 10px 0px;
+        padding:12px;
+        color: #9F6000;
+        background-color: #FEEFB3;
+        font-size: 12px;
+    }
+    /*/Ausgabe einer Erfolgsmeldung*!*/
+    .sucess    {
+color: #4F8A10;
+background-color: #DFF2BF;
+margin: 10px 0px;
+padding:12px;}
