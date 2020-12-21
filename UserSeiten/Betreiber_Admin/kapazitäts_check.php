@@ -193,7 +193,7 @@ if($Ende < $Beginn){
 
 
             //Reservierungsformular muss hier erscheinen
-            echo "<a href=''>Reservierungsformular</a>";
+            echo "<a href='Raumreservierung.php'>Reservierungsformular</a>";
 
 
 
