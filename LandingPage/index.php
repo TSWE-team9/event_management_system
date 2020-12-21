@@ -41,7 +41,7 @@
             <button class="accordion">Registrieren als Teilnehmer</button>
               <div class="panel">
                 <form action="#" method="post">
-                    <?php include('errors_t.php'); ?>
+                  <?php include('errors_t.php'); ?>
                   <br>
                   <label for="email">E-Mail-Adresse</label>
                   <input type="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
@@ -94,7 +94,7 @@
             <button class="accordion">Registrieren als Veranstalter</button>
               <div class="panel">
                 <form action="#" method="post">
-                    <?php include('errors_v.php'); ?>
+                  <?php include('errors_v.php'); ?>
                   <br>
                   <label for="email">E-Mail-Adresse</label>
                   <input type="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>

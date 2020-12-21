@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="popup.css" type="text/css">
+</head>
+<body style="text-align: center; margin-top: 100;">
+    <br>
+    <br>
+    <div class="popup" onclick="popUp()">Angabe
+        <span class="popuptext" id="myPopup">Beschreibung</span>
+    </div>
+
+
+    <script>
+        // When the user clicks on div, open the popup
+        function popUp() {
+          var popup = document.getElementById("myPopup");
+          popup.classList.toggle("show");
+        }
+    </script>
+</body>
+</html>

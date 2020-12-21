@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="./anfrage.css">
+    <link rel="stylesheet" type="text/css" href="./popup.css" >
     <title>Title</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -22,7 +23,7 @@
     </ul>
 </nav>
 
-<h1>Anfrageformular für Veranstaltung</h1>
+<h1 style="text-align: center;, margin-top: 50px;">Anfrageformular für Veranstaltung</h1>
 <p>Beschreibung Formular</p>
 
 <!-- Anfrageformular -->
@@ -38,7 +39,9 @@
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="beginn">Veranstaltungsbeginn</label>
+                <label for="beginn" class="popup" onclick="popUp()">Veranstaltungsbeginn
+                    <span class="popuptext" id="myPopup">Der früheste Veranstaltungsbeginn ist in vier Wochen ab Anfrage</span>
+                </label>
             </div>
             <div class="col-75">
                 <input type="date" name="date" required>
@@ -65,6 +68,14 @@
         </div>
     </form>
 </div>
+
+<script>
+    // When the user clicks on div, open the popup
+    function popUp() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+</script>
 
 </body>
 </html>
