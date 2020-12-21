@@ -18,7 +18,7 @@
     <form action="kapazitäts_check_angebot.php" method="post">
         <label for="KapÜberprüfung">Angebots_ID <em>&#x2a;</em></label><input id="KapÜberprüfung" name="KapÜberprüfung" required="" type="number" min="0" maxlength="10"/>
         <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Startseite oder Abfrage nach freien Raum Kapazitäten -->
-        <button type="submit"  class="Auslösen"  name="Kapazitätsprüfung">Abfragen</button>
+        <button type="submit"  class="Auslösen"  name="Kapazitätsprüfung1">Abfragen</button>
         <a href="#" class="Abbrechen" type="button" >Abbrechen</a>
     </form>
 </body>
