@@ -86,16 +86,16 @@
     <button id="löschen" onclick="document.getElementById('id01').style.display='block'">Konto löschen</button>
     
     <div id="id01" class="modal">
-        <div class="modal_content">
+        <form class="modal_content" action="#" method="post">
             <div class="modal_container">
                 <h1>Kontolöschung</h1>
                 <p>Wollen Sie ihr Konto wircklich löschen?</p>
                 <div class="modal_clearfix">
-                    <button class="modal_btnconfirm" href="#" onclick="document.getElementById('id01').style.display='none'">Löschen</button>
+                    <button class="modal_btnconfirm" type="submit" name="acc_löschen" onclick="document.getElementById('id01').style.display='none'">Löschen</button>
                     <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 
