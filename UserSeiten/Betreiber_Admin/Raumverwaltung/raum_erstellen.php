@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Raum Hinzufügen</title>
     <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
 </head>
 
 <body>
@@ -79,7 +80,7 @@ $räume_query = "SELECT R_ID, Bezeichnung, Kapazitaet, Groesse, Preis, Status FR
 $result = $conn->query($räume_query);
 
 if($result->num_rows >0){
-    echo "<table border=\"1\">";
+    echo "<table class=' container' border=\"1\">";
     echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th><th>Größe</th><th>Preis</th><th>Status</th>";
     while($i = $result->fetch_row()){
         echo "<tr>";
