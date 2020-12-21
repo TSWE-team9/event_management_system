@@ -52,7 +52,7 @@
                 <label for="email2">E-Mail bestätigen</label>
                 <input type="email" placeholder="neue E-Mail-Adresse" name="email2" maxlength="50" required>
                 <br>
-                <button class="button" type="submit" name="änderung_email_user_t">E-Mail ändern</button>
+                <button class="button" type="submit" name="änderung_email_user_v">E-Mail ändern</button>
             </form>
         </div>
 
@@ -78,7 +78,7 @@
                 <label for="telefonnummer">Telefonnummer</label>
                 <input type="text" placeholder="Telefonnummer" name="telefonnummer" pattern="[0-9]{1,50}">
                 <br>
-                <button class="button" type="submit" name="änderung_daten_user_t">Kontaktdaten ändern</button>
+                <button class="button" type="submit" name="änderung_daten_user_v">Kontaktdaten ändern</button>
             </form>
         </div>
 

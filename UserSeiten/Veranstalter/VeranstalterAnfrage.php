@@ -70,7 +70,7 @@
 </div>
 
 <script>
-    // When the user clicks on div, open the popup
+    // When the user clicks on span, open the popup
     function popUp() {
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
