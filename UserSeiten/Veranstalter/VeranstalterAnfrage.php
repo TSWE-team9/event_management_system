@@ -42,14 +42,9 @@ if(isset($_POST["anfrage"])){
     $dauer = $_POST["dauer"];
     $anmerkungen = $_POST["anmerkungen"];
 
-    echo "<br><br>" . $beginn;
-    echo $teilnehmerzahl;
-    echo $anmerkungen;
-    echo $dauer;
-
     //Abspeichern der B_ID des Veranstalters in einer lokalen Variable
-    //$veranstalter_id = $_SESSION["b_id"];
-    $veranstalter_id = 4;
+    $veranstalter_id = $_SESSION["b_id"];
+
 
 
 
@@ -61,7 +56,7 @@ if(isset($_POST["anfrage"])){
 //Insert Query für das Anlegen in der DB
 if($error == false) {
 
-    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, $beginn, $dauer, 1, NULL, NULL, '$anmerkungen', NULL)";
+    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, NULL, NULL, '$anmerkungen', NULL)";
 
     $res = $conn->query($query);
     if ($res === TRUE) {
