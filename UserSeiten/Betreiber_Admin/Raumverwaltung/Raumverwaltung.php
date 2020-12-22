@@ -9,10 +9,10 @@
 <body>
 <nav>
 <ul>
-    <li><a class= "active" href="#">Startseite</a></li>
+    <li><a  href="#">Startseite</a></li>
     <li><a href="#">Angebotserstellung</a></li>
     <li><a href="#">Abrechnung</a></li>
-    <li><a href="#">Raumverwaltung</a></li>
+    <li><a class= "active" href="#">Raumverwaltung</a></li>
     <li><a href="#">Meine Veranstaltungen</a></li>
     <li><a href="#">Statistiken</a></li>
     <li style="text-align: right"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>

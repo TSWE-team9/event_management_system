@@ -5,15 +5,15 @@
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
 </head>
-    <body>
-
-<div class="contact-us">
+    <body class="Hintergrund">
+<div class="Hintergrund">
+    <div class="contact-us">
     <h1> Raum Hinzufügen</h1>
     <!-- Fomular Spalten -->
     <h3>
         <em>&#x2a; </em> Bitte alle Felder ausfüllen um einen neuen Raum anzulegen.
     </h3>
-<!--    <label style="position: relative" > Verpflichtend </label>-->
+
 
         <form action="raum_erstellen.php" method="post">
     <label for="Raumbezeichnung">Raumbezeichnung (nur Buchstaben / Leerzeichen und "-") <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text" maxlength="30"/>
@@ -27,15 +27,6 @@
     <input type="radio" id="inaktiv" name="Status" value="2">
     <label for="inaktiv"> inaktiv</label>
     </fieldset>
-<!--    <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
-<!--    <form action="select.html">-->
-<!--    <label>Raumstatus:-->
-<!--        <select name="Status" size="2">-->
-<!--            <option>aktiv</option>-->
-<!--            <option>inaktiv</option>-->
-<!--        </select>-->
-<!--    </label>-->
-<!--    </form>-->
 
 
 
@@ -46,7 +37,7 @@
 </form>
 
 </div>
-
+</div>
 </body>
 
 </html>

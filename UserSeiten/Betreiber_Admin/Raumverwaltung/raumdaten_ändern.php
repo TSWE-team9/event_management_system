@@ -5,9 +5,27 @@
     <title>Raumdaten ändern</title>
     <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+    <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
+<!--header-->
+<nav>
+    <ul class="header">
+        <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="#">Angebotserstellung</a></li>
+        <li class="headerel"><a href="#">Abrechnung</a></li>
+        <li class="headerel"><a class= "active" href="Raumverwaltung.php">Raumverwaltung</a></li>
+        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+        <li class="headerel"><a href="#">Statistiken</a></li>
+        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
+
+    </ul>
+</nav>
 <br>
 <br>
 
@@ -107,7 +125,7 @@ echo "<br><br>";
 //Ausgabe der existierenden Räume in einer Tabelle
 $räume_query = "SELECT R_ID, Bezeichnung, Kapazitaet, Groesse, Preis, Status FROM Raum";
 $result = $conn->query($räume_query);
-
+//greift aufraumverwaltung.php zu
 if($result->num_rows >0){
 echo "<table class='container' border=\"1\">";
     echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th><th>Größe</th><th>Preis</th><th>Status</th>";

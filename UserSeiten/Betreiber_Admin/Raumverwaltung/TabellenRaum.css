@@ -1,68 +1,18 @@
 
-.container th  {
-    font-size:0.7em;
-    line-height:0;
-    text-align: left;
-    font-weight: normal;
-    color: black;
 
-}
-
-.container td {
-    font-weight:normal;
-    font-size: 0.7em;
-    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
-    -moz-box-shadow: 0 2px 2px -2px #0E1119;
-    box-shadow: 0 2px 2px -2px #0E1119;
-}
 /*tabellengerüst*/
 .container {
-    text-align: left;
-    overflow: hidden;
-    width: 27%;
-    height: 50%;
-    margin: 1em auto;
-    display: table;
-    padding: 0 0 0 0;
-
+margin-top: 3em;
+    border: none;
+    width: 40%;
 }
 
 .container td, .container th {
-    padding-bottom: 2%;
-    padding-top: 2%;
-    padding-left:2%;
+    padding: 2%;
 }
-
-/*farbe für ungerade reihen*/
-.container tr:nth-child(odd) {
-    background-color:rgba(255, 255, 255, 0.90);
-
-}
-
-/*farbe für gerade reihen*/
-.container tr:nth-child(even) {
-    background-color: rgba(255, 255, 255, 0.80);
-}
-/*Farbe für Tabellenkopf*/
-.container th {
-    background-color: #f8f4e5;
-}
-@media (max-width: 800px) {
-    .container td:nth-child(5),
-    .container th:nth-child(5) { display: none; }
-}
-  /*Ausgabe der Fehlermeldung */
-    .error {
-
-        margin: 10px 0px;
-        padding:12px;
-        color: #9F6000;
-        background-color: #FEEFB3;
-        font-size: 12px;
+/*Anpassung der Tabellen an kleinere Displays : */
+@media (max-width: 100em) {
+    .container{
+       width:50%
     }
-    /*/Ausgabe einer Erfolgsmeldung*!*/
-    .sucess    {
-color: #4F8A10;
-background-color: #DFF2BF;
-margin: 10px 0px;
-padding:12px;}
+}

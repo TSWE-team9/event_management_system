@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <title>Raumlöschen</title>
     <link rel="stylesheet" type="text/css" href="Raumlöschen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+    <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
 <?php
@@ -95,7 +97,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <body>
+    <nav>
+        <ul class="header">
+            <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+            <li class="headerel"><a href="#">Angebotserstellung</a></li>
+            <li class="headerel"><a href="#">Abrechnung</a></li>
+            <li class="headerel"><a class= "active" href="Raumverwaltung.php">Raumverwaltung</a></li>
+            <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+            <li class="headerel"><a href="#">Statistiken</a></li>
+            <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
+            <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
 
+        </ul>
+    </nav>
 <div class="contact-us">
     <h1> Raum Löschen</h1>
 
@@ -107,31 +121,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
             <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
     <label for="Raumbezeichnung">Raumbezeichnung <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text"/>
-    <!---<fieldset id = "Status">
-        <label for = "Status"> Raumstatus <em>&#x2a;</em></label>
-        <input type= "radio" id="aktiv" name="Status" value="aktiv">-->
-<!--    <label for="aktiv"> aktiv</label>-->
-    <!--<input type="radio" id="inaktiv" name="Status" value="inaktiv">
-    <label for="inaktiv"> inaktiv</label>
-    </fieldset>
-    <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
-<!--    <form action="select.html">-->
-<!--    <label>Raumstatus:-->
-<!--        <select name="Status" size="2">-->
-<!--            <option>aktiv</option>-->
-<!--            <option>inaktiv</option>-->
-<!--        </select>-->
-<!--    </label>-->
-<!--    </form>-->
-
-
-
 <!--    <button id="Löschen">Löschen</button>-->
 
             <button type="submit" class="Löschen" formaction="#">Löschen</button>
-<!--            <method="post">-->
-<!--            <input type="submit"  class="Löschen"  name="ausfuehren" value="Löschen"/>-->
-<!--            </method>-->
             <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abbrechen</a>
 
 

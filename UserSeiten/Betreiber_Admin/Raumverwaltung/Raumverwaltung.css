@@ -9,7 +9,7 @@ body {
     background: url("HintergrundRaumseite.jpg") fixed ;
     background-size: 100% auto;
 }
-/*Css Überschrift*/
+/*Css Überschrift der Tabelle*/
 h1 {
     font-size: 3em;
     font-weight: 400;
@@ -44,9 +44,11 @@ h1 {
     text-align: left;
     overflow: hidden;
     width: 50%;
-    margin: 0 auto;
     display: table;
     padding: 0 0 5em 0;
+    /*muss so sein sonst rutscht tabelle in Raumändern nach oben*/
+    margin: auto;
+    margin-top: 2em;
 
 }
 
@@ -88,10 +90,10 @@ h1 {
     transition-timing-function: linear;
 }
 
-@media (max-width: 800px) {
-    .container td:nth-child(5),
-    .container th:nth-child(5) { display: none; }
-}
+/*@media (max-width: 800px) {*/
+/*    .container td:nth-child(5),*/
+/*    .container th:nth-child(5) { display: none; }*/
+/*}*/
 /*css für buttons*/
 
 
