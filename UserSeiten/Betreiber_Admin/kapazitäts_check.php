@@ -35,7 +35,14 @@ $error2 = "";
 $query_status = "";
 
 //Session Variablen
+
+//Speichert die verfügbaren Räume und ihre IDs in einem Array
 $_SESSION["R_ID_Array"] = array();
+//Gibt an, ob es sich um die Prüfung für eine interne Veranstaltung handelt oder um eine Reservierung für eine Anfrage
+$_SESSION["Prüfungsart"] = 0;
+//Platzhalter für das finale Datum von Beginn und Ende bei der Reservierung
+$_SESSION["Beginn_final"] = '0000-00-00';
+$_SESSION["Ende_final"] = '0000-00-00';
 
 //Variablen für Kapazitätsprüfung definieren
 $Beginn = "";
@@ -45,15 +52,16 @@ $Ende = "";
 //Abspeichern der Daten aus dem Formular für Prüfung über Anfrage/Angebots_ID
 if(isset($_POST["Kapazitätsprüfung1"])) {
 
-//Abspeichern der aus dem Formular übergebenen Daten
+//Abspeichern der aus dem Formular übergebenen Daten / Setzen von Session Variablen
     $angebot_id = $_POST["KapÜberprüfung"];
     $_SESSION["BeAr_ID"] = $angebot_id;
+    $_SESSION["Prüfungsart"] = 1;
 
-//Überprüfen, ob angegebene BeAr_ID existiert und das Angebot noch nicht angenommen wurde (Status != 4)
-    $check_query = "SELECT BeAr_ID FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id AND Status != 4";
+//Überprüfen, ob angegebene BeAr_ID existiert und prüfen, ob Status "angefragt" ist (1)
+    $check_query = "SELECT BeAr_ID FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id AND Status = 1";
     if ($conn->query($check_query)->num_rows == 0) {
         $error_occured2 = true;
-        $error2 = "Angegebene Angebots_ID existiert nicht oder das Angebot wurde bereits angenommen";
+        $error2 = "Angegebene Angebots_ID existiert nicht oder das Angebot wurde bereits angenommen/abgelehnt";
     }
 
 //Abfrage und Speichern der Daten Beginn, Dauer und Teilnehmerzahl für die Anfrage
@@ -70,14 +78,19 @@ if(isset($_POST["Kapazitätsprüfung2"])) {
 
     $Beginn = $_POST["Startdatum"];
     $Ende = $_POST["Enddatum"];
+
+    //TODO Noch festhalten, dass der Betreiber die ursprünglichen Daten "geändert" hat
 }
 
-//Abspeichern der Daten aus dem Formular für erneute Prüfung mit anderem Datum
+//Abspeichern der Daten aus dem Formular für interne Veranstaltungen
 if(isset($_POST["Kapazitätsprüfung3"])) {
 
     $Beginn = $_POST["Startdatum"];
     $Ende = $_POST["Enddatum"];
     $_SESSION["Teilnehmerzahl"] = $_POST["Teilnehmerzahl"];
+
+    //Session Variable setzen
+    $_SESSION["Prüfungsart"] = 2;
 }
 
 /*$today = date("Y-m-d");
@@ -171,6 +184,10 @@ if($Ende < $Beginn){
             echo "<a href='KapazitätenabfrageV2.php'>Erneute Überprüfung mit anderen Daten</a>";
 
         } else {
+
+            //Abspeichern der finalen Daten für Beginn und Ende
+            $_SESSION["Beginn_final"] = $Beginn;
+            $_SESSION["Ende_final"] = $Ende;
 
             //Ausgabe der verfügbaren Räume in einer Tabelle
             echo "<br>". "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
