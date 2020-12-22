@@ -113,7 +113,7 @@ echo "<br>" . $query_status;
                 <label for="beginn">Veranstaltungsbeginn</label>
             </div>
             <div class="col-75">
-                <input type="date" name="date" id="min_date" min="2020-12-25" required>
+                <input type="date" name="date" id="min_date" required>
             </div>
         </div>
         <div class="row">
