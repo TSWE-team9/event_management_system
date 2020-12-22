@@ -5,7 +5,7 @@
     align-content: start;
 
 }
-/*anpassung des Headers an kleinere Displays*/
+/*Anpassung des Headers an kleinere Displays*/
 @media (max-width: 100em) {
     .header {
         margin-top: -2em;
