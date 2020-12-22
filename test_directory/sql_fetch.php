@@ -18,10 +18,9 @@ $query = "SELECT Haus_nr FROM Teilnehmerkonto WHERE B_ID = 5";
 $res = $conn->prepare($query);
 $res->execute();
 $res->bind_result($Hausnr);
+$res->fetch();
+$res->close();
 
-while($res->fetch()) {
 echo $Hausnr;
 
-$_SESSION["Hausnummer"] = $Hausnr;
-}
 

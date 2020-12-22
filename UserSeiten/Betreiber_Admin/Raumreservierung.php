@@ -30,10 +30,12 @@ $status = false;
 $query_status = "";
 $error = "";
 
-//Abspeichern der ID des ausgewählten Raumes
+//Abspeichern der ID des ausgewählten Raumes und weiteren Variablen
 if(isset($_SERVER["Name des Buttons"])){
 
     $R_ID = $_POST["Name des Felds?"];
+    //Session für übergebene R_ID für Angebotserstellung und Veranstaltungserstellung (intern)
+    $_SESSION["R_ID"] = $R_ID;
     $status = true;
 
 } else{

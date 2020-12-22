@@ -34,7 +34,7 @@ $error1 = "";
 $error2 = "";
 $query_status = "";
 
-//Session Variablen
+//Session Variablen:
 
 //Speichert die verfügbaren Räume und ihre IDs in einem Array
 $_SESSION["R_ID_Array"] = array();
@@ -43,6 +43,8 @@ $_SESSION["Prüfungsart"] = 0;
 //Platzhalter für das finale Datum von Beginn und Ende bei der Reservierung
 $_SESSION["Beginn_final"] = '0000-00-00';
 $_SESSION["Ende_final"] = '0000-00-00';
+//Platzhalter für den finalen Angebotsstatus (Default: 2 ("bearbeitet"))
+$_SESSION["Angebotsstatus_final"] = 2;
 
 //Variablen für Kapazitätsprüfung definieren
 $Beginn = "";
@@ -79,7 +81,11 @@ if(isset($_POST["Kapazitätsprüfung2"])) {
     $Beginn = $_POST["Startdatum"];
     $Ende = $_POST["Enddatum"];
 
-    //TODO Noch festhalten, dass der Betreiber die ursprünglichen Daten "geändert" hat
+    //Betreiber hat ursprüngliche Angaben des Veranstalters geändert
+    if($_SESSION["Prüfungsart"] == 1){
+        $_SESSION["Angebotsstatus_final"] = 3;
+    }
+
 }
 
 //Abspeichern der Daten aus dem Formular für interne Veranstaltungen
