@@ -110,12 +110,10 @@ echo "<br>" . $query_status;
         </div>
         <div class="row">
             <div class="col-25">
-                <label for="beginn" class="popup" onclick="popUp()">Veranstaltungsbeginn
-                    <span class="popuptext" id="myPopup">Der früheste Veranstaltungsbeginn ist in vier Wochen ab Anfrage</span>
-                </label>
+                <label for="beginn">Veranstaltungsbeginn</label>
             </div>
             <div class="col-75">
-                <input type="date" name="date" required>
+                <input type="date" name="date" id="min_date" required>
             </div>
         </div>
         <div class="row">
@@ -123,7 +121,7 @@ echo "<br>" . $query_status;
                 <label for="dauer">Veranstaltungsdauer</label>
             </div>
             <div class="col-75">
-                <input type="number" name="dauer" min="1" max="7" required>
+                <input type="number" name="dauer" min="1" id="max_days" required>
             </div>
         </div>
         <div class="row">
@@ -141,11 +139,74 @@ echo "<br>" . $query_status;
 </div>
 
 <script>
+    
     // When the user clicks on span, open the popup
     function popUp() {
         var popup = document.getElementById("myPopup");
         popup.classList.toggle("show");
     }
+
+    function addDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+
+    function dateToHtml(date) {
+        var result = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("-");
+        return result;
+    }
+
+    function dayOfWeek(date) {
+        var day = new Date(date).getDay();
+        var result;
+
+        switch(day) {
+            // sunday
+            case 0:
+                result = 1;
+                break;
+
+            // monday    
+            case 1:
+                result = 7;
+                break;
+
+            // tuesday
+            case 2:
+                result = 6;
+                break;
+
+            // wednesday
+            case 3:
+                result = 5;
+                break;
+
+            // thursday
+            case 4:
+                result = 4;
+                break;
+
+            // friday
+            case 5:
+                result = 3;
+                break;
+
+            // saturday
+            case 6:
+                result = 2;
+                break;
+        }
+
+        return result;
+    }
+
+    var currentDate = new Date();
+    var maxDays = dayOfWeek(currentDate);
+    var minDate = dateToHtml(addDays(currentDate, 28));
+    var maxDaysHtml = document.getElementById("max_days").max = maxDays;
+    var minDateHtml = document.getElementById("min_date").min = minDate;
+
 </script>
 
 </body>

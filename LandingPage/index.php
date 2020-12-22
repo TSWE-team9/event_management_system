@@ -59,7 +59,7 @@
                   <input type="text" placeholder="Nachname" name="nachname" pattern="[A-Za-z]{1,50}" required>
 
                   <label for="geburtsdatum">Geburtsdatum</label>
-                  <input type="date" name="geburtsdatum" required>                 
+                  <input type="date" name="geburtsdatum" id="geb_t" required>                 
 
                   <label for="geschlecht">Geschlecht</label>
                   <select name="geschlecht" required>
@@ -112,7 +112,7 @@
                   <input type="text" placeholder="Nachname" name="nachname" pattern="[A-Za-z]{1,50}" required>
 
                   <label for="geburtsdatum">Geburtsdatum</label>
-                  <input type="date" name="geburtsdatum" required>  
+                  <input type="date" name="geburtsdatum" id="geb_v" required>  
 
                   <label for="firmenname">Firmenname</label>
                   <input type="text" placeholder="Firmenname" name="firmenname" pattern="[A-Za-z]{1,50}" required>
@@ -146,6 +146,7 @@
             
 
         <script>
+          // accordion start
           var acc = document.getElementsByClassName("accordion");
           var i;
             
@@ -160,6 +161,27 @@
               }
             });
           }
+          // accordion end
+          
+          // function to subtract years from current date -> used for age verification
+          function subtractYears(date, years) {
+            var result = new Date(date);
+            result.setFullYear(result.getFullYear() - years);
+            return result;
+          }
+
+          // formats date to html format
+          function dateToHtml(date) {
+            var result = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("-");
+            return result;
+          }
+          
+          // age must be 18
+          var currentDate = new Date();
+          var maxDate = dateToHtml(subtractYears(currentDate, 18));
+          var maxT = document.getElementById("geb_t").max = maxDate;
+          var maxV = document.getElementById("geb_v").max = maxDate;
+
           </script>
 
     </body>
