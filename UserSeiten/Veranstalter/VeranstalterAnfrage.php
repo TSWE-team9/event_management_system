@@ -1,15 +1,86 @@
-!DOCTYPE html>
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="./anfrage.css">
-    <link rel="stylesheet" type="text/css" href="./popup.css">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="anfrage.css">
+    <link rel="stylesheet" type="text/css" href="../popup.css">
+    <title>Anfrage erstellen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
+
+<?php
+
+//Verbindung zur DB herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+//Error Variable und Query Status
+$error = false;
+$query_status = "";
+
+//Daten aus Formular abspeichern
+if(isset($_POST["anfrage"])){
+
+    $teilnehmerzahl = $_POST["teilnehmerzahl"];
+    $beginn = $_POST["date"];
+    $dauer = $_POST["dauer"];
+    $anmerkungen = $_POST["anmerkungen"];
+
+    echo "<br><br>" . $beginn;
+    echo $teilnehmerzahl;
+    echo $anmerkungen;
+    echo $dauer;
+
+    //Abspeichern der B_ID des Veranstalters in einer lokalen Variable
+    //$veranstalter_id = $_SESSION["b_id"];
+    $veranstalter_id = 4;
+
+
+
+
+//Eventuell Checken des Datums falls nicht im Frontend
+//
+//
+
+//Insert Query für das Anlegen in der DB
+if($error == false) {
+
+    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, $beginn, $dauer, 1, NULL, NULL, '$anmerkungen', NULL)";
+
+    $res = $conn->query($query);
+    if ($res === TRUE) {
+        $query_status = "Die Anfrage wurde erfolgreich erstellt und wird nun vom Betreiber bearbeitet.";
+        //TODO Versenden einer Bestätigungsmail an den Veranstalter
+
+    } else {
+        $query_status = "Beim Erstellen der Anfrage ist ein Fehler aufgetreten";
+    }
+}
+}
+
+
+//Ausgabe des Status der Abfrage
+echo "<br>" . $query_status;
+
+?>
+
+
 <nav>
     <ul>
         <li><a href="VeranstalterStartseite.php">Startseite</a></li>
@@ -28,13 +99,13 @@
 
 <!-- Anfrageformular -->
 <div class="container">
-    <form action="#" method="post">
+    <form action="VeranstalterAnfrage.php" method="post">
         <div class="row">
             <div class="col-25">
                 <label for="teilnehmerzahl">Teilnehmerzahl</label>
             </div>
             <div class="col-75">
-                <input type="text" placeholder="geplante Teilnehmerzahl" name="teilnehmerzahl" pattern="[0-9]{1,50}" required>
+                <input type="number" placeholder="geplante Teilnehmerzahl" name="teilnehmerzahl" min="1" max="10000" required>
             </div>
         </div>
         <div class="row">
@@ -60,7 +131,7 @@
                 <label for="anmerkungen">Anmerkungen</label>
             </div>
             <div class="col-75">
-                <textarea name="subject" id="subject" placeholder="Anmerkungen" cols="30" rows="10" maxlength="300"></textarea>
+                <textarea name="anmerkungen" id="subject" placeholder="Anmerkungen" cols="30" rows="10" maxlength="300"></textarea>
             </div>
         </div>
         <div class="row">
