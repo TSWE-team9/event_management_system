@@ -121,7 +121,7 @@ input[type='radio']:checked  + label::before {
     box-shadow: inset 0 0 0 2px white;
 }
 /*styling der Buttons*/
-#Hinzufügen, .Löschen {
+#Hinzufügen, .Löschen, .submit{
     background: #f45702;
  float:right;
 
@@ -135,7 +135,7 @@ input[type='radio']:checked  + label::before {
 /*::selection {*/
 /*    background: #ffc7b8;*/
 /*}*/
-.Abbrechen, #Hinzufügen, .Löschen {
+.Abbrechen, #Hinzufügen, .Löschen, .submit {
     display: block;
     line-height: 24pt;
     padding: 0 40px;
