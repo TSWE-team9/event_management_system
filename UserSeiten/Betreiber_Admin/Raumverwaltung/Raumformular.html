@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+</head>
+    <body class="Hintergrund">
+<div class="Hintergrund">
+    <div class="contact-us">
+    <h1> Raum Hinzufügen</h1>
+    <!-- Fomular Spalten -->
+    <h3>
+        <em>&#x2a; </em> Bitte alle Felder ausfüllen um einen neuen Raum anzulegen.
+    </h3>
+
+
+        <form action="raum_erstellen.php" method="post">
+    <label for="Raumbezeichnung">Raumbezeichnung (nur Buchstaben / Leerzeichen und "-") <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text" maxlength="30"/>
+    <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="0" />
+    <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
+    <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
+    <fieldset id = "Status">
+        <label for = "Status"> Raumstatus</label>
+    <input type= "radio" id="aktiv" name="Status" value="1">
+    <label for="aktiv"> aktiv</label>
+    <input type="radio" id="inaktiv" name="Status" value="2">
+    <label for="inaktiv"> inaktiv</label>
+    </fieldset>
+
+
+
+    <button id="Hinzufügen">Hinzufügen</button>
+            <a href="#" type="button" class="Abbrechen">Abrechen</a>
+
+
+</form>
+
+</div>
+</div>
+</body>
+
+</html>

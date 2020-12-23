@@ -1,0 +1,18 @@
+
+
+/*tabellengerüst*/
+.container {
+margin-top: 3em;
+    border: none;
+    width: 40%;
+}
+
+.container td, .container th {
+    padding: 2%;
+}
+/*Anpassung der Tabellen an kleinere Displays : */
+@media (max-width: 100em) {
+    .container{
+       width:50%
+    }
+}
