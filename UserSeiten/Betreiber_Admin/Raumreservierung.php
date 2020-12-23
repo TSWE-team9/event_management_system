@@ -38,7 +38,6 @@ if(isset($_POST["Reservieren"])){
     //Session für übergebene R_ID für Angebotserstellung und Veranstaltungserstellung (intern)
     $_SESSION["R_ID"] = $R_ID;
     $status = true;
-
 }
 
 //Reservierungs/Belegungsvorgang nur wenn auch eine R_ID empfangen wurde
@@ -55,7 +54,7 @@ if($status){
 
 
         //Insert in den Kalender
-        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', '$Beginn+$Dauer-1', $R_ID, $R_status, NULL, $BeAr_ID)";
+        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', (SELECT DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY)), $R_ID, $R_status, NULL, $BeAr_ID)";
         $res = $conn->query($insert_query);
         if($res === TRUE){
             $query_status = "Reservierung von Raum " . $R_ID . " war erfolgreich. ";
@@ -81,7 +80,7 @@ if($status){
         $R_status = 1;
 
         //Insert
-        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', '$Beginn+$Dauer-1', $R_ID, $R_status, NULL, NULL)";
+        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', (SELECT DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY)), $R_ID, $R_status, NULL, NULL)";
         $res = $conn->query($insert_query);
         if($res === TRUE){
             $query_status = "Belegung von Raum " . $R_ID . " war erfolgreich.";
