@@ -1,6 +1,8 @@
 <?php
 session_start();
+?>
 
+<?php
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';
 $db = 'vms_db';
@@ -18,10 +20,10 @@ if($conn->connect_error){
 $BeAr_ID = $_SESSION["BeAr_ID"];
 $R_ID = $_SESSION["R_ID"];
 $Angebotsstatus = $_SESSION["Angebotsstatus_final"];
+$Beginn = $_SERVER["Beginn_final"];
 
-//Wenn Angebotsstatus = 3, dann Beginn und (Dauer) auch aktualisieren
 if($Angebotsstatus == 3){
-    $Beginn_neu = $_SERVER["Beginn_final"];
+//TODO Neuer Beginn muss geupdatet werden (funktioniert noch nicht)
 }
 
 //Preis für den gewählten Raum berechnen
@@ -32,15 +34,17 @@ $res->bind_result($Angebotspreis);
 $res->fetch();
 $res->close();
 
-//TODO Preis mit Dauer multiplizieren
-
-
 //Raum in der Anfrage_Angebot abspeichern und Angebot fertigstellen
-$update_query = "UPDATE Anfrage_Angebot SET R_ID = $R_ID, Status = $Angebotsstatus, Angebotsdatum = LOCALTIMESTAMP, Angebotspreis = $Angebotspreis WHERE BeAr_ID = $BeAr_ID";
+$update_query = "UPDATE Anfrage_Angebot SET R_ID = $R_ID, Status = $Angebotsstatus, Angebotsdatum = LOCALTIMESTAMP, Angebotspreis = $Angebotspreis*Dauer
+                WHERE BeAr_ID = $BeAr_ID";
+
 $res = $conn->query($update_query);
 if($res === FALSE){
     $error = "Fehler: Datenbank UPDATE in Anfrage hat nicht funktioniert.";
-}
-else {
-    echo "Das Angebot für Raum ". $R_ID . " zum Preis von " . $Angebotspreis . " wurde erfolgreich erstellt.";
-}
+}else {
+    echo "Das Angebot für Raum ". $R_ID . " zum Preis von " . $Angebotspreis . " wurde erfolgreich erstellt.";}
+
+
+
+
+

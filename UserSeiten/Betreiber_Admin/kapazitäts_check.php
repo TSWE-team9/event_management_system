@@ -39,7 +39,7 @@ $query_status = "";
 //Speichert die verfügbaren Räume und ihre IDs in einem Array
 $_SESSION["R_ID_Array"] = array();
 //Platzhalter für das finale Datum von Beginn bei der Reservierung
-$_SESSION["Beginn_final"] = '0000-00-00';
+$_SESSION["Beginn_final"] = '2020-01-01';
 //Platzhalter für den finalen Angebotsstatus (Default: 2 ("bearbeitet"))
 $_SESSION["Angebotsstatus_final"] = 2;
 

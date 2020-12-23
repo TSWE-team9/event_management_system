@@ -60,7 +60,7 @@ if($status){
             $query_status = "Reservierung von Raum " . $R_ID . " war erfolgreich. ";
             echo $query_status;
 
-            //TODO Weiterleitung zu Angebot_erstellen.php
+            echo "<a href='Angebot_erstellen.php'>Angebot erstellen</a>";
 
         }
         else{
