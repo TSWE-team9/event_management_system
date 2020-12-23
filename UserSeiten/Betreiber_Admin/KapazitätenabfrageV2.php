@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>KapazitätenabfrageAngebot2</title>
+    <title>Kapazitätenabfrage Änderung</title>
     <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
 </head>
 <body>

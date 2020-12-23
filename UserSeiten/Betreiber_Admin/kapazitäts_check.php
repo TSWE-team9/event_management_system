@@ -170,7 +170,7 @@ if($Beginn <= $today + 28){
                              Von <= '$Beginn' AND '$Beginn' <= Bis)
 
               AND NOT EXISTS(SELECT * FROM Kalender WHERE R.R_ID = Kalender.R_ID AND
-                             Bis >= '$Beginn' + $Dauer-1 AND '$Beginn' + $Dauer-1 >= Von)";
+                             Bis >= DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY) AND DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY) >= Von)";
 
         $res2 = $conn->query($query);
 
