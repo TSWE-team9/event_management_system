@@ -49,13 +49,13 @@ if($status){
 
         //Abspeichern der nötigen Daten für den INSERT in den Kalender
         $Beginn = $_SESSION["Beginn_final"];
-        $Ende = $_SESSION["Ende_final"];
+        $Dauer = $_SESSION["Dauer_final"];
         $BeAr_ID = $_SESSION["BeAr_ID"];
         $R_status = 2;
 
 
         //Insert in den Kalender
-        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', '$Ende', $R_ID, $R_status, NULL, $BeAr_ID)";
+        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', '$Beginn+$Dauer-1', $R_ID, $R_status, NULL, $BeAr_ID)";
         $res = $conn->query($insert_query);
         if($res === TRUE){
             $query_status = "Reservierung von Raum " . $R_ID . " war erfolgreich. ";
@@ -77,11 +77,11 @@ if($status){
 
         //Abspeichern der nötigen Daten für den INSERT in den Kalender
         $Beginn = $_SESSION["Beginn_final"];
-        $Ende = $_SESSION["Ende_final"];
+        $Dauer = $_SESSION["Dauer_final"];
         $R_status = 1;
 
         //Insert
-        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', '$Ende', $R_ID, $R_status, NULL, NULL)";
+        $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', '$Beginn+$Dauer-1', $R_ID, $R_status, NULL, NULL)";
         $res = $conn->query($insert_query);
         if($res === TRUE){
             $query_status = "Belegung von Raum " . $R_ID . " war erfolgreich.";

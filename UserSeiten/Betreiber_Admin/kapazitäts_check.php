@@ -38,18 +38,14 @@ $query_status = "";
 
 //Speichert die verfügbaren Räume und ihre IDs in einem Array
 $_SESSION["R_ID_Array"] = array();
-//Gibt an, ob es sich um die Prüfung für eine interne Veranstaltung handelt oder um eine Reservierung für eine Anfrage
-$_SESSION["Prüfungsart"] = 0;
-//Platzhalter für das finale Datum von Beginn und Ende bei der Reservierung
+//Platzhalter für das finale Datum von Beginn und Dauer bei der Reservierung
 $_SESSION["Beginn_final"] = '0000-00-00';
-$_SESSION["Ende_final"] = '0000-00-00';
+$_SESSION["Dauer_final"] = 1;
 //Platzhalter für den finalen Angebotsstatus (Default: 2 ("bearbeitet"))
 $_SESSION["Angebotsstatus_final"] = 2;
 
 //Variablen für Kapazitätsprüfung definieren
 $Beginn = "";
-$Ende = "";
-
 
 //Abspeichern der Daten aus dem Formular für Prüfung über Anfrage/Angebots_ID
 if(isset($_POST["Kapazitätsprüfung1"])) {
@@ -67,10 +63,10 @@ if(isset($_POST["Kapazitätsprüfung1"])) {
     }
 
 //Abfrage und Speichern der Daten Beginn, Dauer und Teilnehmerzahl für die Anfrage
-    $data_query = "SELECT Beginn, Teilnehmer_gepl, Beginn+Dauer-1 FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
+    $data_query = "SELECT Beginn, Teilnehmer_gepl, Dauer FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
     $res = $conn->prepare($data_query);
     $res->execute();
-    $res->bind_result($Beginn, $_SESSION["Teilnehmerzahl"], $Ende);
+    $res->bind_result($Beginn, $_SESSION["Teilnehmerzahl"], $_SESSION["Dauer_final"]);
     $res->fetch();
     $res->close();
 }
@@ -79,7 +75,6 @@ if(isset($_POST["Kapazitätsprüfung1"])) {
 if(isset($_POST["Kapazitätsprüfung2"])) {
 
     $Beginn = $_POST["Startdatum"];
-    $Ende = $_POST["Enddatum"];
 
     //Betreiber hat ursprüngliche Angaben des Veranstalters geändert
     if($_SESSION["Prüfungsart"] == 1){
@@ -92,7 +87,7 @@ if(isset($_POST["Kapazitätsprüfung2"])) {
 if(isset($_POST["Kapazitätsprüfung3"])) {
 
     $Beginn = $_POST["Startdatum"];
-    $Ende = $_POST["Enddatum"];
+    $_SESSION["Dauer_final"] = $_POST["Dauer"];
     $_SESSION["Teilnehmerzahl"] = $_POST["Teilnehmerzahl"];
 
     //Session Variable setzen
@@ -107,11 +102,6 @@ if($Beginn <= $today + 28){
     $error_occured1 = true;
     $error = "Das Datum liegt nicht 4 Wochen in der Zukunft!";
 }*/
-
-if($Ende < $Beginn){
-    $error_occured1 = true;
-    $error1 = "Fehler: Das eingegebene Enddatum liegt vor dem Startdatum";
-}
 
 
 //$beginn = date("Y-m-d", strtotime('2020-12-22'));
@@ -174,13 +164,14 @@ if($Ende < $Beginn){
     if ($error_occured1 == false && $error_occured2 == false) {
 
         $teilnehmerzahl = $_SESSION["Teilnehmerzahl"];
+        $Dauer = $_SESSION["Dauer_final"];
         $query = "SELECT R.R_ID, R.Bezeichnung FROM Raum R
               WHERE R.Kapazitaet >= $teilnehmerzahl AND R.Status = 1
               AND NOT EXISTS(SELECT * FROM Kalender WHERE R.R_ID = Kalender.R_ID AND
                              Von <= '$Beginn' AND '$Beginn' <= Bis)
 
               AND NOT EXISTS(SELECT * FROM Kalender WHERE R.R_ID = Kalender.R_ID AND
-                             Bis >= '$Ende' AND '$Ende' >= Von)";
+                             Bis >= '$Beginn' + $Dauer-1 AND '$Beginn' + $Dauer-1 >= Von)";
 
         $res2 = $conn->query($query);
 
@@ -193,7 +184,6 @@ if($Ende < $Beginn){
 
             //Abspeichern der finalen Daten für Beginn und Ende
             $_SESSION["Beginn_final"] = $Beginn;
-            $_SESSION["Ende_final"] = $Ende;
 
             //Ausgabe der verfügbaren Räume in einer Tabelle
             echo "<br>". "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
