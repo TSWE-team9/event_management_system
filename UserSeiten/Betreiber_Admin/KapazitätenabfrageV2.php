@@ -11,7 +11,7 @@
     <h1> Neue Überprüfung</h1>
     <!-- Fomular  mit Abfrage eines alternativen Start- und Enddatums um freie Kapazitäten zu überprüfen-->
     <h3>
-        <em>&#x2a; </em> Bitte ein neues Start- und Enddatum angeben  um einen Ersatztermin zu finden.<br>
+        <em>&#x2a; </em> Bitte ein neues Startdatum angeben um einen Ersatztermin zu finden.<br>
         &nbsp;&nbsp;Startdatum muss mindesten einen Monat in der Zukunft liegen!
     </h3>
 
