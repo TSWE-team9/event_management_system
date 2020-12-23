@@ -2,14 +2,11 @@ html {
     overflow-y: scroll;
 }
 
-#logo {
-    margin-top: -120px;
-    margin-left: -200px;;
-    align-self: auto;
-    position: sticky;
+label {
+    font-weight: bold;
 }
 
-.login-box {
+.box {
     width:500px; 
     margin: auto; 
     padding-top:50px;
@@ -18,17 +15,16 @@ html {
     border-radius:10px;
 }
 
-.login-button {
-    width:150px;
+.button {
+    width:350px;
     height: 50px;
     font-size:18px;
     background-color:rgba(53, 47, 47, 0.5);
     color:#fff;
     border:rgb(172, 77, 77) solid 1px;
-    border-radius: 5px;
 }
 
-.login-button:hover {
+.button:hover {
     background-color:#fff;
     color:rgb(102, 76, 76);
     cursor: pointer;
@@ -53,7 +49,7 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
     padding-left:5px;
 }
 
-#veranstaltungen {
+#löschen {
     background-color: rgba(61, 199, 102, 0.733);
     color: #444;
     cursor: pointer;
@@ -86,7 +82,7 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
       color:black;
   }
 
-  #veranstaltungen:hover {
+  #löschen:hover {
     background-color:rgb(10, 153, 22);
     cursor: pointer;
     color: black;

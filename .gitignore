@@ -1,0 +1,14 @@
+
+<<<<<<< Updated upstream
+.idea/deployment.xml
+*.iml
+.idea/modules.xml
+.idea/vcs.xml
+*.xml
+.idea/workspace.xml
+=======
+*.xml
+.idea/event_management_system.iml
+>>>>>>> Stashed changes
+*.xml
+.idea/workspace.xml
