@@ -24,6 +24,7 @@ body {
     background: #f8f4e5;
     padding: 50px 100px;
     border-top: 10px solid #f45702;
+   margin-bottom: 5em;
 }
 
 label, input, textarea {
@@ -119,7 +120,7 @@ input[type='radio']:checked  + label::before {
     box-shadow: inset 0 0 0 2px white;
 }
 /*Styling der Buttons*/
-#Hinzufügen, .Auslösen, .Abbrechen, a  {
+#Hinzufügen, .Auslösen, .Abbrechen  {
     display: block;
     float: right;
     line-height: 24pt;
@@ -147,7 +148,7 @@ input[type='radio']:checked  + label::before {
 ::selection {
     background: #ffc7b8;
 }
-    .Abbrechen, a {
+    .Abbrechen {
     float: left;
     line-height: 24pt;
     background: gray;
