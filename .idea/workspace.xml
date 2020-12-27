@@ -80,7 +80,7 @@
       <workItem from="1608281858506" duration="240000" />
       <workItem from="1608282108129" duration="1622000" />
       <workItem from="1609061900191" duration="636000" />
-      <workItem from="1609064313631" duration="334000" />
+      <workItem from="1609064313631" duration="1850000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
@@ -118,31 +118,5 @@
     <MESSAGE value="Sessionvariablen festgelegt" />
     <MESSAGE value="komments hinzugefügt" />
     <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="679" y="71" key="#PHP" timestamp="1608203613714">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="679" y="71" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1608203613714" />
-    <state x="570" y="0" key="CommitChangelistDialog2" timestamp="1608217397547">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="570" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608217397547" />
-    <state x="794" y="439" key="NewPhpFileDialog" timestamp="1608296085483">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="794" y="439" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608296085483" />
-    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608290258698">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608290258698" />
-    <state x="725" y="151" key="git4idea.branch.GitSmartOperationDialog" timestamp="1608205032038">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="725" y="151" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608205032038" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1608293171458">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608293171458" />
   </component>
 </project>

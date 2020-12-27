@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../listtabs.css">
+    <link rel="stylesheet" type="text/css" href="./listen.css">
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -34,30 +35,55 @@
 
 <!--Tab auf der rechten Seite mit Liste der aktuellen Veranstaltungen-->
 <div id="aktuelle" class="tabcontent">
-  <h3>aktuelle Veranstaltungen</h3>
-  <p>Liste</p> 
+  <h3 style="text-align: center;">aktuelle Veranstaltungen</h3>
+  <!--SQL Abfrage-->
+  <!--foreach Schleife Beginn-->
+  <form action="../VeranstaltungsSeite.php.php" method="Post">
+    <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
+    <button type="submit" class="btnveranstaltung">#Veranstaltungsbeginn Veranstaltungstitel#</button>
+  </form> 
+  <!--foreach Schleife Ende-->
 </div>
 
 <!--Tab auf der rechten Seite mit Liste der zukünftigen Veranstaltungen-->
 <div id="zukünftige" class="tabcontent">
-  <h3>zukünftige Veranstaltungen</h3>
-  <p>Liste</p> 
+  <h3 style="text-align: center;">zukünftige Veranstaltungen</h3>
+  <!--SQL Abfrage-->
+  <!--foreach Schleife Beginn-->
+  <form action="../VeranstaltungsSeite.php.php" method="Post">
+    <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
+    <button type="submit" class="btnveranstaltung">#Veranstaltungsbeginn Veranstaltungstitel#</button>
+  </form> 
+  <!--foreach Schleife Ende-->
 </div>
 
 <!--Tab auf der rechten Seite mit Liste der abgeschlossenen Veranstaltungen-->
 <div id="abgeschlossene" class="tabcontent">
-  <h3>abgeschlossene Veranstaltungen</h3>
-  <p>Liste</p> 
+  <h3 style="text-align: center;">abgeschlossene Veranstaltungen</h3>
+  <!--SQL Abfrage-->
+  <!--foreach Schleife Beginn-->
+  <form action="../VeranstaltungsSeite.php.php" method="Post">
+    <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
+    <button type="submit" class="btnveranstaltung">#Veranstaltungsbeginn Veranstaltungstitel#</button>
+  </form> 
+  <!--foreach Schleife Ende-->
 </div>
 
 <!--Tab auf der rechten Seite mit Liste von Angeboten-->
 <div id="angebote" class="tabcontent">
-  <h3>Veranstaltungsangebote</h3>
-  <p>Liste</p> 
+  <h3 style="text-align: center;">Veranstaltungsangebote</h3>
+  <!--SQL Abfrage-->
+  <!--foreach Schleife Beginn-->
+  <form action="Angebotseite.php" method="Post">
+    <input type="hidden" name="angebot_id" value="#angebots_id#">
+    <button type="submit" class="btnveranstaltung">#Veranstaltungsbeginn#</button>
+  </form> 
+  <!--foreach Schleife Ende-->
 </div>
 
 <script>
 
+    // function to display different tabs
     function openList(evt, listName) {
         // Declare all variables
         var i, tabcontent, tablinks;

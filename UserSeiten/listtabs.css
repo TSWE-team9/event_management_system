@@ -6,7 +6,8 @@
   border: 1px solid #ccc;
   background-color: #f1f1f1;
   width: 20%;
-  height: 300px;
+  min-height: 300px;
+  border-right: none;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -39,6 +40,5 @@
   padding: 0px 12px;
   border: 1px solid #ccc;
   width: 80%;
-  border-left: none;
-  height: 300px;
+  min-height: 300px;
 }

@@ -1,0 +1,14 @@
+.btnveranstaltung {
+    background-color: #ccc;
+    color: black;
+    padding: 14px 20px;
+    margin: 8px 10% 0px 10%;
+    border: none;
+    cursor: pointer;
+    width: 80%;
+    opacity: 0.9;
+}
+
+.btnveranstaltung:hover {
+    opacity: 1;
+}
