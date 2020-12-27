@@ -17,6 +17,7 @@ label {
     padding: 20px;
     width: 50%;
     margin: auto;
+    margin-top: 100px;
 }
   
 .col-25 {
@@ -34,6 +35,8 @@ label {
 .col-33 {
     width: 33.33%;
     width: calc(100% / 3);
+    float: left;
+    margin-top: 50px; 
 }
   
 /* Clear floats after the columns */
@@ -45,24 +48,24 @@ label {
   
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-.col-25, .col-75, input[type=submit] {
+.col-25, .col-75, .col-33, input[type=submit] {
       width: 100%;
       margin-top: 0;
     }
 }
 
-.btnanfrage {
+.btn {
     background-color: #ccc;
     color: black;
     padding: 14px 20px;
-    margin: 8px 0;
+    margin: auto;
     border: none;
     cursor: pointer;
-    width: 25%;
+    width: 80%;
     float: right;
     opacity: 0.9;
 }
 
-.btnanfrage:hover {
+.btn:hover {
     opacity: 1;
 }

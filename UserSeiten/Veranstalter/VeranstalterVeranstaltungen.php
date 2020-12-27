@@ -38,7 +38,7 @@
   <h3 style="text-align: center;">aktuelle Veranstaltungen</h3>
   <!--SQL Abfrage-->
   <!--foreach Schleife Beginn-->
-  <form action="../VeranstaltungsSeite.php" method="Post">
+  <form action="../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
     <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
   </form> 
@@ -50,7 +50,7 @@
   <h3 style="text-align: center;">zukünftige Veranstaltungen</h3>
   <!--SQL Abfrage-->
   <!--foreach Schleife Beginn-->
-  <form action="../VeranstaltungsSeite.php" method="Post">
+  <form action="../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
     <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
   </form> 
@@ -62,7 +62,7 @@
   <h3 style="text-align: center;">abgeschlossene Veranstaltungen</h3>
   <!--SQL Abfrage-->
   <!--foreach Schleife Beginn-->
-  <form action="../VeranstaltungsSeite.php" method="Post">
+  <form action="../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
     <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
   </form> 
@@ -74,7 +74,7 @@
   <h3 style="text-align: center;">Veranstaltungsangebote</h3>
   <!--SQL Abfrage-->
   <!--foreach Schleife Beginn-->
-  <form action="Angebotseite.php" method="Post">
+  <form action="Angebotseite.php" method="post">
     <input type="hidden" name="angebot_id" value="#angebots_id#">
     <button type="submit" class="btnveranstaltung">#Veranstaltungsbeginn#</button>
   </form> 
