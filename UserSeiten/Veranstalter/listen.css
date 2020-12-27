@@ -12,3 +12,13 @@
 .btnveranstaltung:hover {
     opacity: 1;
 }
+
+.btnbeginn {
+    float: left;
+}
+
+.btntitel {
+    text-align: left;
+    padding-left: 100px;
+    margin-left: 150px;
+}
