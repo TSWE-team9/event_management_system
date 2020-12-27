@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Kapazitätscheck</title>
-    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
 </head>
 
 <body>

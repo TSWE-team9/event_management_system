@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage intern</title>
-    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
 </head>
 <body>
 
@@ -26,3 +26,65 @@
     </form>
 </body>
 </html>
+<script>
+    //Funktion um zu Überprüfen ob das Datum einen Monat in der Zukunft  liegt und nicht über ein Wochenende hinaus geht
+    function addDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+
+    function dateToHtml(date) {
+        var result = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("-");
+        return result;
+    }
+
+    function dayOfWeek(date) {
+        var day = new Date(date).getDay();
+        var result;
+        switch(day) {
+            // sunday
+            case 0:
+                result = 1;
+                break;
+
+            // monday
+            case 1:
+                result = 7;
+                break;
+
+            // tuesday
+            case 2:
+                result = 6;
+                break;
+
+            // wednesday
+            case 3:
+                result = 5;
+                break;
+
+            // thursday
+            case 4:
+                result = 4;
+                break;
+
+            // friday
+            case 5:
+                result = 3;
+                break;
+
+            // saturday
+            case 6:
+                result = 2;
+                break;
+        }
+
+        return result;
+    }
+
+    var currentDate = new Date();
+    var maxDays = dayOfWeek(currentDate);
+    var minDate = dateToHtml(addDays(currentDate, 28));
+    var maxDaysHtml = document.getElementById("max_days").max = maxDays;
+    var minDateHtml = document.getElementById("Startdatum").min = minDate;
+</script>

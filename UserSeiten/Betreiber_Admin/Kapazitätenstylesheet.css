@@ -5,7 +5,7 @@
     padding: 0;
 
 }
-
+/*Styling Formualar und Eingabefelder*/
 body {
     background: url("HintergrundRaum.png")  fixed ;
     /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
@@ -37,7 +37,7 @@ label, input, textarea {
 input {
     margin-bottom: 24pt;
 }
-
+/*Styling des Hinweises */
 h3 {
     font-weight: normal;
     font-size: 10pt;
@@ -45,6 +45,7 @@ h3 {
     font-style: italic;
     margin: 0 0 0.5em 0;
 }
+/*Styling Überschrift*/
 h1 {
     text-align: center;
     margin-bottom: 20px;
@@ -74,6 +75,7 @@ input:focus, textarea:focus {
 textarea {
     resize: none;
 }
+/*Styling der Radio Buttons */
 input[type='radio']:checked,
 input[type='radio']:not(:checked) {
     background: transparent;
@@ -116,24 +118,27 @@ input[type='radio']:checked  + label::before {
     background:#F45702;
     box-shadow: inset 0 0 0 2px white;
 }
-
-#Hinzufügen {
+/*Styling der Buttons*/
+#Hinzufügen, .Auslösen, .Abbrechen, a  {
     display: block;
     float: right;
     line-height: 24pt;
     padding: 0 20px;
     border: none;
-    background: #f45702;
-    color: white;
     letter-spacing: 2px;
     transition: 0.2s all ease-in-out;
     border-bottom: 2px solid transparent;
     outline: none;
     margin-top: 30px;
     font-size: 14px;
-
+    cursor: pointer;
 }
-#Hinzufügen:hover {
+#Hinzufügen, .Auslösen {
+    float: right;
+    background: #f45702;
+    color: white;
+}
+#Hinzufügen:hover, .Auslösen:Hover {
     background: inherit;
     color: #f45702;
     border-bottom: 2px solid #f45702;
@@ -142,27 +147,15 @@ input[type='radio']:checked  + label::before {
 ::selection {
     background: #ffc7b8;
 }
-.Abbrechen , a {
-    display: block;
+    .Abbrechen, a {
     float: left;
     line-height: 24pt;
-    padding: 0 20px;
-    border: none;
     background: gray;
     color: white;
-    letter-spacing: 2px;
-    transition: 0.2s all ease-in-out;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    margin-top: 30px;
     text-decoration: none;
-    font-size: 14px;
 
 }
-.Abbrechen:hover {
-    background: inherit;
-    color: #605c5a;
-    border-bottom: 2px solid #534e4c;
+    .Abbrechen:hover {
     background: inherit;
     color: #514e4c;
     border-bottom: 2px solid #302c2a;
@@ -173,9 +166,30 @@ input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
 textarea:-webkit-autofill:focus {
-    border: 1px solid #6bd4b1;
-    -webkit-text-fill-color: #2A293E;
+    border: 1px solid #000000;
+    -webkit-text-fill-color: #6bd4b1;
     -webkit-box-shadow: 0 0 0 1000px #f8f4e5 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
-
+/*Styling der Drop Down List in der Raumreservierung*/
+.auswahl {
+    width: 100%;
+    height: 40px;
+    /*-moz-padding-start: calc(10px - 3px);*/
+    padding-left: 10px;
+    background: white;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px 1px rgb(40, 35, 35);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    /*appearance: none;*/
+    /*display: grid;*/
+}
+.select-wrapper {
+    position: relative;
+    width:30em;
+    margin-bottom: 6em; }

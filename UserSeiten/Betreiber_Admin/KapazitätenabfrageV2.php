@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage Änderung</title>
-    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
 </head>
 <body>
-//Formular mit neuem eingabefenster für das Datum
+<!--//Formular mit neuem eingabefenster für das Datum-->
 <div class="contact-us">
     <h1> Neue Überprüfung</h1>
     <!-- Fomular  mit Abfrage eines alternativen Start- und Enddatums um freie Kapazitäten zu überprüfen-->
@@ -16,7 +16,7 @@
     </h3>
 
     <form action="kapazitäts_check.php" method="post">
-        <label for="Startdatum">Startdatum <em>&#x2a;</em></label><input id="Startdatum" name="Startdatum" required="" type="date" min="0" maxlength="10"/>
+        <label for="Startdatum">Startdatum <em>&#x2a;</em></label><input id="Startdatum" name="Startdatum" required="" type="date" />
         <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Startseite oder Abfrage nach freien Raum Kapazitäten -->
         <button type="submit"  name="Kapazitätsprüfung2" class="Auslösen">Abfragen</button>
         <a href="#" class="Abbrechen" type="button" >Abbrechen</a>
@@ -83,6 +83,6 @@
     var maxDays = dayOfWeek(currentDate);
     var minDate = dateToHtml(addDays(currentDate, 28));
     var maxDaysHtml = document.getElementById("max_days").max = maxDays;
-    var minDateHtml = document.getElementById("min_date").min = minDate;
+    var minDateHtml = document.getElementById("Startdatum").min = minDate;
 
 </script>
