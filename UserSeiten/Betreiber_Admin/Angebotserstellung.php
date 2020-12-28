@@ -26,8 +26,9 @@ if($res->num_rows == 0){
 <head>
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage für Anfrage</title>
+
+    <link rel="stylesheet" type="text/css" href="Angebotserstellung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="tabellen.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>

@@ -133,6 +133,7 @@ input[type='radio']:checked  + label::before {
     margin-top: 30px;
     font-size: 14px;
     cursor: pointer;
+    text-decoration: none;
 }
 #Hinzufügen, .Auslösen {
     float: right;
@@ -140,7 +141,7 @@ input[type='radio']:checked  + label::before {
     color: white;
 }
 #Hinzufügen:hover, .Auslösen:Hover {
-    background: inherit;
+    background: white;
     color: #f45702;
     border-bottom: 2px solid #f45702;
 }
@@ -153,11 +154,11 @@ input[type='radio']:checked  + label::before {
     line-height: 24pt;
     background: gray;
     color: white;
-    text-decoration: none;
+
 
 }
     .Abbrechen:hover {
-    background: inherit;
+    background: white;
     color: #514e4c;
     border-bottom: 2px solid #302c2a;
 }

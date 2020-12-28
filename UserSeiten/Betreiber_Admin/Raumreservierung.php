@@ -132,7 +132,7 @@ if($status){
                 <?php }?>
             </select>
         <button type="submit"  class="Auslösen" name="Reservieren"  value="Auswahl">Reservieren</button>
-        <a href="#" type="button" class="Abbrechen">Abbrechen</a>
+        <a href="Angebotserstellung.php" type="button" class="Abbrechen">Abbrechen</a>
         </form>
     </div>
 

@@ -30,8 +30,8 @@ session_start();
     <h1> Neue Überprüfung</h1>
     <!-- Fomular  mit Abfrage eines alternativen Start- und Enddatums um freie Kapazitäten zu überprüfen-->
     <h3>
-        <em>&#x2a; </em> Für den angegebenen Zeitraum konnte kein passender Raum gefunden werden.<br>
-        Bitte ein neues Startdatum angeben um einen Ersatztermin zu finden.<br>
+        &nbsp;&nbsp;&nbsp;Für den angegebenen Zeitraum konnte kein passender Raum gefunden werden.<br>
+        <em>&#x2a; </em> Bitte ein neues Startdatum angeben um einen Ersatztermin zu finden.<br>
         &nbsp;&nbsp;Startdatum muss mindesten einen Monat in der Zukunft liegen!
     </h3>
 
