@@ -32,7 +32,6 @@ $error_occured1 = false;
 $error_occured2 = false;
 $error1 = "";
 $error2 = "";
-$query_status = "";
 
 //Session Variablen:
 
@@ -91,6 +90,29 @@ if(isset($_POST["Kapazitätsprüfung3"])) {
 
     //Session Variable setzen
     $_SESSION["Prüfungsart"] = 2;
+}
+
+//Ablehnen der Anfrage nach unerfolgreicher Kapazitätsabfrage
+if(isset($_POST["Ablehnen"])){
+
+    $anfrage_id = $_SESSION["BeAr_ID"];
+
+    $status = $conn->query("UPDATE Anfrage_Angebot SET Status = 5 WHERE BeAr_ID = $anfrage_id");
+    if($status === FALSE){
+        echo "Es ist ein Fehler bei der Ablehnung der Anfrage aufgetreten";
+    }
+    else {
+        echo "Die Anfrage wurde erfolgreich abgelehnt";
+        //TODO: Weiterleitung zurück
+    }
+
+}
+
+//Abbrechen der Überprüfung (intern) nach unerfolgreicher Kapazitätsabfrage
+if(isset($_POST["Abbrechen"])){
+
+    //TODO: Hier Weiterleitung zu dem richtigen Seite des Betreibers
+    echo "Test";
 }
 
 /*$today = date("Y-m-d");
@@ -175,9 +197,9 @@ if($Beginn <= $today + 28){
         $res2 = $conn->query($query);
 
         if ($res2->num_rows == 0) {
-            $query_status = "Für den eingegebenen Zeitraum sind keine freien Räume verfügbar";
             //Weiterleitung zu Formular V2"
             echo "<a href='KapazitätenabfrageV2.php'>Erneute Überprüfung mit anderen Daten</a>";
+            //header("Location: KapazitätenabfrageV2.php");
 
         } else {
 
@@ -210,13 +232,12 @@ if($Beginn <= $today + 28){
 
         }
 
-        if ($error_occured1 == true) {
-            echo "<br>" . $error1;
-        } elseif ($error_occured2 == true) {
-            echo "<br>" . $error2;
-        } else {
-            echo "<br>" . $query_status;
-        }
+    }
+    if ($error_occured1 == true) {
+    echo "<br>" . $error1;
+    }
+    if ($error_occured2 == true) {
+    echo "<br>" . $error2;
     }
 ?>
 
