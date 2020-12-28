@@ -16,7 +16,7 @@ session_start();
 <nav>
     <ul class="header">
         <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a class= "active" href="#">Angebotserstellung</a></li>
+        <li class="headerel"><a class= "active" href="Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
         <li class="headerel"><a  href="Raumverwaltung.php">Raumverwaltung</a></li>
         <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
@@ -26,6 +26,7 @@ session_start();
 
     </ul>
 </nav>
+
 <?php
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';

@@ -1,16 +1,14 @@
 
-
+/*Stylimg header*/
 
 
 .header{
     list-style-type: none;
-    /*margin-right: 60em ;*/
     overflow: hidden;
     background-color: #333 ;
     position: fixed;
     top: 0;
     left: 0;
-    /*position:relative;*/
     width: 100%;
     font-family:Helvetica, sans-serif ;
     display: block  ;

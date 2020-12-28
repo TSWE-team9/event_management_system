@@ -10,7 +10,7 @@
 <nav>
     <ul class="header">
         <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a  class= "active" href="#">Angebotserstellung</a></li>
+        <li class="headerel"><a  class= "active" href="Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
         <li class="headerel"><a href="Raumverwaltung.php">Raumverwaltung</a></li>
         <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
@@ -32,9 +32,9 @@
 
     <form action="kapazitäts_check.php" method="post">
         <label for="Startdatum">Startdatum <em>&#x2a;</em></label><input id="Startdatum" name="Startdatum" required="" type="date" />
-        <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Startseite oder Abfrage nach freien Raum Kapazitäten -->
+        <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Angebotserstellung oder Abfrage nach freien Raum Kapazitäten -->
         <button type="submit"  name="Kapazitätsprüfung2" class="Auslösen">Abfragen</button>
-        <a href="#" class="Abbrechen" type="button" >Abbrechen</a>
+        <a href="Angebotserstellung.php" class="Abbrechen" type="button" >Abbrechen</a>
     </form>
 </body>
 </html>
@@ -93,11 +93,12 @@
 
         return result;
     }
-
-    var currentDate = new Date();
-    var maxDays = dayOfWeek(currentDate);
+    function setDays() {
+        var maxDays = dayOfWeek(document.getElementById("Startdatum").value);
+        var maxDaysHtml = document.getElementById("max_days").max = maxDays;
+    }
+    var currentDate = new Date( );
     var minDate = dateToHtml(addDays(currentDate, 28));
-    var maxDaysHtml = document.getElementById("max_days").max = maxDays;
+    var initialDate = document.getElementById("Startdatum").value = minDate;
     var minDateHtml = document.getElementById("Startdatum").min = minDate;
-
 </script>
