@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -50,7 +50,7 @@
         <!--Button zur Annhme des Angebots-->
         <div class="col-33">
             <form action="#" method="post">
-            <input type="hidden" name="angebot_id" value="#angebots_id#">   
+                <input type="hidden" name="angebot_id" value="#angebots_id#">   
                 <button class="btn" type="submit" name="annahme">Angebot Annehmen</button>
             </form>
         </div>
@@ -111,9 +111,6 @@
             modal2.style.target == "none";
         }
     }
-
-    // Get the modal
-    var modal2 = document.getElementById('id02');
 
 </script>
 

@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="anfrage.css">
+    <link rel="stylesheet" type="text/css" href="./anfrage.css">
     <link rel="stylesheet" type="text/css" href="../popup.css">
     <title>Anfrage erstellen</title>
 
@@ -116,7 +116,7 @@ echo "<br>" . $query_status;
                 <label for="dauer">Veranstaltungsdauer</label>
             </div>
             <div class="col-75">
-                <input type="number" name="dauer" min="1" id="max_days" required>
+                <input onclick="setDays()" type="number" name="dauer" min="1" max="1" id="max_days" required>
             </div>
         </div>
         <div class="row">
@@ -128,18 +128,12 @@ echo "<br>" . $query_status;
             </div>
         </div>
         <div class="row">
-            <button class="btnanfrage" type="submit" name="anfrage">Anfrage abschicken</button>
+            <button class="btnanfrage" onmouseover="setDays()" type="submit" name="anfrage">Anfrage abschicken</button>
         </div>
     </form>
 </div>
 
 <script>
-    
-    // When the user clicks on span, open the popup
-    function popUp() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-    }
 
     function addDays(date, days) {
         var result = new Date(date);
@@ -196,10 +190,14 @@ echo "<br>" . $query_status;
         return result;
     }
 
+    function setDays() {
+        var maxDays = dayOfWeek(document.getElementById("min_date").value);
+        var maxDaysHtml = document.getElementById("max_days").max = maxDays;
+    }
+
     var currentDate = new Date();
-    var maxDays = dayOfWeek(currentDate);
     var minDate = dateToHtml(addDays(currentDate, 28));
-    var maxDaysHtml = document.getElementById("max_days").max = maxDays;
+    var initialDate = document.getElementById("min_date").value = minDate;
     var minDateHtml = document.getElementById("min_date").min = minDate;
 
 </script>
