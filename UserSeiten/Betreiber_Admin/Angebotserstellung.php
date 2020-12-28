@@ -1,3 +1,26 @@
+<?php
+
+//Zugangsdaten zur Datenbank
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+$query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
+$res = $conn->query($query);
+if($res->num_rows == 0){
+    echo "Bei der Abfrage der Anfragen ist ein Fehler aufgetreten";
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +45,29 @@
 
     </ul>
 </nav>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h2>Angebots_ID</h2></th>
+        <th><h2>Veranstalter_ID</h2></th>
+        <th><h2>Gepl. Beginn</h2></th>
+        <th><h2>Gepl. Dauer</h2></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php
+    while($i = $res->fetch_row()){
+        echo "<tr>";
+        foreach($i as $item){
+            echo "<td>$item</td>";
+        }
+        echo"</tr>";
+    }
+    ?>
+    </tbody>
+</table>
+
 
 <a href="KapazitätenabfrageV1.php"  class="Auslösen" type="button" >Überprüfen</a>
 </body>
