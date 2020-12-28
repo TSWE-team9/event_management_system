@@ -185,12 +185,12 @@ if($Beginn <= $today + 28){
             $_SESSION["Beginn_final"] = $Beginn;
 
             //Ausgabe der verfügbaren Räume in einer Tabelle
-            echo "<br>". "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
-            echo"<br><br>";
+            echo "<br>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
+            echo "<br><br>";
             echo "<table border=\"1\">";
             echo "<th>R_ID</th><th>Bezeichnung</th>";
             while ($i = $res2->fetch_row()) {
-                if($i[0]){
+                if ($i[0]) {
                     array_push($_SESSION["R_ID_Array"], $i[0]);
                 }
                 echo "<tr>";
@@ -198,29 +198,26 @@ if($Beginn <= $today + 28){
                     echo "<td>$item</td>";
                 }
                 echo "</tr>\n";
-                }
             }
+
             echo "</table>\n";
-            echo"<br><br>";
+            echo "<br><br>";
 
 
             //Reservierungsformular muss hier erscheinen
             echo "<a href='Raumreservierung.php'>Reservierungsformular</a>";
 
 
+        }
 
+        if ($error_occured1 == true) {
+            echo "<br>" . $error1;
+        } elseif ($error_occured2 == true) {
+            echo "<br>" . $error2;
+        } else {
+            echo "<br>" . $query_status;
+        }
     }
-
-if($error_occured1 == true){
-    echo "<br>" . $error1;
-}
-elseif($error_occured2 == true){
-    echo "<br>" . $error2;
-}
-else {
-    echo "<br>" . $query_status;
-}
-
 ?>
 
 </body>

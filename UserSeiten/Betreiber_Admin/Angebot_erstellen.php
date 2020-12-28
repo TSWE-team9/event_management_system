@@ -20,11 +20,9 @@ if($conn->connect_error){
 $BeAr_ID = $_SESSION["BeAr_ID"];
 $R_ID = $_SESSION["R_ID"];
 $Angebotsstatus = $_SESSION["Angebotsstatus_final"];
-$Beginn = $_SERVER["Beginn_final"];
+$Beginn = $_SESSION["Beginn_final"];
 
-if($Angebotsstatus == 3){
-//TODO Neuer Beginn muss geupdatet werden (funktioniert noch nicht)
-}
+
 
 //Preis für den gewählten Raum berechnen
 $query = "SELECT Preis FROM Raum WHERE R_ID = $R_ID";
@@ -35,7 +33,7 @@ $res->fetch();
 $res->close();
 
 //Raum in der Anfrage_Angebot abspeichern und Angebot fertigstellen
-$update_query = "UPDATE Anfrage_Angebot SET R_ID = $R_ID, Status = $Angebotsstatus, Angebotsdatum = LOCALTIMESTAMP, Angebotspreis = $Angebotspreis*Dauer
+$update_query = "UPDATE Anfrage_Angebot SET R_ID = $R_ID, Beginn = '$Beginn', Status = $Angebotsstatus, Angebotsdatum = LOCALTIMESTAMP, Angebotspreis = $Angebotspreis*Dauer
                 WHERE BeAr_ID = $BeAr_ID";
 
 $res = $conn->query($update_query);
