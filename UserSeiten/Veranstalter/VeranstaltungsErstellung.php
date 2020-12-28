@@ -23,8 +23,9 @@
     </ul>
 </nav>
 
-<h1 style="text-align: center;, margin-top: 50px;">Veranstaltung Ertstellung</h1>
-<p>Zusätzlich nötige Informationen zur Erstellung einer veranstaltung</p>
+<br><br>
+<h1 style="text-align: center;, margin-top: 150px;">Veranstaltung Ertstellung</h1>
+<p style="text-align:center;">Zusätzlich nötige Informationen zur Erstellung einer veranstaltung</p>
 
 <!-- Erstellungsformular -->
 <div class="container">
@@ -92,12 +93,8 @@
         </div>
 
         <div class="row">
-            <div class="col-50">
-                <!--Button erstellung-->
-            </div>
-            <div class="col-50">
-                <!--button abbrechen-->
-            </div>
+            <button class="btnanfrage" id="erstellen" onclick="document.getElementById('id02').style.display='block'">Veranstaltung erstellen</button>           
+            <a href="Veranstalterveranstaltungen.php">zurück zu Veranstaltungen</a>
         </div>
 
     </form>

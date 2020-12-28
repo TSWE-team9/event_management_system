@@ -60,6 +60,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../php/php.exe" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -82,7 +83,7 @@
       <workItem from="1609061900191" duration="636000" />
       <workItem from="1609064313631" duration="3987000" />
       <workItem from="1609078382610" duration="3675000" />
-      <workItem from="1609150078573" duration="2925000" />
+      <workItem from="1609150078573" duration="5062000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
@@ -120,5 +121,9 @@
     <MESSAGE value="Sessionvariablen festgelegt" />
     <MESSAGE value="komments hinzugefügt" />
     <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

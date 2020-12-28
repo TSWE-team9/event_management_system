@@ -78,7 +78,8 @@
         <div class="col-33">
             <button class="btn" id="aendern" onclick="document.getElementById('id02').style.display='block'">Anfragedatum ändern</button>
         </div>
-        <!--Modal wenn Veranstalter auf Ablehnen klickt-->
+        <!--Modal wenn Veranstalter auf Ändern klickt-->
+        <!--TODO Eingrenzung des Datum in Abhängigkeit von der Dauer-->
         <div id="id02" class="modal">
             <form class="modal_content" action="#" method="post">
                 <div class="modal_container">
