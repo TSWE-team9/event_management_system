@@ -32,9 +32,9 @@
 
     <form action="kapazitäts_check.php" method="post">
         <label for="Startdatum">Startdatum <em>&#x2a;</em></label><input id="Startdatum" name="Startdatum" required="" type="date" />
-        <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Angebotserstellung oder Abfrage nach freien Raum Kapazitäten -->
+        <!--Auswahlbuttons zum Ablehnung der Anfrage oder Abfrage nach freien Raum Kapazitäten -->
         <button type="submit"  name="Kapazitätsprüfung2" class="Auslösen">Abfragen</button>
-        <a href="Angebotserstellung.php" class="Abbrechen" type="button" >Abbrechen</a>
+        <button type="submit"  name="" class="Abbrechen">Anfrage Ablehnen</button>
     </form>
 </body>
 </html>
