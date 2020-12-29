@@ -13,6 +13,10 @@ if($conn->connect_error){
     die('Connect Error (' . $conn->connect_errno . ') '
         . $conn->connect_error);
 }
+
+//Variablen
+//$V_ID = $_SESSION["b_id"];
+$V_ID = 4;
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +25,7 @@ if($conn->connect_error){
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../listtabs.css">
-    <link rel="stylesheet" type="text/css" href="./listen.css">
+    <link rel="stylesheet" type="text/css" href="listen.css">
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -54,35 +58,64 @@ if($conn->connect_error){
 <div id="aktuelle" class="tabcontent">
   <h3 style="text-align: center;">aktuelle Veranstaltungen</h3>
   <!--SQL Abfrage-->
+    <?php
+    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2";
+    $res1 = $conn->query($query1);
+
+    //Ausgabe der Abfrage in HTML
+    while($i = $res1->fetch_row()){
+    ?>
   <!--foreach Schleife Beginn-->
   <form action="../VeranstaltungsSeite.php" method="post">
-    <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-    <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
+    <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+    <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
-  <!--foreach Schleife Ende-->
+  <?php } ?>
+    <!--foreach Schleife Ende-->
 </div>
 
 <!--Tab auf der rechten Seite mit Liste der zukünftigen Veranstaltungen-->
 <div id="zukünftige" class="tabcontent">
   <h3 style="text-align: center;">zukünftige Veranstaltungen</h3>
   <!--SQL Abfrage-->
+    <?php
+    //Abfrage aller aktiven (Status = 1) Veranstaltungen des Veranstalters
+
+    $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 1";
+    $res2 = $conn->query($query2);
+
+    //Ausgabe der Abfrage in HTML
+    while($i = $res2->fetch_row()){
+    ?>
   <!--foreach Schleife Beginn-->
   <form action="../VeranstaltungsSeite.php" method="post">
-    <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-    <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
+    <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+    <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
   <!--foreach Schleife Ende-->
+    <?php } ?>
 </div>
 
 <!--Tab auf der rechten Seite mit Liste der abgeschlossenen Veranstaltungen-->
 <div id="abgeschlossene" class="tabcontent">
   <h3 style="text-align: center;">abgeschlossene Veranstaltungen</h3>
   <!--SQL Abfrage-->
+    <?php
+    //Abfrage aller abgelaufenen (Status = 3) Veranstaltungen des Veranstalters
+
+    $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 3";
+    $res3 = $conn->query($query3);
+
+    //Ausgabe der Abfrage in HTML
+    while($i = $res3->fetch_row()){
+    ?>
   <!--foreach Schleife Beginn-->
   <form action="../VeranstaltungsSeite.php" method="post">
-    <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-    <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
-  </form> 
+    <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+    <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+  </form>
+    <?php } ?>
   <!--foreach Schleife Ende-->
 </div>
 
@@ -91,8 +124,7 @@ if($conn->connect_error){
   <h3 style="text-align: center;">Veranstaltungsangebote</h3>
   <!--SQL Abfrage-->
     <?php
-    $V_ID = $_SESSION["b_id"];
-    //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten eranstalters
+    //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten Veranstalters
     $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
     $res4 = $conn->query($query4);
 
