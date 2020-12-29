@@ -47,12 +47,6 @@ if(isset($_POST["anfrage"])){
 
 
 
-
-
-//Eventuell Checken des Datums falls nicht im Frontend
-//
-//
-
 //Insert Query für das Anlegen in der DB
 if($error == false) {
 

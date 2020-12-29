@@ -157,13 +157,13 @@ if(isset($_POST["angebot_ablehnen"])){
         </div>
         <!--Modal wenn Veranstalter auf Ablehnen klickt-->
         <div id="id01" class="modal">
-            <form class="modal_content" action="#" method="post">
+            <form class="modal_content" action="Angebotseite.php" method="post">
                 <div class="modal_container">
                     <h1>Angebot ablehnen</h1>
                     <p>Wollen Sie das Angebot wircklich ablehnen?</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
-                        <button class="modal_btnconfirm" type="submit" name="angebot_ablehnen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>   
+                        <button class="modal_btnconfirm" type="submit" name="angebot_ablehnen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>
                         <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
@@ -171,25 +171,30 @@ if(isset($_POST["angebot_ablehnen"])){
         </div>
 
         <!--Button zur Änderung des Datums; nur wenn Datum vom Betreiber geändert wurde-->
+        <?php
+        if($Status == 3){
+
+        ?>
         <div class="col-33">
             <button class="btn" id="aendern" onclick="document.getElementById('id02').style.display='block'">Anfragedatum ändern</button>
         </div>
         <!--Modal wenn Veranstalter auf Ändern klickt-->
         <!--TODO Eingrenzung des Datum in Abhängigkeit von der Dauer-->
         <div id="id02" class="modal">
-            <form class="modal_content" action="#" method="post">
+            <form class="modal_content" action="AngebotAendern.php" method="post">
                 <div class="modal_container">
                     <h1>Anfragedatum ändern</h1>
-                    <p>Geben Sie ein neues Beginn Datum der Veranstaltung an</p>
+                    <p>Geben Sie ein neues Beginn-Datum der Veranstaltung an</p>
                     <div class="modal_clearfix">
-                        <input type="hidden" name="anfrage_id" value="#anfrage_id#">
+                        <input type="hidden" name="anfrage_id" value="<?php echo $Angebot_ID; ?>">
                         <input type="date" name="new_date" id="new_date" required>
-                        <button class="modal_btnconfirm" type="submit" name="angebot_ablehnen" onclick="document.getElementById('id02').style.display='none'">Anfragedatum ändern</button>   
+                        <button class="modal_btnconfirm" type="submit" name="angebot_aendern" onclick="document.getElementById('id02').style.display='none'">Anfragedatum ändern</button>
                         <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
             </form>
         </div>
+        <?php } ?>
     </div>
 </div>
 
