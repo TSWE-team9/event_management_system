@@ -29,14 +29,14 @@ if($res->num_rows == 0){
 
     <link rel="stylesheet" type="text/css" href="Angebotserstellung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <nav>
     <ul class="header">
-        <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a class= "active" href="#">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
         <li class="headerel"><a  href="Raumverwaltung.php">Raumverwaltung</a></li>
@@ -71,6 +71,6 @@ if($res->num_rows == 0){
 </table>
 
 
-<a href="KapazitätenabfrageV1.php"  class="Auslösen" type="button" >Überprüfen</a>
+<a href="KapazitätenabfrageV1.php" class="Auslösen" type="button" >Überprüfen</a>
 </body>
 </html>
