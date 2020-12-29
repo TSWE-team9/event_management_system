@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+//Überprüfen ob es einen Verbindungsfehler gab
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,12 +90,23 @@
 <div id="angebote" class="tabcontent">
   <h3 style="text-align: center;">Veranstaltungsangebote</h3>
   <!--SQL Abfrage-->
-  <!--foreach Schleife Beginn-->
+    <?php
+    //$V_ID = $_SESSION["b_id"];
+    $V_ID = 4;
+    //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten eranstalters
+    $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
+    $res4 = $conn->query($query4);
+
+    //Ausgabe der Ergebnisse in HTML
+    while($i = $res4->fetch_row()){
+    ?>
+
   <form action="Angebotseite.php" method="post">
-    <input type="hidden" name="angebot_id" value="#angebots_id#">
-    <button type="submit" class="btnveranstaltung">#Veranstaltungsbeginn#</button>
-  </form> 
-  <!--foreach Schleife Ende-->
+    <input type="hidden" name="angebot_id" value="<?php echo $i[0];?>">
+    <button type="submit" class="btnveranstaltung" name="Angebotsseite"><?php echo "Angebotsdatum: ". $i[2] . " / Geplanter Beginn: ". $i[1]?></button>
+  </form>
+    <?php }?>
+  <!--while Schleife Ende-->
 </div>
 
 <script>

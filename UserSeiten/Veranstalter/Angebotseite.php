@@ -1,3 +1,20 @@
+<?php
+session_start();
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+//Überprüfen ob es einen Verbindungsfehler gab
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,30 +41,58 @@
     </ul>
 </nav>
 
+<?php
+if(isset($_POST["Angebotsseite"])){
+
+    //Abspeichern der übergebenen BeAr_ID
+    $Angebot_ID = $_POST["angebot_id"];
+
+    //Abfrage der Daten zu dieser Angebot_ID
+    $query = "SELECT Teilnehmer_gepl, Beginn, Dauer, Anmerkung, Angebotspreis, Status FROM Anfrage_Angebot WHERE BeAr_ID = $Angebot_ID";
+    $res = $conn->prepare($query);
+    $res->execute();
+    $res->bind_result($Teilnehmer, $V_Beginn, $Dauer, $Anmerk, $Ang_Preis, $Status);
+    $res->fetch();
+    $res->close();
+}
+
+?>
+
 <div class="container">
     <!--Details zum Angebot des Betreibers-->
     <div class="row">
         <div class="col-25">Teilnehmerzahl</div>
-        <div class="col-75">#Teilnehmerzahl#</div>
+        <div class="col-75"><?php echo $Teilnehmer ?></div>
     </div>
     <div class="row">
         <div class="col-25">Veranstaltungsbeginn</div>
-        <div class="col-75">#Datum#</div>
+        <div class="col-75"><?php echo $V_Beginn ?></div>
     </div>
     <div class="row">
-        <div class="col-25">Veranstaltungsdauer</div>
-        <div class="col-75">#Dauer#</div>
+        <div class="col-25">Veranstaltungsdauer (in Tagen)</div>
+        <div class="col-75"><?php echo $Dauer ?></div>
     </div>
     <div class="row">
         <div class="col-25">Anmerkungen</div>
-        <div class="col-75">#Anmerkungen#</div>
+        <div class="col-75"><?php echo $Anmerk ?></div>
     </div>
     <div class="row">
-        <div class="col-25">Preis</div>
-        <div class="col-75">#Preis#</div>
+        <div class="col-25">Angebotspreis</div>
+        <div class="col-75"><?php echo $Ang_Preis."€" ?></div>
     </div>
     <div class="row">
-        <!--Button zur Annhme des Angebots-->
+        <div class="col-25">Angebotsstatus</div>
+        <div class="col-75">
+            <?php if($Status == 2){
+                echo "Das Angebot wurde für die angefragten Daten erstellt und ist 7 Tage gültig";
+            }
+            if($Status == 3){
+                echo "Das ursprüngliche Veranstaltungsdatum der Anfrage wurde vom Betreiber geändert";
+            }?>
+        </div>
+    </div>
+    <div class="row">
+        <!--Button zur Annahme des Angebots-->
         <div class="col-33">
             <form action="#" method="post">
                 <input type="hidden" name="angebot_id" value="#angebots_id#">   
