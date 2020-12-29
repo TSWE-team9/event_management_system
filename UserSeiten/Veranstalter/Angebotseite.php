@@ -42,18 +42,69 @@ if($conn->connect_error){
 </nav>
 
 <?php
+//Aufruf der Angebotsseite
 if(isset($_POST["Angebotsseite"])){
 
     //Abspeichern der übergebenen BeAr_ID
     $Angebot_ID = $_POST["angebot_id"];
 
     //Abfrage der Daten zu dieser Angebot_ID
-    $query = "SELECT Teilnehmer_gepl, Beginn, Dauer, Anmerkung, Angebotspreis, Status FROM Anfrage_Angebot WHERE BeAr_ID = $Angebot_ID";
-    $res = $conn->prepare($query);
-    $res->execute();
-    $res->bind_result($Teilnehmer, $V_Beginn, $Dauer, $Anmerk, $Ang_Preis, $Status);
-    $res->fetch();
-    $res->close();
+    $query1 = "SELECT Teilnehmer_gepl, Beginn, Dauer, Anmerkung, Angebotspreis, Status FROM Anfrage_Angebot WHERE BeAr_ID = $Angebot_ID";
+    $res1 = $conn->prepare($query1);
+    $res1->execute();
+    $res1->bind_result($Teilnehmer, $V_Beginn, $Dauer, $Anmerk, $Ang_Preis, $Status);
+    $res1->fetch();
+    $res1->close();
+}
+else{
+    echo "Es ist ein Fehler aufgetreten";
+}
+
+//Annehmen des Angebots
+if(isset($_POST["annahme"])){
+
+    //Abspeichern der BeAr_ID des angenommenen Angebots
+    $Angebot_ID = $_POST["angebot_id"];
+
+    //Update Query des Angebots
+    $query2 = "UPDATE Anfrage_Angebot SET Status = 4, Buchungsdatum = LOCALTIMESTAMP WHERE BeAr_ID = $Angebot_ID";
+    $res2 = $conn->query($query2);
+    if($res2 === FALSE){
+        echo "Es ist ein Fehler bei der Update Query aufgetreten";
+    }
+    else{
+        //Weiterleitung zu Veranstaltung erstellen
+        header("Location: VeranstaltungsErstellung.php");
+    }
+}
+
+
+//Ablehnen des Angebots
+if(isset($_POST["angebot_ablehnen"])){
+
+    //Abspeichern der BeAr_ID des abgelehnten Angebots
+    $Angebot_ID = $_POST["angebot_id"];
+
+    //Update Query des Angebots
+    $query3 = "UPDATE Anfrage_Angebot SET Status = 5, R_ID = NULL WHERE BeAr_ID = $Angebot_ID";
+    $res3 = $conn->query($query3);
+
+    //Delete Query des reservierten Angebots im Kalender
+    $query4 = "DELETE FROM Kalender WHERE B_ID = $Angebot_ID";
+    $res4 = $conn->query($query4);
+
+    if($res3 === FALSE){
+        echo "Es ist ein Fehler bei der Update Query aufgetreten";
+    }
+
+    elseif($res4 === FALSE){
+        echo "Es ist ein Fehler bei der Delete Query aufgetreten";
+    }
+
+    else{
+        //Weiterleitung zur Startseite
+        header("Location: VeranstalterStartseite.php");
+    }
 }
 
 ?>
@@ -94,9 +145,9 @@ if(isset($_POST["Angebotsseite"])){
     <div class="row">
         <!--Button zur Annahme des Angebots-->
         <div class="col-33">
-            <form action="#" method="post">
-                <input type="hidden" name="angebot_id" value="#angebots_id#">   
-                <button class="btn" type="submit" name="annahme">Angebot Annehmen</button>
+            <form action="Angebotseite.php" method="post">
+                <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
+                <button class="btn" type="submit" name="annahme">Angebot annehmen</button>
             </form>
         </div>
 
@@ -111,7 +162,7 @@ if(isset($_POST["Angebotsseite"])){
                     <h1>Angebot ablehnen</h1>
                     <p>Wollen Sie das Angebot wircklich ablehnen?</p>
                     <div class="modal_clearfix">
-                        <input type="hidden" name="angebot_id" value="#angebots_id#">
+                        <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
                         <button class="modal_btnconfirm" type="submit" name="angebot_ablehnen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>   
                         <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                     </div>

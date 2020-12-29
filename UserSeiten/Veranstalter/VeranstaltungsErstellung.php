@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,8 +28,8 @@
 </nav>
 
 <br><br>
-<h1 style="text-align: center;, margin-top: 150px;">Veranstaltung Ertstellung</h1>
-<p style="text-align:center;">Zusätzlich nötige Informationen zur Erstellung einer veranstaltung</p>
+<h1 style="text-align: center;, margin-top: 150px;">Veranstaltung Erstellung</h1>
+<p style="text-align:center;">Zusätzlich nötige Informationen zur Erstellung einer Veranstaltung</p>
 
 <!-- Erstellungsformular -->
 <div class="container">
