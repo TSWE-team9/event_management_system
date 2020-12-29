@@ -1,5 +1,8 @@
 <?php
 session_start();
+?>
+
+<?php
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';

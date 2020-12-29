@@ -91,8 +91,7 @@ if($conn->connect_error){
   <h3 style="text-align: center;">Veranstaltungsangebote</h3>
   <!--SQL Abfrage-->
     <?php
-    //$V_ID = $_SESSION["b_id"];
-    $V_ID = 4;
+    $V_ID = $_SESSION["b_id"];
     //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten eranstalters
     $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
     $res4 = $conn->query($query4);
