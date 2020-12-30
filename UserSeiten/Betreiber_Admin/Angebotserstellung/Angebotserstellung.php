@@ -13,6 +13,10 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//TODO: Auskommentieren nach Merge; Refresh der Angebote (Status)
+//include "../../UserSeiten/angebot_refresh.php";
+//angebot_refresh();
+
 $query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
 if($res->num_rows == 0){
@@ -27,7 +31,7 @@ if($res->num_rows == 0){
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage für Anfrage</title>
 
-    <link rel="stylesheet" type="text/css" href="Angebotserstellung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../Angebotserstellung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -39,7 +43,7 @@ if($res->num_rows == 0){
         <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a class= "active" href="#">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a  href="Raumverwaltung.php">Raumverwaltung</a></li>
+        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
         <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
