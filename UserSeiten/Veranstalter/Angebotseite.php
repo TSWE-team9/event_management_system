@@ -60,24 +60,6 @@ else{
     echo "Es ist ein Fehler aufgetreten";
 }
 
-//Annehmen des Angebots
-if(isset($_POST["annahme"])){
-
-    //Abspeichern der BeAr_ID des angenommenen Angebots
-    $Angebot_ID = $_POST["angebot_id"];
-
-    //Update Query des Angebots
-    $query2 = "UPDATE Anfrage_Angebot SET Status = 4, Buchungsdatum = LOCALTIMESTAMP WHERE BeAr_ID = $Angebot_ID";
-    $res2 = $conn->query($query2);
-    if($res2 === FALSE){
-        echo "Es ist ein Fehler bei der Update Query aufgetreten";
-    }
-    else{
-        //Weiterleitung zu Veranstaltung erstellen
-        header("Location: VeranstaltungsErstellung.php");
-    }
-}
-
 
 //Ablehnen des Angebots
 if(isset($_POST["angebot_ablehnen"])){
@@ -145,7 +127,7 @@ if(isset($_POST["angebot_ablehnen"])){
     <div class="row">
         <!--Button zur Annahme des Angebots-->
         <div class="col-33">
-            <form action="Angebotseite.php" method="post">
+            <form action="VeranstaltungsErstellung.php" method="post">
                 <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
                 <button class="btn" type="submit" name="annahme">Angebot annehmen</button>
             </form>
