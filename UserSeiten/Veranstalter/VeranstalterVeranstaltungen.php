@@ -25,7 +25,7 @@ $V_ID = 4;
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../listtabs.css">
-    <link rel="stylesheet" type="text/css" href="listen.css">
+    <link rel="stylesheet" type="text/css" href="../listen.css">
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>

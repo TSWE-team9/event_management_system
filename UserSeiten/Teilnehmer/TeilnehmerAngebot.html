@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../veranstaltungen.css">
+    <link rel="stylesheet" type="text/css" href="../listen.css">
     <title>Title</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -21,8 +23,16 @@
     </ul>
 </nav>
 
-<p>Angebot</p>
+<h1 style="text-align: center; margin-top: 50px;">Aktuelles Angebot</h1>
 
+<div class="container">
+    <!--foreach Schleife Beginn-->
+    <form action="../VeranstaltungsSeite.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="#id#">
+        <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
+    </form> 
+    <!--foreach Schleife Ende-->
+</div>
 
 </body>
 </html>
