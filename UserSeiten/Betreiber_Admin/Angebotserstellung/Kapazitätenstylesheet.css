@@ -7,7 +7,7 @@
 }
 /*Styling Formualar und Eingabefelder*/
 body {
-    background: url("HintergrundRaum.png")  fixed ;
+    background: url("../HintergrundRaum.png")  fixed ;
     /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
     background-size: cover;
     width: 100vw;

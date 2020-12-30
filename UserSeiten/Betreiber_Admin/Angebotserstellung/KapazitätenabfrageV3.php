@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage intern</title>
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav>
     <ul class="header">
-        <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a  class= "active" href="Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
         <li class="headerel"><a href="Raumverwaltung.php">Raumverwaltung</a></li>
