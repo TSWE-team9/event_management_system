@@ -15,6 +15,8 @@ if($conn->connect_error){
 }
 
 //Aktualisieren der Angebote und Veranstaltungen (Status)
+include "../angebot_refresh.php";
+include "../veranstaltung_refresh.php";
 angebot_refresh();
 veranstaltung_refresh();
 
