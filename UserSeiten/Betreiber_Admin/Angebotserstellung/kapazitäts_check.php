@@ -102,17 +102,16 @@ if(isset($_POST["Ablehnen"])){
         echo "Es ist ein Fehler bei der Ablehnung der Anfrage aufgetreten";
     }
     else {
+        //TODO: Ausgabe in HTML
         echo "Die Anfrage wurde erfolgreich abgelehnt";
-        //TODO: Weiterleitung zurück
+        header("Location: Angebotserstellung.php");
     }
 
 }
 
 //Abbrechen der Überprüfung (intern) nach unerfolgreicher Kapazitätsabfrage
 if(isset($_POST["Abbrechen"])){
-
-    //TODO: Hier Weiterleitung zu der richtigen Seite des Betreibers
-    echo "Test";
+    header("Location: InterneVeranstaltungen.php");
 }
 
 /*$today = date("Y-m-d");
