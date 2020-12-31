@@ -75,7 +75,7 @@ $V_ID = 4;
   <!--foreach Schleife Beginn-->
   <form action="../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-    <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+    <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
   <?php } ?>
     <!--foreach Schleife Ende-->
@@ -97,7 +97,7 @@ $V_ID = 4;
   <!--foreach Schleife Beginn-->
   <form action="../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-    <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+    <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
   <!--foreach Schleife Ende-->
     <?php } ?>
@@ -119,7 +119,7 @@ $V_ID = 4;
   <!--foreach Schleife Beginn-->
   <form action="../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-    <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+    <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form>
     <?php } ?>
   <!--foreach Schleife Ende-->
