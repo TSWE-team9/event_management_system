@@ -47,20 +47,21 @@ if($conn->connect_error){
 if(isset($_POST["Angebotsseite"])){
 
     //Abspeichern der übergebenen BeAr_ID
-    $Angebot_ID = $_POST["angebot_id"];
+    $_SESSION["Angebot_ID"] = $_POST["angebot_id"];
 
-    //Abfrage der Daten zu dieser Angebot_ID
-    $query1 = "SELECT Teilnehmer_gepl, Beginn, Dauer, Anmerkung, Angebotspreis, Status FROM Anfrage_Angebot WHERE BeAr_ID = $Angebot_ID";
-    $res1 = $conn->prepare($query1);
-    $res1->execute();
-    $res1->bind_result($Teilnehmer, $V_Beginn, $Dauer, $Anmerk, $Ang_Preis, $Status);
-    $res1->fetch();
-    $res1->close();
 }
 else{
     echo "Es ist ein Fehler aufgetreten";
 }
 
+//Abfrage der Daten zu dieser Angebot_ID
+$Angebot_ID = $_SESSION["Angebot_ID"];
+$query1 = "SELECT Teilnehmer_gepl, Beginn, Dauer, Anmerkung, Angebotspreis, Status FROM Anfrage_Angebot WHERE BeAr_ID = $Angebot_ID";
+$res1 = $conn->prepare($query1);
+$res1->execute();
+$res1->bind_result($Teilnehmer, $V_Beginn, $Dauer, $Anmerk, $Ang_Preis, $Status);
+$res1->fetch();
+$res1->close();
 
 //Ablehnen des Angebots
 if(isset($_POST["angebot_ablehnen"])){
@@ -170,7 +171,7 @@ if(isset($_POST["angebot_ablehnen"])){
                     <p>Geben Sie ein neues Beginn-Datum der Veranstaltung an</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
-                        <input type="hidden" name="dauer" id="dauer" value="#dauer in tagen#"> <!--hier noch dauer der veranstaltung-->
+                        <input type="hidden" name="dauer" id="dauer" value="<?php echo $Dauer; ?>"> <!--hier noch dauer der veranstaltung-->
                         <input type="date" name="new_date" id="new_date" required>
                         <button class="modal_btnconfirm" type="submit" name="angebot_aendern" onclick="document.getElementById('id02').style.display='none'">Anfragedatum ändern</button>
                         <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
