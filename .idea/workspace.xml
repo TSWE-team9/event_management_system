@@ -38,9 +38,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Angebotseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Angebotseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterAnfrage.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterAnfrage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/scripts.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +89,8 @@
       <workItem from="1609150078573" duration="5062000" />
       <workItem from="1609161265626" duration="23000" />
       <workItem from="1609327881424" duration="71000" />
-      <workItem from="1609402055640" duration="3486000" />
+      <workItem from="1609402055640" duration="4027000" />
+      <workItem from="1609407279353" duration="51000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
