@@ -36,9 +36,13 @@
     </select>
   </component>
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -83,6 +87,7 @@
       <workItem from="1608231909802" duration="223000" />
       <workItem from="1608281858506" duration="240000" />
       <workItem from="1608282108129" duration="1622000" />
+<<<<<<< Updated upstream
       <workItem from="1609061900191" duration="636000" />
       <workItem from="1609064313631" duration="3987000" />
       <workItem from="1609078382610" duration="3675000" />
@@ -91,6 +96,9 @@
       <workItem from="1609327881424" duration="71000" />
       <workItem from="1609402055640" duration="4027000" />
       <workItem from="1609407279353" duration="51000" />
+=======
+      <workItem from="1609408079864" duration="198000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
@@ -129,8 +137,11 @@
     <MESSAGE value="komments hinzugefügt" />
     <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
   </component>
+<<<<<<< Updated upstream
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
+=======
+>>>>>>> Stashed changes
 </project>
