@@ -111,7 +111,7 @@ if(isset($_POST["Ablehnen"])){
 //Abbrechen der Überprüfung (intern) nach unerfolgreicher Kapazitätsabfrage
 if(isset($_POST["Abbrechen"])){
 
-    //TODO: Hier Weiterleitung zu dem richtigen Seite des Betreibers
+    //TODO: Hier Weiterleitung zu der richtigen Seite des Betreibers
     echo "Test";
 }
 

@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -30,6 +34,13 @@
     <button class="tablinks" onclick="openList(event, 'zukünftige')">Zukünftige Veranstaltungen</button>
     <button class="tablinks" onclick="openList(event, 'abgeschlossene')">Abgeschlossene Veranstaltungen</button>
 </div>
+
+<?php
+//TODO: Auskommentieren nach Merge; Refresh der Angebote (Status)
+//include "../../UserSeiten/angebot_refresh.php";
+//angebot_refresh();
+
+?>
 
 <!--Tab auf der rechten Seite mit Liste der aktuellen Veranstaltungen-->
 <div id="aktuelle" class="tabcontent">
