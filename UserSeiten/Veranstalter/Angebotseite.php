@@ -26,6 +26,7 @@ if($conn->connect_error){
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+    <script src="../script.js"></script>
 </head>
 <body>
 <nav>
@@ -169,7 +170,7 @@ if(isset($_POST["angebot_ablehnen"])){
                     <p>Geben Sie ein neues Beginn-Datum der Veranstaltung an</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
-                        <input type="date" name="new_date" id="new_date" required>
+                        <input type="date" name="new_date" id="new_date" min="" required>
                         <button class="modal_btnconfirm" type="submit" name="angebot_aendern" onclick="document.getElementById('id02').style.display='none'">Anfragedatum ändern</button>
                         <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
                     </div>
@@ -181,7 +182,7 @@ if(isset($_POST["angebot_ablehnen"])){
 </div>
 
 <script>
-
+    
     // Get the modal
     var modal1 = document.getElementById('id01');
     var modal2 = document.getElementById('id02');
@@ -195,6 +196,36 @@ if(isset($_POST["angebot_ablehnen"])){
             modal2.style.target == "none";
         }
     }
+
+    // neues Datum muss auch in mindestens vier Wochen liegen
+    function addDays(date, days) {
+        var result = new Date(date);
+        result.setDate(result.getDate() + days);
+        return result;
+    }
+
+    // formats date to html format
+    function dateToHtml(date) {
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+        var day = date.getDate();
+
+        if (month < 10) {
+            month = [0, month].join("");
+        }
+
+        if (day < 10) {
+            day = [0, day].join("");
+        }
+
+        var result = [year, month, day].join("-");
+        return result;
+    }
+    
+    var currentDate = new Date();
+    var minDate = dateToHtml(addDays(currentDate, 28));
+    var initialDate = document.getElementById("new_date").value = minDate;
+    var minDateHtml = document.getElementById("new_date").min = minDate;
 
 </script>
 

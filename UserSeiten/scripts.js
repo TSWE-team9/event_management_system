@@ -14,7 +14,19 @@ export function subtractYears(date, years) {
 
 // formats date to html format
 export function dateToHtml(date) {
-    var result = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("-");
+    var year = date.getFullYear();
+    var month = date.getMonth()+1;
+    var day = date.getDate();
+
+    if (month < 10) {
+        month = [0, month ].join("");
+    }
+
+    if (day < 10) {
+        day = [0, day].join("");
+    }
+
+    var result = [year, month, day].join("-");
     return result;
 }
 
