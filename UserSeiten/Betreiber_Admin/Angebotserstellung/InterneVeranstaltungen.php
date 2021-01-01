@@ -1,8 +1,9 @@
 <?php
-session_start();
+$db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
+session_start()
 ?>
-
 <!DOCTYPE html>
+
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
@@ -27,7 +28,12 @@ session_start();
 </nav>
 
 <!--<h1 >Meine Veranstaltungen</h1>-->
+<?php
+//TODO: Auskommentieren nach Merge; Refresh der Angebote (Status)
+//include "../../UserSeiten/angebot_refresh.php";
+//angebot_refresh();
 
+?>
 <!--Tabs auf der linken Seite zum auswählen der gewünschten Liste-->
 <div class="tab">
     <button class="tablinks" onclick="openList(event, 'aktuelle')" id="defaultOpen">Aktuelle Veranstaltungen</button>
@@ -35,22 +41,25 @@ session_start();
     <button class="tablinks" onclick="openList(event, 'abgeschlossene')">Abgeschlossene Veranstaltungen</button>
 </div>
 
-<?php
-//TODO: Auskommentieren nach Merge; Refresh der Angebote (Status)
-//include "../../UserSeiten/angebot_refresh.php";
-//angebot_refresh();
-
-?>
-
 <!--Tab auf der rechten Seite mit Liste der aktuellen Veranstaltungen-->
 <div id="aktuelle" class="tabcontent">
     <h3 style="text-align: center;">Aktuelle Veranstaltungen</h3>
     <!--SQL Abfrage-->
+    <?php
+    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 2";
+    $res1 = $db->query($query1);
+
+    //Ausgabe der Abfrage in HTML
+    while($i = $res1->fetch_row()){
+        ?>
+
     <!--foreach Schleife Beginn-->
     <form action="" method="post">
         <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
         <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
     </form>
+    <?php } ?>
     <!--foreach Schleife Ende-->
 </div>
 
@@ -58,11 +67,20 @@ session_start();
 <div id="zukünftige" class="tabcontent">
     <h3 style="text-align: center;">Zukünftige Veranstaltungen</h3>
     <!--SQL Abfrage-->
+    <?php
+    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 1";
+    $res1 = $db->query($query1);
+
+    //Ausgabe der Abfrage in HTML
+    while($i = $res1->fetch_row()){
+    ?>
     <!--foreach Schleife Beginn-->
     <form action="" method="post">
         <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
         <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
     </form>
+    <?php } ?>
     <!--foreach Schleife Ende-->
 </div>
 
@@ -70,11 +88,20 @@ session_start();
 <div id="abgeschlossene" class="tabcontent">
     <h3 style="text-align: center;">Abgeschlossene Veranstaltungen</h3>
     <!--SQL Abfrage-->
+    <?php
+    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 3";
+    $res1 = $db->query($query1);
+
+    //Ausgabe der Abfrage in HTML
+    while($i = $res1->fetch_row()){
+        ?>
     <!--foreach Schleife Beginn-->
     <form action="../VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
         <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
     </form>
+    <?php } ?>
     <!--foreach Schleife Ende-->
 
 </div>
