@@ -36,13 +36,18 @@
     </select>
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/DatenänderungFunktionT.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/DatenänderungFunktionT.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/TeilnehmerAngebot.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/TeilnehmerDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/TeilnehmerStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/TeilnehmerVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/errorsDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/errorsDatenänderung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/teilnehmer.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/teilnehmer.css" afterDir="false" />
     </list>
-=======
-    <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="" />
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,7 +56,19 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="veranstaltungsanzeige" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
@@ -66,9 +83,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../php/php.exe" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten/Teilnehmer/Angebot" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\Angebot" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\angemeldeteVeranstaltungen" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\Datenänderung" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\Startseite" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -87,18 +112,10 @@
       <workItem from="1608231909802" duration="223000" />
       <workItem from="1608281858506" duration="240000" />
       <workItem from="1608282108129" duration="1622000" />
-<<<<<<< Updated upstream
-      <workItem from="1609061900191" duration="636000" />
-      <workItem from="1609064313631" duration="3987000" />
-      <workItem from="1609078382610" duration="3675000" />
-      <workItem from="1609150078573" duration="5062000" />
-      <workItem from="1609161265626" duration="23000" />
-      <workItem from="1609327881424" duration="71000" />
-      <workItem from="1609402055640" duration="4027000" />
-      <workItem from="1609407279353" duration="51000" />
-=======
-      <workItem from="1609408079864" duration="198000" />
->>>>>>> Stashed changes
+      <workItem from="1609408079864" duration="441000" />
+      <workItem from="1609408660632" duration="2793000" />
+      <workItem from="1609412517422" duration="54000" />
+      <workItem from="1609579347899" duration="860000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
@@ -137,11 +154,8 @@
     <MESSAGE value="komments hinzugefügt" />
     <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
   </component>
-<<<<<<< Updated upstream
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
-=======
->>>>>>> Stashed changes
 </project>
