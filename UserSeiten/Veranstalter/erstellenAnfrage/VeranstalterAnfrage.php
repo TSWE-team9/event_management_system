@@ -7,7 +7,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="anfrage.css">
+    <link rel="stylesheet" type="text/css" href="VeranstalterAnfrage.css">
     <title>Anfrage erstellen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>

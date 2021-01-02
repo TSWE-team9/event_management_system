@@ -38,16 +38,9 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/tabs.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/tabs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterVeranstaltungen.js" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/LandingPage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/anfrage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/anfrage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstaltungsErstellung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/VeranstaltungsErstellung.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,16 +77,16 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen\Angebot" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Startseite" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen\Angebot" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Datenänderung" />
     </key>
   </component>
@@ -117,7 +110,7 @@
       <workItem from="1609408079864" duration="441000" />
       <workItem from="1609408660632" duration="2793000" />
       <workItem from="1609412517422" duration="54000" />
-      <workItem from="1609579347899" duration="8096000" />
+      <workItem from="1609579347899" duration="9150000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
