@@ -4,7 +4,7 @@
     <head>
         <title>Landing Page</title>
         <meta charset="utf-8"/>
-        <link href="landingpage.css" type="text/css" rel="stylesheet">
+        <link href="index.css" type="text/css" rel="stylesheet">
     </head>
 
     <body>
@@ -145,44 +145,7 @@
         </div>
             
 
-        <script>
-          // accordion start
-          var acc = document.getElementsByClassName("accordion");
-          var i;
-            
-          for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-              this.classList.toggle("active");
-              var panel = this.nextElementSibling;
-              if (panel.style.maxHeight) {
-                panel.style.maxHeight = null;
-              } else {
-                panel.style.maxHeight = panel.scrollHeight + "px";
-              }
-            });
-          }
-          // accordion end
-          
-          // function to subtract years from current date -> used for age verification
-          function subtractYears(date, years) {
-            var result = new Date(date);
-            result.setFullYear(result.getFullYear() - years);
-            return result;
-          }
-
-          // formats date to html format
-          function dateToHtml(date) {
-            var result = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("-");
-            return result;
-          }
-          
-          // age must be 18
-          var currentDate = new Date();
-          var maxDate = dateToHtml(subtractYears(currentDate, 18));
-          var maxT = document.getElementById("geb_t").max = maxDate;
-          var maxV = document.getElementById("geb_v").max = maxDate;
-
-          </script>
+        <script src="index.js"></script>
 
     </body>
 </html>

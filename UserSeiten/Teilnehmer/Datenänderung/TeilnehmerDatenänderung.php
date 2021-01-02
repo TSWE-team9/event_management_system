@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../CSS/Startseite.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="teilnehmer.css" type="text/css">
+    <link rel="stylesheet" href="TeilnehmerDatenänderung.css" type="text/css">
     <link rel="stylesheet" href="../../modal.css" type="text/css">
     <title>Title</title>
 
@@ -14,11 +14,11 @@
 <body>
 <nav>
     <ul>
-        <li><a href="./Startseite/TeilnehmerStartseite.php">Startseite</a></li>
-        <li><a href="../TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
+        <li><a href="../Startseite/TeilnehmerStartseite.php">Startseite</a></li>
+        <li><a href="../anzeigenAngebot/TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a href="../TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li><a href="../angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li style="float: right;"> <a class="active" href="TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 

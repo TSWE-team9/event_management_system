@@ -55,7 +55,7 @@ while($sql->fetch()) {
             break;
         //Teilnehmer ist Rolle 2
         case 2:
-            header("Location: ../UserSeiten/Teilnehmer/TeilnehmerStartseite.php");
+            header("Location: ../UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php");
             break;
         //Betreiber ist Rolle 3
         case 3:
