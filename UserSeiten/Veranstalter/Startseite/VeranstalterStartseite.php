@@ -1,3 +1,29 @@
+<?php
+session_start();
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+//Überprüfen ob es einen Verbindungsfehler gab
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+//Aktualisieren der Angebote und Veranstaltungen (Status)
+include "../../angebot_refresh.php";
+include "../../veranstaltung_refresh.php";
+angebot_refresh();
+veranstaltung_refresh();
+
+//Variablen
+$V_ID = $_SESSION["b_id"];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,18 +54,29 @@
     <div class="container-80-inner">
         <h2 class="hdln">laufende Veranstaltungen</h2>
 
-        <!--TODO-->
-        <!--SQL Abfrage-->
-        <!--if else-->
-        <!--if keine Veranstaltungen gefunden-->
-        <p class="txt">Sie haben derzeit keine laufenden Veranstaltungen.</p>
-        <!--else Veranstaltungen gefunden-->
-        <!--foreach Schleife Beginn max 3 Veranstaltungen-->
+        <?php
+        //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2";
+        $res1 = $conn->query($query1);
+        $counter = 0;
+        if($res1->num_rows == 0){
+            echo "<p class='txt'>Sie haben derzeit keine laufenden Veranstaltungen</P>";
+        }
+
+        //Ausgabe der Abfrage in HTML
+        else {
+        while($i = $res1->fetch_row()){
+            if($counter == 4){
+            break;
+            }
+
+        ?>
+
         <form action="../../VeranstaltungsSeite.php" method="post">
-            <input type="hidden" name="veranstaltung_id" value="#id#">
-            <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
-        </form> 
-        <!--foreach Schleife Ende-->
+            <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+            <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+        </form>
+        <?php }} ?>
     </div>
 
     <br><br><br>
@@ -47,18 +84,27 @@
     <div class="container-80-inner">
         <h2 class="hdln">Angebote</h2>
 
-        <!--TODO-->
-        <!--SQL Abfrage-->
-        <!--if else-->
-        <!--if keine Veranstaltungen gefunden-->
-        <p class="txt">Sie haben derzeit keine Angebote des Betreibers.</p>
-        <!--else Veranstaltungen gefunden-->
-        <!--foreach Schleife Beginn max 3 Veranstaltungen-->
-        <form action="../../VeranstaltungsSeite.php" method="post">
-            <input type="hidden" name="veranstaltung_id" value="#id#">
-            <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
-        </form> 
-        <!--foreach Schleife Ende-->
+        <?php
+        //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten Veranstalters
+        $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
+        $res4 = $conn->query($query4);
+        $counter = 0;
+        if($res4->num_rows == 0){
+            echo "<p class='txt'>Sie haben derzeit keine Angebote des Betreibers</P>";
+        }
+
+        else{
+        while($i = $res4->fetch_row()){
+            if($counter == 4){
+            break;
+            }
+
+        ?>
+            <form action="../eigeneVeranstaltungen/Angebot/Angebotseite.php" method="post">
+                <input type="hidden" name="angebot_id" value="<?php echo $i[0];?>">
+                <button type="submit" class="btnveranstaltung" name="Angebotsseite"><?php echo "Angebotsdatum: ". $i[2] . " / Geplanter Beginn: ". $i[1]?></button>
+            </form>
+        <?php }}?>
     </div>
 </div>
 <!--<footer>

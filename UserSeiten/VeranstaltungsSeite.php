@@ -154,6 +154,15 @@ $j = $res3->fetch_row();
 
     <div class="row">
         <div class="col-info">
+            <p class="info">Veranstaltungsbeginn</p>
+        </div>
+        <div class="col-desc">
+            <p class="desc"><?php echo $uhrzeit .  " Uhr";?></p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-info">
             <p class="info">Anmeldezeitraum</p>
         </div>
         <div class="col-desc">

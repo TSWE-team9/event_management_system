@@ -103,8 +103,8 @@ if (isset($_POST['änderung_daten_user_v'])) {
 //account löschen
 if (isset($_POST['del_account'])) {
 
-    $query_check = 'SELECT Titel from Veranstaltung JOIN Teilnehmerliste_offen T on Veranstaltung.V_ID = T.V_ID 
-                    Where Status = 1 or 2 or 3 And B_ID = $curr_bid';
+    $query_check = 'SELECT V.Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
+                    AND Status IN (1, 2, 3) And B_ID = $curr_bid';
     $result = mysqli_query($db,$query_check);
 
     if(!empty($result)){
