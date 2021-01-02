@@ -50,6 +50,8 @@ session_start()
     $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 2";
     $res1 = $db->query($query1);
 
+    if($res1->num_rows == 0){ echo "Es gibt keine aktuellen Veranstaltungen";}
+
     //Ausgabe der Abfrage in HTML
     while($i = $res1->fetch_row()){
         ?>
@@ -69,16 +71,16 @@ session_start()
     <!--SQL Abfrage-->
     <?php
     //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
-    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 1";
-    $res1 = $db->query($query1);
-
+    $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 1";
+    $res2 = $db->query($query2);
+    if($res2->num_rows == 0){ echo "Es gibt keine aktuellen Veranstaltungen";}
     //Ausgabe der Abfrage in HTML
-    while($i = $res1->fetch_row()){
+    while($i = $res2->fetch_row()){
     ?>
     <!--foreach Schleife Beginn-->
     <form action="" method="post">
         <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
+        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
@@ -90,11 +92,12 @@ session_start()
     <!--SQL Abfrage-->
     <?php
     //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
-    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 3";
-    $res1 = $db->query($query1);
+    $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 3";
+    $res3 = $db->query($query3);
+    if($res3->num_rows == 0){ echo "Es gibt keine aktuellen Veranstaltungen";}
 
     //Ausgabe der Abfrage in HTML
-    while($i = $res1->fetch_row()){
+    while($i = $res3->fetch_row()){
         ?>
     <!--foreach Schleife Beginn-->
     <form action="../VeranstaltungsSeite.php" method="post">

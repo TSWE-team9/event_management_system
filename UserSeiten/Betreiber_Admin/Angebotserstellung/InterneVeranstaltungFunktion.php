@@ -6,6 +6,7 @@ session_start();
 //$dauer    = $_SESSION["Dauer_final"];
 //$tanzahl = $_SESSION["Teilnehmerzahl"];
 //$Rid = $_SESSION["R_ID"];
+//$Rid = $_SESSION["R_ID"];
 
 $datum = "2021-01-09";
 $dauer    = 2;
@@ -34,10 +35,10 @@ if (isset($_POST['Hinzufügen'])) {
         $verfügbarkeit = 2;
     }
 
-    echo "<br>"."<br>". $titel ."<br>". $beschreibung ."<br>". 48 ."<br>". 2 ."<br>". $art ."<br>". $verfügbarkeit ."<br>". 1 ."<br>".   $Rid ."<br>". $tanzahl ."<br>". 0 ."<br>". $datum ."<br>". $zeit ."<br>". $dauer ."<br>". $zeitraum ."<br>". $tkosten;
+    echo "<br>"."<br>"."<br>". $titel ."<br>". $beschreibung ."<br>". 48 ."<br>". 2 ."<br>". $art ."<br>". $verfügbarkeit ."<br>". 1 ."<br>".   $Rid ."<br>". $tanzahl ."<br>". 0 ."<br>". $datum ."<br>". $zeit ."<br>". $dauer ."<br>". $zeitraum ."<br>". $tkosten;
 
 }
 
-$query_v = "INSERT INTO Veranstaltung VALUES(Null, $titel, $beschreibung, 48, 2, $art, $verfügbarkeit, 1, $Rid, $tanzahl, 0, '$datum', '$zeit', $dauer, $zeitraum, $tkosten)";
+$query_v = "INSERT INTO Veranstaltung VALUES(Null, '$titel', '$beschreibung', 48, 2, '$art', $verfügbarkeit, 1, $Rid, $tanzahl, 0, '$datum', '$zeit', $dauer, $zeitraum, $tkosten)";
 mysqli_query($db, $query_v);
 

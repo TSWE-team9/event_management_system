@@ -100,7 +100,7 @@ if($status){
             $query_status = "Belegung von Raum " . $R_ID . " war erfolgreich.";
             echo $query_status;
 
-            //TODO Hier dann Weiterleitung zum Erstellen der Veranstaltung
+            header("Location: VeranstaltungBetreiber.php");
         }
         else{
             $query_status = "Es ist ein Fehler beim Eintragen in den Kalender aufgetreten";
