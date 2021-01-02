@@ -2,16 +2,12 @@
 session_start();
 
 // initializing variables
-//$datum = $_SESSION["Beginn_final"];
-//$dauer    = $_SESSION["Dauer_final"];
-//$tanzahl = $_SESSION["Teilnehmerzahl"];
-//$Rid = $_SESSION["R_ID"];
-//$Rid = $_SESSION["R_ID"];
+$datum = $_SESSION["Beginn_final"];
+$dauer    = $_SESSION["Dauer_final"];
+$tanzahl = $_SESSION["Teilnehmerzahl"];
+$Rid = $_SESSION["R_ID"];
+//$Bid = $_SESSION["b_ID"];
 
-$datum = "2021-01-09";
-$dauer    = 2;
-$tanzahl = 20;
-$Rid = 3;
 
 
 // connect to the database

@@ -50,7 +50,7 @@ session_start()
     $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 2";
     $res1 = $db->query($query1);
 
-    if($res1->num_rows == 0){ echo "Es gibt keine aktuellen Veranstaltungen";}
+    if($res1->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine aktuellen Veranstaltungen</P>";}
 
     //Ausgabe der Abfrage in HTML
     while($i = $res1->fetch_row()){
@@ -73,7 +73,7 @@ session_start()
     //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
     $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 1";
     $res2 = $db->query($query2);
-    if($res2->num_rows == 0){ echo "Es gibt keine aktuellen Veranstaltungen";}
+    if($res2->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine zukünfitigen Veranstaltungen</P>";}
     //Ausgabe der Abfrage in HTML
     while($i = $res2->fetch_row()){
     ?>
@@ -94,7 +94,7 @@ session_start()
     //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
     $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 3";
     $res3 = $db->query($query3);
-    if($res3->num_rows == 0){ echo "Es gibt keine aktuellen Veranstaltungen";}
+    if($res3->num_rows == 0){ echo "<p class='txt'>Sie haben derzeit keine abgeschlossenen Veranstaltungen</P>";}
 
     //Ausgabe der Abfrage in HTML
     while($i = $res3->fetch_row()){
