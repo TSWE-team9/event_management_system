@@ -30,8 +30,8 @@ $V_ID = 4;
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../tabs.css">
-    <link rel="stylesheet" type="text/css" href="../listen.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/tabs.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -39,13 +39,13 @@ $V_ID = 4;
 <body>
 <nav>
     <ul>
-        <li><a href="VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="VeranstalterAnfrage.php">Angebot einholen</a></li>
+        <li><a href="../Startseite/VeranstalterStartseite.php">Startseite</a></li>
+        <li><a href="../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
         <li><a class="active" href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>
@@ -146,34 +146,7 @@ $V_ID = 4;
   <!--while Schleife Ende-->
 </div>
 
-<script>
-
-    // function to display different tabs
-    function openList(evt, listName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        // Show the current tab, and add an "active" class to the link that opened the tab
-        document.getElementById(listName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-
-</script>
+<script src="VeranstalterVeranstaltungen.js"></script>
 
 </body>
 </html>

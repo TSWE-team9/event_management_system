@@ -20,9 +20,8 @@ if($conn->connect_error){
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../listtabs.css">
-    <link rel="stylesheet" type="text/css" href="angebot.css">
-    <link rel="stylesheet" type="text/css" href="../modal.css">
+    <link rel="stylesheet" type="text/css" href="../../../CSS/modal.css">
+    <link rel="stylesheet" type="text/css" href="Angebotseite.css">
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -31,13 +30,13 @@ if($conn->connect_error){
 <body>
 <nav>
     <ul>
-        <li><a href="VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="VeranstalterAnfrage.php">Angebot einholen</a></li>
+        <li><a href="../../Startseite/VeranstalterStartseite.php">Startseite</a></li>
+        <li><a href="../../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a class="active" href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li><a class="active" href="../VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+        <li style="float: right;"> <a href="../../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>
@@ -183,53 +182,7 @@ if(isset($_POST["angebot_ablehnen"])){
     </div>
 </div>
 
-<script>
-    
-    // Get the modal
-    var modal1 = document.getElementById('id01');
-    var modal2 = document.getElementById('id02');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal1) {
-            modal1.style.display = "none";
-        }
-        if (event.target == modal2) {
-            modal2.style.target == "none";
-        }
-    }
-
-    // neues Datum muss auch in mindestens vier Wochen liegen
-    function addDays(date, days) {
-        var result = new Date(date);
-        result.setDate(result.getDate() + days);
-        return result;
-    }
-
-    // formats date to html format
-    function dateToHtml(date) {
-        var year = date.getFullYear();
-        var month = date.getMonth()+1;
-        var day = date.getDate();
-
-        if (month < 10) {
-            month = [0, month].join("");
-        }
-
-        if (day < 10) {
-            day = [0, day].join("");
-        }
-
-        var result = [year, month, day].join("-");
-        return result;
-    }
-    
-    var currentDate = new Date();
-    var minDate = dateToHtml(addDays(currentDate, 28));
-    var initialDate = document.getElementById("new_date").value = minDate;
-    var minDateHtml = document.getElementById("new_date").min = minDate;
-
-</script>
+<script src="Angebotseite.js"></script>
 
 </body>
 </html>
