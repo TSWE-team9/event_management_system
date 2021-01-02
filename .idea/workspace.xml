@@ -38,17 +38,19 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterVeranstaltungen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/listen.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/listtabs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/modal.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/veranstaltungen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/AngebotAendern.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/AngebotAendern.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Angebotseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/DatenänderungFunktionV.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/DatenänderungFunktionV.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterAnfrage.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/VeranstalterDatenänderung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstaltungsErstellung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstaltungsErstellung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/anfrage.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/anfrage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/anfrage.js" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/anfrage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/angebot.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/angebot.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/errorsDatenänderungV.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/errorsDatenänderungV.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/veranstalter.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/veranstalter.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,16 +87,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten/Teilnehmer/Angebot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\Angebot" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\angemeldeteVeranstaltungen" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\Datenänderung" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Teilnehmer\Startseite" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen\Angebot" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Datenänderung" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Startseite" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\erstellenAnfrage" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -117,7 +120,7 @@
       <workItem from="1609408079864" duration="441000" />
       <workItem from="1609408660632" duration="2793000" />
       <workItem from="1609412517422" duration="54000" />
-      <workItem from="1609579347899" duration="4556000" />
+      <workItem from="1609579347899" duration="5433000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>

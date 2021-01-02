@@ -4,8 +4,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="./veranstalter.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="veranstalter.css">
     <link rel="stylesheet" type="text/css" href="../modal.css">
     <title>Title</title>
 
@@ -18,8 +18,8 @@
         <li><a href="VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li><a href="../VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li style="float: right;"> <a class="active" href="VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
@@ -30,7 +30,8 @@
     <button class="accordion">Passwort ändern</button>
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_p) > 0){include('errorsDatenänderungV.php');} ?>
+                <?php if (count($errors_p) > 0){
+                    include('errorsDatenänderungV.php');} ?>
                 <br>
                 <label for="passwortalt">altes Passwort</label>
                 <input type="password" placeholder="altes Passwort" name="passwortalt" pattern=".{10,50}" required>
@@ -48,7 +49,8 @@
     <button class="accordion">E-Mail-Adresse ändern</button>
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_e) > 0){include('errorsDatenänderungV.php');} ?>
+                <?php if (count($errors_e) > 0){
+                    include('errorsDatenänderungV.php');} ?>
                 <br>
                 <label for="email1">Neue E-Mail</label>
                 <input type="email" placeholder="neue E-Mail-Adresse" name="email1" maxlength="50" required>
@@ -63,7 +65,8 @@
     <button class="accordion">Kontaktdaten aktualisieren</button>  
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_d) > 0){include('errorsDatenänderungV.php');} ?>
+                <?php if (count($errors_d) > 0){
+                    include('errorsDatenänderungV.php');} ?>
 
                 <label for="straße">Straße</label>
                 <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['StrasseV'];?>' pattern="[A-Za-z]{1,50}">

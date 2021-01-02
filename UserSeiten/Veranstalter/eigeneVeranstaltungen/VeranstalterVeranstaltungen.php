@@ -29,7 +29,7 @@ $V_ID = 4;
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../tabs.css">
     <link rel="stylesheet" type="text/css" href="../listen.css">
     <title>Meine Veranstaltungen</title>
@@ -44,7 +44,7 @@ $V_ID = 4;
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
         <li><a class="active" href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li style="float: right;"> <a href="VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
@@ -73,7 +73,7 @@ $V_ID = 4;
     while($i = $res1->fetch_row()){
     ?>
   <!--foreach Schleife Beginn-->
-  <form action="../VeranstaltungsSeite.php" method="post">
+  <form action="../../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
@@ -95,7 +95,7 @@ $V_ID = 4;
     while($i = $res2->fetch_row()){
     ?>
   <!--foreach Schleife Beginn-->
-  <form action="../VeranstaltungsSeite.php" method="post">
+  <form action="../../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
@@ -117,7 +117,7 @@ $V_ID = 4;
     while($i = $res3->fetch_row()){
     ?>
   <!--foreach Schleife Beginn-->
-  <form action="../VeranstaltungsSeite.php" method="post">
+  <form action="../../VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form>
@@ -138,7 +138,7 @@ $V_ID = 4;
     while($i = $res4->fetch_row()){
     ?>
 
-  <form action="Angebotseite.php" method="post">
+  <form action="../Angebotseite.php" method="post">
     <input type="hidden" name="angebot_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="Angebotsseite"><?php echo "Angebotsdatum: ". $i[2] . " / Geplanter Beginn: ". $i[1]?></button>
   </form>
