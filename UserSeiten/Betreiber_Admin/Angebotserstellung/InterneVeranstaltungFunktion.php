@@ -36,5 +36,13 @@ if (isset($_POST['Hinzufügen'])) {
 }
 
 $query_v = "INSERT INTO Veranstaltung VALUES(Null, '$titel', '$beschreibung', 48, 2, '$art', $verfügbarkeit, 1, $Rid, $tanzahl, 0, '$datum', '$zeit', $dauer, $zeitraum, $tkosten)";
-mysqli_query($db, $query_v);
+$res2 = mysqli_query($db, $query_v);
+
+if ($res2 === FALSE) {
+    $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)";
+    $error_occured = true;
+} else {
+    //Endgültige Belegung des Raumes im Kalender
+    $query3 = "UPDATE Kalender SET Status = 1, V_ID = (SELECT V_ID FROM Veranstaltung WHERE Titel='$titel' AND Beginn = '$datum' AND Veranstalter = 48) WHERE Von= $datum AND R_ID = $Rid";
+    $res3 = $db->query($query3);}
 
