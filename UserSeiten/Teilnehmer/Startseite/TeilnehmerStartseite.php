@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
     
-    <title>Sartseite</title>
+    <title>Startseite</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
@@ -35,7 +34,7 @@
         <!--if keine Veranstaltungen gefunden-->
         <p class="txt">Sie haben derzeit keine laufenden Veranstaltungen.</p>
         <!--else Veranstaltungen gefunden-->
-        <!--foreach Schleife Beginn-->
+        <!--foreach Schleife Beginn max 3 Veranstaltungen-->
         <form action="../../VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="#id#">
             <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
@@ -54,7 +53,7 @@
         <!--if keine Veranstaltungen gefunden-->
         <p class="txt">Sie haben derzeit keinen anstehenden Veranstaltungen.</p>
         <!--else Veranstaltungen gefunden-->
-        <!--foreach Schleife Beginn-->
+        <!--foreach Schleife Beginn max 3 Veranstaltungen-->
         <form action="../../VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="#id#">
             <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
@@ -63,6 +62,7 @@
     </div>
 
 </div>
+
 <!--<footer>
    <div>
        <a href="#">Impressum</a>

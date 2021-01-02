@@ -8,7 +8,6 @@ session_start();
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="anfrage.css">
-    <link rel="stylesheet" type="text/css" href="../popup.css">
     <title>Anfrage erstellen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -72,13 +71,13 @@ echo "<br>" . $query_status;
 
 <nav>
     <ul>
-        <li><a href="../VeranstalterStartseite.php">Startseite</a></li>
+        <li><a href="../Startseite/VeranstalterStartseite.php">Startseite</a></li>
         <li><a class="active" href="VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a href="../VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li><a href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>

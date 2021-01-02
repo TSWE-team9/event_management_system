@@ -51,7 +51,7 @@ while($sql->fetch()) {
     switch ($res_rolle){
         //Veranstalter ist Rolle 1
         case 1:
-            header("Location: ../UserSeiten/Veranstalter/VeranstalterStartseite.php");
+            header("Location: ../UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php");
             break;
         //Teilnehmer ist Rolle 2
         case 2:

@@ -15,8 +15,8 @@ if($conn->connect_error){
 }
 
 //Aktualisieren der Angebote und Veranstaltungen (Status)
-include "../angebot_refresh.php";
-include "../veranstaltung_refresh.php";
+include "../../angebot_refresh.php";
+include "../../veranstaltung_refresh.php";
 angebot_refresh();
 veranstaltung_refresh();
 
@@ -49,9 +49,7 @@ $V_ID = 4;
 
     </ul>
 </nav>
-
-<h1 style="text-align: center; margin-top: 40px;">Meine Veranstaltungen</h1>
-
+<br><br><br><br><br>
 <!--Tabs auf der linken Seite zum auswählen der gewünschten Liste-->
 <div class="tab">
   <button class="tablinks" onclick="openList(event, 'aktuelle')" id="defaultOpen">aktuelle Veranstaltungen</button>
@@ -62,8 +60,13 @@ $V_ID = 4;
 
 <!--Tab auf der rechten Seite mit Liste der aktuellen Veranstaltungen-->
 <div id="aktuelle" class="tabcontent">
-  <h3 style="text-align: center;">aktuelle Veranstaltungen</h3>
+  <h3 class="hdln">aktuelle Veranstaltungen</h3>
   <!--SQL Abfrage-->
+  <!--TODO-->
+  <!--if else-->
+  <!--if keine Veranstaltungen gefunden-->
+  <p class="txt">Sie haben derzeit keine aktuellen Veranstaltungen</P>
+  <!--else Veranstaltungen gefunden-->
     <?php
     //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
     $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2";
@@ -83,14 +86,19 @@ $V_ID = 4;
 
 <!--Tab auf der rechten Seite mit Liste der zukünftigen Veranstaltungen-->
 <div id="zukünftige" class="tabcontent">
-  <h3 style="text-align: center;">zukünftige Veranstaltungen</h3>
+  <h3 class="hdln">zukünftige Veranstaltungen</h3>
   <!--SQL Abfrage-->
+  <!--TODO-->
+  <!--if else-->
+  <!--if keine Veranstaltungen gefunden-->
+  <p class="txt">Sie haben derzeit keine geplanten Veranstaltungen</P>
+  <!--else Veranstaltungen gefunden-->
     <?php
     //Abfrage aller aktiven (Status = 1) Veranstaltungen des Veranstalters
 
     $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 1";
     $res2 = $conn->query($query2);
-
+  
     //Ausgabe der Abfrage in HTML
     while($i = $res2->fetch_row()){
     ?>
@@ -105,8 +113,13 @@ $V_ID = 4;
 
 <!--Tab auf der rechten Seite mit Liste der abgeschlossenen Veranstaltungen-->
 <div id="abgeschlossene" class="tabcontent">
-  <h3 style="text-align: center;">abgeschlossene Veranstaltungen</h3>
+  <h3 class="hdln">abgeschlossene Veranstaltungen</h3>
   <!--SQL Abfrage-->
+  <!--TODO-->
+  <!--if else-->
+  <!--if keine Veranstaltungen gefunden-->
+  <p class="txt">Sie haben noch keine abgeschlossenen Veranstaltungen</P>
+  <!--else Veranstaltungen gefunden-->
     <?php
     //Abfrage aller abgelaufenen (Status = 3) Veranstaltungen des Veranstalters
 
@@ -127,8 +140,13 @@ $V_ID = 4;
 
 <!--Tab auf der rechten Seite mit Liste von Angeboten-->
 <div id="angebote" class="tabcontent">
-  <h3 style="text-align: center;">Veranstaltungsangebote</h3>
+  <h3 class="hdln">Veranstaltungsangebote</h3>
   <!--SQL Abfrage-->
+  <!--TODO-->
+  <!--if else-->
+  <!--if keine Veranstaltungen gefunden-->
+  <p class="txt">Sie haben derzeit keine Angebote des Betreibers</P>
+  <!--else Veranstaltungen gefunden-->
     <?php
     //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten Veranstalters
     $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
+    
+    <title>Startseite</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
@@ -11,17 +13,54 @@
 <nav>
     <ul>
         <li><a class="active" href="VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="VeranstalterAnfrage.php">Angebot einholen</a></li>
+        <li><a href="../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a href="../VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li><a href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>
 
-<p>Startseite</p>
+<div class="container-50-outer">
+
+    <div class="container-80-inner">
+        <h2 class="hdln">laufende Veranstaltungen</h2>
+
+        <!--TODO-->
+        <!--SQL Abfrage-->
+        <!--if else-->
+        <!--if keine Veranstaltungen gefunden-->
+        <p class="txt">Sie haben derzeit keine laufenden Veranstaltungen.</p>
+        <!--else Veranstaltungen gefunden-->
+        <!--foreach Schleife Beginn max 3 Veranstaltungen-->
+        <form action="../../VeranstaltungsSeite.php" method="post">
+            <input type="hidden" name="veranstaltung_id" value="#id#">
+            <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
+        </form> 
+        <!--foreach Schleife Ende-->
+    </div>
+
+    <br><br><br>
+
+    <div class="container-80-inner">
+        <h2 class="hdln">Angebote</h2>
+
+        <!--TODO-->
+        <!--SQL Abfrage-->
+        <!--if else-->
+        <!--if keine Veranstaltungen gefunden-->
+        <p class="txt">Sie haben derzeit keine Angebote des Betreibers.</p>
+        <!--else Veranstaltungen gefunden-->
+        <!--foreach Schleife Beginn max 3 Veranstaltungen-->
+        <form action="../../VeranstaltungsSeite.php" method="post">
+            <input type="hidden" name="veranstaltung_id" value="#id#">
+            <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
+        </form> 
+        <!--foreach Schleife Ende-->
+    </div>
+</div>
 <!--<footer>
    <div>
        <a href="#">Impressum</a>

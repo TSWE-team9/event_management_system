@@ -48,7 +48,7 @@ $j = $res3->fetch_row();
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="./CSS/veranstaltungen.css">
+    <link rel="stylesheet" type="text/css" href="CSS/veranstaltungen.css">
     <title>Veranstaltungsseite</title>
 </head>
 
