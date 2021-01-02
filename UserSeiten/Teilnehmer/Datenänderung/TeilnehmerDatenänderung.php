@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../CSS/Startseite.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="../../CSS/modal.css" type="text/css">
     <link rel="stylesheet" href="TeilnehmerDatenänderung.css" type="text/css">
-    <link rel="stylesheet" href="../../modal.css" type="text/css">
-    <title>Title</title>
+    <title>Datenänderung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>

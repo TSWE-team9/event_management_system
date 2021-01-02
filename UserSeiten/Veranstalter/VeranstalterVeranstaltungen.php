@@ -30,7 +30,7 @@ $V_ID = 4;
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../listtabs.css">
+    <link rel="stylesheet" type="text/css" href="../tabs.css">
     <link rel="stylesheet" type="text/css" href="../listen.css">
     <title>Meine Veranstaltungen</title>
 

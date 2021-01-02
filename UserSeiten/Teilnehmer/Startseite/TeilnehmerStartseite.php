@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../../veranstaltungen.css">
-    <link rel="stylesheet" type="text/css" href="../../listen.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/veranstaltungen.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
     
     <title>Sartseite</title>
 
@@ -24,11 +24,17 @@
     </ul>
 </nav>
 
-<div class="container-80" style=" margin-top: 150px;">
-    <h1 style="text-align: center; margin-bottom:50px ;">Startseite</h1>
+<div class="container-50-outer">
 
-    <div class="container-80">
-        <h2 style="text-align: center;">laufende Veranstaltungen</h2>
+    <div class="container-80-inner">
+        <h2 class="hdln">laufende Veranstaltungen</h2>
+
+        <!--TODO-->
+        <!--SQL Abfrage-->
+        <!--if else-->
+        <!--if keine Veranstaltungen gefunden-->
+        <p class="txt">Sie haben derzeit keine laufenden Veranstaltungen.</p>
+        <!--else Veranstaltungen gefunden-->
         <!--foreach Schleife Beginn-->
         <form action="../../VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="#id#">
@@ -39,8 +45,15 @@
 
     <br><br><br>
 
-    <div class="container-80">
-        <h2 style="text-align: center;">anstehende Veranstaltungen</h2>
+    <div class="container-80-inner">
+        <h2 class="hdln">anstehende Veranstaltungen</h2>
+
+        <!--TODO-->
+        <!--SQL Abfrage-->
+        <!--if else-->
+        <!--if keine Veranstaltungen gefunden-->
+        <p class="txt">Sie haben derzeit keinen anstehenden Veranstaltungen.</p>
+        <!--else Veranstaltungen gefunden-->
         <!--foreach Schleife Beginn-->
         <form action="../../VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="#id#">
@@ -73,7 +86,6 @@
 
     </div>
 </div>
-
 
 </body>
 </html>

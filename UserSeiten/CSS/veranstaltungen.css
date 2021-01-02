@@ -1,12 +1,14 @@
+/*CSS Datei zum Stylen der Veranstaltungsseite*/
+
 * {box-sizing: border-box}
 
 .container-80 {
     border-radius: 5px;
     background-color: #f2f2f285;
     padding: 20px;
-    width: 50%;
+    width: 80%;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 50px;
 }
 
 .col-info {

@@ -38,11 +38,17 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/teilnehmer.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/VeranstalterVeranstaltungen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/listen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/listtabs.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/modal.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/veranstaltungen.css" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +117,7 @@
       <workItem from="1609408079864" duration="441000" />
       <workItem from="1609408660632" duration="2793000" />
       <workItem from="1609412517422" duration="54000" />
-      <workItem from="1609579347899" duration="1889000" />
+      <workItem from="1609579347899" duration="4556000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>

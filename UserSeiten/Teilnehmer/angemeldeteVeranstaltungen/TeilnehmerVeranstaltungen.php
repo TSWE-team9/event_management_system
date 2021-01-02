@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../../veranstaltungen.css">
-    <link rel="stylesheet" type="text/css" href="../../listen.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
 
     <title>Angemeldete Veranstaltungen</title>
 
@@ -24,9 +23,15 @@
     </ul>
 </nav>
 
-<h1 style="text-align: center; margin-top: 50px;">Angemeldete Veranstaltungen</h1>
+<div class="container-50-outer">
+    <h1 class="hdln">Angemeldete Veranstaltungen</h1>
 
-<div class="container-80">
+    <!--TODO-->
+    <!--SQL Abfrage-->
+    <!--if else-->
+    <!--if keine Veranstaltungen gefunden-->
+    <p class="txt">Sie sind zur Zeit zu keinen Veranstaltungen angemeldet.</p>
+    <!--else Veranstaltungen gefunden-->
     <!--foreach Schleife Beginn-->
     <form action="../../VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="#id#">
