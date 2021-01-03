@@ -236,9 +236,18 @@ if($Beginn <= $today + 28){
     echo "<br>" . $error1;
     }
     if ($error_occured2 == true) {
-    echo "<br>" . $error2;
-    }
-?>
 
+        echo "<div id='popup1' class='overlay'>" ;
+	echo  "<div class='popup'>";
+		echo "<h2>Fehler</h2>" ;
+		echo "<a class='close' href='KapazitätenabfrageV1.php'>&times;</a>" ;
+		echo "<div class='content'>" .$error2. "</div>";
+	echo "</div>" ;
+echo "</div>" ;
+}
+
+//    echo "<div id='popup1' class='overlay'>" ,"<div class='popup'>"  .$error2. "<a class='close' href='#'>&times;</a>" ,"</div>" ,"</div>";
+
+?>
 </body>
 </html>
