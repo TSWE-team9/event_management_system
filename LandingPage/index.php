@@ -141,7 +141,7 @@
                 </form>
               </div>
 
-            <button id="veranstaltungen" href="../UserSeiten/Gast/Veranstaltungsangebot.php">Veranstaltungsangebot</button>
+            <a href="../UserSeiten/Gast/Veranstaltungsangebot.php"><button id="veranstaltungen">Veranstaltungsangebot</button></a>
 
         </div>
             
