@@ -126,6 +126,6 @@ echo "<br>" . $query_status;
     </form>
 </div>
 
-<script src="anfrage.js"></script>
+<script src="VeranstalterAnfrage.js"></script>
 </body>
 </html>
