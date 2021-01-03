@@ -1,7 +1,7 @@
 <?php echo
 '<nav>
     <ul>
-        <li><a id=" startseite" class="active" href="TeilnehmerStartseite.php">Startseite</a></li>
+        <li><a id="startseite" href="TeilnehmerStartseite.php">Startseite</a></li>
         <li><a href="../anzeigenAngebot/TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>

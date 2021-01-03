@@ -9,6 +9,7 @@
     width: 80%;
     margin: auto;
     margin-top: 50px;
+    min-width: 1200px;
 }
 
 .col-info {
@@ -54,8 +55,7 @@
     margin: auto;
     border: none;
     cursor: pointer;
-    width: 80%;
-    float: right;
+    width: 30%;
     opacity: 0.9;
 }
 
@@ -63,3 +63,6 @@
     opacity: 1;
 }
 
+.center {
+    text-align: center;
+}

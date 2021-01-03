@@ -169,11 +169,9 @@ if(isset($_POST["angebot_ablehnen"])){
                     <h1>Anfragedatum ändern</h1>
                     <p>Geben Sie ein neues Beginn-Datum der Veranstaltung an.</p>
                     <p id="ltag"></p>
-                    <p id="d"></p>
-                    <p id="t"></p>
                     <div class="modal_clearfix" onmouseover="enableBtn()">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
-                        <input type="hidden" name="dauer" id="dauer" value="<?php echo $Dauer; ?>"> <!--hier noch dauer der veranstaltung-->
+                        <input type="hidden" name="dauer" id="dauer" value="<?php echo $Dauer; ?>">
                         <input type="date" name="new_date" id="new_date" required>
                         <button class="modal_btnconfirm" type="submit"  id="btn_new_date" name="angebot_aendern" onclick="document.getElementById('id02').style.display='none'">Anfragedatum ändern</button>
                         <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>

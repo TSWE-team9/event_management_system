@@ -49,6 +49,7 @@ $j = $res3->fetch_row();
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="CSS/veranstaltungen.css">
+    <link rel="stylesheet" type="text/css" href="CSS/modal.css">
     <title>Veranstaltungsseite</title>
 </head>
 
@@ -178,6 +179,95 @@ $j = $res3->fetch_row();
             <p class="desc"><?php echo $kosten . "€ pro Person";?></p>
         </div>
     </div>
+ 
+</div>
 
+<div class="container-80">
+    <h1 class="center">Gast</h1>
+    <p class="center">Anmeldung nur als registrierter Nutzer möglich.</p>
+    <a class="center" href="../LandingPage/index.php">zur Registrierung</a>
+</div>
+
+<div class="container-80">
+    <h1 class="center">Teilnehmer</h1>
+    <!--if nicht angemeldet-->
+    <!--Button zum Modal öffnen-->
+    <button class="btn" id="aendern" onclick="document.getElementById('id01').style.display='block'">Anmelden</button>
+    <!--Modal falls Anmeldezeitraum noch offen-->
+    <div id="id01" class="modal">
+        <form class="modal_content" action="#" method="post"> 
+            <div class="modal_container">
+                <h1>Veranstaltungsanmeldung</h1>
+                <p>Wollen Sie sich verbindlich zu dieser Veranstaltung anmelden?</p>
+                <div class="modal_clearfix">  
+                    <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
+                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Anmelden</button>
+                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!--Modal falls Anmeldezeitraum abgelaufen-->
+    <!--
+        <div id="id01" class="modal">
+        <div class="modal_content"> 
+            <div class="modal_container">
+                <h1>Veranstaltungsanmeldung</h1>
+                <p>Der Anmeldezeitraum ist abgelaufen und eine Anmeldung ist nicht mehr möglich.</p>
+                <div class="modal_clearfix">
+                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    -->   
+
+    <!--else anmgemeldet-->
+    <button class="btn" id="aendern" onclick="document.getElementById('id02').style.display='block'">Abmelden</button>
+    <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
+    <!--
+    <div id="id02" class="modal">
+        <form class="modal_content" action="#" method="post"> 
+            <div class="modal_container">
+                <h1>Veranstaltungsabmeldung</h1>
+                <p>Wollen Sie sich wircklich von dieser Veranstaltung abmelden?</p>
+                <div class="modal_clearfix">  
+                    <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
+                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Abmelden</button>
+                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    --> 
+    <!--Modal falls Abmeldezeitraum abgelaufen-->
+    <div id="id02" class="modal">
+        <div class="modal_content"> 
+            <div class="modal_container">
+                <h1>Veranstaltungsanmeldung</h1>
+                <p>Der Abmeldezeitraum ist abgelaufen und eine Abmeldung ist nicht mehr möglich.</p>
+                <div class="modal_clearfix">
+                    <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">OK</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>
+
+<div class="container-80">
+    <h1 class="center">Veranstalter</h1>
+    <form action="#" method="post">
+        <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
+        <label for="t_liste"></label>
+        <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="t_liste" id=" t_liste" />
+        <button class="btn">Teilnehmerliste übermitteln</button> 
+    </form>
+</div>
+
+<script>
+     // Get the modal
+    var modal1 = document.getElementById('id01');
+    var modal2 = document.getElementById('id02');
+</script>
 </body>
 </html>

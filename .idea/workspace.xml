@@ -37,11 +37,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.js" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/VeranstaltungsSeite.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +115,7 @@
       <workItem from="1609412517422" duration="54000" />
       <workItem from="1609579347899" duration="9209000" />
       <workItem from="1609588989072" duration="2055000" />
-      <workItem from="1609665435615" duration="11929000" />
+      <workItem from="1609665435615" duration="17461000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>

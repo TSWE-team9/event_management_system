@@ -35,6 +35,7 @@ $B_ID = $_SESSION["b_id"];
 </head>
 <body>
 <?php include 'header.php';?>
+<script>document.getElementById("startseite").classList.add("active");</script>
 
 <div class="container-50-outer">
 
