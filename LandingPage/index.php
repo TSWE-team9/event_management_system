@@ -11,6 +11,8 @@
         <div class="login-box">
           <img id="logo" src="img/vmslogo.png">
             <br>
+            <?php include('errors_t.php'); ?>
+            <?php include('errors_v.php'); ?>
              <button class="accordion">Login</button>
                 <div class="panel">
                   <form action="login.php" method="post">
