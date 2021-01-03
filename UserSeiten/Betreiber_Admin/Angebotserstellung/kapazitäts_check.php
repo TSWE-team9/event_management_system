@@ -99,12 +99,27 @@ if(isset($_POST["Ablehnen"])){
 
     $status = $conn->query("UPDATE Anfrage_Angebot SET Status = 5 WHERE BeAr_ID = $anfrage_id");
     if($status === FALSE){
-        echo "Es ist ein Fehler bei der Ablehnung der Anfrage aufgetreten";
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='Angebotserstellung.php'>&times;</a>" ;
+        echo "<div class='content' >" , 'Die Anfrage konnte nicht abgelehnt werden ';
+        echo "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
     }
     else {
         //TODO: Ausgabe in HTML
-        echo "Die Anfrage wurde erfolgreich abgelehnt";
-        header("Location: Angebotserstellung.php");
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Bestätigung</h2>" ;
+        echo "<a class='close' href='Angebotserstellung.php'>&times;</a>" ;
+        echo "<div class='content' >" , 'Die Anfrage wurde erfolgreich abgelehnt ';
+        echo "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
+//        echo "Die Anfrage wurde erfolgreich abgelehnt";
+//        header("Location: Angebotserstellung.php");
     }
 
 }
@@ -237,7 +252,7 @@ if($Beginn <= $today + 28){
     }
     if ($error_occured2 == true) {
 
-        echo "<div id='popup1' class='overlay'>" ;
+        echo "<div class='overlay'>" ;
 	echo  "<div class='popup'>";
 		echo "<h2>Fehler</h2>" ;
 		echo "<a class='close' href='KapazitätenabfrageV1.php'>&times;</a>" ;
@@ -246,7 +261,7 @@ if($Beginn <= $today + 28){
 echo "</div>" ;
 }
 
-//    echo "<div id='popup1' class='overlay'>" ,"<div class='popup'>"  .$error2. "<a class='close' href='#'>&times;</a>" ,"</div>" ,"</div>";
+
 
 ?>
 </body>
