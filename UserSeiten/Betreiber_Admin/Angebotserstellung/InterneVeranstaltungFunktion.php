@@ -40,6 +40,13 @@ $res2 = mysqli_query($db, $query_v);
 
 if ($res2 === FALSE) {
     $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)";
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>" ;
+    echo "<a class='close' href='InterneVeranstaltungen.php'> &times;</a>" ;
+    echo "<div class='content' >"  .$error."</div>";
+    echo "</div>" ;
+    echo "</div>" ;
     $error_occured = true;
 } else {
     //Endgültige Belegung des Raumes im Kalender

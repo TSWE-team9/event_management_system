@@ -20,7 +20,16 @@ if($conn->connect_error){
 $query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
 if($res->num_rows == 0){
-    echo "Bei der Abfrage der Anfragen ist ein Fehler aufgetreten";
+//    Fehlermeldung wenn die Abfrage nicht funktioniert 
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>" ;
+    echo "<a class='close' href='Angebotserstellung.php'>&times;</a>" ;
+    echo "<div class='content' >" , 'Bei der Abfrage der Anfragen ist ein Fehler aufgetreten ';
+    echo "</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+//    echo "Bei der Abfrage der Anfragen ist ein Fehler aufgetreten";
 }
 
 ?>

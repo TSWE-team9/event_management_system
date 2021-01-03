@@ -46,11 +46,11 @@ session_start()
     <h3 style="text-align: center;">Aktuelle Veranstaltungen</h3>
     <!--SQL Abfrage-->
     <?php
-    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Betreibers
     $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 2";
     $res1 = $db->query($query1);
 
-    if($res1->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine aktuellen Veranstaltungen</P>";}
+    if($res1->num_rows == 0){echo "<p class='txt' >Sie haben derzeit keine aktuellen Veranstaltungen</p>";}
 
     //Ausgabe der Abfrage in HTML
     while($i = $res1->fetch_row()){
@@ -108,11 +108,10 @@ session_start()
     <!--foreach Schleife Ende-->
 
 </div>
-<!-Buttons zum Anlegen einer neuen Veranstaltung stornieren einer bestehenden Veranstaltung und einspielen der Teilnehmerliste-->
+<!-Button zum Anlegen einer neuen Veranstaltung -->
 <div class="container">
 <a href="KapazitätenabfrageV3.php" class="Auslösen" type="button" >Veranstaltung hinzufügen &#10010;</a>
-<button type="submit"  name="Kapazitätsprüfung3" class="Auslösen"> Teilnehmerliste einspielen &#9997;</button>
-    <a href="" class="Auslösen" type="button" >Veranstaltung stornieren &#10006;</a>
+
 </div>
 
 <script>

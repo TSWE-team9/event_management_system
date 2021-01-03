@@ -1,6 +1,32 @@
 <?php
 session_start();
 ?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Raumreservierung</title>
+        <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
+        <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+    </head>
+
+    <body>
+    <nav>
+        <ul class="header">
+            <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+            <li class="headerel"><a class= "active" href="Angebotserstellung.php">Angebotserstellung</a></li>
+            <li class="headerel"><a href="#">Abrechnung</a></li>
+            <li class="headerel"><a  href="Raumverwaltung.php">Raumverwaltung</a></li>
+            <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+            <li class="headerel"><a href="#">Statistiken</a></li>
+            <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
+            <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
+
+        </ul>
+    </nav>
+    </body>
+</html>
 
 <?php
 //Zugangsdaten zur Datenbank
@@ -38,10 +64,24 @@ $update_query = "UPDATE Anfrage_Angebot SET R_ID = $R_ID, Beginn = '$Beginn', St
 
 $res = $conn->query($update_query);
 if($res === FALSE){
-    $error = "Fehler: Datenbank UPDATE in Anfrage hat nicht funktioniert.";
+    $error = " Datenbank UPDATE in Anfrage hat nicht funktioniert.";
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Fehler</h2>" ;
+    echo "<a class='close' href='Angebot_erstellen.php'> &times;</a>" ;
+    echo "<div class='content' >"  .$error."</div>";
+    echo "</div>" ;
+    echo "</div>" ;
 }else {
-    echo "Das Angebot für Raum ". $R_ID . " zum Preis von " . $Angebotspreis . " wurde erfolgreich erstellt.";}
-
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>" ;
+    echo "<a class='close' href='Angebotserstellung.php'> &times;</a>" ;
+    echo "<div class='content' >" ,  'Das Angebot für Raum ". $R_ID . " zum Preis von " . $Angebotspreis . " wurde erfolgreich erstellt.' ,"</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+//    echo "Das Angebot für Raum ". $R_ID . " zum Preis von " . $Angebotspreis . " wurde erfolgreich erstellt.";
+}
 
 
 

@@ -72,14 +72,29 @@ if($status){
         $res = $conn->query($insert_query);
         if($res === TRUE){
             $query_status = "Reservierung von Raum " . $R_ID . " war erfolgreich. ";
-            echo $query_status;
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Bestätigung</h2>" ;
+            echo "<a class='close' href='Angebot_erstellen.php'> &times;</a>" ;
+            echo "<div class='content' >"  .$query_status."</div>";
+            echo "</div>" ;
+            echo "</div>" ;
+//            echo $query_status;
 
-            echo "<a href='Angebot_erstellen.php'>Angebot erstellen</a>";
+//            echo "<a href='Angebot_erstellen.php'>Angebot erstellen</a>";
 
         }
         else{
             $query_status = "Es ist ein Fehler beim Eintragen in den Kalender aufgetreten";
-            echo $query_status;
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Entschuldingung es tut uns leid </h2>" ;
+            echo "<a class='close' href='Angebotserstellung.php'>&times;</a>" ;
+            echo "<div class='content' >"  .$query_status."</div>";
+            echo "</div>" ;
+            echo "</div>" ;
+
+//            echo $query_status;
         }
 
 
@@ -98,18 +113,39 @@ if($status){
         $res = $conn->query($insert_query);
         if($res === TRUE){
             $query_status = "Belegung von Raum " . $R_ID . " war erfolgreich.";
-            echo $query_status;
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Bestätigung</h2>" ;
+            echo "<a class='close' href='InterneVeranstaltungen.php'>&times;</a>" ;
+            echo "<div class='content' >"  .$query_status."</div>";
+            echo "</div>" ;
+            echo "</div>" ;
+//            echo $query_status;
 
-            header("Location: VeranstaltungBetreiber.php");
+//            header("Location: VeranstaltungBetreiber.php");
         }
         else{
             $query_status = "Es ist ein Fehler beim Eintragen in den Kalender aufgetreten";
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Fehler</h2>" ;
+            echo "<a class='close' href='InterneVeranstaltungen.php'>&times;</a>" ;
+            echo "<div class='content' >"  .$query_status."</div>";
+            echo "</div>" ;
+            echo "</div>" ;
             echo $query_status;
         }
     }
 
     else{
         $query_status = "Die Datenbankabfrage konnte nicht durchgeführt werden, da ein Session Fehler aufgetreten ist";
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='InterneVeranstaltungen.php'>&times;</a>" ;
+        echo "<div class='content' >"  .$query_status."</div>";
+        echo "</div>" ;
+        echo "</div>" ;
     }
 }
 
