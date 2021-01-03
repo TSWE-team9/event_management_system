@@ -36,6 +36,13 @@ function dateToHtml(date) {
     var result = [year, month, day].join("-");
     return result;
 }
+    
+// Veranstaltung muss mindestens 4 Wochen in der zukunft liegen
+var currentDate = new Date();
+var minDate = dateToHtml(addDays(currentDate, 28));
+document.getElementById("new_date").value = minDate;
+document.getElementById("new_date").min = minDate;
+
 
 // gets current day of the week and returns number of possible event days -> events duration is limited to one week (monday to sunday)
 function dayOfWeek(date) {
@@ -81,27 +88,59 @@ function dayOfWeek(date) {
     return result;
 }
 
-
-// get day of the picked date
+// enable and disbale Button
 function enableBtn() {
-    var pickedDate = new Date(document.getElementById("new_date").value);
-    var maxDays = dayOfWeek(pickedDate);
-
+    var maxDays = dayOfWeek(new Date(document.getElementById("new_date").value));
     var days = document.getElementById("dauer").value;
 
     if(days <= maxDays) {
-        var enbale = document.getElementById("btn_new_date").disbled = false;
+        document.getElementById("btn_new_date").disabled = false;
     } else if(days > maxDays) {
-        var disable = document.getElementById("btn_new_date").disbled = true;
-    }
-    
+        document.getElementById("btn_new_date").disabled = true;
+    }  
 }
-    
-// Veranstaltung muss mindestens 4 Wochen in der zukunft liegen
-var currentDate = new Date();
-var minDate = dateToHtml(addDays(currentDate, 28));
-var initialDate = document.getElementById("new_date").value = minDate;
-var minDateHtml = document.getElementById("new_date").min = minDate;
-
 // Veranstaltung darf nicht über ein Wochenende hinausgehen
-var disableBtn = document.getElementById("btn_new_date").disabled = true;
+document.getElementById("btn_new_date").disabled = false;
+
+document.getElementById("btn_new_date").addEventListener("mouseover", enableBtn);
+
+
+function latestDay(duration) {
+    var result;
+
+    switch(duration) {
+        case 1:
+            result = "Sonntag";
+            break;
+
+        case 2:
+            result = "Samstag";
+            break;
+
+        case 3:
+            result = "Freitag";
+            break;
+
+        case 4:
+            result = "Donnerstag";
+            break;
+        
+        case 5: 
+            result = "Mittwoch";
+            break;
+
+        case 6:
+            result = "Dienstag";
+            break;
+
+        case 7:
+            result = "Montag";
+            break;
+    }
+    return result;
+}
+
+// Anzeige des spätesten Tages
+// var tag = latestDay(getElementById("dauer").value);
+// document.getElementById("ltag").innerHTML = "Die Veranstaltung kann spätestens an einem " + tag + " beginnen";
+document.getElementById("ltag").innerHTML = "hallo";
