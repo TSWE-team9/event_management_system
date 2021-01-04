@@ -27,7 +27,7 @@ body {
    margin-bottom: 5em;
 }
 
-label, input, textarea {
+label, input, textarea, output {
     display: block;
     width: 100%;
     font-size: 12pt;
@@ -35,7 +35,7 @@ label, input, textarea {
     font-family: "Spartan", sans-serif;
 }
 
-input {
+input,output {
     margin-bottom: 24pt;
 }
 /*Styling des Hinweises */
@@ -60,7 +60,7 @@ em {
     font-weight: bold;
 }
 
-input, textarea,fieldset {
+input, textarea,fieldset,output {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     background: #f8f4e5;
