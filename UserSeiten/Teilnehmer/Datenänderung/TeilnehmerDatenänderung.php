@@ -99,7 +99,7 @@
                 <p>Wollen Sie ihr Konto wircklich löschen?</p>
                 <div class="modal_clearfix">
                     <button class="modal_btnconfirm" type="submit" name="acc_löschen" onclick="document.getElementById('id01').style.display='none'">Löschen</button>
-                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
