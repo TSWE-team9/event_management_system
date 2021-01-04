@@ -105,7 +105,7 @@ if(isset($_POST["Stornieren"])) {
         $error_occured = true;
     }
 
-    //Ausgabe möglicher Fehlermeldungen
+    //TODO Ausgabe möglicher Fehlermeldungen
     if($error_occured){
         echo $error;
     }

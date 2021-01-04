@@ -50,9 +50,9 @@ if(isset($_POST["mitteilung_senden"])){
         }
     }
 
-    //Fehlermeldung ausgeben
+    //TODO Fehlermeldung ausgeben
     else {
-        echo "Fehler: Es wurden keine Nachrichten verschickt (Keine Teilnehmer bzw. Fehler bei der Abfrage";
+        echo "Fehler: Es wurden keine Nachrichten verschickt (Keine Teilnehmer bzw. Fehler bei der Abfrage)";
     }
 
 }

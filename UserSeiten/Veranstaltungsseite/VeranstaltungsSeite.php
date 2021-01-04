@@ -199,8 +199,8 @@ $j = $res3->fetch_row();
  
 </div>
 
-//Anzeige Gast
 <?php
+//Anzeige für Rolle Gast, keine Buttons
 if($_SESSION["rolle"]==0){
 ?>
 <div class="container-80">
@@ -211,6 +211,7 @@ if($_SESSION["rolle"]==0){
 <?php }?>
 
 <?php
+//Anzeige für Rolle Veranstalter
 if($_SESSION["rolle"]==2){
 ?>
 <div class="container-80">
@@ -281,6 +282,7 @@ if($_SESSION["rolle"]==2){
 <?php }?>
 
 <?php
+//Anzeige für Rolle Teilnehmer
 if($_SESSION["rolle"]==1){
 ?>
 <div class="container-80">
@@ -295,12 +297,14 @@ if($_SESSION["rolle"]==1){
 <?php }?>
 
 <?php
+//Anzeige für Rolle Betreiber
 if($_SESSION["rolle"]==3){
 ?>
     <!--Buttons für Betreiber-->
 <?php }?>
 
 <?php
+//Anzeige für Rolle Admin
 if($_SESSION["rolle"]==4){
     ?>
     <!--Buttons für Admin (falls nicht benötigt einfach löschen)-->
