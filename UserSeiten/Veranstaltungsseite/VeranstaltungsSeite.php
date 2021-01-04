@@ -3,11 +3,11 @@ session_start();
 
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
-    case 0: //header Gast
+    case 0: //header Gast -> kein header
         break;
-    case 1: //header Veranstalter
+    case 1:  include 'headerVeranstalter.php';    //header Veranstalter
         break;
-    case 2: //header Teilnehmer
+    case 2:  include 'headerTeilnehmer.php';      //header Teilnehmer
         break;
     case 3: //header Betreiber
         break;
