@@ -5,6 +5,7 @@
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/veranstaltungen.css">
     <title>Veranstaltung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>

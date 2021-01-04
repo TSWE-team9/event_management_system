@@ -184,7 +184,7 @@ if(isset($_POST["annahme"])) {
                 <small>Gesamtkosten pro Teilnehmern in Euro</small>
             </div>
         </div>
-
+        <br><br>
         <div class="row">
             <button class="btnanfrage" type="button" id="erstellen" name="erstellen" onclick="document.getElementById('id01').style.display='block'">Veranstaltung erstellen</button>
             <a href="../VeranstalterVeranstaltungen.php">zurück zu Veranstaltungen</a>
@@ -199,7 +199,7 @@ if(isset($_POST["annahme"])) {
                     <p>Wollen Sie diese Veranstaltung erstellen?</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>"><!--TODO angebot id richtig? aus angebot übernommen-->
-                        <button class="modal_btnconfirm" type="submit" name="v_erstellen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>
+                        <button class="modal_btnconfirm" type="submit" name="v_erstellen" onclick="document.getElementById('id01').style.display='none'">Erstellen</button>
                         <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
