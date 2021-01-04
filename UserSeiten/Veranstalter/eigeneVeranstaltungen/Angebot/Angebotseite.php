@@ -174,7 +174,7 @@ if(isset($_POST["angebot_ablehnen"])){
                         <input type="hidden" name="dauer" id="dauer" value="<?php echo $Dauer; ?>">
                         <input type="date" name="new_date" id="new_date" required>
                         <button class="modal_btnconfirm" type="submit"  id="btn_new_date" name="angebot_aendern" onclick="document.getElementById('id02').style.display='none'">Anfragedatum ändern</button>
-                        <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
+                        <button class="modal_btnabort" type="button" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
             </form>
