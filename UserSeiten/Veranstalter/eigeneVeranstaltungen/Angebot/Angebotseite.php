@@ -136,7 +136,7 @@ if(isset($_POST["angebot_ablehnen"])){
 
         <!--Button zur Ablehnung des Angebots-->
         <div class="col-33">
-            <button class="btn" id="ablehnen" onclick="document.getElementById('id01').style.display='block'">Angebot ablehnen</button>
+            <button class="btn" type="button" id="ablehnen" onclick="document.getElementById('id01').style.display='block'">Angebot ablehnen</button>
         </div>
         <!--Modal wenn Veranstalter auf Ablehnen klickt-->
         <div id="id01" class="modal">
@@ -147,7 +147,7 @@ if(isset($_POST["angebot_ablehnen"])){
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
                         <button class="modal_btnconfirm" type="submit" name="angebot_ablehnen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>
-                        <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                        <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
             </form>
@@ -159,7 +159,7 @@ if(isset($_POST["angebot_ablehnen"])){
 
         ?>
         <div class="col-33">
-            <button class="btn" id="aendern" onclick="document.getElementById('id02').style.display='block'">Anfragedatum ändern</button>
+            <button class="btn" type="button" id="aendern" onclick="document.getElementById('id02').style.display='block'">Anfragedatum ändern</button>
         </div>
         <!--Modal wenn Veranstalter auf Ändern klickt-->
         <!--TODO Eingrenzung des Datum in Abhängigkeit von der Dauer-->

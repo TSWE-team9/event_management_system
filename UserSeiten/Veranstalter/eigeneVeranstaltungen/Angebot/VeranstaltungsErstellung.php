@@ -186,10 +186,25 @@ if(isset($_POST["annahme"])) {
         </div>
 
         <div class="row">
-            <button class="btnanfrage" id="erstellen" name="v_erstellen" onclick="document.getElementById('id02').style.display='block'">Veranstaltung erstellen</button>
+            <button class="btnanfrage" type="button" id="erstellen" name="erstellen" onclick="document.getElementById('id01').style.display='block'">Veranstaltung erstellen</button>
             <a href="../VeranstalterVeranstaltungen.php">zurück zu Veranstaltungen</a>
         </div>
 
+        <!--Modal wenn Veranstalter auf erstellen klickt-->
+        <div id="id01" class="modal">
+            <div class="modal_content" action="Angebotseite.php" method="post">
+                <div class="modal_container">
+                    <h1>Veranstaltung erstellen</h1>
+                    <p>Eine erfolgreiche Erstellung der Veranstaltung führt zu einem gültigen Vertrag und ist bei etwaiger Stornierung mit Kosten verbunden.</p>
+                    <p>Wollen Sie diese Veranstaltung erstellen?</p>
+                    <div class="modal_clearfix">
+                        <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>"><!--TODO angebot id richtig? aus angebot übernommen-->
+                        <button class="modal_btnconfirm" type="submit" name="v_erstellen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>
+                        <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </form>
 </div>
 
