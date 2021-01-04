@@ -23,6 +23,11 @@
     </ul>
 </nav>
 
+<div class="container-50-outer">
+    <h1>#Veranstaltungstitel#</h1>
+</div>
+
+<script src="SeiteTeilnehmerübermittlung.js"></script>
 
 </body>
 </html>
