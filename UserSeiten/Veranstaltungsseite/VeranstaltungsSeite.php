@@ -48,8 +48,8 @@ $j = $res3->fetch_row();
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="CSS/veranstaltungen.css">
-    <link rel="stylesheet" type="text/css" href="CSS/modal.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <title>Veranstaltungsseite</title>
 </head>
 
@@ -185,7 +185,7 @@ $j = $res3->fetch_row();
 <div class="container-80">
     <h1 class="center">Gast</h1>
     <p class="center">Anmeldung nur als registrierter Nutzer möglich.</p>
-    <a class="center" href="../LandingPage/index.php">zur Registrierung</a>
+    <a class="center" href="../../LandingPage/index.php">zur Registrierung</a>
 </div>
 
 <div class="container-80">

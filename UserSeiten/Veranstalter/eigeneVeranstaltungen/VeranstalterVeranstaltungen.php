@@ -76,7 +76,7 @@ $V_ID = 4;
 
     ?>
   <!--foreach Schleife Beginn-->
-  <form action="../../VeranstaltungsSeite.php" method="post">
+  <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
@@ -102,7 +102,7 @@ $V_ID = 4;
     while($i = $res2->fetch_row()){
     ?>
   <!--foreach Schleife Beginn-->
-  <form action="../../VeranstaltungsSeite.php" method="post">
+  <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
@@ -128,7 +128,7 @@ $V_ID = 4;
     while($i = $res3->fetch_row()){
     ?>
   <!--foreach Schleife Beginn-->
-  <form action="../../VeranstaltungsSeite.php" method="post">
+  <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form>
