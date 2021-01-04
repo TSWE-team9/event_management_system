@@ -1,4 +1,12 @@
-<?php include('register.php') ?>
+<?php
+session_start();
+
+//Default Wert für Session Benutzer Rolle "Gast bzw unangemeldet"
+$_SESSION["rolle"] = 5;
+include('register.php')
+
+?>
+
 <!DOCTYPE html>
 <html lang="de">
     <head>
