@@ -75,3 +75,8 @@ textarea {
     resize: vertical;
     margin: 20px 0px 20px 0px;
 }
+
+.col-50 {
+    float: left;
+    width: 50%;
+}

@@ -29,7 +29,8 @@
 
     <form action="#" method="post">
         <textarea name="nachricht" placeholder="schreiben Sie hier den Inhalt iher Mitteilung" cols="30" rows="10" maxlength="300" required></textarea>
-
+        
+        <!--Button um die Mitteilungsversendung zu bestätigen-->
         <button class="btn" style="float: right;" type="button" onclick="document.getElementById('id01').style.display='block'">Mitteilung versenden</button>
         <!--Modal wenn Veranstalter auf Ablehnen klickt-->
         <div id="id01" class="modal">
@@ -47,11 +48,12 @@
         </div>
     </form>
 
+    <!--Button um zur Veranstaltungsseite zurückzukehren-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="#v_id#"><!--TODO V_ID-->
-        <button type="submit" class="btn" name="veranstaltung">zurück zur Veranstaltung</button>
-  </form>
-  
+        <button type="submit" class="btn" name="veranstaltung">zurück zur Veranstaltung</button> 
+    </form>
+
 </div>
 
 <script src="SeiteMitteilung.js"></script>
