@@ -2,7 +2,7 @@
 session_start();
 
 //Default Wert für Session Benutzer Rolle "Gast bzw unangemeldet"
-$_SESSION["rolle"] = 5;
+$_SESSION["rolle"] = 0;
 include('register.php')
 
 ?>
