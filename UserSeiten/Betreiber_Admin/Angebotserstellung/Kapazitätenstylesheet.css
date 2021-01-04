@@ -1,0 +1,245 @@
+
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+
+}
+/*Styling Formualar und Eingabefelder*/
+body {
+    background: url("../HintergrundRaum.png")  fixed ;
+    /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    font-size: 12pt;
+    font-family: "Spartan", sans-serif;
+    color: #2A293E;
+}
+
+.contact-us {
+    background: #f8f4e5;
+    padding: 50px 100px;
+    border-top: 10px solid #f45702;
+   margin-bottom: 5em;
+}
+
+label, input, textarea {
+    display: block;
+    width: 100%;
+    font-size: 12pt;
+    line-height: 24pt;
+    font-family: "Spartan", sans-serif;
+}
+
+input {
+    margin-bottom: 24pt;
+}
+/*Styling des Hinweises */
+h3 {
+    font-weight: normal;
+    font-size: 10pt;
+    line-height: 24pt;
+    font-style: italic;
+    margin: 0 0 0.5em 0;
+}
+/*Styling Überschrift*/
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+span {
+    font-size: 8pt;
+}
+
+em {
+    color: #f45702;
+    font-weight: bold;
+}
+
+input, textarea,fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+    background: #f8f4e5;
+    padding-left: 5px;
+    outline: none;
+}
+
+input:focus, textarea:focus , .auswahl:focus, .Verfügbarkeit:focus{
+    border: 1px solid #6bd4b1;
+}
+
+textarea {
+    resize: none;
+}
+/*Styling der Radio Buttons */
+input[type='radio']:checked,
+input[type='radio']:not(:checked) {
+    background: transparent;
+    position: relative;
+    visibility: hidden;
+    margin:0;
+    padding:0;
+}
+input[type='checkbox'] + label,
+input[type='radio'] + label {
+    cursor: pointer;
+}
+input[type='radio']:checked + label::before,
+input[type='radio']:not(:checked) + label::before {
+    content:' ';
+    display:inline-block;
+    width: 17px;
+    height:17px;
+    position: relative;
+    top:4px;
+    border: 1px solid #bbb;
+    background: white;
+    margin-right: 1em;
+    box-shadow: inset 0 1px 1px 0 rgba(0,0,0,.1);
+
+}
+input[type=radio]:checked + label::before,
+input[type=radio]:not(:checked) + label::before {
+    border-radius: 30px;
+}
+
+
+input[type='radio']:hover  + label::before {
+    background:#ddd;
+    box-shadow: inset 0 0 0 2px white;
+}
+
+
+input[type='radio']:checked  + label::before {
+    background:#F45702;
+    box-shadow: inset 0 0 0 2px white;
+
+}
+/*Styling der Buttons*/
+#Hinzufügen, .Auslösen, .Abbrechen  {
+    display: block;
+    float: right;
+    line-height: 24pt;
+    padding: 0 20px;
+    border: none;
+    letter-spacing: 2px;
+    transition: 0.2s all ease-in-out;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    margin-top: 30px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+#Hinzufügen, .Auslösen {
+    float: right;
+    background: #f45702;
+    color: white;
+}
+#Hinzufügen:hover, .Auslösen:Hover {
+    background: white;
+    color: #f45702;
+    border-bottom: 2px solid #f45702;
+}
+
+::selection {
+    background: #ffc7b8;
+}
+    .Abbrechen {
+    float: left;
+    line-height: 24pt;
+    background: gray;
+    color: white;
+
+
+}
+    .Abbrechen:hover {
+    background: white;
+    color: #514e4c;
+    border-bottom: 2px solid #302c2a;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+    border: 1px solid #000000;
+    -webkit-text-fill-color: #6bd4b1;
+    -webkit-box-shadow: 0 0 0 1000px #f8f4e5 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+/*Styling der Drop Down List in der Raumreservierung*/
+.auswahl {
+    width: 100%;
+    height: 40px;
+    /*-moz-padding-start: calc(10px - 3px);*/
+    padding-left: 10px;
+    background: white;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    box-shadow: 2px 2px 5px 1px rgb(40, 35, 35);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    /*appearance: none;*/
+    /*display: grid;*/
+}
+.select-wrapper {
+    position: relative;
+    width:30em;
+    margin-bottom: 6em; }
+
+/*Styling des PopUps*/
+.popup h2 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    color: #333;
+    font-family: Tahoma, Arial, sans-serif;
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    /*visibility: hidden;*/
+    /*opacity: 0;*/
+}
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    margin: 10em auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+.popup .close:hover {
+    color: #06D85F;
+}
