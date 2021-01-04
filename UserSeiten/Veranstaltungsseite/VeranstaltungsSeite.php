@@ -1,12 +1,28 @@
 <?php
 session_start();
 
+//Header unterscheidung
+switch ($_SESSION["rolle"]){
+    case 0: //header Gast
+        break;
+    case 1: //header Veranstalter
+        break;
+    case 2: //header Teilnehmer
+        break;
+    case 3: //header Betreiber
+        break;
+    case 4: //header Admin
+        break;
+
+}
+
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
 $db = 'vms_db';
 $user = 'dbuser';
 $pw = 'dbuser123';
 $conn = new mysqli($host, $user, $pw, $db,3306);
+
 
 //Überprüfen ob es einen Verbindungsfehler gab
 if($conn->connect_error){
@@ -182,12 +198,20 @@ $j = $res3->fetch_row();
  
 </div>
 
+//Anzeige Gast
+<?php
+if($_SESSION["rolle"]==0){
+?>
 <div class="container-80">
     <h1 class="center">Gast</h1>
     <p class="center">Anmeldung nur als registrierter Nutzer möglich.</p>
     <a class="center" href="../../LandingPage/index.php">zur Registrierung</a>
 </div>
+<?php }?>
 
+<?php
+if($_SESSION["rolle"]==2){
+?>
 <div class="container-80">
     <h1 class="center">Teilnehmer</h1>
     <!--if nicht angemeldet-->
@@ -253,7 +277,11 @@ $j = $res3->fetch_row();
         </div>
     </div> 
 </div>
+<?php }?>
 
+<?php
+if($_SESSION["rolle"]==1){
+?>
 <div class="container-80">
     <h1 class="center">Veranstalter</h1>
     <form action="#" method="post">
@@ -263,6 +291,19 @@ $j = $res3->fetch_row();
         <button class="btn">Teilnehmerliste übermitteln</button> 
     </form>
 </div>
+<?php }?>
+
+<?php
+if($_SESSION["rolle"]==3){
+?>
+    <!--Buttons für Betreiber-->
+<?php }?>
+
+<?php
+if($_SESSION["rolle"]==4){
+    ?>
+    <!--Buttons für Admin (falls nicht benötigt einfach löschen)-->
+<?php }?>
 
 <script>
      // Get the modal

@@ -1,4 +1,9 @@
-<?php include('register.php') ?>
+<?php
+session_start();
+//Default Wert für Benutzerrolle
+$res_rolle = 0;
+
+include('register.php') ?>
 <!DOCTYPE html>
 <html lang="de">
     <head>
