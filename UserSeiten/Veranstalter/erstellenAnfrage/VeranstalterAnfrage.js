@@ -1,25 +1,18 @@
-// fucntion to add days to current date -> used to set min date
-export function addDays(date, days) {
+
+function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
 }
 
-// function to subtract years from current date -> used for age verification
-export function subtractYears(date, years) {
-    var result = new Date(date);
-    result.setFullYear(result.getFullYear() - years);
-    return result;
-}
-
 // formats date to html format
-export function dateToHtml(date) {
+function dateToHtml(date) {
     var year = date.getFullYear();
     var month = date.getMonth()+1;
     var day = date.getDate();
 
     if (month < 10) {
-        month = [0, month ].join("");
+        month = [0, month].join("");
     }
 
     if (day < 10) {
@@ -30,8 +23,7 @@ export function dateToHtml(date) {
     return result;
 }
 
-// gets current day of the week and returns number of possible event days -> events duration is limited to one week (monday to sunday)
-export function dayOfWeek(date) {
+function dayOfWeek(date) {
     var day = new Date(date).getDay();
     var result;
 
@@ -71,5 +63,17 @@ export function dayOfWeek(date) {
             result = 2;
             break;
     }
+
     return result;
 }
+
+function setDays() {
+    var maxDays = dayOfWeek(document.getElementById("min_date").value);
+    var maxDaysHtml = document.getElementById("max_days").max = maxDays;
+}
+
+var currentDate = new Date();
+var minDate = dateToHtml(addDays(currentDate, 28));
+var initialDate = document.getElementById("min_date").value = minDate;
+var minDateHtml = document.getElementById("min_date").min = minDate;
+ 

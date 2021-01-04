@@ -1,0 +1,72 @@
+<?php
+session_start();
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+//Überprüfen ob es einen Verbindungsfehler gab
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+//Aktualisieren der Angebote und Veranstaltungen (Status)
+include "../../veranstaltung_refresh.php";
+veranstaltung_refresh();
+
+//Variablen
+$B_ID = $_SESSION["b_id"];
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
+
+    <title>Angemeldete Veranstaltungen</title>
+
+    <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="../Startseite/TeilnehmerStartseite.php">Startseite</a></li>
+        <li><a href="../anzeigenAngebot/TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Hilfe</a></li>
+        <li><a class="active" href="TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li style="float: right;"> <a href="../Datenänderung/TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+
+    </ul>
+</nav>
+
+<div class="container-50-outer">
+    <h1 class="hdln">Angemeldete Veranstaltungen</h1>
+
+    <?php
+    $query1 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
+                AND T.B_ID = $B_ID AND V.Status IN (1, 2)";
+    $res1 = $conn->query($query1);
+    if($res1->num_rows == 0){
+        echo "<p class='txt'>Sie sind zur Zeit zu keinen Veranstaltungen angemeldet.</p>";
+    }
+    else{
+        while($i = $res1->fetch_row()){
+
+    ?>
+    <form action="../../VeranstaltungsSeite.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+    </form>
+        <?php }} ?>
+</div>
+
+</body>
+</html>

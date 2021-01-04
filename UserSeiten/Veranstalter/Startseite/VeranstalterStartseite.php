@@ -1,0 +1,136 @@
+<?php
+session_start();
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+//Überprüfen ob es einen Verbindungsfehler gab
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+//Aktualisieren der Angebote und Veranstaltungen (Status)
+include "../../angebot_refresh.php";
+include "../../veranstaltung_refresh.php";
+angebot_refresh();
+veranstaltung_refresh();
+
+//Variablen
+$V_ID = $_SESSION["b_id"];
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
+    
+    <title>Startseite</title>
+
+    <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a class="active" href="VeranstalterStartseite.php">Startseite</a></li>
+        <li><a href="../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
+        <li><a href="#">Kontakt</a></li>
+        <li><a href="#">Hilfe</a></li>
+        <li><a href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+
+    </ul>
+</nav>
+
+<div class="container-50-outer">
+
+    <div class="container-80-inner">
+        <h2 class="hdln">laufende Veranstaltungen</h2>
+
+        <?php
+        //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2";
+        $res1 = $conn->query($query1);
+        $counter = 0;
+        if($res1->num_rows == 0){
+            echo "<p class='txt'>Sie haben derzeit keine laufenden Veranstaltungen</P>";
+        }
+
+        //Ausgabe der Abfrage in HTML
+        else {
+        while($i = $res1->fetch_row()){
+            if($counter == 4){
+            break;
+            }
+
+        ?>
+
+        <form action="../../VeranstaltungsSeite.php" method="post">
+            <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+            <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+        </form>
+        <?php }} ?>
+    </div>
+
+    <br><br><br>
+
+    <div class="container-80-inner">
+        <h2 class="hdln">Angebote</h2>
+
+        <?php
+        //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten Veranstalters
+        $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
+        $res4 = $conn->query($query4);
+        $counter = 0;
+        if($res4->num_rows == 0){
+            echo "<p class='txt'>Sie haben derzeit keine Angebote des Betreibers</P>";
+        }
+
+        else{
+        while($i = $res4->fetch_row()){
+            if($counter == 4){
+            break;
+            }
+
+        ?>
+            <form action="../eigeneVeranstaltungen/Angebot/Angebotseite.php" method="post">
+                <input type="hidden" name="angebot_id" value="<?php echo $i[0];?>">
+                <button type="submit" class="btnveranstaltung" name="Angebotsseite"><?php echo "Angebotsdatum: ". $i[2] . " / Geplanter Beginn: ". $i[1]?></button>
+            </form>
+        <?php }}?>
+    </div>
+</div>
+<!--<footer>
+   <div>
+       <a href="#">Impressum</a>
+        <a href="#">AGB</a> <br>
+   VMS
+  < /div>
+</footer>-->
+
+<div class="footer">
+    <div id="button"></div>
+    <div id="container">
+        <div id="cont">
+            <!--         <div class="footer_center">-->
+            <!--                <h3>VMS</h3>-->
+            <!--             <a href="AGB">AGB </a>-->
+            <a class ="impressum " href="#"> Impressum </a>
+            <a class ="agb"   href="#">AGB</a>
+
+            <!-- agb col-xs-12 col-sm-3 col-sm-pull-6 -->
+        </div>
+
+    </div>
+</div>
+
+
+</body>
+</html>

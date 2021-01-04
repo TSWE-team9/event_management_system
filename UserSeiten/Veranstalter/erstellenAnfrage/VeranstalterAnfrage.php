@@ -6,9 +6,8 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="anfrage.css">
-    <link rel="stylesheet" type="text/css" href="../popup.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="VeranstalterAnfrage.css">
     <title>Anfrage erstellen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -47,12 +46,6 @@ if(isset($_POST["anfrage"])){
 
 
 
-
-
-//Eventuell Checken des Datums falls nicht im Frontend
-//
-//
-
 //Insert Query für das Anlegen in der DB
 if($error == false) {
 
@@ -78,13 +71,13 @@ echo "<br>" . $query_status;
 
 <nav>
     <ul>
-        <li><a href="VeranstalterStartseite.php">Startseite</a></li>
+        <li><a href="../Startseite/VeranstalterStartseite.php">Startseite</a></li>
         <li><a class="active" href="VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+        <li><a href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
 </nav>
@@ -116,7 +109,7 @@ echo "<br>" . $query_status;
                 <label for="dauer">Veranstaltungsdauer</label>
             </div>
             <div class="col-75">
-                <input type="number" name="dauer" min="1" id="max_days" required>
+                <input onclick="setDays()" type="number" name="dauer" min="1" max="1" id="max_days" required>
             </div>
         </div>
         <div class="row">
@@ -128,81 +121,11 @@ echo "<br>" . $query_status;
             </div>
         </div>
         <div class="row">
-            <button class="btnanfrage" type="submit" name="anfrage">Anfrage abschicken</button>
+            <button class="btnanfrage" onmouseover="setDays()" type="submit" name="anfrage">Anfrage abschicken</button>
         </div>
     </form>
 </div>
 
-<script>
-    
-    // When the user clicks on span, open the popup
-    function popUp() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
-    }
-
-    function addDays(date, days) {
-        var result = new Date(date);
-        result.setDate(result.getDate() + days);
-        return result;
-    }
-
-    function dateToHtml(date) {
-        var result = [date.getFullYear(), date.getMonth()+1, date.getDate()].join("-");
-        return result;
-    }
-
-    function dayOfWeek(date) {
-        var day = new Date(date).getDay();
-        var result;
-
-        switch(day) {
-            // sunday
-            case 0:
-                result = 1;
-                break;
-
-            // monday    
-            case 1:
-                result = 7;
-                break;
-
-            // tuesday
-            case 2:
-                result = 6;
-                break;
-
-            // wednesday
-            case 3:
-                result = 5;
-                break;
-
-            // thursday
-            case 4:
-                result = 4;
-                break;
-
-            // friday
-            case 5:
-                result = 3;
-                break;
-
-            // saturday
-            case 6:
-                result = 2;
-                break;
-        }
-
-        return result;
-    }
-
-    var currentDate = new Date();
-    var maxDays = dayOfWeek(currentDate);
-    var minDate = dateToHtml(addDays(currentDate, 28));
-    var maxDaysHtml = document.getElementById("max_days").max = maxDays;
-    var minDateHtml = document.getElementById("min_date").min = minDate;
-
-</script>
-
+<script src="VeranstalterAnfrage.js"></script>
 </body>
 </html>

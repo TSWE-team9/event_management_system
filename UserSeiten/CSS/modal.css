@@ -1,4 +1,4 @@
-
+/*CSS Datei zum sytlen des Modal*/
 
 /* Set a style for all buttons */
 .modalbtn {
@@ -15,7 +15,6 @@
 .modalbtn:hover {
   opacity:1;
 }
-
 
 /* Add a color to the cancel button */
 .modal_btnabort {

@@ -37,10 +37,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/errorsDatenänderung.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/DatenänderungFunktionT.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/DatenänderungFunktionT.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/TeilnehmerDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/TeilnehmerDatenänderung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,20 +48,45 @@
   <component name="ComposerSettings">
     <execution />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="veranstaltungsanzeige" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 8.0" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1lhTto5pQnv3wi8vocQfXcyPj0U" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen\Angebot" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Startseite" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Datenänderung" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -82,6 +105,13 @@
       <workItem from="1608231909802" duration="223000" />
       <workItem from="1608281858506" duration="240000" />
       <workItem from="1608282108129" duration="1622000" />
+      <workItem from="1609408079864" duration="441000" />
+      <workItem from="1609408660632" duration="2793000" />
+      <workItem from="1609412517422" duration="54000" />
+      <workItem from="1609579347899" duration="9209000" />
+      <workItem from="1609588989072" duration="2055000" />
+      <workItem from="1609665435615" duration="17461000" />
+      <workItem from="1609750724776" duration="2235000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
@@ -120,30 +150,8 @@
     <MESSAGE value="komments hinzugefügt" />
     <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
   </component>
-  <component name="WindowStateProjectService">
-    <state x="679" y="71" key="#PHP" timestamp="1608203613714">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="679" y="71" key="#PHP/0.0.1920.1040@0.0.1920.1040" timestamp="1608203613714" />
-    <state x="570" y="0" key="CommitChangelistDialog2" timestamp="1608217397547">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="570" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1608217397547" />
-    <state x="794" y="439" key="NewPhpFileDialog" timestamp="1608296085483">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="794" y="439" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608296085483" />
-    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1608290258698">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="777" y="430" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1608290258698" />
-    <state x="725" y="151" key="git4idea.branch.GitSmartOperationDialog" timestamp="1608205032038">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="725" y="151" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1608205032038" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1608293171458">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1608293171458" />
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

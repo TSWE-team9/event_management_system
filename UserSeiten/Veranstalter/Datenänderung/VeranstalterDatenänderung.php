@@ -1,25 +1,25 @@
 <?php include('DatenänderungFunktionV.php') ?>
 
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="./veranstalter.css">
-    <link rel="stylesheet" type="text/css" href="../modal.css">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="VeranstalterDatenänderung.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/modal.css">
+    <title>Datenänderung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav>
     <ul>
-        <li><a href="VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="VeranstalterAnfrage.php">Angebot einholen</a></li>
+        <li><a href="../Startseite/VeranstalterStartseite.php">Startseite</a></li>
+        <li><a href="../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a href="VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li><a href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li style="float: right;"> <a class="active" href="VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
 
     </ul>
@@ -30,7 +30,8 @@
     <button class="accordion">Passwort ändern</button>
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_p) > 0){include('errorsDatenänderungV.php');} ?>
+                <?php if (count($errors_p) > 0){
+                    include('errorsDatenänderungV.php');} ?>
                 <br>
                 <label for="passwortalt">altes Passwort</label>
                 <input type="password" placeholder="altes Passwort" name="passwortalt" pattern=".{10,50}" required>
@@ -48,7 +49,8 @@
     <button class="accordion">E-Mail-Adresse ändern</button>
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_e) > 0){include('errorsDatenänderungV.php');} ?>
+                <?php if (count($errors_e) > 0){
+                    include('errorsDatenänderungV.php');} ?>
                 <br>
                 <label for="email1">Neue E-Mail</label>
                 <input type="email" placeholder="neue E-Mail-Adresse" name="email1" maxlength="50" required>
@@ -63,7 +65,8 @@
     <button class="accordion">Kontaktdaten aktualisieren</button>  
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_d) > 0){include('errorsDatenänderungV.php');} ?>
+                <?php if (count($errors_d) > 0){
+                    include('errorsDatenänderungV.php');} ?>
 
                 <label for="straße">Straße</label>
                 <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['StrasseV'];?>' pattern="[A-Za-z]{1,50}">
@@ -103,36 +106,7 @@
     </div>
 </div>
 
-
-<script>
-
-    // Accordion code
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-            
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.maxHeight) {
-              panel.style.maxHeight = null;
-            } else {
-              panel.style.maxHeight = panel.scrollHeight + "px";
-            }
-        });
-    }
-
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-</script>
+<script src="VeranstalterDatenänderung.js"></script>
 
 </body>
 </html>
