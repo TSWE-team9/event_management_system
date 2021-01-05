@@ -214,6 +214,12 @@ else {
     </h3>
 
     <?php
+    if($status1){
+        echo "<h3"
+    }
+    ?>
+
+    <?php
     $V_ID = $_SESSION["V_ID"];
     $Kategorie = $_SESSION["V_Kategorie"];
 
