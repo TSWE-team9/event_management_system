@@ -13,9 +13,9 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
-//TODO: Auskommentieren nach Merge; Refresh der Angebote (Status)
-//include "../../UserSeiten/angebot_refresh.php";
-//angebot_refresh();
+//Refresh der Angebote (Status)
+include "../../angebot_refresh.php";
+angebot_refresh();
 
 $query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);

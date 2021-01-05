@@ -40,7 +40,7 @@ if(isset($_POST["Stornieren"])) {
 
         //Stornodatum in Anfrage_Angebot festhalten
         $query2 = "UPDATE Anfrage_Angebot SET Stornodatum = LOCALTIMESTAMP
-                WHERE BeAr_ID = (SELECT B_ID FROM Kalender WHERE V_ID = $V_ID)";
+                WHERE BeAr_ID = (SELECT Angebot_ID FROM Veranstaltung WHERE V_ID = $V_ID)";
         $res2 = $conn->query($query2);
 
         //Bei offenen Veranstaltungen

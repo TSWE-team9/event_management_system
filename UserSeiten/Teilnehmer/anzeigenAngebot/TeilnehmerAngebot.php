@@ -1,3 +1,24 @@
+<?php
+session_start();
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+//Überprüfen ob es einen Verbindungsfehler gab
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+//Aktualisieren der Veranstaltungen (Status)
+include "../../veranstaltung_refresh.php";
+veranstaltung_refresh();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,18 +46,24 @@
 <div class="container-50-outer">
     <h1 class="hdln">Aktuelles Angebot</h1>
 
-    <!--TODO-->
     <!--SQL Abfrage-->
-    <!--if else-->
-    <!--if keine Veranstaltungen gefunden-->
-    <p class="txt">Es werden zur Zeit keinen Veranstaltungen angeboten zu denen Sie sich anmelden können.</p>
-    <!--else Veranstaltungen gefunden-->
-    <!--foreach Schleife Beginn-->
-    <form action="../../VeranstaltungsSeite.php" method="post">
-        <input type="hidden" name="veranstaltung_id" value="#id#">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#beginn#</div><div class="btntitel">#titel#</div></button>
+    <?php
+    $query = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1";
+    $res = $conn->query($query);
+
+    //Wenn nichts gefunden
+    if($res->num_rows == 0){
+        echo "<p class='txt'>Es werden zur Zeit keinen Veranstaltungen angeboten zu denen Sie sich anmelden können.</p>";
+    }
+    else{
+        while($i = $res->fetch_row()){
+
+    ?>
+    <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0]; ?>">
+        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: " . $i[1]; ?></div><div class="btntitel"><?php echo $i[2]; ?></div></button>
     </form> 
-    <!--foreach Schleife Ende-->
+    <?php }} ?>
 </div>
 
 </body>

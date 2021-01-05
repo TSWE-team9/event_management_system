@@ -15,10 +15,10 @@ session_start()
 <body>
 <nav >
     <ul class="header" style="top: 0">
-        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="../Raumverwaltung/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a  href="Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a  href="Raumverwaltung.php">Raumverwaltung</a></li>
+        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
         <li class="headerel"><a class= "active" href="#">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
@@ -29,9 +29,9 @@ session_start()
 
 <!--<h1 >Meine Veranstaltungen</h1>-->
 <?php
-//TODO: Auskommentieren nach Merge; Refresh der Angebote (Status)
-//include "../../UserSeiten/angebot_refresh.php";
-//angebot_refresh();
+//Refresh der Angebote (Status)
+include "../../angebot_refresh.php";
+angebot_refresh();
 
 ?>
 <!--Tabs auf der linken Seite zum auswählen der gewünschten Liste-->
@@ -100,7 +100,7 @@ session_start()
     while($i = $res3->fetch_row()){
         ?>
     <!--foreach Schleife Beginn-->
-    <form action="../VeranstaltungsSeite.php" method="post">
+    <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
         <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
     </form>

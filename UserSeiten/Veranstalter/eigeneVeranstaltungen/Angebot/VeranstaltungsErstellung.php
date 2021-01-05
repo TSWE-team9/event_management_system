@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../../../send_email.php";
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -97,11 +98,15 @@ if(isset($_POST["annahme"])) {
                 }
             }
         }
-        //Falls ein Fehler aufgetreten ist, Ausgabe der Fehlermeldung
+        //Falls ein Fehler aufgetreten ist, TODO Ausgabe der Fehlermeldung
         if ($error_occured) {
             echo $error;
         } else {
-            //Ausgabe einer Erfolgsmeldung und TODO:Weiterleitung & Email versenden
+            //Ausgabe einer Erfolgsmeldung und TODO:Weiterleitung & Erfolgsmeldung
+            $empfaenger = get_mail_address($V_ID);
+            $betreff = "Ihre Veranstaltung wurde erstellt";
+            $nachricht = "Ihre Veranstaltung ".$Titel." wurde erfolgreich im System erstellt.";
+            send_email($empfaenger, $betreff, $nachricht);
             echo "Alles hat funktioniert.";
         }
 
