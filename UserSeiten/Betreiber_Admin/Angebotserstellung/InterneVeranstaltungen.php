@@ -111,7 +111,7 @@ session_start()
 </div>
 <!-Button zum Anlegen einer neuen Veranstaltung -->
 <div class="container">
-<a href="KapazitätenabfrageV3.php" class="Auslösen" type="button" >Veranstaltung hinzufügen &#10010;</a>
+<a href="KapazitätenabfrageV3.php" style="width:15%" class="Auslösen" type="button" >Veranstaltung hinzufügen &#10010;</a>
 
 </div>
 
