@@ -21,7 +21,6 @@ if(isset($_POST["teilnehmerliste_übermitteln"])){
 }
 
 $V_ID = $_SESSION["V_ID"];
-$V_ID = 1;
 
 //Abfragen des Titels, Max. Teilnehmerzahl der Veranstaltung
 $query = "SELECT Titel, Teilnehmer_max FROM Veranstaltung WHERE V_ID = $V_ID";
@@ -90,7 +89,10 @@ $res->close();
         //Abspeichern der Liste aus den übergebenen Arrays mit Nachnamen und Vornamen
         if(isset($_POST["liste-übergeben"])){
             //TODO
-            echo "noch nicht fertig";
+
+            //Alte Liste löschen
+            $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
+            $conn->query($query);
         }
         ?>
 
