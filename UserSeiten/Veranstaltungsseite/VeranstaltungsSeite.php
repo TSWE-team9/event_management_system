@@ -1,6 +1,6 @@
 <?php
 session_start();
-include ("VeranstaltungAnmeldenFunktion.php");
+include("VeranstaltungÄndernFunktion.php");
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -217,7 +217,7 @@ if($_SESSION["rolle"]==0){
 //Anzeige für Rolle Teilnehmer
 if($_SESSION["rolle"]==2){
 ?>
-    <?php    include ("VeranstaltungAnmeldenError.php");    ?>
+    <?php    include("VeranstaltungÄndernError.php");    ?>
 <div class="container-80">
     <h1 class="center">Teilnehmer</h1>
     <!--if nicht angemeldet-->
@@ -253,7 +253,7 @@ if($_SESSION["rolle"]==2){
     -->   
 
     <!--else anmgemeldet-->
-    <button type="button" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
+    <button type="button" name="abmelden" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
     <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     <!--
     <div id="t02" class="modal">
