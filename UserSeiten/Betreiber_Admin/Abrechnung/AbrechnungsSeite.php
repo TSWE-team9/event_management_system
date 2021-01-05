@@ -70,11 +70,8 @@ if($conn->connect_error) {
     <input type="hidden" name="Status" value="<?php echo $i[4]; ?>">
     <button type="submit" class="btnveranstaltung" name="Abrechnung"><div class="btnbeginn"><?php echo "Abgelaufen am: ".$i[2];?></div><div class="btntitel"><?php echo $i[3];?></div></button>
     </form>
-
+    <?php }} ?>
 </div>
-<?php }} else { ?>
-<!-- TODO Text wenn nichts existiert-->
-<?php } ?>
 
 
 <div id="externe" class="tabcontent">
@@ -95,12 +92,36 @@ if($conn->connect_error) {
     <input type="hidden" name="Status" value="<?php echo $i[4]; ?>">
     <button type="submit" class="btnveranstaltung" name="Abrechnung"><div class="btnbeginn"><?php echo "Abgelaufen am: ".$i[2];?></div><div class="btntitel"><?php echo $i[3];?></div></button>
 </form>
-
+    <?php }} ?>
 </div>
-<?php }} else { ?>
-    <!-- TODO Text wenn nichts existiert-->
-<?php } ?>
 
-<script src="../js/Tabs.js"></script>
+<!--    <script src="../js/Tabs.js"></script> ; -->
+<script>
+    // function to display different tabs
+    function openList(evt, listName) {
+// Declare all variables
+        var i, tabcontent, tablinks;
+
+// Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+// Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+// Show the current tab, and add an "active" class to the link that opened the tab
+        document.getElementById(listName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Get the element with id="defaultOpen" and click on it
+    document.getElementById("defaultOpen").click();
+</script>
+
 </body>
 </html>
