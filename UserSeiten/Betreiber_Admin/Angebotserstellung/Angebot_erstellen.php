@@ -81,6 +81,9 @@ if($res === FALSE){
     echo "</div>" ;
     echo "</div>" ;
 //    echo "Das Angebot für Raum ". $R_ID . " zum Preis von " . $Angebotspreis . " wurde erfolgreich erstellt.";
+
+
+    //TODO Versenden einer Email an den Veranstalter
 }
 
 
