@@ -236,7 +236,7 @@ else {
         <label for="Preis">Zahlung an: </label><output style="border-color: #f45702" > VMS Mittelerde IBAN:DE09121688720378475751 Gringotts Zaubererbank  </output>
 <!--        Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
         <button type="submit" class="Auslösen" name="Hinzufügen1"> Senden</button>
-        <a href="#" type="button" class="Abbrechen">Abrechen</a>
+        <a href="AbrechnungsSeite.php" type="button" class="Abbrechen">Abrechen</a>
 
     </form>
 

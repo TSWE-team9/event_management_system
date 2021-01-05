@@ -1,15 +1,13 @@
 
-@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
-* {box-sizing: border-box}
-body {
-    background: url("../HintergrundRaum.png")  fixed ;
-    /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979!*/
-    background-size: cover;
+
+    body {
+    background: url("../Abrechnung/HintergrundAbrechnung.jpg")  fixed ;
+
+    /*https://pixabay.com/de/photos/st%C3%BChle-zeitgen%C3%B6ssische-m%C3%B6bel-2181960/!*/
+    background-size: cover ;
     width: 100vw;
     height: 100vh;
-    /*display: grid;*/
-    /*font-size: 12pt;*/
-    /*align-items: center;*/
+    display: grid;
     font-family: "Spartan", sans-serif;
     color: #2A293E;
 }
@@ -58,8 +56,9 @@ h3 {
 
 /* Style the tab content */
 .tabcontent {
+
     float: left;
-    padding: 0px 12px;
+    padding: 0 12px;
     border: 1px solid #ccc;
     width: 80%;
     min-height: 300px;
@@ -70,7 +69,7 @@ h3 {
     background-color: #ccc;
     color: black;
     padding: 14px 20px;
-    margin: 8px 10% 0px 10%;
+    margin: 8px 10% 0 10%;
     border: none;
     cursor: pointer;
     width: 80%;

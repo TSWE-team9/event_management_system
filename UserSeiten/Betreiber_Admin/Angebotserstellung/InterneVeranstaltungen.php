@@ -7,14 +7,15 @@ session_start()
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Interne Veranstaltungen</title>
+    <title>AbrechnungsFormular</title>
     <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="InterneVeranstaltungen.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+<!--    <script src="../Abrechnung/Tabs.js"></script>-->
 </head>
 <body>
 <nav >
-    <ul class="header" style="top: 0">
+    <ul class="header" style="margin-top: 0">
         <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a  href="Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
