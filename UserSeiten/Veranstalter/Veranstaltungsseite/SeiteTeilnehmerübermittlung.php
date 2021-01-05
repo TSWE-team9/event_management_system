@@ -1,3 +1,37 @@
+<?php
+session_start();
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+
+//Überprüfen ob es einen Verbindungsfehler gab
+if($conn->connect_error){
+    die('Connect Error (' . $conn->connect_errno . ') '
+        . $conn->connect_error);
+}
+
+//Abspeichern der V_ID nach Buttonklick von der Veranstaltungsseite
+if(isset($_POST["teilnehmerliste_übermitteln"])){
+    $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
+}
+
+$V_ID = $_SESSION["V_ID"];
+
+//Abfragen des Titels, Max. Teilnehmerzahl der Veranstaltung
+$query = "SELECT Titel, Teilnehmer_max FROM Veranstaltung WHERE V_ID = $V_ID";
+$res = $conn->prepare($query);
+$res->execute();
+$res->bind_result($titel,  $teilnehmer_max);
+$res->fetch();
+$res->close();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,13 +58,13 @@
 </nav>
 
 <div class="container-50-outer">
-    <h1 class="hdln">#Veranstaltungstitel#</h1>
+    <h1 class="hdln"><?php echo $titel; ?></h1>
     <p class="txt">Um eine Teilnehmerliste von einer Excel Datei zu importieren, wählen Sie zuerst die Datei aus und importieren diese dann. Alternativ können Sie die Teilnehmerliste manuell eingeben.</p>
 
     <div class="container-80-inner">
         <h2 class="hdln">Importierung aus Excel Datei</h2>
         <form action="#" method="post">
-            <input type="hidden" name="v_id" id="v_id" value="#v_id#">
+            <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
             <label for="t_liste">Wählen Sie eine Datei aus:</label>
             <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="t_liste" id=" t_liste" />
             <button style="float: right;" type="button" class="btn" onclick="document.getElementById('id01').style.display='block'">Teilnehmerliste importieren</button> 
@@ -51,6 +85,14 @@
             </div>
         </form>
 
+        <?php
+        //Abspeichern der Liste aus den übergebenen Arrays mit Nachnamen und Vornamen
+        if(isset($_POST["liste-übergeben"])){
+            //TODO
+            echo "noch nicht fertig";
+        }
+        ?>
+
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
@@ -59,20 +101,27 @@
     </div>
 
     <div class="container-80-inner">
-        <h2 class="hdln">Manuelle Eingabe</h1>
+        <h1 class="hdln">Manuelle Eingabe</h1>
 
         <div class="row">
             <div class="col-50">Nachname</div>
             <div class="col-50">Vorname</div>
         </div>
-        <form action="#" method="post">
-            <input type="hidden" name="v_id" id="v_id" value="#v_id#">
+        <form action="SeiteTeilnehmerübermittlung.php" method="post">
+            <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
             <!--Schleife für max anzahl-->
+            <?php
+            $counter = 1;
+            while($counter <= $teilnehmer_max){
+
+            ?>
             <div class="row">
-                <div class="col-50"><input type="text" id="#nachname counter#" name="#nachname counter#"></div>
-                <div class="col-50"><input type="text" id="#vorname counter#" name="#vorname counter#"></div>
+                <div class="col-50"><input type="text" id="#nachname counter#" name="<?php echo "nachname " . $counter?>"></div>
+                <div class="col-50"><input type="text" id="#vorname counter#" name="<?php echo "vorname " . $counter?>"></div>
             </div>
             <!--Schleife Ende-->
+            <?php }
+            ?>
             <br>
             <button style="float: right;" type="button" class="btn" onclick="document.getElementById('id02').style.display='block'">Teilnehmerliste übermitteln</button>
 
@@ -84,13 +133,42 @@
                         <p>Falls bereits eine Teilnehmerliste übermittelt wurde, wird diese komplett mit der neuen Liste ersetzt.</p>
                         <p>Wollen Sie diese Teilnehmerliste übermitteln?</p>
                         <div class="modal_clearfix">
-                            <button class="modal_btnconfirm" type="submit"  id="anmelden" name="liste-übmitteln" onclick="document.getElementById('id02').style.display='none'">Übermitteln</button>
+                            <button class="modal_btnconfirm" type="submit"  id="anmelden" name="liste-übermitteln" onclick="document.getElementById('id02').style.display='none'">Übermitteln</button>
                             <button class="modal_btnabort" type="button" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
+
+        <?php
+        //Abspeichern der manuell eingegebenen Teilnehmer
+        if(isset($_POST["liste-übermitteln"])){
+
+            //Variablen
+            $counter = 1;
+            $V_ID = $_POST["v_id"];
+
+            while($counter <= $teilnehmer_max) {
+
+                //Variablen
+                $nachname = $_POST["nachname " . $counter];
+                $vorname = $_POST["vorname " . $counter];
+
+                //Einfügen der Namen in die Teilnehmerliste
+                if(!empty($nachname) || !empty($vorname)){
+                    $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $counter, '$nachname', '$vorname', LOCALTIMESTAMP)";
+                    $res = $conn->query($query);
+                    if($res === FALSE){
+                        echo "FEHLER aufgetreten beim manuellen Einfügen";
+                    }
+                }
+
+            }
+
+        }
+
+        ?>
 
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
