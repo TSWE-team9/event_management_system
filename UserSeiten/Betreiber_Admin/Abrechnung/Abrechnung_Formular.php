@@ -20,9 +20,7 @@ if($conn->connect_error) {
 //Error Variablen und Status
 $error = "";
 $error_occured = false;
-$status_msg1 = "";
 $status_msg2 = "";
-$status_1 = false;
 
 //Abrechnungsvorgang nach Klick auf den Button auf der Abrechnungsseite
 if(isset($_POST["Abrechnung"])) {
@@ -92,10 +90,6 @@ if(isset($_POST["Abrechnung"])) {
                 $error = "Fehler bei der Erstellung der Abrechnung (extern) in der Datenbank";
                 $error_occured = true;
             }
-            else{
-                $status_msg1 = "Abrechnung erstellt. Bereit zum Versenden";
-                $status1 = true;
-            }
 
         }
 
@@ -125,10 +119,6 @@ if(isset($_POST["Abrechnung"])) {
                     if ($res_abrechnung2 === FALSE) {
                         $error = "Fehler bei der Erstellung der Abrechnung (intern) in der Datenbank";
                         $error_occured = true;
-                    }
-                    else{
-                        $status_msg1 = "Abrechnung erstellt. Bereit zum Versenden";
-                        $status1 = true;
                     }
                 }
 
@@ -213,11 +203,6 @@ else {
         Wir freuen uns Sie bald wieder bei uns begrüßen zu dürfen.
     </h3>
 
-    <?php
-    if($status1){
-        echo "<h3"
-    }
-    ?>
 
     <?php
     $V_ID = $_SESSION["V_ID"];
