@@ -22,6 +22,7 @@ if(isset($_POST["veranstaltung"])){
 }
 
 $V_ID = $_SESSION["V_ID"];
+$Bid = $_SESSION['b_id'];
 
 //Abfrage der benötigten Daten
 $query = "SELECT Angebot_ID, Titel, Veranstalter, Beschreibung, Art, Verfügbarkeit, Status, Ort, Teilnehmer_max, Teilnehmer_akt,
@@ -221,6 +222,11 @@ if($_SESSION["rolle"]==2){
 <div class="container-80">
     <h1 class="center">Teilnehmer</h1>
     <!--if nicht angemeldet-->
+    <?php
+    $query_check = "SELECT * FROM Teilnehmerliste_offen WHERE V_ID =$V_ID AND B_ID=$Bid";
+    $res_check = mysqli_query($conn, $query_check);;
+    if (mysqli_num_rows($res_check) == 0) {
+    ?>
     <!--Button zum Modal öffnen-->
     <button class="btn" type="button" name="anmelden" id="aendern" onclick="document.getElementById('t01').style.display='block'">Anmelden</button>
     <!--Modal falls Anmeldezeitraum noch offen-->
@@ -237,6 +243,7 @@ if($_SESSION["rolle"]==2){
             </div>
         </form>
     </div>
+    <?php }?>
     <!--Modal falls Anmeldezeitraum abgelaufen-->
     <!--
     <div id="t01" class="modal">
@@ -253,6 +260,9 @@ if($_SESSION["rolle"]==2){
     -->   
 
     <!--else anmgemeldet-->
+    <?php
+    if (mysqli_num_rows($res_check) == 1) {
+        ?>
     <button type="button" name="abmelden" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
     <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     <!--
@@ -269,7 +279,8 @@ if($_SESSION["rolle"]==2){
             </div>
         </form>
     </div>
-    --> 
+    -->
+    <?php }?>
     <!--Modal falls Abmeldezeitraum abgelaufen-->
     <div id="t02" class="modal">
         <div class="modal_content"> 
