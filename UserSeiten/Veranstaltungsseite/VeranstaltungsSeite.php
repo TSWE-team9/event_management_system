@@ -214,7 +214,7 @@ if($_SESSION["rolle"]==0){
 <?php }?>
 
 <?php
-//Anzeige für Rolle Veranstalter
+//Anzeige für Rolle Teilnehmer
 if($_SESSION["rolle"]==2){
 ?>
 <div class="container-80">
@@ -285,7 +285,7 @@ if($_SESSION["rolle"]==2){
 <?php }?>
 
 <?php
-//Anzeige für Rolle Teilnehmer
+//Anzeige für Rolle Veranstalter
 if($_SESSION["rolle"]==1){
 ?>
 <div class="container-80">
@@ -330,7 +330,6 @@ if($_SESSION["rolle"]==1){
 
     <!--Nachricht versenden Beginn-->
     <!--Nachricht versenden Ende-->
-
 
 </div>  
 <?php }?>
