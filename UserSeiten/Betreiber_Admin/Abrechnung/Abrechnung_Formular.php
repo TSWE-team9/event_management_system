@@ -25,13 +25,15 @@ $status_msg2 = "";
 //Abrechnungsvorgang nach Klick auf den Button auf der Abrechnungsseite
 if(isset($_POST["Abrechnung"])) {
 
+
     //Abspeichern der V_ID, BeAr_ID, Kategorie, Status der Veranstaltung beim Auswählen einer Veranstaltung auf der Abrechnungsseite
-    $_SESSION["V_ID"] = $_POST["V_ID"];
+    $_SESSION["V_ID"] = $_POST["Veranstaltung_id"];
     $V_ID = $_SESSION["V_ID"];
-    $BeAr_ID = $_POST["BeAr_ID"];
+    $BeAr_ID = $_POST["Bearbeitung_id"];
     $_SESSION["V_Kategorie"] = $_POST["Kategorie"];
     $Kategorie = $_SESSION["V_Kategorie"];
     $Status = $_POST["Status"];
+
 
     //Prüfen, ob bereits eine Abrechnung zu dieser V_ID existiert
     $query = "SELECT A_ID FROM Abrechnung WHERE V_ID = $V_ID";
@@ -105,8 +107,8 @@ if(isset($_POST["Abrechnung"])) {
             $res3->close();
 
             //Nötige Daten für die Abrechnung aus den Teilnehmerkonten der angemeldeten Teilnehmer
-            $query4 = "SELECT B_ID, Strasse, Haus_nr, PLZ, Ort, Land FROM Veranstalterkonto
-                   JOIN Teilnehmerliste_offen T on Veranstalterkonto.B_ID = T.B_ID
+            $query4 = "SELECT T.B_ID, Strasse, Haus_nr, PLZ, Ort, Land FROM Teilnehmerkonto
+                   JOIN Teilnehmerliste_offen T on Teilnehmerkonto.B_ID = T.B_ID
                    WHERE T.V_ID = $V_ID";
             $res4 = $conn->query($query4);
 
@@ -263,7 +265,7 @@ else {
 
         //Abfrage von Daten für die Anzeige
         $query = "SELECT V.Kosten, A.Rechnungsdatum FROM Veranstaltung V , Abrechnung A WHERE V.V_ID = $V_ID AND  A.V_ID = $V_ID";
-        $res = $conn->query($res);
+        $res = $conn->query($query);
         if($res === FALSE){
         echo "FEHLER: Abfrage der Abrechnung scheint kein Ergebnis vorzuliegen";
         }
