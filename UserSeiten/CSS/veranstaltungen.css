@@ -67,13 +67,22 @@
     text-align: center;
 }
 
-textarea {
+textarea, input[type=file] {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
     resize: vertical;
     margin: 20px 0px 20px 0px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin: auto;
 }
 
 .col-50 {

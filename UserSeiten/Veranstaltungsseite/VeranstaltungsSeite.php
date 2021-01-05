@@ -1,20 +1,6 @@
 <?php
 session_start();
 
-//Header unterscheidung
-switch ($_SESSION["rolle"]){
-    case 0: //header Gast -> kein header
-        break;
-    case 1:  include 'headerVeranstalter.php';    //header Veranstalter
-        break;
-    case 2:  include 'headerTeilnehmer.php';      //header Teilnehmer
-        break;
-    case 3: //header Betreiber
-        break;
-    case 4: //header Admin
-        break;
-
-}
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -68,9 +54,26 @@ $j = $res3->fetch_row();
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <title>Veranstaltungsseite</title>
+    <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+<?php
+//Header unterscheidung
+switch ($_SESSION["rolle"]){
+    case 0: //header Gast -> kein header
+        break;
+    case 1:  include 'headerVeranstalter.php';    //header Veranstalter
+        break;
+    case 2:  include 'headerTeilnehmer.php';      //header Teilnehmer
+        break;
+    case 3: //header Betreiber
+        break;
+    case 4: //header Admin
+        break;
+
+}
+?>
 
 <div class="container-80">
 
@@ -218,30 +221,30 @@ if($_SESSION["rolle"]==2){
     <h1 class="center">Teilnehmer</h1>
     <!--if nicht angemeldet-->
     <!--Button zum Modal öffnen-->
-    <button class="btn" id="aendern" onclick="document.getElementById('id01').style.display='block'">Anmelden</button>
+    <button class="btn" type="button" id="aendern" onclick="document.getElementById('t01').style.display='block'">Anmelden</button>
     <!--Modal falls Anmeldezeitraum noch offen-->
-    <div id="id01" class="modal">
+    <div id="t01" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
                 <h1>Veranstaltungsanmeldung</h1>
                 <p>Wollen Sie sich verbindlich zu dieser Veranstaltung anmelden?</p>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
-                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Anmelden</button>
-                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('t01').style.display='none'">Anmelden</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
     </div>
     <!--Modal falls Anmeldezeitraum abgelaufen-->
     <!--
-        <div id="id01" class="modal">
+    <div id="t01" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
                 <h1>Veranstaltungsanmeldung</h1>
                 <p>Der Anmeldezeitraum ist abgelaufen und eine Anmeldung ist nicht mehr möglich.</p>
                 <div class="modal_clearfix">
-                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">OK</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t01').style.display='none'">OK</button>
                 </div>
             </div>
         </div>
@@ -249,10 +252,10 @@ if($_SESSION["rolle"]==2){
     -->   
 
     <!--else anmgemeldet-->
-    <button class="btn" id="aendern" onclick="document.getElementById('id02').style.display='block'">Abmelden</button>
+    <button type="button" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
     <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     <!--
-    <div id="id02" class="modal">
+    <div id="t02" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
                 <h1>Veranstaltungsabmeldung</h1>
@@ -260,20 +263,20 @@ if($_SESSION["rolle"]==2){
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
                     <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Abmelden</button>
-                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
     </div>
     --> 
     <!--Modal falls Abmeldezeitraum abgelaufen-->
-    <div id="id02" class="modal">
+    <div id="t02" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
                 <h1>Veranstaltungsanmeldung</h1>
                 <p>Der Abmeldezeitraum ist abgelaufen und eine Abmeldung ist nicht mehr möglich.</p>
                 <div class="modal_clearfix">
-                    <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">OK</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t02').style.display='none'">OK</button>
                 </div>
             </div>
         </div>
@@ -287,13 +290,49 @@ if($_SESSION["rolle"]==1){
 ?>
 <div class="container-80">
     <h1 class="center">Veranstalter</h1>
-    <form action="#" method="post">
-        <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
-        <label for="t_liste"></label>
-        <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="t_liste" id=" t_liste" />
-        <button class="btn">Teilnehmerliste übermitteln</button> 
-    </form>
-</div>
+
+    <!--Stornierung Beginn-->
+    <button type="button" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
+    <!--Modal falls Stornozeitraum noch nicht abgelaufen-->
+    <div id="v01" class="modal">
+        <form class="modal_content" action="#" method="post"> 
+            <div class="modal_container">
+                <h1>Stornierung</h1>
+                <p>Wollen Sie sich diese Veranstaltung wircklich stornieren? Dabei fallen Stornierungskosten von #Stornokosten# an.</p>
+                <div class="modal_clearfix">  
+                    <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
+                    <button class="modal_btnconfirm" type="submit" name="storniren" onclick="document.getElementById('v01').style.display='none'">Stornieren</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">Abbrechen</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!--Modal falls Stornozeitraum abgelaufen-->
+    <div id="v01" class="modal">
+        <div class="modal_content"> 
+            <div class="modal_container">
+                <h1>Stornierung</h1>
+                <p>Der Stornierungszeitraum ist abgelaufen und eine Stornierung ist nicht mehr möglich.</p>
+                <div class="modal_clearfix">
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Stornierung Ende-->
+
+    <!--Liste übermitteln Beginn-->
+    <!--Liste übermitteln Ende-->
+
+    <!--Teilnehmer anzeigen Beginn-->
+    <!--Teilnehmer anzeigen Ende-->
+
+    <!--Nachricht versenden Beginn-->
+    <!--Nachricht versenden Ende-->
+
+
+</div>  
 <?php }?>
 
 <?php
