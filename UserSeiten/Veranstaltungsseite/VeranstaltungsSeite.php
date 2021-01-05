@@ -323,12 +323,25 @@ if($_SESSION["rolle"]==1){
     <!--Stornierung Ende-->
 
     <!--Liste übermitteln Beginn-->
+    <!--nur bei geschlossenen veranstaltungen-->
+    <form action="../Veranstalter/Veranstaltungsseite/SeiteTeilnehmerübermittlung.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
+        <button type="submit" class="btn" name="veranstaltung">Teilnehmerliste übermitteln</button> 
+    </form>
     <!--Liste übermitteln Ende-->
 
     <!--Teilnehmer anzeigen Beginn-->
+    <form action="../Veranstalter/Veranstaltungsseite/SeiteTeilnehmerliste.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
+        <button type="submit" class="btn" name="veranstaltung">Teilnehmerliste anzeigen</button> 
+    </form>
     <!--Teilnehmer anzeigen Ende-->
 
     <!--Nachricht versenden Beginn-->
+    <form action="../Veranstalter/Veranstaltungsseite/SeiteMitteilung.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
+        <button type="submit" class="btn" name="veranstaltung">Nachricht an Teilnehmer senden</button> 
+    </form>
     <!--Nachricht versenden Ende-->
 
 </div>  
@@ -348,10 +361,6 @@ if($_SESSION["rolle"]==4){
     <!--Buttons für Admin (falls nicht benötigt einfach löschen)-->
 <?php }?>
 
-<script>
-     // Get the modal
-    var modal1 = document.getElementById('id01');
-    var modal2 = document.getElementById('id02');
-</script>
+<script></script>
 </body>
 </html>
