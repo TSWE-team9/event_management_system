@@ -15,117 +15,125 @@ if($conn->connect_error) {
 
 }
 
-//B_ID Array der internen Abrechnungen
-$B_ID_array = array();
 
 //Error Variablen
 $error = "";
 $error_occured = false;
 
-//Abrechnungsvorgang
-if(isset($_POST["Abrechnung"])){
+//Abrechnungsvorgang nach Klick auf den Button auf der Abrechnungsseite
+if(isset($_POST["Abrechnung"])) {
 
     //Abspeichern der V_ID, BeAr_ID, Kategorie, Status der Veranstaltung beim Auswählen einer Veranstaltung auf der Abrechnungsseite
-    $V_ID = $_POST["V_ID"];
+    $_SESSION["V_ID"] = $_POST["V_ID"];
+    $V_ID = $_SESSION["V_ID"];
     $BeAr_ID = $_POST["BeAr_ID"];
-    $Kategorie = $_POST["Kategorie"];
+    $_SESSION["V_Kategorie"] = $_POST["Kategorie"];
+    $Kategorie = $_SESSION["V_Kategorie"];
     $Status = $_POST["Status"];
 
-    //Bei externen Veranstaltungen (Abrechnung gegenüber einem Veranstalter)
-    if($Kategorie == 1){
+    //Prüfen, ob bereits eine Abrechnung zu dieser V_ID existiert
+    $query = "SELECT A_ID FROM Abrechnung WHERE V_ID = $V_ID";
+    $res = $conn->query($query);
+    if ($res->num_rows > 0) {
 
-        //Stornierte Veranstaltungen werden je nach Stornodatum anders bepreist, Angebotspreis wird hier entsprechend geupdated
-        if($Status == 4){
-
-            //Reduktion des Preises um 50% bei Stornierung eine Woche vor Beginn oder früher
-            $storno1 = "UPDATE Anfrage_Angebot SET Angebotspreis = Angebotspreis * 0.5
-                        WHERE Beginn - Stornodatum >= 7 AND BeAr_ID = $BeAr_ID";
-
-            //Reduktion des Preises um 25% bei Stornierung innerhalb einer Woche vor Beginn
-            $storno2 = "UPDATE Anfrage_Angebot SET Angebotspreis = Angebotspreis * 0.75
-                        WHERE Beginn - Stornodatum < 7 AND BeAr_ID = $BeAr_ID";
-
-            $conn->query($storno1);
-            $conn->query($storno2);
-
-        }
-
-        //Nötige Daten für die Abrechnung aus Anfrage/Angebot abfragen
-        $query1 = "SELECT Veranstalter, Angebotspreis FROM Anfrage_Angebot WHERE BeAr_ID = $BeAr_ID";
-        $res1 = $conn->prepare($query1);
-        $res1->execute();
-        $res1->bind_result($B_ID, $Preis);
-        $res1->fetch();
-        $res1->close();
-
-        //Nötige Daten für die Abrechnung aus dem Veranstalterkonto abfragen
-        $query2 = "SELECT Strasse, Haus_nr, PLZ, Ort, Land FROM Veranstalterkonto WHERE B_ID = $B_ID";
-        $res2 = $conn->prepare($query2);
-        $res2->execute();
-        $res2->bind_result($Strasse, $Haus_Nr, $PLZ, $Ort, $Land);
-        $res2->fetch();
-        $res2->close();
-
-        //Erstellen der Abrechnung an Veranstalter
-        $query_abrechnung1 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, $BeAr_ID, $B_ID, LOCALTIMESTAMP, $Preis, '$Strasse', $Haus_Nr, $PLZ, '$Ort', '$Land')";
-        $res_abrechnung1 = $conn->query($query_abrechnung1);
-        if($res_abrechnung1 === FALSE){
-            $error = "Fehler bei der Erstellung der Abrechnung (extern) in der Datenbank";
+        //Prüfen, ob die Abrechnung bereits versendet wurde (Status in der Veranstaltung "abgerechnet")
+        $query = "SELECT V_ID FROM Veranstaltung WHERE Status = 5 AND V_ID = $V_ID";
+        $res = $conn->query($query);
+        if($res->num_rows > 0) {
+            $error = "Fehler: Die Veranstaltung wurde bereits erfolgreich abgerechnet";
             $error_occured = true;
         }
 
-    }
+    } else {
 
-    //Bei internen Veranstaltungen (Abrechnung gegenüber mehreren Teilnehmern)
-    if($Kategorie == 2){
+        //Bei externen Veranstaltungen (Abrechnung gegenüber einem Veranstalter)
+        if ($Kategorie == 1) {
 
-        //Nötige Daten für die Abrechnung aus Veranstaltung
-        $query3 = "SELECT Kosten FROM Veranstaltung WHERE V_ID = $V_ID";
-        $res3 = $conn->prepare($query3);
-        $res3->execute();
-        $res3->bind_result($Teilnehmer_Preis);
-        $res3->fetch();
-        $res3->close();
+            //Stornierte Veranstaltungen werden je nach Stornodatum anders bepreist, Angebotspreis wird hier entsprechend geupdated
+            if ($Status == 4) {
 
-        //Nötige Daten für die Abrechnung aus den Teilnehmerkonten der angemeldeten Teilnehmer
-        $query4 = "SELECT B_ID, Strasse, Haus_nr, PLZ, Ort, Land FROM Veranstalterkonto
-                   JOIN Teilnehmerliste_offen T on Veranstalterkonto.B_ID = T.B_ID
-                   WHERE T.V_ID = $V_ID";
-        $res4 = $conn->query($query4);
+                //Reduktion des Preises um 50% bei Stornierung eine Woche vor Beginn oder früher
+                $storno1 = "UPDATE Anfrage_Angebot SET Angebotspreis = Angebotspreis * 0.5
+                        WHERE Beginn - Stornodatum >= 7 AND BeAr_ID = $BeAr_ID";
 
-        //Erstellen der Abrechnungseinträge für jeden Teilnehmer einer internen Veranstaltungen
-        if($res4->num_rows > 0) {
-            while ($i = $res4->fetch_row()) {
+                //Reduktion des Preises um 25% bei Stornierung innerhalb einer Woche vor Beginn
+                $storno2 = "UPDATE Anfrage_Angebot SET Angebotspreis = Angebotspreis * 0.75
+                        WHERE Beginn - Stornodatum < 7 AND BeAr_ID = $BeAr_ID";
 
-                //Speichern der Benutzer_IDs in ein Array für die spätere Versendung der Abrechnung per Mail
-                array_push($B_ID_array, $i[0]);
+                $conn->query($storno1);
+                $conn->query($storno2);
 
-                $query_abrechnung2 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, NULL, $i[0], LOCALTIMESTAMP, $Teilnehmer_Preis, '$i[1]', $i[2], $i[3], '$i[4]', '$i[5]')";
-                $res_abrechnung2 = $conn->query($query_abrechnung2);
-                if($res_abrechnung2 === FALSE){
-                    $error = "Fehler bei der Erstellung der Abrechnung (intern) in der Datenbank";
-                    $error_occured = true;
-                }
+            }
+
+            //Nötige Daten für die Abrechnung aus Anfrage/Angebot abfragen
+            $query1 = "SELECT Veranstalter, Angebotspreis FROM Anfrage_Angebot WHERE BeAr_ID = $BeAr_ID";
+            $res1 = $conn->prepare($query1);
+            $res1->execute();
+            $res1->bind_result($B_ID, $Preis);
+            $res1->fetch();
+            $res1->close();
+
+            //Nötige Daten für die Abrechnung aus dem Veranstalterkonto abfragen
+            $query2 = "SELECT Strasse, Haus_nr, PLZ, Ort, Land FROM Veranstalterkonto WHERE B_ID = $B_ID";
+            $res2 = $conn->prepare($query2);
+            $res2->execute();
+            $res2->bind_result($Strasse, $Haus_Nr, $PLZ, $Ort, $Land);
+            $res2->fetch();
+            $res2->close();
+
+            //Erstellen der Abrechnung an Veranstalter
+            $query_abrechnung1 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, $BeAr_ID, $B_ID, LOCALTIMESTAMP, $Preis, '$Strasse', $Haus_Nr, $PLZ, '$Ort', '$Land')";
+            $res_abrechnung1 = $conn->query($query_abrechnung1);
+            if ($res_abrechnung1 === FALSE) {
+                $error = "Fehler bei der Erstellung der Abrechnung (extern) in der Datenbank";
+                $error_occured = true;
             }
 
         }
-        else{
-            $error = "Fehler bei Abfrage der Teilnehmer einer internen Veranstaltung";
-            $error_occured = true;
+
+        //Bei internen Veranstaltungen (Abrechnung gegenüber mehreren Teilnehmern)
+        if ($Kategorie == 2) {
+
+            //Nötige Daten für die Abrechnung aus Veranstaltung
+            $query3 = "SELECT Kosten FROM Veranstaltung WHERE V_ID = $V_ID";
+            $res3 = $conn->prepare($query3);
+            $res3->execute();
+            $res3->bind_result($Teilnehmer_Preis);
+            $res3->fetch();
+            $res3->close();
+
+            //Nötige Daten für die Abrechnung aus den Teilnehmerkonten der angemeldeten Teilnehmer
+            $query4 = "SELECT B_ID, Strasse, Haus_nr, PLZ, Ort, Land FROM Veranstalterkonto
+                   JOIN Teilnehmerliste_offen T on Veranstalterkonto.B_ID = T.B_ID
+                   WHERE T.V_ID = $V_ID";
+            $res4 = $conn->query($query4);
+
+            //Erstellen der Abrechnungseinträge für jeden Teilnehmer einer internen Veranstaltungen
+            if ($res4->num_rows > 0) {
+                while ($i = $res4->fetch_row()) {
+
+                    $query_abrechnung2 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, NULL, $i[0], LOCALTIMESTAMP, $Teilnehmer_Preis, '$i[1]', $i[2], $i[3], '$i[4]', '$i[5]')";
+                    $res_abrechnung2 = $conn->query($query_abrechnung2);
+                    if ($res_abrechnung2 === FALSE) {
+                        $error = "Fehler bei der Erstellung der Abrechnung (intern) in der Datenbank";
+                        $error_occured = true;
+                    }
+                }
+
+            } else {
+                $error = "Fehler bei Abfrage der Teilnehmer einer internen Veranstaltung";
+                $error_occured = true;
+            }
+
         }
 
     }
 
-
-    //Ausgabe möglicher Fehlermeldungen
-    if($error_occured){
+    //Ausgabe möglicher Fehlermeldungen (TODO Danach Rückkehr zur Abrechnungsseite!)
+    if ($error_occured) {
         echo $error;
     }
-
-
-
 }
-
 //TODO Nach dem Klicken auf den Button des Formulars Emails versenden sowie Veranstaltungsstatus auf abgerechnet setzen
 
 ?>
@@ -152,6 +160,9 @@ if(isset($_POST["Abrechnung"])){
     </h3>
 
     <?php
+    $V_ID = $_SESSION["V_ID"];
+    $Kategorie = $_SESSION["V_Kategorie"];
+
     //Anzeige für externe Abrechnungen
     if($Kategorie == 1){
 
@@ -190,22 +201,30 @@ if(isset($_POST["Abrechnung"])){
     //Anzeige für interne Abrechnungen
     if($Kategorie == 2){
 
-    ?>
+        //Abfrage von Daten für die Anzeige
+        $query = "SELECT V.Kosten, A.Rechnungsdatum FROM Veranstaltung V , Abrechnung A WHERE V.V_ID = $V_ID AND  A.V_ID = $V_ID";
+        $res = $conn->query($res);
+        if($res === FALSE){
+        echo "FEHLER: Abfrage der Abrechnung scheint kein Ergebnis vorzuliegen";
+        }
+        else{
+            while($i = $res->fetch_row()){
+        ?>
 
     <form action="" method="post">
 
         <label for="Veranstaltung_ID"> Veranstaltung_ID </label><output id="Veranstaltung_ID"  name="Veranstaltung_ID"  type="number" > <?php echo $V_ID; ?></output>
-        <label for="Rechnungsdatum">Rechnungsdatum </label><output id="Rechnungsdatum"  name="Rechnungsdatum" type="date" > <!--TODO Heutiges Datum --></output>
-        <label for="Preis">Preis pro Teilnehmer </label><output id="Preis"  name="Preis" type="number" > <?php echo $Teilnehmer_Preis; ?></output>
+        <label for="Rechnungsdatum">Rechnungsdatum </label><output id="Rechnungsdatum"  name="Rechnungsdatum" type="date" > <?php echo $i[1];?></output>
+        <label for="Preis">Preis pro Teilnehmer </label><output id="Preis"  name="Preis" type="number" > <?php echo $i[0]; ?></output>
         <label for="Zusatz">Zusätzliche Anmerkung </label> <textarea  cols="40" rows="8" maxlength="300" id="Zusatz" name="Zusatz"> </textarea>
         <label for="Preis">Zahlung an: </label><output style="border-color: #f45702" > VMS Mittelerde IBAN:DE09121688720378475751 Gringotts Zaubererbank  </output>
         <!--        Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
         <button type="submit" class="Auslösen" name="Hinzufügen"> Senden</button>
-        <a href="#" type="button" class="Abbrechen">Abrechen</a>
+        <a href="#" type="button" class="Abbrechen">Abbrechen</a>
 
     </form>
 
-    <?php }?>
+    <?php }}}?>
 
 </body>
 </html>
