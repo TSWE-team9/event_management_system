@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include ("VeranstaltungAnmeldenFunktion.php");
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -217,11 +217,12 @@ if($_SESSION["rolle"]==0){
 //Anzeige für Rolle Teilnehmer
 if($_SESSION["rolle"]==2){
 ?>
+    <?php    include ("VeranstaltungAnmeldenError.php");    ?>
 <div class="container-80">
     <h1 class="center">Teilnehmer</h1>
     <!--if nicht angemeldet-->
     <!--Button zum Modal öffnen-->
-    <button class="btn" type="button" id="aendern" onclick="document.getElementById('t01').style.display='block'">Anmelden</button>
+    <button class="btn" type="button" name="anmelden" id="aendern" onclick="document.getElementById('t01').style.display='block'">Anmelden</button>
     <!--Modal falls Anmeldezeitraum noch offen-->
     <div id="t01" class="modal">
         <form class="modal_content" action="#" method="post"> 
