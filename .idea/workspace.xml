@@ -37,8 +37,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/Fehlermeldung.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Abrechnung/Abrechnung_Formular.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Abrechnung/Abrechnung_Formular.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Abrechnung/AbrechnungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Abrechnung/AbrechnungsSeite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Abrechnung/Tabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/js/Tabs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Datum.js" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/js/Datum.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/InterneVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/InterneVeranstaltungen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/KapazitätenabfrageV2.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/KapazitätenabfrageV2.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/KapazitätenabfrageV3.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/KapazitätenabfrageV3.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Kapazitätenstylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Kapazitätenstylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Raumreservierung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Raumreservierung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/kapazitäts_check.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/kapazitäts_check.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,13 +62,14 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="veranstaltungsanzeige" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,17 +86,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\Angebotserstellung" />
+      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\Abrechnung" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\js" />
+      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\Abrechnung" />
+      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\Angebotserstellung" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen\Angebot" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Startseite" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Datenänderung" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -127,7 +143,35 @@
       <option name="project" value="LOCAL" />
       <updated>1608217397753</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Rechnungsformular">
+      <created>1609782235078</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1609782235078</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Rechnungsformular">
+      <created>1609839234184</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1609839234184</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Rechnungsformular">
+      <created>1609839450390</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1609839450390</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Abrechnungsseite">
+      <created>1609847527898</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1609847527898</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -138,7 +182,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="Abrechnung" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -148,7 +204,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Sessionvariablen festgelegt" />
     <MESSAGE value="komments hinzugefügt" />
-    <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
+    <MESSAGE value="Rechnungsformular" />
+    <MESSAGE value="Abrechnungsseite" />
+    <option name="LAST_COMMIT_MESSAGE" value="Abrechnungsseite" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

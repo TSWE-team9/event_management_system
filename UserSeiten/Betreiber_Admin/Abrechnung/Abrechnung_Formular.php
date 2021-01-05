@@ -175,7 +175,15 @@ if(isset($_POST["Hinzufügen2"])){
 
 //Ausgabe möglicher Fehlermeldungen oder der Status Nachricht 2 (TODO Danach Rückkehr zur Abrechnungsseite!)
 if ($error_occured) {
-    echo $error;
+
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Fehler</h2>" ;
+    echo "<a class='close' href='AbrechnungsSeite.php'>&times;</a>" ;
+    echo "<div class='content'>" .$error. "</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+
 }
 else {
     echo $status_msg2;
@@ -189,6 +197,7 @@ else {
     <title>Abrechnung extern</title>
     <link rel="stylesheet" type="text/css" href="../Angebotserstellung/Kapazitätenstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -215,7 +224,13 @@ else {
         $query = "SELECT A_ID, Kunde, Strasse, Haus_nr, PLZ, Ort, Land, Rechnungsdatum, Preis FROM Abrechnung WHERE V_ID = $V_ID";
         $res = $conn->query($query);
         if($res === FALSE){
-            echo "FEHLER: Abfrage der Abrechnung scheint kein Ergebnis vorzuliegen";
+        echo "<div class='overlay'>" ;
+	echo  "<div class='popup'>";
+		echo "<h2>Fehler</h2>" ;
+		echo "<a class='close' href='AbrechnungsSeite.php'>&times;</a>" ;
+		echo "<div class='content'>" ,'FEHLER: Abfrage der Abrechnung scheint kein Ergebnis vorzuliegen' ;
+	echo "</div>" ;
+
         }
         else{
             while($i = $res->fetch_row()){

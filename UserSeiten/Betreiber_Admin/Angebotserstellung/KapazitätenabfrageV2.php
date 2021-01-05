@@ -52,5 +52,5 @@ session_start();
     </form>
 </body>
 </html>
-<script src="Datum.js"></script>
+<script src="../js/Datum.js"></script>
 
