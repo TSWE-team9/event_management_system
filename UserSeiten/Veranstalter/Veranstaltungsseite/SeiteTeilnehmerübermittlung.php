@@ -21,6 +21,7 @@ if(isset($_POST["teilnehmerliste_übermitteln"])){
 }
 
 $V_ID = $_SESSION["V_ID"];
+$V_ID = 1;
 
 //Abfragen des Titels, Max. Teilnehmerzahl der Veranstaltung
 $query = "SELECT Titel, Teilnehmer_max FROM Veranstaltung WHERE V_ID = $V_ID";
@@ -67,7 +68,7 @@ $res->close();
             <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
             <label for="t_liste">Wählen Sie eine Datei aus:</label>
             <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="t_liste" id=" t_liste" />
-            <button style="float: right;" type="button" class="btn" onclick="document.getElementById('id01').style.display='block'">Teilnehmerliste importieren</button> 
+            <button style="float: right;" type="button" name="liste-übergeben" class="btn" onclick="document.getElementById('id01').style.display='block'">Teilnehmerliste importieren</button>
 
             <!--Modal wenn auf Importieren gedrückt wurde-->
             <div id="id01" class="modal">
@@ -113,17 +114,16 @@ $res->close();
             <?php
             $counter = 1;
             while($counter <= $teilnehmer_max){
-
             ?>
             <div class="row">
-                <div class="col-50"><input type="text" id="#nachname counter#" name="<?php echo "nachname " . $counter?>"></div>
-                <div class="col-50"><input type="text" id="#vorname counter#" name="<?php echo "vorname " . $counter?>"></div>
+                <div class="col-50"><input type="text" id="#nachname counter#" name="<?php echo "nachname".$counter; ?>"></div>
+                <div class="col-50"><input type="text" id="#vorname counter#" name="<?php echo "vorname".$counter; ?>"></div>
             </div>
             <!--Schleife Ende-->
-            <?php }
+            <?php $counter++;}
             ?>
             <br>
-            <button style="float: right;" type="button" class="btn" onclick="document.getElementById('id02').style.display='block'">Teilnehmerliste übermitteln</button>
+            <button style="float: right;" type="button" name="liste-übermitteln" class="btn" onclick="document.getElementById('id02').style.display='block'">Teilnehmerliste übermitteln</button>
 
             <!--Modal wenn auf Importieren gedrückt wurde-->
             <div id="id02" class="modal">
@@ -145,24 +145,31 @@ $res->close();
         //Abspeichern der manuell eingegebenen Teilnehmer
         if(isset($_POST["liste-übermitteln"])){
 
+            //Alte Liste löschen
+            $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
+            $conn->query($query);
+
             //Variablen
             $counter = 1;
             $V_ID = $_POST["v_id"];
 
             while($counter <= $teilnehmer_max) {
 
-                //Variablen
-                $nachname = $_POST["nachname " . $counter];
-                $vorname = $_POST["vorname " . $counter];
+                $nachname = $_POST["nachname".$counter];
+                $vorname = $_POST["vorname".$counter];
+                //echo "<br>"."<br>"."<br>"."<br>";
+                //echo $nachname . $vorname;
 
                 //Einfügen der Namen in die Teilnehmerliste
-                if(!empty($nachname) || !empty($vorname)){
+                if(!empty($nachname) && !empty($vorname)){
+
                     $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $counter, '$nachname', '$vorname', LOCALTIMESTAMP)";
                     $res = $conn->query($query);
                     if($res === FALSE){
-                        echo "FEHLER aufgetreten beim manuellen Einfügen";
+                        echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
                     }
                 }
+                $counter++;
 
             }
 
