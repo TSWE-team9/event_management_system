@@ -17,13 +17,13 @@ if($conn->connect_error){
 }
 
 //Abspeichern der V_ID nach Buttonklick von der Veranstaltungsseite
-if(isset($_POST["teilnehmerliste"])){
+if(isset($_POST["teilnehmerliste_anzeigen"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
 $V_ID = $_SESSION["V_ID"];
 
-//Abfragen des Titels der Veranstaltung
+//Abfragen des Titels, Teilnehmerzahlen der Veranstaltung
 $query = "SELECT Titel, Teilnehmer_akt, Teilnehmer_max FROM Veranstaltung WHERE V_ID = $V_ID";
 $res = $conn->prepare($query);
 $res->execute();

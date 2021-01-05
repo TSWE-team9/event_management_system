@@ -42,7 +42,7 @@ if(isset($_POST["mitteilung_senden"])){
     $res = $conn->query($query);
     if($res->num_rows > 0){
 
-        $betreff = "Mitteilung vom Veranstalter";
+        $betreff = "Mitteilung vom Veranstalter der Veranstaltung: " . $titel;
 
         while($i = $res->fetch_row()){
             $empfaenger = get_mail_address($i[0]);
