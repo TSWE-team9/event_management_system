@@ -13,19 +13,32 @@
         1 => "Sepp", 
         2 => "Franz",
     )
+?>
 
-    $phpArrayV = array(
+<?php
+$phpArrayV = array(
         0 => "Maier", 
         1 => "Huber", 
         2 => "Weber", 
+    )
 ?>
+
 <p id="test"></p>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
+
 <script>
     // getting arrays
     var jArrayN = <?php echo json_encode($phpArrayN); ?>;
-    var jArrayV = <?php echo json_encode($phpArrayV); ?>;
+    // putting variable into html
+    document.getElementById("test").innerHTML = jArrayN[0]:
+
+</script>
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.2.0/jspdf.umd.min.js"></script>
+<script>
+    // getting arrays
+    var jArrayN = <?php // echo json_encode($phpArrayN); ?>;
+    var jArrayV = <?php // echo json_encode($phpArrayV); ?>;
 
     var combinedArray;
     for(var i = 0; i < jArrayN.length; i++) {
@@ -40,5 +53,6 @@
     // Default export is a4 paper, portrait, using millimeters for units
     const doc = new jsPDF();
 </script>
+-->
 </body>
 </html>
