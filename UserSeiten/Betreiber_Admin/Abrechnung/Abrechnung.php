@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../../send_email.php";
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -16,9 +17,12 @@ if($conn->connect_error) {
 }
 
 
-//Error Variablen
+//Error Variablen und Status
 $error = "";
 $error_occured = false;
+$status_msg1 = "";
+$status_msg2 = "";
+$status_1 = false;
 
 //Abrechnungsvorgang nach Klick auf den Button auf der Abrechnungsseite
 if(isset($_POST["Abrechnung"])) {
@@ -88,6 +92,10 @@ if(isset($_POST["Abrechnung"])) {
                 $error = "Fehler bei der Erstellung der Abrechnung (extern) in der Datenbank";
                 $error_occured = true;
             }
+            else{
+                $status_msg1 = "Abrechnung erstellt. Bereit zum Versenden";
+                $status1 = true;
+            }
 
         }
 
@@ -118,6 +126,10 @@ if(isset($_POST["Abrechnung"])) {
                         $error = "Fehler bei der Erstellung der Abrechnung (intern) in der Datenbank";
                         $error_occured = true;
                     }
+                    else{
+                        $status_msg1 = "Abrechnung erstellt. Bereit zum Versenden";
+                        $status1 = true;
+                    }
                 }
 
             } else {
@@ -129,13 +141,55 @@ if(isset($_POST["Abrechnung"])) {
 
     }
 
-    //Ausgabe möglicher Fehlermeldungen (TODO Danach Rückkehr zur Abrechnungsseite!)
-    if ($error_occured) {
-        echo $error;
-    }
 }
 //TODO Nach dem Klicken auf den Button des Formulars Emails versenden sowie Veranstaltungsstatus auf abgerechnet setzen
 
+//Formular für externe Abrechnung
+if(isset($_POST["Hinzufügen1"])){
+
+    $V_ID = $_SESSION["V_ID"];
+
+    //TODO Senden der Abrechnung an den Veranstalter
+
+    //Veranstaltungsstatus auf "abgerechnet" setzen
+    $query_update = "UPDATE Veranstaltung SET Status = 5 WHERE V_ID = $V_ID";
+    $res = $conn->query($query_update);
+    if($res->num_rows == 0){
+        $error = "Es ist ein Fehler in der Update Query der Veranstaltung aufgetreten";
+        $error_occured = true;
+    }
+    else{
+        $status_msg2 = "Die Veranstaltung wurde erfolgreich abgerechnet";
+    }
+
+}
+
+//Formular für interne Abrechnung
+if(isset($_POST["Hinzufügen2"])){
+
+    $V_ID = $_SESSION["V_ID"];
+
+    //TODO Senden der Abrechnung an die Teilnehmer
+
+    //Veranstaltungsstatus auf "abgerechnet" setzen
+    $query_update = "UPDATE Veranstaltung SET Status = 5 WHERE V_ID = $V_ID";
+    $res = $conn->query($query_update);
+    if($res->num_rows == 0){
+        $error = "Es ist ein Fehler in der Update Query der Veranstaltung aufgetreten";
+        $error_occured = true;
+    }
+    else{
+        $status_msg2 = "Die Veranstaltung wurde erfolgreich abgerechnet";
+    }
+}
+
+//Ausgabe möglicher Fehlermeldungen oder der Status Nachricht 2 (TODO Danach Rückkehr zur Abrechnungsseite!)
+if ($error_occured) {
+    echo $error;
+}
+else {
+    echo $status_msg2;
+}
 ?>
 
 <!DOCTYPE html>
@@ -190,7 +244,7 @@ if(isset($_POST["Abrechnung"])) {
         <label for="Zusatz">Zusätzliche Anmerkung </label> <textarea  cols="40" rows="8" maxlength="300" id="Zusatz" name="Zusatz"> </textarea>
         <label for="Preis">Zahlung an: </label><output style="border-color: #f45702" > VMS Mittelerde IBAN:DE09121688720378475751 Gringotts Zaubererbank  </output>
 <!--        Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
-        <button type="submit" class="Auslösen" name="Hinzufügen"> Senden</button>
+        <button type="submit" class="Auslösen" name="Hinzufügen1"> Senden</button>
         <a href="#" type="button" class="Abbrechen">Abrechen</a>
 
     </form>
@@ -219,7 +273,7 @@ if(isset($_POST["Abrechnung"])) {
         <label for="Zusatz">Zusätzliche Anmerkung </label> <textarea  cols="40" rows="8" maxlength="300" id="Zusatz" name="Zusatz"> </textarea>
         <label for="Preis">Zahlung an: </label><output style="border-color: #f45702" > VMS Mittelerde IBAN:DE09121688720378475751 Gringotts Zaubererbank  </output>
         <!--        Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
-        <button type="submit" class="Auslösen" name="Hinzufügen"> Senden</button>
+        <button type="submit" class="Auslösen" name="Hinzufügen2"> Senden</button>
         <a href="#" type="button" class="Abbrechen">Abbrechen</a>
 
     </form>
