@@ -198,7 +198,7 @@ else {
     <meta charset="UTF-8">
     <title>Abrechnung extern</title>
     <link rel="stylesheet" type="text/css" href="../Angebotserstellung/Kapazitätenstylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>

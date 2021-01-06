@@ -148,7 +148,7 @@ input[type='radio']:checked  + label::before {
 }
 .Löschen:hover {
     background: inherit;
-    color: #f45702;
+    color: white;
     border-bottom: 2px solid #f45702;
 }
 

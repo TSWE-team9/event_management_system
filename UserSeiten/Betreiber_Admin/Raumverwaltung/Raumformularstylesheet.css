@@ -26,6 +26,8 @@
     background: #f8f4e5;
     padding: 50px 100px;
     border-top: 10px solid #f45702;
+    margin-bottom: 5em;
+
 }
 
 label, input, textarea {
@@ -63,7 +65,6 @@ em {
 }
 
 input, textarea,fieldset {
-    border: none;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     background: #f8f4e5;
@@ -123,7 +124,7 @@ input[type='radio']:checked  + label::before {
 /*styling der Buttons*/
 #Hinzufügen, .Löschen, .submit{
     background: #f45702;
- float:right;
+    float:right;
 
 }
 #Hinzufügen:hover {
@@ -135,7 +136,7 @@ input[type='radio']:checked  + label::before {
 /*::selection {*/
 /*    background: #ffc7b8;*/
 /*}*/
-.Abbrechen, #Hinzufügen, .Löschen, .submit {
+.Abbrechen, #Hinzufügen,.Löschen {
     display: block;
     line-height: 24pt;
     padding: 0 40px;
@@ -147,13 +148,26 @@ input[type='radio']:checked  + label::before {
     outline: none;
     margin-top: 30px;
     text-decoration: none;
-    font-size: 1em;
 
+    cursor: pointer;
+
+
+}
+.Löschen {
+    font-size: 36px;
+    float:right;
+    background: #f45702;
+
+}
+    .Löschen:hover {
+    background: inherit;
+    color: white;
+    border-bottom: 2px solid #f45702;
 }
 .Abbrechen {
     background: gray;
     float: left;
-
+    font-size: 1em;
 }
 .Abbrechen:hover {
     background: inherit;
@@ -171,4 +185,10 @@ textarea:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px #f8f4e5 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
-
+/*!*    Anpassung bei größeren Ausgabegeräten*!*/
+/*@media all and (min-width:100em) {*/
+/*    #Hinzufügen, #Ändern, #Löschen {*/
+/*        display: inline-block;*/
+/*        margin-left: 16em ;*/
+/*    }*/
+/*}*/

@@ -5,8 +5,9 @@
     <title>Raumdaten ändern</title>
     <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+<!--    <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />-->
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 
 </head>
@@ -14,7 +15,7 @@
 <body>
 <!--header-->
 <nav>
-    <ul class="header">
+    <ul class="header" >
         <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a href="#">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
@@ -43,13 +44,15 @@ if($conn->connect_error){
     die('Connect Error (' . $conn->connect_errno . ') '
         . $conn->connect_error);
 }
+//Error_occured Variable (zunächst false)
+$error = "";
+$error_occured = false;
+$query_status = "";
+$show_table = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-//Error_occured Variable (zunächst false)
-    $error = "";
-    $error_occured = false;
-    $query_status = "";
+
 
 //Abspeichern der zu ändernden Daten
     $R_ID = $_POST["Raum-ID"];
@@ -74,7 +77,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      UNION
                      SELECT BeAr_ID, 'Angebot bearbeitet', Veranstalter, Teilnehmer_gepl, Beginn FROM Anfrage_Angebot WHERE R_ID = $R_ID AND Teilnehmer_gepl > $kapazitaet AND Status IN (2, 3)";
     $res2 = $conn->query($check_query2);
-    $show_table = false;
 
     if($res2->num_rows > 0){
         $error = "Es existieren Veranstaltungen und Angebote, die durch die Änderung der Kapazität betroffen sind!";
@@ -143,10 +145,26 @@ echo "<br><br>";
 
 //Fehlermeldung oder Erfolgsmeldung wird ausgegeben
 if($error_occured){
-    echo $error;
-} else {
-    echo $query_status;
+
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Fehler</h2>" ;
+    echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
+    echo "<div class='content'>" .$error. "</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+
 }
+//else {
+//
+//    echo "<div class='overlay'>";
+//    echo "<div class='popup'>";
+//    echo "<h2>Bestätigung</h2>";
+//    echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
+//    echo "<div class='content'>" . $query_status . "</div>";
+//    echo "</div>";
+//    echo "</div>";
+//}
 
 echo "<br><br>";
 

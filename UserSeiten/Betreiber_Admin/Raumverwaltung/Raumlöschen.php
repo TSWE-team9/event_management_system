@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Raumlöschen</title>
-    <link rel="stylesheet" type="text/css" href="Raumlöschen.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
@@ -73,22 +74,41 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $update_query = "UPDATE Raum SET Status = 2 WHERE R_ID = $R_ID";
         if ($conn->query($update_query) === TRUE) {
-            echo "<br>" . "Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt).";
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Bestätigung</h2>" ;
+            echo "<a class='close' href='Raumverwaltung.php'>&times;</a>" ;
+            echo "<div class='content'>" ,'Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt),' ;
+            echo "</div>" ;
+            echo "</div>" ;
+//            echo "<br>" . "Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt).";
 
         } else {
             $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
-            $conn->error;
             echo "<br>";
         }
 
     }
 
     if($status_inaktiv){
-        echo "<br>" . "Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!";
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
+        echo "<div class='content'>" ,'Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!,' ;
+        echo "</div>" ;
+        echo "</div>" ;
+//        echo "<br>" . "Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!";
 
     }
-
-    echo $error;
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Fehler</h2>" ;
+    echo "<a class='close' href='Raumlöschen.php'>&times;</a>" ;
+    echo "<div class='content'>" .$error. "</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+//    echo $error;
 
 }
 
@@ -97,12 +117,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
     <body>
+
     <nav>
         <ul class="header">
-            <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-            <li class="headerel"><a href="#">Angebotserstellung</a></li>
+            <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+            <li class="headerel"><a class= "active" href="#">Angebotserstellung</a></li>
             <li class="headerel"><a href="#">Abrechnung</a></li>
-            <li class="headerel"><a class= "active" href="Raumverwaltung.php">Raumverwaltung</a></li>
+            <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
             <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
             <li class="headerel"><a href="#">Statistiken</a></li>
             <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>

@@ -26,7 +26,7 @@ if($conn->connect_error) {
     <meta charset="UTF-8">
     <title>Abrechnung</title>
 
-    <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../Angebotserstellung/InterneVeranstaltungen.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 
