@@ -82,15 +82,15 @@ if($conn->connect_error) {
     $query2 = "SELECT V_ID, Angebot_ID, DATE_ADD(Beginn, INTERVAL Dauer-1 DAY), Titel, Status FROM Veranstaltung WHERE Status IN (3,4) AND Kategorie = 1";
     $res2 = $conn->query($query2);
     if($res2->num_rows > 0){
-    while($i = $res2->fetch_row()){
+    while($j = $res2->fetch_row()){
 
     ?>
 <form action="Abrechnung_Formular.php" method="post">
-    <input type="hidden" name="Veranstaltung_id" value="<?php echo $i[0]; ?>">
-    <input type="hidden" name="Bearbeitung_id" value="<?php echo $i[1]; ?>">
+    <input type="hidden" name="Veranstaltung_id" value="<?php echo $j[0]; ?>">
+    <input type="hidden" name="Bearbeitung_id" value="<?php echo $j[1]; ?>">
     <input type="hidden" name="Kategorie" value="1">
-    <input type="hidden" name="Status" value="<?php echo $i[4]; ?>">
-    <button type="submit" class="btnveranstaltung" name="Abrechnung"><div class="btnbeginn"><?php echo "Abgelaufen am: ".$i[2];?></div><div class="btntitel"><?php echo $i[3];?></div></button>
+    <input type="hidden" name="Status" value="<?php echo $j[4]; ?>">
+    <button type="submit" class="btnveranstaltung" name="Abrechnung"><div class="btnbeginn"><?php echo "Abgelaufen am: ".$j[2];?></div><div class="btntitel"><?php echo $j[3];?></div></button>
 </form>
     <?php }} ?>
 </div>
