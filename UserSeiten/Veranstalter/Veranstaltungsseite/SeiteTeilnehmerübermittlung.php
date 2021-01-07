@@ -88,11 +88,19 @@ $res->close();
         <?php
         //Abspeichern der Liste aus den übergebenen Arrays mit Nachnamen und Vornamen
         if(isset($_POST["liste-übergeben"])){
-            //TODO
 
             //Alte Liste löschen
             $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
             $conn->query($query);
+
+            //TODO Einfügen der Teilnehmer
+
+            //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
+            $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
+            $res_update = $conn->query($update_query);
+            if($res_update === FALSE){
+                echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
+            }
         }
         ?>
 
@@ -173,6 +181,13 @@ $res->close();
                 }
                 $counter++;
 
+            }
+
+            //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
+            $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
+            $res_update = $conn->query($update_query);
+            if($res_update === FALSE){
+                echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
             }
 
         }
