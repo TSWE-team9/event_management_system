@@ -48,6 +48,7 @@ if($conn->connect_error){
 $error = "";
 $error_occured = false;
 $query_status = "";
+$q_status = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -62,6 +63,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     //Abfrage um bereits existierende Bezeichnung zu finden
     $check_query = "SELECT R_ID FROM Raum WHERE Bezeichnung = '$bezeichnung'";
     $res = $conn->query($check_query);
+    if($res->num_rows > 0){
+        $error = "Fehler: Raumbezeichnung existiert bereits.";
+        $error_occured = true;
+    }
 
     //Erlaubte Zeichen bei Bezeichnung prüfen
     $check_sonderzeichen = preg_match('/^[-a-zA-ZÄÖÜäöüß0-9[:space:]]+$/', $bezeichnung);
@@ -71,10 +76,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_occured = true;
     }
 
-    if($res->num_rows > 0){
-        $error = "Fehler: Raumbezeichnung existiert bereits.";
-        $error_occured = true;
-    }
 
     //Wenn alles passt, dann wird der Raum hinzugefügt
     if ($error_occured == false) {
@@ -83,11 +84,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($conn->query($insert_query) === TRUE){
         $query_status = "Der Raum wurde erfolgreich hinzugefügt.";
+        $status = true;
 
         }
         else {
         $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
-        $conn->error;
+        $error_occured = true;
         }
 
     }
@@ -115,6 +117,7 @@ if($result->num_rows >0){
 echo "<br><br>";
 
 $conn->close();
+
 //Ausgabe der Fehlermeldungen
 if($error_occured){
     echo "<div class='overlay'>" ;
@@ -126,21 +129,16 @@ if($error_occured){
     echo "</div>" ;
 
 }
-//else {
-//    echo "<div class='overlay'>" ;
-//    echo  "<div class='popup'>";
-//    echo "<h2>Bestätigung</h2>" ;
-//    echo "<a class='close' href='Raumverwaltung.php'>&times;</a>" ;
-//    echo "<div class='content'>".$query_status."</div>";
-//    echo "</div>" ;
-//    echo "</div>" ;
-//
-//
-//}
-
-//echo "<br><br>";
-//
-//?>
+if($q_status){
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>" ;
+    echo "<a class='close' href='Raumverwaltung.php'>&times;</a>" ;
+    echo "<div class='content'>".$query_status."</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+}
+?>
 
 <div class="contact-us">
     <h1> Raum Hinzufügen</h1>

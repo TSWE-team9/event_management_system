@@ -48,11 +48,10 @@ if($conn->connect_error){
 $error = "";
 $error_occured = false;
 $query_status = "";
+$status = false;
 $show_table = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
 
 //Abspeichern der zu ändernden Daten
     $R_ID = $_POST["Raum-ID"];
@@ -112,10 +111,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($conn->query($update_query) === TRUE) {
             $query_status = "Die Raumdaten wurden erfolgreich geändert.";
+            $status = true;
 
         } else {
             $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
-            $conn->error;
+            $error_occured = true;
             echo "<br>";
         }
     }
@@ -155,16 +155,16 @@ if($error_occured){
     echo "</div>" ;
 
 }
-//else {
-//
-//    echo "<div class='overlay'>";
-//    echo "<div class='popup'>";
-//    echo "<h2>Bestätigung</h2>";
-//    echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
-//    echo "<div class='content'>" . $query_status . "</div>";
-//    echo "</div>";
-//    echo "</div>";
-//}
+if($status) {
+
+   echo "<div class='overlay'>";
+   echo "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>";
+   echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
+   echo "<div class='content'>" . $query_status . "</div>";
+   echo "</div>";
+   echo "</div>";
+}
 
 echo "<br><br>";
 
