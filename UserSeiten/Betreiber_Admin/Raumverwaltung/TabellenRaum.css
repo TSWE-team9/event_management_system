@@ -22,9 +22,8 @@ h1 {
 }
 /*tabellengerüst*/
     .container {
+        margin-left: 6em;
     text-align: left;
-        margin-left: 4em;
-        position: center;
     overflow: hidden;
     width: 50%;
     display: table;
@@ -80,7 +79,7 @@ h1 {
 .container td:first-child:hover { color: white; }
 /*styling bei hover*/
 .container tr:hover {
-    background-color:  #f45702;
+    background-color: #f45702;
     color: black;
     font-weight: bold;
 
@@ -97,8 +96,8 @@ h1 {
     padding: 2%;
 }
 /*Anpassung der Tabellen an kleinere Displays : */
-@media (max-width: 100em) {
-    .container{
-       width:50%
-    }
-}
+/*@media (max-width: 100em) {*/
+/*    .container{*/
+/*       width:50%*/
+/*    }*/
+/*}*/
