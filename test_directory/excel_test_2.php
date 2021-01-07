@@ -12,14 +12,24 @@
     <p id="02">row2</p>
     <p id="03">row3</p>
     <p id="04">row4</p>
-    <button onclick="display()">click me</button>
-    <p id="error"></p>
+    <button onclick="display()">anzeigen</button>
+    <p id="anzahl"></p>
+    <button onclick="fill()">füllen</button>
 
-    <input type="text" id="n0">
-    <input type="text" id="v0">
-
-    <input type="text" id="n1">
-    <input type="text" id="v1">
+    <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
+    <input type="hidden" id="t_max" value="5">
+    <!--Schleife für max anzahl-->
+    <?php
+    $counter = 1;
+    while($counter <= 5){
+    ?>
+    <div class="row">
+        <div style="width: 50%;"><input type="text" id="<?php echo "n".$counter; ?>" name="<?php echo "nachname".$counter; ?>"></div>
+        <div style="width: 50%;"><input type="text" id="<?php echo "v".$counter; ?>" name="<?php echo "vorname".$counter; ?>"></div>
+    </div>
+    <!--Schleife Ende-->
+    <?php $counter++;}
+    ?>
 <script>
     var input = document.getElementById("input");
     var arr = [];
@@ -32,61 +42,24 @@
     });
 
     function display() {
-        document.getElementById("01").innerHTML = arr[0][0];
+        document.getElementById("01").innerHTML = arr[0];
         document.getElementById("02").innerHTML = arr[1];
         document.getElementById("03").innerHTML = arr[2];
         document.getElementById("04").innerHTML = arr[3];
-
-        document.getElementById("error").innerHTML = test;
-
-        document.getElementById("n0").value = arr[0][0];
-        document.getElementById("v0").value = arr[0][1];  
-
-        document.getElementById("n1").value = arr[1][0];
-        document.getElementById("v1").value = arr[1][1]; 
     }
 
-    var test = arr[0][0];
-/*
-    var arrayN = [];
-    var arrayV = [];
-    // split 2d arrray into two seperate arrays
-    /*
-    for(var i = 0; i >= 0; i++) {
-        if(arr[i][0] == null){break;}
 
-        arrayN.push(arr[i][0]);
-        arrayV.push(arr[i][1]);
-    }
-    */
-  
-/*
-    arrayN.push(arr[0][0]);
-    arrayN.push(arr[1][0]);
-    arrayN.push(arr[2][0]);
-    arrayN.push(arr[3][0]);
+    var max = document.getElementById("t_max").value;
+    document.getElementById("anzahl").innerHTML = max;
+    function fill() {
+        for(var i = 1; i <= max; i++) {
+            var n = ["n", i].join("");
+            var v = ["v", i].join("");
 
-    arrayV.push(arr[0][1]);
-    arrayV.push(arr[1][1]);
-    arrayV.push(arr[2][1]);
-    arrayV.push(arr[3][1]);
-
-    var phpN = arrayN.join(",");
-    var phpV = arrayV.join(",");
-    /*
-    var jsonN = JSON.stringify(arrayN);
-    var jsonV = JSON.stringify(arrayV);
-    // kann in php mit $array=json_decode($_POST['jsondata']);
-    /*
-    var len = arrayN.length();
-    for(var i = 0; i < arrayN.length, i++) {
-        len = i;
-        if(arrayN[i] == null) {
-            break;
+            document.getElementById(n).value = arr[i-1][0];
+            document.getElementById(v).value = arr[i-1][1];
         }
     }
-    */
-    
 </script>
 </body>
 </html>

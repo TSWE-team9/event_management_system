@@ -43,6 +43,8 @@ $res->close();
     <title>Veranstaltung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+    <!--Importierung Excel library-->
+    <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
 </head>
 <body>
 <nav>
@@ -63,27 +65,9 @@ $res->close();
 
     <div class="container-80-inner">
         <h2 class="hdln">Importierung aus Excel Datei</h2>
-        <form action="#" method="post">
-            <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
             <label for="t_liste">Wählen Sie eine Datei aus:</label>
-            <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="t_liste" id=" t_liste" />
-            <button style="float: right;" type="button" name="liste-übergeben" class="btn" onclick="document.getElementById('id01').style.display='block'">Teilnehmerliste importieren</button>
-
-            <!--Modal wenn auf Importieren gedrückt wurde-->
-            <div id="id01" class="modal">
-                <div class="modal_content"> 
-                    <div class="modal_container">
-                        <h1>Teilnehmerübermittlung</h1>
-                        <p>Falls bereits eine Teilnehmerliste übermittelt wurde, wird diese komplett mit der neuen Liste ersetzt.</p>
-                        <p>Wollen Sie diese Teilnehmerliste übermitteln?</p>
-                        <div class="modal_clearfix">
-                            <button class="modal_btnconfirm" type="submit" name="liste-übergeben" onclick="document.getElementById('id01').style.display='none'">Übermitteln</button>
-                            <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
+            <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="input" />
+            <button style="float: right;" type="button" class="btn" onlick="func()">Teilnehmerliste einlesen</button>
 
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
@@ -101,6 +85,7 @@ $res->close();
         </div>
         <form action="SeiteTeilnehmerübermittlung.php" method="post">
             <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
+            <input type="hidden" id="t_max" value="<?php echo $teilnehmer_max; ?>">
             <!--Schleife für max anzahl-->
             <?php
             $counter = 1;
