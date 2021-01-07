@@ -6,9 +6,9 @@
 
     <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
 
     <!--    Einbinden von icons-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -19,10 +19,10 @@
 <nav>
     <ul class="header">
         <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a class= "active" href="#">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
+        <li class="headerel"><a class= "active" href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
+        <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
         <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+        <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
@@ -162,19 +162,10 @@ if($error_occured){
             <input type="radio" id="inaktiv" name="Status" value="2">
             <label for="inaktiv"> inaktiv</label>
         </fieldset>
-        <!--    <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
-        <!--    <form action="select.html">-->
-        <!--    <label>Raumstatus:-->
-        <!--        <select name="Status" size="2">-->
-        <!--            <option>aktiv</option>-->
-        <!--            <option>inaktiv</option>-->
-        <!--        </select>-->
-        <!--    </label>-->
-        <!--    </form>-->
 
 
 
-        <button id="Hinzufügen">Hinzufügen</button>
+        <button class="Löschen">Hinzufügen</button>
         <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abrechen</a>
 
 

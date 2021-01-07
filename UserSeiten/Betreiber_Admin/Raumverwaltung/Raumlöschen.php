@@ -6,6 +6,8 @@
 
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="Raumlöschen.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
@@ -122,16 +124,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <nav>
         <ul class="header">
             <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-            <li class="headerel"><a class= "active" href="#">Angebotserstellung</a></li>
-            <li class="headerel"><a href="#">Abrechnung</a></li>
+            <li class="headerel"><a class= "active" href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
+            <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
             <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-            <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+            <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
             <li class="headerel"><a href="#">Statistiken</a></li>
             <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
             <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
-
         </ul>
     </nav>
+
 <div class="contact-us">
     <h1> Raum Löschen</h1>
 
@@ -143,11 +145,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
             <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
     <label for="Raumbezeichnung">Raumbezeichnung <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text"/>
-<!--    <button id="Löschen">Löschen</button>-->
 
+<!--    <button id="Löschen">Löschen</button>-->
             <button type="submit" class="Löschen" formaction="#">Löschen</button>
             <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abbrechen</a>
 
-
 </form>
-
+    </div>

@@ -2,7 +2,7 @@
 /*styling von hintergrund und schrift der Tabelle*/
 
 
-
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
 @media (max-width: 800px) {
     .container td:nth-child(5),
     .container th:nth-child(5) { display: none; }
@@ -11,13 +11,16 @@
 
 
 
-    #Hinzufügen, #Ändern, #Löschen {
-            display:block;
+     .Klick, .Löschen {
+            display: block ;
+             float: left ;
+             margin-left: 16em;
+         /*margin-right: 10em;*/
             line-height: 2em;
             padding: 0 3em;
             border: 1em;
             background: #f45702;
-            color: black;
+            color: white;
             letter-spacing: 2px;
             transition: 0.2s all ease-in,out;
             border-bottom: 2px solid transparent;
@@ -25,17 +28,60 @@
             font-size: 1em;
             margin-bottom: 3em;
             text-decoration: none;
-            }
+        font-family: "Spartan", sans-serif;
+         cursor: pointer;
 
-    #Ändern:hover, #Löschen:hover, #Hinzufügen:hover {
+     }
+
+    .Klick:hover, .Löschen:hover{
         background: white;
         color: #f45702;
         border-bottom: 2px solid #f45702;
     }
-/*    Anpassung bei größeren Ausgabegeräten*/
-@media all and (min-width:91em) {
-    #Hinzufügen, #Ändern, #Löschen {
-        display: inline-block;
-        margin-left: 2em ;
-    }
+.Löschen {
+    float:right;
+    line-height: 24pt;
+    padding: 0 40px;
+    margin-top:30px;
+    font-size: 14px;
+
+
 }
+/*.Löschen:hover {*/
+/*    background: inherit;*/
+/*    color: white;*/
+/*    border-bottom: 2px solid #f45702;*/
+/*}*/
+
+    .Abbrechen  {
+    display: block;
+    float: left;
+    line-height: 24pt;
+    padding: 0 2em;
+    border: none;
+    background: gray;
+    color: white;
+    letter-spacing: 2px;
+    transition: 0.2s all ease-in-out;
+    border-bottom: 2px solid transparent;
+    outline: none;
+    margin-top: 30px;
+    text-decoration: none;
+    font-size: 14px;
+
+
+}
+.Abbrechen:hover {
+    background: white;
+    border-bottom: 2px solid #534e4c;
+    color: #514e4c;
+    border-bottom: 2px solid #302c2a;
+}
+/*    Anpassung bei größeren Ausgabegeräten*/
+/*@media all and (max-width:91em) {*/
+/*    .Klick {*/
+/*        display:block;*/
+/*        float: left;*/
+/*        margin-left: 2em ;*/
+/*    }*/
+/*}*/

@@ -16,11 +16,11 @@
 <!--header-->
 <nav>
     <ul class="header" >
-        <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a href="#">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a class= "active" href="Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a class= "active" href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
+        <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
+        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
+        <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
@@ -171,7 +171,8 @@ echo "<br><br>";
 
 //Anzeige der Tabelle der betroffenen Veranstaltungen
 if($show_table){
-    echo "<table border=\"1\">";
+    echo "<div class='mantel '>" ;
+    echo "<table border=\"1\" class='container' style='padding-top:8em '>";
     echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
     while($i = $res2->fetch_row()){
         echo "<tr>";
@@ -181,6 +182,7 @@ if($show_table){
         echo "</tr>\n";
     }
     echo "</table>\n";
+    echo "</div>";
 }
 ?>
 
@@ -200,28 +202,10 @@ if($show_table){
         <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="0" />
         <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
         <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
-        <!--<fieldset id = "Status">
-            <label for = "Status"> Raumstatus</label>
-            <input type= "radio" id="aktiv" name="Status" value="1">
-            <label for="aktiv"> aktiv</label>
-            <input type="radio" id="inaktiv" name="Status" value="2">
-            <label for="inaktiv"> inaktiv</label>
-        </fieldset>
-           <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
-        <!--    <form action="select.html">-->
-        <!--    <label>Raumstatus:-->
-        <!--        <select name="Status" size="2">-->
-        <!--            <option>aktiv</option>-->
-        <!--            <option>inaktiv</option>-->
-        <!--        </select>-->
-        <!--    </label>-->
-        <!--    </form>-->
 
 
-
-        <button id="Hinzufügen">Ändern</button>
-            <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abrechen</a>
-
+        <button class="Löschen"style="margin-top: 0; ">Ändern</button>
+            <a href="Raumverwaltung.php" type="button" class="Abbrechen" style="margin-top: 0">Abrechen</a>
 
     </form>
 

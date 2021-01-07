@@ -1,35 +1,45 @@
+
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
 body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     line-height: 1.42em;
-    display: grid;
-    align-items: center;
-    justify-items: center;
-    color:black;
+    /*display: grid;*/
+    /*align-items: center;*/
+    /*justify-items: center;*/
+    /*color:black;*/
     background: url("HintergrundRaumseite.jpg") fixed ;
-    background-size: 100% auto;
+    /*background-size: 100% auto;*/
 }
 /*Css Überschrift der Tabelle*/
 h1 {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 400;
     line-height:1em;
     text-align: center;
     color: black;
-    padding-top: 50px;
+    padding-top:2em;
     text-underline-mode: 10px;
     text-underline: black ;
 }
+ /*wrapper um die Tabelle in der Mitte zu positionieren*/
+ .wrapper {
+     display: grid;
+     align-items: center;
+     justify-items: center;
+ }
 /*tabellengerüst*/
     .container {
-        margin-left: 6em;
     text-align: left;
     overflow: hidden;
     width: 50%;
-    display: table;
+    display:  table ;
+        /*align-items: center;*/
+        /*justify-items: center;*/
     padding: 0 0 5em 0;
     /*muss so sein sonst rutscht tabelle in Raumändern nach oben*/
-    margin-top: 5em !important;
+    margin-top: 20em;
+    margin-bottom:15em;
     border: none;
 
 
@@ -92,9 +102,6 @@ h1 {
     transition-timing-function: linear;
 }
 
-.container td, .container th {
-    padding: 2%;
-}
 /*Anpassung der Tabellen an kleinere Displays : */
 /*@media (max-width: 100em) {*/
 /*    .container{*/
