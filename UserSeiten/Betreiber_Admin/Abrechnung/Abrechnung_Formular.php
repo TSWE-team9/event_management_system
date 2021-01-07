@@ -367,7 +367,12 @@ if($status) {
         $query = "SELECT V.Kosten, A.Rechnungsdatum FROM Veranstaltung V , Abrechnung A WHERE V.V_ID = $V_ID AND  A.V_ID = $V_ID GROUP BY V.Kosten, A.Rechnungsdatum";
         $res = $conn->query($query);
         if($res === FALSE){
-        echo "FEHLER: Abfrage der Abrechnung scheint kein Ergebnis vorzuliegen";
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Fehler</h2>" ;
+            echo "<a class='close' href='AbrechnungsSeite.php'>&times;</a>" ;
+            echo "<div class='content'>" ,'FEHLER: Abfrage der Abrechnung scheint kein Ergebnis vorzuliegen' ;
+            echo "</div>" ;
         }
         else{
             while($i = $res->fetch_row()){

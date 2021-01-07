@@ -54,36 +54,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     //Abfrage, ob in dem Raum begonnene (Status=2) oder aktive (Status=1) Veranstaltungen stattfinden
     $check_query3 = "SELECT V_ID FROM Veranstaltung WHERE Ort = $R_ID AND Status IN (1, 2)";
     $res3 = $conn->query($check_query3);
+
     //Abfrage, ob für den Raum bearbeitete (Status=2) oder geänderte (Status=3) Angebote oder Anfragen existieren
     $check_query4 = "SELECT BeAr_ID FROM Anfrage_Angebot WHERE R_ID = $R_ID AND Status IN (2, 3)";
     $res4 = $conn->query($check_query4);
 
-    if($res2->num_rows>0){
+    if ($res2->num_rows > 0) {
         $status_inaktiv = true;
     }
 
-    if($res3->num_rows>0){
+    if ($res3->num_rows > 0) {
         $error = "<br>" . "Fehler: In diesem Raum finden derzeit Veranstaltungen statt oder es sind Veranstaltungen geplant.";
         $error_occured = true;
     }
 
-    if($res4->num_rows>0){
+    if ($res4->num_rows > 0) {
         $error = $error . "<br>" . "Fehler: Für diesen Raum existieren erstellte Angebote.";
         $error_occured = true;
     }
 
     //Nur wenn keine Fehler vorliegen ($error_occured) wird der gewählte Raum inaktiv gesetzt
-    if($error_occured == false && $status_inaktiv == false){
+    if ($error_occured == false && $status_inaktiv == false) {
 
         $update_query = "UPDATE Raum SET Status = 2 WHERE R_ID = $R_ID";
         if ($conn->query($update_query) === TRUE) {
-            echo "<div class='overlay'>" ;
-            echo  "<div class='popup'>";
-            echo "<h2>Bestätigung</h2>" ;
-            echo "<a class='close' href='Raumverwaltung.php'>&times;</a>" ;
-            echo "<div class='content'>" ,'Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt),' ;
-            echo "</div>" ;
-            echo "</div>" ;
+            echo "<div class='overlay'>";
+            echo "<div class='popup'>";
+            echo "<h2>Bestätigung</h2>";
+            echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
+            echo "<div class='content'>", 'Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt),';
+            echo "</div>";
+            echo "</div>";
 //            echo "<br>" . "Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt).";
 
         } else {
@@ -93,26 +94,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-    if($status_inaktiv){
-        echo "<div class='overlay'>" ;
-        echo  "<div class='popup'>";
-        echo "<h2>Fehler</h2>" ;
-        echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
-        echo "<div class='content'>" ,'Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!,' ;
-        echo "</div>" ;
-        echo "</div>" ;
+
+    if ($status_inaktiv) {
+        echo "<div class='overlay'>";
+        echo "<div class='popup'>";
+        echo "<h2>Fehler</h2>";
+        echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>";
+        echo "<div class='content'>", 'Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!,';
+        echo "</div>";
+        echo "</div>";
 //        echo "<br>" . "Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!";
 
     }
-    echo "<div class='overlay'>" ;
-    echo  "<div class='popup'>";
-    echo "<h2>Fehler</h2>" ;
-    echo "<a class='close' href='Raumlöschen.php'>&times;</a>" ;
-    echo "<div class='content'>" .$error. "</div>";
-    echo "</div>" ;
-    echo "</div>" ;
+    if ($error_occured) {
+        echo "<div class='overlay'>";
+        echo "<div class='popup'>";
+        echo "<h2>Fehler</h2>";
+        echo "<a class='close' href='Raumlöschen.php'>&times;</a>";
+        echo "<div class='content'>" . $error . "</div>";
+        echo "</div>";
+        echo "</div>";
 //    echo $error;
 
+    }
 }
 
 
