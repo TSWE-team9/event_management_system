@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../../send_email.php";
 ?>
     <!DOCTYPE html>
     <html lang="en">
@@ -72,7 +73,27 @@ if($res === FALSE){
     echo "<div class='content' >"  .$error."</div>";
     echo "</div>" ;
     echo "</div>" ;
-}else {
+}
+
+else {
+
+    //Veranstalter_ID abfragen
+    $query = "SELECT Veranstalter FROM Anfrage_Angebot WHERE BeAr_ID = $BeAr_ID";
+    $res = $conn->prepare($query);
+    $res->execute();
+    $res->bind_result($B_ID);
+    $res->fetch();
+    $res->close();
+
+    $empfaenger = get_mail_address($B_ID);
+    $betreff = "Neues Angebot für Ihre Anfrage";
+    $nachricht = "Für Ihre Anfrage einer Veranstaltung am ". $Beginn." haben wir ein Angebot erstellt.
+    Sie können sich dieses im Reiter Meine Veranstaltungen auf der VMS Seite anzeigen lassen.
+    Das Angebot ist 7 Tage lang gültig und wird danach gelöscht.
+    Ihr VMS Team";
+
+    send_email($empfaenger, $betreff, $nachricht);
+
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Bestätigung</h2>" ;
@@ -82,8 +103,6 @@ if($res === FALSE){
     echo "</div>" ;
 //    echo "Das Angebot für Raum ". $R_ID . " zum Preis von " . $Angebotspreis . " wurde erfolgreich erstellt.";
 
-
-    //TODO Versenden einer Email an den Veranstalter
 }
 
 

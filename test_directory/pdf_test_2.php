@@ -7,23 +7,19 @@
 
 <body>
 
-<?php
-    $phpArray = array(
-        0 => "Hans", 
-        1 => "Sepp", 
-        2 => "Franz",
-    )
-?>
+<button type="button" onclick="genPDF()">Download</button>
 
 
-<p id="test"></p>
-
-
+<script src="https://unpkg.com/jspdf@2.2.0/dist/jspdf.umd.min.js"></script>
 <script>
-    // getting arrays
-    var jArrayN = <?php echo json_encode($phpArray); ?>;
-    // putting variable into html
-    document.getElementById("test").innerHTML = jArray[0]:
+
+    function genPDF() {}
+    // Default export is a4 paper, portrait, using millimeters for units
+        const doc = new jsPDF();
+
+        doc.text("Hello world!", 10, 10);
+        doc.save("a4.pdf");
+    }
 
 </script>
 
