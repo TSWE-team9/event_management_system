@@ -85,25 +85,6 @@ $res->close();
             </div>
         </form>
 
-        <?php
-        //Abspeichern der Liste aus den übergebenen Arrays mit Nachnamen und Vornamen
-        if(isset($_POST["liste-übergeben"])){
-
-            //Alte Liste löschen
-            $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
-            $conn->query($query);
-
-            //TODO Einfügen der Teilnehmer
-
-            //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
-            $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
-            $res_update = $conn->query($update_query);
-            if($res_update === FALSE){
-                echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
-            }
-        }
-        ?>
-
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
@@ -126,8 +107,8 @@ $res->close();
             while($counter <= $teilnehmer_max){
             ?>
             <div class="row">
-                <div class="col-50"><input type="text" id="#nachname counter#" name="<?php echo "nachname".$counter; ?>"></div>
-                <div class="col-50"><input type="text" id="#vorname counter#" name="<?php echo "vorname".$counter; ?>"></div>
+                <div class="col-50"><input type="text" id="<?php echo "n".$counter; ?>" name="<?php echo "nachname".$counter; ?>"></div>
+                <div class="col-50"><input type="text" id="<?php echo "v".$counter; ?>" name="<?php echo "vorname".$counter; ?>"></div>
             </div>
             <!--Schleife Ende-->
             <?php $counter++;}

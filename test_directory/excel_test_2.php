@@ -14,34 +14,62 @@
     <p id="04">row4</p>
     <button onclick="display()">click me</button>
     <p id="error"></p>
+
+    <input type="text" id="n0">
+    <input type="text" id="v0">
+
+    <input type="text" id="n1">
+    <input type="text" id="v1">
 <script>
     var input = document.getElementById("input");
-    var arr;
+    var arr = [];
 
     input.addEventListener('change', function() {
-        readXlsxFile(input.files[0]).then(function(data) {
+        readXlsxFile(input.files[0]).then((data) => {
             console.log(data);
             arr = data;
         });
     });
 
     function display() {
-        document.getElementById("01").innerHTML = arr[0];
+        document.getElementById("01").innerHTML = arr[0][0];
         document.getElementById("02").innerHTML = arr[1];
         document.getElementById("03").innerHTML = arr[2];
         document.getElementById("04").innerHTML = arr[3];
 
-        document.getElementById("error").innerHTML = phpN;
+        document.getElementById("error").innerHTML = test;
+
+        document.getElementById("n0").value = arr[0][0];
+        document.getElementById("v0").value = arr[0][1];  
+
+        document.getElementById("n1").value = arr[1][0];
+        document.getElementById("v1").value = arr[1][1]; 
     }
 
-    var arrayN;
-    var arrayV;
+    var test = arr[0][0];
+/*
+    var arrayN = [];
+    var arrayV = [];
     // split 2d arrray into two seperate arrays
-    for(var i = 0; i < arr.length; i++) {
-        arrayN.push(i[0]);
-        arrayV.push(i[1]);
-    }
+    /*
+    for(var i = 0; i >= 0; i++) {
+        if(arr[i][0] == null){break;}
 
+        arrayN.push(arr[i][0]);
+        arrayV.push(arr[i][1]);
+    }
+    */
+  
+/*
+    arrayN.push(arr[0][0]);
+    arrayN.push(arr[1][0]);
+    arrayN.push(arr[2][0]);
+    arrayN.push(arr[3][0]);
+
+    arrayV.push(arr[0][1]);
+    arrayV.push(arr[1][1]);
+    arrayV.push(arr[2][1]);
+    arrayV.push(arr[3][1]);
 
     var phpN = arrayN.join(",");
     var phpV = arrayV.join(",");
