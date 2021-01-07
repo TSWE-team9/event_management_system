@@ -29,7 +29,7 @@
             }
 
     #Ändern:hover, #Löschen:hover, #Hinzufügen:hover {
-        background: deeppink;
+        background: white;
         color: #f45702;
         border-bottom: 2px solid #f45702;
     }
