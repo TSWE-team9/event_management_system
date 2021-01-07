@@ -67,7 +67,7 @@ $res->close();
         <h2 class="hdln">Importierung aus Excel Datei</h2>
             <label for="t_liste">Wählen Sie eine Datei aus:</label>
             <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="input" />
-            <button style="float: right;" type="button" class="btn" onlick="func()">Teilnehmerliste einlesen</button>
+            <button style="float: right;" type="button" class="btn" onclick="fill()">Teilnehmerliste einlesen</button>
 
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">

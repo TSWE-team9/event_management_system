@@ -304,7 +304,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <h1 class="center">Funktionen</h1>
 
     <!--Stornierung Beginn-->
-    <button type="button" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
+    <button type="button" style="float: left;" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
     <?php if($status == 1){?>
     <!--Modal falls Stornozeitraum noch nicht abgelaufen (Veranstaltung "aktiv")-->
     <div id="v01" class="modal">
@@ -358,7 +358,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     ?>
     <form action="../Veranstalter/Veranstaltungsseite/SeiteTeilnehmerübermittlung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
-        <button type="submit" class="btn" name="teilnehmerliste_übermitteln">Teilnehmerliste übermitteln</button>
+        <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_übermitteln">Teilnehmerliste übermitteln</button>
     </form>
     <!--Liste übermitteln Ende-->
     <?php } ?>
@@ -366,14 +366,14 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <!--Teilnehmer anzeigen Beginn-->
     <form action="../Veranstalter/Veranstaltungsseite/SeiteTeilnehmerliste.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
-        <button type="submit" class="btn" name="teilnehmerliste_anzeigen">Teilnehmerliste anzeigen</button>
+        <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_anzeigen">Teilnehmerliste anzeigen</button>
     </form>
     <!--Teilnehmer anzeigen Ende-->
 
     <!--Nachricht versenden Beginn-->
     <form action="../Veranstalter/Veranstaltungsseite/SeiteMitteilung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
-        <button type="submit" class="btn" name="mitteilung">Nachricht an Teilnehmer senden</button>
+        <button style="float: left;" type="submit" class="btn" name="mitteilung">Nachricht an Teilnehmer senden</button>
     </form>
     <!--Nachricht versenden Ende-->
 
