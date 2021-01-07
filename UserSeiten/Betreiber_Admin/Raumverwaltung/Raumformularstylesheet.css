@@ -136,7 +136,7 @@ input[type='radio']:checked  + label::before {
 /*::selection {*/
 /*    background: #ffc7b8;*/
 /*}*/
-.Abbrechen, #Hinzufügen,.Löschen {
+.Abbrechen, .Löschen, #Hinzufügen {
     display: block;
     line-height: 24pt;
     padding: 0 40px;
@@ -148,20 +148,19 @@ input[type='radio']:checked  + label::before {
     outline: none;
     margin-top: 30px;
     text-decoration: none;
-
     cursor: pointer;
 
 
 }
-.Löschen {
-    font-size: 36px;
-    float:right;
-    background: #f45702;
+/*.Löschen {*/
+/*    font-size: 36px;*/
+/*    float:right;*/
+/*    background: #f45702;*/
 
-}
-    .Löschen:hover {
-    background: inherit;
-    color: white;
+/*}*/
+    .Löschen:hover{
+    background:white;
+    color: #f45702;
     border-bottom: 2px solid #f45702;
 }
 .Abbrechen {

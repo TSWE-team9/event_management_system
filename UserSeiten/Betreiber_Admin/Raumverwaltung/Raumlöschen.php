@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Raumlöschen</title>
-    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Raumlöschen.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>

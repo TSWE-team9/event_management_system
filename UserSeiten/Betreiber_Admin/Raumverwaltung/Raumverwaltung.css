@@ -11,31 +11,32 @@
 
 
 
-/*    #Hinzufügen, #Ändern, #Löschen {*/
-/*            display:inline-block;*/
-/*        margin-left: 7em ;*/
-/*            line-height: 2em;*/
-/*            padding: 0 3em;*/
-/*            border: 1em;*/
-/*            background: #f45702;*/
-/*            color: white;*/
-/*            letter-spacing: 2px;*/
-/*            transition: 0.2s all ease-in,out;*/
-/*            border-bottom: 2px solid transparent;*/
-/*            outline: none;*/
-/*            font-size: 1em;*/
-/*            margin-bottom: 3em;*/
-/*            text-decoration: none;}*/
+    #Hinzufügen, #Ändern, #Löschen {
+            display:block;
+        float: right !important;
+            line-height: 2em;
+            padding: 0 3em;
+            border: 1em;
+            background: #f45702;
+            color: black;
+            letter-spacing: 2px;
+            transition: 0.2s all ease-in,out;
+            border-bottom: 2px solid transparent;
+            outline: none;
+            font-size: 6em;
+            margin-bottom: 3em;
+            text-decoration: none;
+            }
 
-/*    #Ändern:hover, #Löschen:hover, #Hinzufügen:hover {*/
-/*        background: white;*/
-/*        color: #f45702;*/
-/*        border-bottom: 2px solid #f45702;*/
-/*    }*/
-/*!*    Anpassung bei größeren Ausgabegeräten*!*/
-/*@media all and (min-width:120em) {*/
-/*    #Hinzufügen, #Ändern, #Löschen {*/
-/*        display: inline-block;*/
-/*        margin-left: 16em ;*/
-/*    }*/
-/*}*/
+    #Ändern:hover, #Löschen:hover, #Hinzufügen:hover {
+        background: deeppink;
+        color: #f45702;
+        border-bottom: 2px solid #f45702;
+    }
+/*    Anpassung bei größeren Ausgabegeräten*/
+@media all and (min-width:91em) {
+    #Hinzufügen, #Ändern, #Löschen {
+        display: inline-block;
+        margin-left: 2em ;
+    }
+}
