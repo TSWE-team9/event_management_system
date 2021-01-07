@@ -30,6 +30,8 @@
         document.getElementById("03").innerHTML = arr[2];
         document.getElementById("04").innerHTML = arr[3];
     }
+
+    
 </script>
 </body>
 </html>

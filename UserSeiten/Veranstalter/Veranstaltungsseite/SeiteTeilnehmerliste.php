@@ -44,6 +44,9 @@ $res->close();
     <title>Veranstaltung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+    <!--Import der PDFmake library-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.69/pdfmake.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.69/vfs_fonts.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <nav>
@@ -107,19 +110,9 @@ $res->close();
     <!--TODO Zweite While Schleife und Ausgaben kannst du löschen, hab sie mal drin gelassen; siehe auch Arrays in Zeile 90/91-->
 
     <div style="width: 80%; margin: auto; margin-top: 20px">
-        <form action="#" method="post">
-            <input type="hidden" id="anzahl" value="<?php echo $teilnehmer_akt; ?>">
-            <!--while Schleife Beginn-->
-            <?php
-            $counter = 0;
-            while($j = $res1->fetch_row()){
-            $counter++;
-            ?>
-            <input type="hidden" id="<?php echo $counter; ?>" value=<?php echo $j[0] . " " . $j[1]; ?>>
-            <!--while Schleife Ende-->
-            <?php }?>
-            <button class="btn" style="float: right;" type="button" onclick="tolleJavaScriptFunktion()">Teilnehmerliste als PDF ausgeben</button>
-        </form>
+        
+        <button class="btn" style="float: right;" type="button" onclick="genPDF()">Teilnehmerliste als PDF ausgeben</button>
+        
         <!--else Ende-->
         <?php }?>
 
@@ -131,7 +124,41 @@ $res->close();
     </div>
 </div>
 
-<script src="SeiteTeilnehmerliste.js"></script>
+<script>
+
+    // getting arrays
+    var jArrayN = <?php echo json_encode($teilnehmer_array_n); ?>;
+    var jArrayV = <?php echo json_encode($teilnehmer_array_v); ?>;
+
+    var combinedArray = [];
+    for(var i = 0; i < jArrayN.length; i++) {
+        var temp = [jArrayN[i], jArrayV[i]].join(" ");
+        combinedArray.push(temp);
+    }
+
+    var titel = "#titel#"; // TODO veranstaltungstitel
+    var header = ["Teilnehmerliste für die Veranstaltung:", titel].join(" ");
+
+    var docDefinition = {
+        content:[
+            {text: header, style: 'header'},
+            " ", 
+            " ",
+            combinedArray
+        ],
+        styles: {
+            header: {
+                fontSize: 22,
+                bold: true,
+                alignment: 'center'
+            }
+        }
+    };
+
+    function genPDF() {
+        pdfMake.createPdf(docDefinition).download();
+    }
+</script>
 
 </body>
 </html>
