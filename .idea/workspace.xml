@@ -38,7 +38,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Veranstaltungsseite/SeiteTeilnehmerliste.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Veranstaltungsseite/SeiteTeilnehmerliste.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_directory/excel_test.php" beforeDir="false" afterPath="$PROJECT_DIR$/test_directory/excel_test.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -117,7 +116,7 @@
       <workItem from="1609837833676" duration="10203000" />
       <workItem from="1609859563518" duration="3027000" />
       <workItem from="1609928920246" duration="3229000" />
-      <workItem from="1610009707803" duration="608000" />
+      <workItem from="1610009707803" duration="2181000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
