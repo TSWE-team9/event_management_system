@@ -29,7 +29,7 @@ $query = "SELECT Angebot_ID, Titel, Veranstalter, Beschreibung, Art, Verfügbark
        WHERE V_ID = $V_ID";
 $res = $conn->prepare($query);
 $res->execute();
-$res->bind_result($angebot_id, $titel, $veranstalter, $beschreibung, $art, $verfügbarkeit, $status, $ort, $teilnehmer_max, $teilnehmer_akt,
+$res->bind_result($angebot_id, $titel, $veranstalter, $beschreibung, $art, $verfuegbarkeit, $status, $ort, $teilnehmer_max, $teilnehmer_akt,
                 $beginn, $ende, $uhrzeit, $frist, $kosten);
 $res->fetch();
 $res->close();
@@ -114,7 +114,7 @@ switch ($_SESSION["rolle"]){
         </div>
         <div class="col-desc">
             <!--if else ob offen oder geschlossen-->
-            <?php if($verfügbarkeit == 1){?>
+            <?php if($verfuegbarkeit == 1){?>
             <!--offen-->
             <p class="desc">Anmeldung für registrierte Nutzer möglich.</p>
             <?php } else {?>
@@ -343,7 +343,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <!--Liste übermitteln Beginn-->
     <!--nur bei geschlossenen veranstaltungen-->
     <?php
-    if($verfügbarkeit == 2){
+    if($verfuegbarkeit == 2){
     ?>
     <form action="../Veranstalter/Veranstaltungsseite/SeiteTeilnehmerübermittlung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">

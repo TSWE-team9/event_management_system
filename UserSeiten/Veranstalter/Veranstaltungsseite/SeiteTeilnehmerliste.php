@@ -107,7 +107,6 @@ $res->close();
         <?php }?>
     </div>
 
-    <!--TODO Zweite While Schleife und Ausgaben kannst du löschen, hab sie mal drin gelassen; siehe auch Arrays in Zeile 90/91-->
 
     <div style="width: 80%; margin: auto; margin-top: 20px">
         
@@ -136,7 +135,7 @@ $res->close();
         combinedArray.push(temp);
     }
 
-    var titel = "#titel#"; // TODO veranstaltungstitel
+    var titel = "<?php echo $titel; ?>";
     var header = ["Teilnehmerliste für die Veranstaltung:", titel].join(" ");
 
     var docDefinition = {

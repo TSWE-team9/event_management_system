@@ -23,7 +23,7 @@ function angebot_refresh(){
             . $conn->connect_error);
     }
 
-    $query = "SELECT BeAr_ID, Veranstalter FROM Anfrage_Angebot WHERE date(LOCALTIMESTAMP) - Angebotsdatum > 7 AND Status IN (2,3)";
+    $query = "SELECT BeAr_ID, Veranstalter, Angebotsdatum FROM Anfrage_Angebot WHERE date(LOCALTIMESTAMP) - Angebotsdatum > 7 AND Status IN (2,3)";
     $res = $conn->query($query);
     if($res->num_rows > 0){
 
@@ -36,7 +36,14 @@ function angebot_refresh(){
             $query3 = "DELETE FROM Kalender WHERE B_ID = $i[0]";
             $conn->query($query3);
 
-            //TODO Veranstalter kontaktieren per Mail
+            //Veranstalter kontaktieren per Mail
+            $empfaenger = get_mail_address($i[1]);
+            $betreff = "Angebot zu Ihrer Anfrage abgelaufen";
+            $nachricht = "Das Angebot zu Ihrer Anfrage vom ". $i[2]." ist heute abgelaufen und wurde gelöscht.
+            Sie können gerne eine neue Anfrage senden, wenn Sie weiterhin interessiert daran sind.
+            Ihr VMS Team";
+
+            send_email($empfaenger, $betreff, $nachricht);
 
         }
 
