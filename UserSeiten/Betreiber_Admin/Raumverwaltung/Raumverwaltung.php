@@ -10,7 +10,7 @@
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<
+
 <nav>
     <ul class="header">
         <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
@@ -24,11 +24,11 @@
 
     </ul>
 </nav>
-<div id="wrapper">
-    <div id="content">
-
-    </div>
-</div>
+<!--<div id="wrapper">-->
+<!--    <div id="content">-->
+<!---->
+<!--    </div>-->
+<!--</div>-->
 
 <?php
 //Zugangsdaten zur Datenbank

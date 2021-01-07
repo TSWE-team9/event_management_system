@@ -13,7 +13,6 @@
 
     #Hinzufügen, #Ändern, #Löschen {
             display:block;
-        float: right !important;
             line-height: 2em;
             padding: 0 3em;
             border: 1em;
@@ -23,7 +22,7 @@
             transition: 0.2s all ease-in,out;
             border-bottom: 2px solid transparent;
             outline: none;
-            font-size: 6em;
+            font-size: 1em;
             margin-bottom: 3em;
             text-decoration: none;
             }

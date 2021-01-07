@@ -2,6 +2,9 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
     line-height: 1.42em;
+    display: grid;
+    align-items: center;
+    justify-items: center;
     color:black;
     background: url("HintergrundRaumseite.jpg") fixed ;
     background-size: 100% auto;
@@ -20,6 +23,8 @@ h1 {
 /*tabellengerüst*/
     .container {
     text-align: left;
+        margin-left: 4em;
+        position: center;
     overflow: hidden;
     width: 50%;
     display: table;
