@@ -24,7 +24,7 @@ if(isset($_POST["pw_reset"])){
     $email = strtolower($email);
 
     //Überprüfen, ob Email zu einem Account im System existiert
-    $query = "SELECT B_ID FROM Benutzerkonto WHERE E_mail='$email'";
+    $query = "SELECT B_ID FROM Benutzerkonto WHERE E_mail='$email' AND Passwort IS NOT NULL ";
     $res = $conn->query($query);
     if($res->num_rows == 0){
         array_push($errors_pw, "Es existiert kein Account mit der angegebenen E-Mail-Adresse!");

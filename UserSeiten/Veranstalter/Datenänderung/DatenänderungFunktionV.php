@@ -101,16 +101,23 @@ if (isset($_POST['änderung_daten_user_v'])) {
 
 
 //account löschen
-if (isset($_POST['del_account'])) {
+if (isset($_POST['acc_löschen'])) {
 
-    $query_check = 'SELECT V.Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
-                    AND Status IN (1, 2, 3) And B_ID = $curr_bid';
+
+    $query_check = "SELECT V.Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
+                    AND Status IN (1, 2, 3) And B_ID = 49";
     $result = mysqli_query($db,$query_check);
 
-    if(!empty($result)){
-        $query1 = "Update Benutzerkonto Set Status=2 Where B_ID=$curr_bid";
+
+    if(mysqli_num_rows($result) == 0){
+
+        echo "<br>.<br>.<br>";
+        echo "TEST";
+
+        $query1 = "Update Benutzerkonto Set Status=2 Where B_ID=49";
         mysqli_query($db, $query1);
-        $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=$curr_bid";
+
+        $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=49";
         mysqli_query($db, $query2);
     }
 

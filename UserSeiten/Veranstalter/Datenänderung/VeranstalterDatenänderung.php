@@ -90,7 +90,7 @@
             </form>
         </div>
 
-    <button id="löschen" onclick="document.getElementById('id01').style.display='block'">Konto löschen</button>
+    <button id="löschen" onclick="document.getElementById('id01').style.display='block'" name="acc_löschen">Konto löschen</button>
     
     <div id="id01" class="modal">
         <form class="modal_content" action="#" method="post">

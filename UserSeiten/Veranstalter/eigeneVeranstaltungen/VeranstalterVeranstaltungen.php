@@ -21,8 +21,7 @@ angebot_refresh();
 veranstaltung_refresh();
 
 //Variablen
-//$V_ID = $_SESSION["b_id"];
-$V_ID = 4;
+$V_ID = $_SESSION["b_id"];
 ?>
 
 <!DOCTYPE html>
