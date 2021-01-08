@@ -127,6 +127,7 @@ $res->close();
 
             //Variablen
             $counter = 1;
+            $teilnehmer_nr = 1;
             $V_ID = $_POST["v_id"];
 
             while($counter <= $teilnehmer_max) {
@@ -139,8 +140,9 @@ $res->close();
                 //Einfügen der Namen in die Teilnehmerliste
                 if(!empty($nachname) && !empty($vorname)){
 
-                    $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $counter, '$nachname', '$vorname', LOCALTIMESTAMP)";
+                    $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $teilnehmer_nr, '$nachname', '$vorname', LOCALTIMESTAMP)";
                     $res = $conn->query($query);
+                    $teilnehmer_nr++;
                     if($res === FALSE){
                         echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
                     }
