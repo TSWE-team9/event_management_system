@@ -17,9 +17,9 @@
 <nav>
     <ul class="header" >
         <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a class= "active" href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
+        <li class="headerel"><a href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
-        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
+        <li class="headerel"><a  class= "active" href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
         <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
