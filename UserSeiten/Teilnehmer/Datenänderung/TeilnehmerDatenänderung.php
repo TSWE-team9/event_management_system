@@ -96,7 +96,7 @@
         <form class="modal_content" action="#" method="post">
             <div class="modal_container">
                 <h1>Kontolöschung</h1>
-                <p>Wollen Sie ihr Konto wircklich löschen?</p>
+                <p>Wollen Sie ihr Konto wirklich löschen?</p>
                 <div class="modal_clearfix">
                     <button class="modal_btnconfirm" type="submit" name="acc_löschen" onclick="document.getElementById('id01').style.display='none'">Löschen</button>
                     <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>

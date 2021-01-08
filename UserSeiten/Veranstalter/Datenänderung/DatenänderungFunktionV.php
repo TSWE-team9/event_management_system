@@ -2,15 +2,6 @@
 session_start();
 ?>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-    </head>
-
-    <body>
-
 <?php
 //Variablen festgelegt
 $curr_pw = $_SESSION["passwort"];
@@ -22,8 +13,8 @@ $errors_d = array();
 //datenbankverbindung
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
 
-echo $curr_pw;
-echo $curr_bid;
+//echo $curr_pw;
+//echo $curr_bid;
 
 //Sessionvariablen initiiert
 $query = "SELECT Strasse, Haus_nr, PLZ, Ort, Land, Tel_nr FROM Veranstalterkonto WHERE B_ID = $curr_bid";
@@ -39,23 +30,27 @@ while($res->fetch()) {
     $_SESSION["LandV"] = $LandV;
     $_SESSION["TelnummerV"] = $TelV;
 }
+$res->close();
+
 //passwort ändern
 if (isset($_POST['änderung_pw_user_v'])) {
-
 
     $password_1 = md5(mysqli_real_escape_string($db, $_POST['passwortalt']));
     $password_2 = mysqli_real_escape_string($db, $_POST['passwortneu1']);
     $password_3 = mysqli_real_escape_string($db, $_POST['passwortneu2']);
 
-
-    if ($password_1== $curr_pw) {
+    if ($password_1 == $curr_pw) {
 
         if ($password_2 != $password_3) {
             array_push($errors_p, "neues passwort stimmt nicht überein");
         }else {
-            $query = "Update Benutzerkonto Set Passwort=md5($password_2) Where B_ID=$curr_bid";
-            mysqli_query($db, $query);
-            array_push($errors_p, "passwort wurde geändert");
+            $password_2 = md5($password_2);
+            $query = "Update Benutzerkonto Set Passwort= '$password_2' Where B_ID=$curr_bid";
+            $res = mysqli_query($db, $query);
+            if($res === TRUE){
+                array_push($errors_p, "passwort wurde geändert");
+                $_SESSION["passwort"] = $password_2;
+            }
         }
 
     } else {
@@ -101,23 +96,18 @@ if (isset($_POST['änderung_daten_user_v'])) {
 
 
 //account löschen
-if (isset($_POST['acc_löschen'])) {
+if (isset($_POST['acc_delete'])) {
 
+    $query_check = "SELECT V_ID FROM Veranstaltung WHERE Veranstalter = $curr_bid AND Status IN (1,2,3)";
 
-    $query_check = "SELECT V.Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
-                    AND Status IN (1, 2, 3) And B_ID = 49";
     $result = mysqli_query($db,$query_check);
-
 
     if(mysqli_num_rows($result) == 0){
 
-        echo "<br>.<br>.<br>";
-        echo "TEST";
-
-        $query1 = "Update Benutzerkonto Set Status=2 Where B_ID=49";
+        $query1 = "Update Benutzerkonto Set Status=2 Where B_ID=$curr_bid";
         mysqli_query($db, $query1);
 
-        $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=49";
+        $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=$curr_bid";
         mysqli_query($db, $query2);
     }
 
