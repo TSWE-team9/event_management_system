@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../UserSeiten/send_email.php";
 
 // initializing variables
 $email    = "";
@@ -74,6 +75,10 @@ if (isset($_POST['reg_user_t'])) {
         $query_t = "INSERT INTO Teilnehmerkonto
   			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$geschlecht','$street','$hnummer','$plz','$ort','$land','$tel',current_date, current_date )";
         mysqli_query($db, $query_t);
+
+        //Email Bestätigung
+        send_email($email, "Registrierung erfolgreich", "Sie haben sich erfolgreich im VMS registriert und können sich nun anmelden.");
+
         echo "SUCCESS";
 
         //For redirection
@@ -145,6 +150,10 @@ if (isset($_POST['reg_user_v'])) {
         $query_v = "INSERT INTO Veranstalterkonto
   			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$firma','$street','$hnummer','$plz','$ort','$land','$tel')";
         mysqli_query($db, $query_v);
+
+        //Email Bestätigung
+        send_email($email, "Registrierung erfolgreich", "Sie haben sich erfolgreich im VMS registriert und können sich nun anmelden.");
+
         echo "SUCCESS";
 
         //For redirection
