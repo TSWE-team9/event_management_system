@@ -15,7 +15,9 @@ session_unset();
 //Session wird beendet
 session_destroy();
 
-echo "Sie wurden erfolgreich ausgeloggt und können hier zurück zur Startseite gelangen:";
+$status = "Sie wurden erfolgreich ausgeloggt.";
+echo $status;
+
 ?>
 
 <br>
