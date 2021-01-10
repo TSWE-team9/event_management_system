@@ -300,8 +300,7 @@ if($_SESSION["rolle"]==2){
 //Anzeige von Buttons für Rolle Veranstalter, Betreiber und Admin
 if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
 ?>
-<div class="container-80">
-    <h1 class="center">Funktionen</h1>
+<div class="container-80-noborder">
 
     <!--Stornierung Beginn-->
     <button type="button" style="float: left;" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>

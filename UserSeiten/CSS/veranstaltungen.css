@@ -12,6 +12,13 @@
     min-width: 1200px;
 }
 
+.container-80-noborder {
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+}
+
 .col-info {
     float: left;
     width: 25%;

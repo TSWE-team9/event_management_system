@@ -97,17 +97,17 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
     margin: 5px;
   }
 
-  .accordion:hover {
-      background-color:rgb(10, 153, 22);
-      cursor: pointer;
-      color:black;
-  }
+.accordion:hover {
+    background-color:rgb(10, 153, 22);
+    cursor: pointer;
+    color:black;
+}
 
-  #veranstaltungen:hover {
+#veranstaltungen:hover {
     background-color:rgb(10, 153, 22);
     cursor: pointer;
     color: black;
-  }
+}
 
 .panel {
     padding: 0 18px;
