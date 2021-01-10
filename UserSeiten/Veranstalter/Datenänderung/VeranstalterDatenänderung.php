@@ -91,7 +91,6 @@
         </div>
 
     <button id="löschen" onclick="document.getElementById('id01').style.display='block'" name="acc_delete">Konto löschen</button>
-    
     <div id="id01" class="modal">
         <form class="modal_content" action="#" method="post">
             <div class="modal_container">
@@ -103,6 +102,7 @@
                 </div>
             </div>
         </form>
+        <?php if (count($errors_del) > 0){include('errorsDatenänderungV.php');} //TODO Weiterleitung ändern!?>
     </div>
 </div>
 

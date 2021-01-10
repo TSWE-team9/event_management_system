@@ -66,7 +66,7 @@
     <button class="accordion">Kontaktdaten aktualisieren</button>  
         <div class="panel">
             <form action="#" method="post">
-                <?php if (count($errors_d) > 0){include('errorsDatenänderungV.php');} ?>
+                <?php if (count($errors_d) > 0){include('errorsDatenänderung.php');} ?>
 
                 <label for="straße">Straße</label>
                 <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['Strasse'];?>' pattern="[A-Za-z]{1,50}">
@@ -91,7 +91,6 @@
         </div>
 
     <button id="löschen" onclick="document.getElementById('id01').style.display='block'">Konto löschen</button>
-    
     <div id="id01" class="modal">
         <form class="modal_content" action="#" method="post">
             <div class="modal_container">
@@ -103,9 +102,10 @@
                 </div>
             </div>
         </form>
+        <?php if (count($errors_del) > 0){include('errorsDatenänderung.php');} //TODO Weiterleitung ändern!?>
     </div>
 </div>
-
+//TODO Weiterleitung ändern!
 <script src="./TeilnehmerDatenänderung.js"></script>
 
 </body>

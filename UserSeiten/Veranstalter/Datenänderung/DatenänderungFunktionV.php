@@ -109,7 +109,12 @@ if (isset($_POST['acc_delete'])) {
 
         $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=$curr_bid";
         mysqli_query($db, $query2);
-    }
+        array_push($errors_del, "Benutzerkonto wurde gelöscht!");
+
+    }else{
+        array_push($errors_del, "Bitte melden Sie sich zu allen Veranstaltugen ab, um ihr Benutzerkonto zu löschen!");
+    };
+
 
 
 }

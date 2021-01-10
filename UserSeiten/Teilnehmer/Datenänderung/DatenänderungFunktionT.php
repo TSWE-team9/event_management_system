@@ -18,6 +18,7 @@ $curr_bid = $_SESSION["b_id"];
 $errors_p = array();
 $errors_e = array();
 $errors_d = array();
+$errors_del = array();
 
 //datenbankverbindung
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
@@ -117,7 +118,11 @@ if (isset($_POST['acc_löschen'])) {
         mysqli_query($db, $query1);
         $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=$curr_bid";
         mysqli_query($db, $query2);
-    }
+        array_push($errors_del, "Benutzerkonto wurde gelöscht!");
+
+    }else{
+        array_push($errors_del, "Bitte melden Sie sich zu allen Veranstaltugen ab, um ihr Benutzerkonto zu löschen!");
+    };
 
 
 }
