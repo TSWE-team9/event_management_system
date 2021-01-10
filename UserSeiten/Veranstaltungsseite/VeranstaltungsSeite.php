@@ -308,7 +308,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php if($status == 1){?>
     <!--Modal falls Stornozeitraum noch nicht abgelaufen (Veranstaltung "aktiv")-->
     <div id="v01" class="modal">
-        <form class="modal_content" action="../Veranstalter/Veranstaltungsseite/VeranstaltungStornieren.php" method="post">
+        <form class="modal_content" action="VeranstaltungStornieren.php" method="post">
             <div class="modal_container">
                 <h1>Stornierung</h1>
                 <?php
@@ -356,7 +356,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php
     if($verfuegbarkeit == 2){
     ?>
-    <form action="../Veranstalter/Veranstaltungsseite/SeiteTeilnehmerübermittlung.php" method="post">
+    <form action="SeiteTeilnehmerübermittlung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_übermitteln">Teilnehmerliste übermitteln</button>
     </form>
@@ -364,14 +364,14 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php } ?>
 
     <!--Teilnehmer anzeigen Beginn-->
-    <form action="../Veranstalter/Veranstaltungsseite/SeiteTeilnehmerliste.php" method="post">
+    <form action="SeiteTeilnehmerliste.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_anzeigen">Teilnehmerliste anzeigen</button>
     </form>
     <!--Teilnehmer anzeigen Ende-->
 
     <!--Nachricht versenden Beginn-->
-    <form action="../Veranstalter/Veranstaltungsseite/SeiteMitteilung.php" method="post">
+    <form action="SeiteMitteilung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="mitteilung">Nachricht an Teilnehmer senden</button>
     </form>

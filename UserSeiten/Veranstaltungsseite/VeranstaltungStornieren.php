@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../../send_email.php";
+include "../send_email.php";
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
