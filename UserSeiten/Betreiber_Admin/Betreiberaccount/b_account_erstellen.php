@@ -103,7 +103,7 @@ if(isset($_POST["erstellen"])){
 
 <nav>
     <ul class="header">
-        <li class="headerel"><a href="../Raumverwaltung/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a  href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
         <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
@@ -141,7 +141,7 @@ if(isset($_POST["erstellen"])){
             <label for="Admin"> Administrator</label>
         </fieldset>
         <button class="Löschen" type="submit" name="erstellen">Erstellen</button>
-        <a href="../Raumverwaltung/StartseiteBetreiber.html" type="button" class="Abbrechen">Abrechen</a>
+        <a href="../Startseiten/StartseiteBetreiber.html" type="button" class="Abbrechen">Abrechen</a>
     </form>
 </div>
 <script src="../../../LandingPage/index.js"></script>

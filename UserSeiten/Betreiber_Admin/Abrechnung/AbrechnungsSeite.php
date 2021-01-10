@@ -35,7 +35,7 @@ if($conn->connect_error) {
 <body>
 <nav>
     <ul class="header" style="margin-top: 0">
-        <li class="headerel"><a href="../Raumverwaltung/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
         <li class="headerel"><a class= "active" href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
         <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
