@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../../send_email.php");
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -21,10 +22,11 @@ if(isset($_POST["erstellen"])){
 
     //Abspeichern der angegebenen Daten
     $email = $_POST["email"];
-    $passwort = $_POST["passwort"];
-    $passwort = md5($passwort);
+    $email = strtolower($email);
+    $passwort = $_POST["passwort_1"];
+    $passwort_2 = $_POST["passwort_2"];
     $Geburtsdatum = $_POST["geburtsdatum"];
-    $Rolle = $_POST["rolle"];
+    $Rolle = $_POST["Rolle"];
 
     //Default Daten für Betreiber
     $firma = "VMS Grup9";
@@ -42,9 +44,16 @@ if(isset($_POST["erstellen"])){
         $error = true;
     }
 
+    //Überprüfung, ob die zwei eingegebenen Passwörter ident sind
+    if($passwort != $passwort_2){
+        $status = "Die zwei Passwörter sind nicht identisch!";
+        $error = true;
+    }
+
     //Insert Statements
     if($error == false) {
 
+        $passwort = md5($passwort);
         $query = "INSERT INTO Benutzerkonto VALUES (B_ID, '$passwort', $Rolle, '$email', '$Geburtsdatum', 1)";
         $query2 = "INSERT INTO Betreiberkonto VALUES ((SELECT B_ID FROM Benutzerkonto WHERE E_mail = '$email'), '$firma', '$strasse', $Haus_nr, $PLZ, '$Ort', '$Land')";
 
@@ -52,7 +61,11 @@ if(isset($_POST["erstellen"])){
         if ($res === TRUE) {
             $res2 = $conn->query($query2);
             if ($res2 === TRUE) {
-                $status = "Betreiberaccount erfolgreich erstellt";
+                $status = "Betreiber/Admin-Account erfolgreich erstellt";
+
+                //Bestätigungsmail versenden an den neuen Account
+                send_email($email, "Account registriert", "Ihr Account wurde erfolgreich eingerichtet. Sie können sich nun im System anmelden.");
+
             } else {
                 $status = "Es ist ein Fehler aufgetreten";
             }
@@ -107,7 +120,7 @@ if(isset($_POST["erstellen"])){
     <h3>
         <em>&#x2a; </em> Bitte alle Felder ausfüllen um einen neuen Account anzulegen.
     </h3>
-    <form action="" method="post">
+    <form action="b_account_erstellen.php" method="post">
         <label for="email">E-Mail-Adresse</label>
         <input type="email" id="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
 
