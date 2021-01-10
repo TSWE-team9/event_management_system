@@ -21,7 +21,7 @@
         <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
         <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel"><a href="132.231.36.109/phpmyadmin/">Datenbank</a></li>
+        <li class="headerel"><a href="https://132.231.36.109/phpmyadmin/index.php">Datenbank</a></li>
         <li class="headerel" style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li class="headerel" style=float:right;"> <a href="../Betreiberaccount/b_account_erstellen.php"  > <i class="fas fa-user-circle" ></i> </a></li>
 
