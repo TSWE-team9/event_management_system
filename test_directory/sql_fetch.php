@@ -23,4 +23,3 @@ $res->close();
 
 echo $Hausnr;
 
-

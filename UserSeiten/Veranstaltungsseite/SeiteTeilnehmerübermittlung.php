@@ -36,10 +36,10 @@ $res->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
-    <link rel="stylesheet" type="text/css" href="../../CSS/modal.css">
-    <link rel="stylesheet" type="text/css" href="../../CSS/veranstaltungen.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <title>Veranstaltung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -49,13 +49,13 @@ $res->close();
 <body>
 <nav>
     <ul>
-        <li><a href="../Startseite/VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
+        <li><a href="../Veranstalter/Startseite/VeranstalterStartseite.php">Startseite</a></li>
+        <li><a href="../Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
         <li><a href="#">Kontakt</a></li>
         <li><a href="#">Hilfe</a></li>
-        <li><a class="active" href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+        <li><a class="active" href="../Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
+        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
+        <li style="float: right;"> <a href="../Veranstalter/Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
     </ul>
 </nav>
 
@@ -70,7 +70,7 @@ $res->close();
             <button style="float: right;" type="button" class="btn" onclick="fill()">Teilnehmerliste einlesen</button>
 
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
-        <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
+        <form action="VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
             <button type="submit" class="btn" name="veranstaltung">zurück zur Veranstaltung</button> 
         </form>
@@ -127,6 +127,7 @@ $res->close();
 
             //Variablen
             $counter = 1;
+            $teilnehmer_nr = 1;
             $V_ID = $_POST["v_id"];
 
             while($counter <= $teilnehmer_max) {
@@ -139,8 +140,9 @@ $res->close();
                 //Einfügen der Namen in die Teilnehmerliste
                 if(!empty($nachname) && !empty($vorname)){
 
-                    $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $counter, '$nachname', '$vorname', LOCALTIMESTAMP)";
+                    $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $teilnehmer_nr, '$nachname', '$vorname', LOCALTIMESTAMP)";
                     $res = $conn->query($query);
+                    $teilnehmer_nr++;
                     if($res === FALSE){
                         echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
                     }
@@ -161,7 +163,7 @@ $res->close();
         ?>
 
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
-        <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
+        <form action="VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
             <button type="submit" class="btn" name="veranstaltung">zurück zur Veranstaltung</button> 
         </form>

@@ -3,7 +3,9 @@ session_start();
 //Default Wert für Benutzerrolle
 $res_rolle = 0;
 
-include('register.php') ?>
+include('register.php');
+include("passwort_vergessen.php");
+?>
 <!DOCTYPE html>
 <html lang="de">
     <head>
@@ -33,9 +35,11 @@ include('register.php') ?>
                 </div>
 
                 <!--TODO Passwort generieren, ändern und per E-Mail verschicken-->
+
                 <button class="accordion">Passwort vergessen</button>
                   <div class="panel">
-                    <form action="#" method="post">
+                      <?php include "errors_pw.php" ?>
+                      <form action="#" method="post">
                       <p>Geben Sie ihre E-Mail-Adresse an. Ihnen wird dann ein neues Passwort zugesendet, mit welchem Sie sich anmelden können.</p>
                         
                       <label for="email">E-Mail-Adresse</label>
