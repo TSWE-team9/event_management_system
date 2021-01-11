@@ -10,6 +10,7 @@ session_start()
     <title>AbrechnungsFormular</title>
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="InterneVeranstaltungen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 <!--    <script src="../Abrechnung/Tabs.js"></script>-->
 </head>

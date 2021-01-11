@@ -37,7 +37,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/headerTeilnehmer.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/header/headerTeilnehmer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Angebotserstellung.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Angebot_erstellen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Angebot_erstellen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Angebotserstellung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Angebotserstellung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/InterneVeranstaltungen.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/InterneVeranstaltungen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/InterneVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/InterneVeranstaltungen.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Kapazitätenstylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Angebotserstellung/Kapazitätenstylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/HintergrundRaum.png" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/HintergrundRaum.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/HintergrundRaumseite.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/HintergrundRaumseite.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/Raumformularstylesheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/Raumformularstylesheet.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/Raumlöschen.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/Raumlöschen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/Raumlöschen.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/Raumlöschen.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/TabellenRaum.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/TabellenRaum.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Raumverwaltung/header.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/Fehlermeldung.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/Fehlermeldung.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/style/header.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,11 +95,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\Angebotserstellung" />
+      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\style" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen\Angebot" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Startseite" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen" />
-      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Datenänderung" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -133,7 +148,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608217397753</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="header ausgelagert">
+      <created>1610384797444</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1610384797444</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,7 +176,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Sessionvariablen festgelegt" />
     <MESSAGE value="komments hinzugefügt" />
-    <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
+    <MESSAGE value="header ausgelagert" />
+    <option name="LAST_COMMIT_MESSAGE" value="header ausgelagert" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

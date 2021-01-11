@@ -51,7 +51,7 @@ h3 {
     }
 /* Create an active/current "tab button" class */
 .tab button.active {
-    background-color: #ccc;
+    background-color: #f45702;
 }
 
 /* Style the tab content */
