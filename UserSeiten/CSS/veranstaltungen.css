@@ -12,6 +12,13 @@
     min-width: 1200px;
 }
 
+.container-80-noborder {
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    margin-top: 50px;
+}
+
 .col-info {
     float: left;
     width: 25%;
@@ -65,4 +72,38 @@
 
 .center {
     text-align: center;
+}
+
+textarea, input[type=file] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin: 20px 0px 20px 0px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin: auto;
+}
+
+.col-50 {
+    float: left;
+    width: 50%;
+}
+
+.error {
+    width: 92%;
+    margin: 0px auto;
+    padding: 10px;
+    border: 1px solid #a94442;
+    color: #a94442;
+    background: #f2dede;
+    border-radius: 5px;
+    text-align: left;
 }

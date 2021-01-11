@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("VeranstaltungÄndernFunktion.php");
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -7,6 +8,7 @@ $db = 'vms_db';
 $user = 'dbuser';
 $pw = 'dbuser123';
 $conn = new mysqli($host, $user, $pw, $db,3306);
+
 
 //Überprüfen ob es einen Verbindungsfehler gab
 if($conn->connect_error){
@@ -20,14 +22,15 @@ if(isset($_POST["veranstaltung"])){
 }
 
 $V_ID = $_SESSION["V_ID"];
+$Bid = $_SESSION['b_id'];
 
 //Abfrage der benötigten Daten
-$query = "SELECT Titel, Veranstalter, Beschreibung, Art, Verfügbarkeit, Status, Ort, Teilnehmer_max, Teilnehmer_akt,
+$query = "SELECT Angebot_ID, Titel, Veranstalter, Beschreibung, Art, Verfügbarkeit, Status, Ort, Teilnehmer_max, Teilnehmer_akt,
        Beginn, DATE_ADD(Beginn, INTERVAL Dauer-1 DAY), Uhrzeit, DATE_SUB(Beginn, INTERVAL Frist DAY ), Kosten FROM Veranstaltung 
        WHERE V_ID = $V_ID";
 $res = $conn->prepare($query);
 $res->execute();
-$res->bind_result($titel, $veranstalter, $beschreibung, $art, $verfügbarkeit, $status, $ort, $teilnehmer_max, $teilnehmer_akt,
+$res->bind_result($angebot_id, $titel, $veranstalter, $beschreibung, $art, $verfuegbarkeit, $status, $ort, $teilnehmer_max, $teilnehmer_akt,
                 $beginn, $ende, $uhrzeit, $frist, $kosten);
 $res->fetch();
 $res->close();
@@ -48,12 +51,30 @@ $j = $res3->fetch_row();
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <title>Veranstaltungsseite</title>
+    <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+<?php
+//Header unterscheidung
+switch ($_SESSION["rolle"]){
+    case 0: //header Gast -> kein header
+        break;
+    case 1:  include 'headerVeranstalter.php';    //header Veranstalter
+        break;
+    case 2:  include 'headerTeilnehmer.php';      //header Teilnehmer
+        break;
+    case 3: //header Betreiber
+        break;
+    case 4: //header Admin
+        break;
+
+}
+?>
 
 <div class="container-80">
 
@@ -94,7 +115,7 @@ $j = $res3->fetch_row();
         </div>
         <div class="col-desc">
             <!--if else ob offen oder geschlossen-->
-            <?php if($verfügbarkeit == 1){?>
+            <?php if($verfuegbarkeit == 1){?>
             <!--offen-->
             <p class="desc">Anmeldung für registrierte Nutzer möglich.</p>
             <?php } else {?>
@@ -182,40 +203,56 @@ $j = $res3->fetch_row();
  
 </div>
 
+<?php
+//Anzeige für Rolle Gast, keine Buttons
+if($_SESSION["rolle"]==0){
+?>
 <div class="container-80">
     <h1 class="center">Gast</h1>
     <p class="center">Anmeldung nur als registrierter Nutzer möglich.</p>
     <a class="center" href="../../LandingPage/index.php">zur Registrierung</a>
 </div>
+<?php }?>
 
+<?php
+//Anzeige für Rolle Teilnehmer
+if($_SESSION["rolle"]==2){
+?>
+    <?php    include("VeranstaltungÄndernError.php");    ?>
 <div class="container-80">
     <h1 class="center">Teilnehmer</h1>
     <!--if nicht angemeldet-->
+    <?php
+    $query_check = "SELECT * FROM Teilnehmerliste_offen WHERE V_ID =$V_ID AND B_ID=$Bid";
+    $res_check = mysqli_query($conn, $query_check);;
+    if (mysqli_num_rows($res_check) == 0) {
+    ?>
     <!--Button zum Modal öffnen-->
-    <button class="btn" id="aendern" onclick="document.getElementById('id01').style.display='block'">Anmelden</button>
+    <button class="btn" type="button" name="anmelden" id="aendern" onclick="document.getElementById('t01').style.display='block'">Anmelden</button>
     <!--Modal falls Anmeldezeitraum noch offen-->
-    <div id="id01" class="modal">
+    <div id="t01" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
                 <h1>Veranstaltungsanmeldung</h1>
                 <p>Wollen Sie sich verbindlich zu dieser Veranstaltung anmelden?</p>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
-                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Anmelden</button>
-                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('t01').style.display='none'">Anmelden</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
     </div>
+    <?php }?>
     <!--Modal falls Anmeldezeitraum abgelaufen-->
     <!--
-        <div id="id01" class="modal">
+    <div id="t01" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
                 <h1>Veranstaltungsanmeldung</h1>
                 <p>Der Anmeldezeitraum ist abgelaufen und eine Anmeldung ist nicht mehr möglich.</p>
                 <div class="modal_clearfix">
-                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">OK</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t01').style.display='none'">OK</button>
                 </div>
             </div>
         </div>
@@ -223,10 +260,13 @@ $j = $res3->fetch_row();
     -->   
 
     <!--else anmgemeldet-->
-    <button class="btn" id="aendern" onclick="document.getElementById('id02').style.display='block'">Abmelden</button>
+    <?php
+    if (mysqli_num_rows($res_check) == 1) {
+        ?>
+    <button type="button" name="abmelden" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
     <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     <!--
-    <div id="id02" class="modal">
+    <div id="t02" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
                 <h1>Veranstaltungsabmeldung</h1>
@@ -234,40 +274,111 @@ $j = $res3->fetch_row();
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
                     <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Abmelden</button>
-                    <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
     </div>
-    --> 
+    -->
+    <?php }?>
     <!--Modal falls Abmeldezeitraum abgelaufen-->
-    <div id="id02" class="modal">
+    <div id="t02" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
                 <h1>Veranstaltungsanmeldung</h1>
                 <p>Der Abmeldezeitraum ist abgelaufen und eine Abmeldung ist nicht mehr möglich.</p>
                 <div class="modal_clearfix">
-                    <button class="modal_btnabort" onclick="document.getElementById('id02').style.display='none'">OK</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t02').style.display='none'">OK</button>
                 </div>
             </div>
         </div>
     </div> 
 </div>
+<?php }?>
 
-<div class="container-80">
-    <h1 class="center">Veranstalter</h1>
-    <form action="#" method="post">
-        <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
-        <label for="t_liste"></label>
-        <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" name="t_liste" id=" t_liste" />
-        <button class="btn">Teilnehmerliste übermitteln</button> 
+<?php
+//Anzeige von Buttons für Rolle Veranstalter, Betreiber und Admin
+if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
+?>
+<div class="container-80-noborder">
+
+    <!--Stornierung Beginn-->
+    <button type="button" style="float: left;" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
+    <?php if($status == 1){?>
+    <!--Modal falls Stornozeitraum noch nicht abgelaufen (Veranstaltung "aktiv")-->
+    <div id="v01" class="modal">
+        <form class="modal_content" action="VeranstaltungStornieren.php" method="post">
+            <div class="modal_container">
+                <h1>Stornierung</h1>
+                <?php
+                //Ausgabe für den Veranstalter
+                if($_SESSION["rolle"] == 1){
+                    $query = "SELECT Angebotspreis, Beginn FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
+                    $res = $conn->query($query);
+                    while($i = $res->fetch_row()){
+                ?>
+                <p>Wollen Sie diese Veranstaltung wircklich stornieren? Dabei müssen wir Ihnen folgende Stornokosten verrechnen:</p>
+                <p>50% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro ab 7 Tagen bis Beginn am <?php echo $i[1]?></p>
+                <p>75% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro 1-7 Tage bis Beginn am <?php echo $i[1]?></p>
+                <?php }}
+                //Ausgabe für den Betreiber/Admin
+                else{ ?>
+                <p>Wollen Sie diese Veranstaltung wircklich stornieren?</p>
+                <?php }?>
+                <div class="modal_clearfix">  
+                    <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
+                    <button class="modal_btnconfirm" type="submit" name="Stornieren" onclick="document.getElementById('v01').style.display='none'">Stornieren</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">Abbrechen</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <?php } else {?>
+
+    <!--Modal falls Stornozeitraum abgelaufen-->
+    <div id="v01" class="modal">
+        <div class="modal_content"> 
+            <div class="modal_container">
+                <h1>Stornierung</h1>
+                <p>Der Stornierungszeitraum ist abgelaufen und eine Stornierung ist nicht mehr möglich.</p>
+                <div class="modal_clearfix">
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+    <!--Stornierung Ende-->
+
+    <!--Liste übermitteln Beginn-->
+    <!--nur bei geschlossenen veranstaltungen-->
+    <?php
+    if($verfuegbarkeit == 2){
+    ?>
+    <form action="SeiteTeilnehmerübermittlung.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
+        <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_übermitteln">Teilnehmerliste übermitteln</button>
     </form>
-</div>
+    <!--Liste übermitteln Ende-->
+    <?php } ?>
 
-<script>
-     // Get the modal
-    var modal1 = document.getElementById('id01');
-    var modal2 = document.getElementById('id02');
-</script>
+    <!--Teilnehmer anzeigen Beginn-->
+    <form action="SeiteTeilnehmerliste.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
+        <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_anzeigen">Teilnehmerliste anzeigen</button>
+    </form>
+    <!--Teilnehmer anzeigen Ende-->
+
+    <!--Nachricht versenden Beginn-->
+    <form action="SeiteMitteilung.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
+        <button style="float: left;" type="submit" class="btn" name="mitteilung">Nachricht an Teilnehmer senden</button>
+    </form>
+    <!--Nachricht versenden Ende-->
+
+</div>  
+<?php }?>
+
+<script></script>
 </body>
 </html>

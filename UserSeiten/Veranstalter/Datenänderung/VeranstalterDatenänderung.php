@@ -1,4 +1,4 @@
-<?php include('DatenänderungFunktionV.php') ?>
+<?php include('DatenänderungFunktionV.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@
 
     <button class="accordion">Passwort ändern</button>
         <div class="panel">
-            <form action="#" method="post">
+            <form action="" method="post">
                 <?php if (count($errors_p) > 0){
                     include('errorsDatenänderungV.php');} ?>
                 <br>
@@ -81,7 +81,7 @@
                 <input type="text" placeholder="Ort" name="ort" value='<?php echo $_SESSION['OrtV'];?>' pattern="[A-Za-z]{1,50}">
 
                 <label for="land">Land</label>
-                <input type="text" placeholder="Land" name="land" value='<?php echo $_SESSION['LandV'];?>' pattern="[A-Za-z]{1,50}">
+                <input type="text" placeholder="Land" name="land" value='<?php echo $_SESSION['LandV'];?>' pattern="[A-Za-zÖÄÜ]{1,50}">
 
                 <label for="telefonnummer">Telefonnummer</label>
                 <input type="text" placeholder="Telefonnummer" name="telefonnummer" value='<?php echo $_SESSION['TelnummerV'];?>' pattern="[0-9]{1,50}">
@@ -90,19 +90,19 @@
             </form>
         </div>
 
-    <button id="löschen" onclick="document.getElementById('id01').style.display='block'">Konto löschen</button>
-    
+    <button id="löschen" onclick="document.getElementById('id01').style.display='block'" name="acc_delete">Konto löschen</button>
     <div id="id01" class="modal">
         <form class="modal_content" action="#" method="post">
             <div class="modal_container">
                 <h1>Kontolöschung</h1>
-                <p>Wollen Sie ihr Konto wircklich löschen?</p>
+                <p>Wollen Sie ihr Konto wirklich löschen?</p>
                 <div class="modal_clearfix">
-                    <button class="modal_btnconfirm" type="submit" name="acc_löschen" onclick="document.getElementById('id01').style.display='none'">Löschen</button>
+                    <button class="modal_btnconfirm" type="submit" name="acc_delete" onclick="document.getElementById('id01').style.display='none'">Löschen</button>
                     <button class="modal_btnabort" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
+        <?php if (count($errors_del) > 0){include('errorsDatenänderungV.php');} //TODO Weiterleitung ändern!?>
     </div>
 </div>
 

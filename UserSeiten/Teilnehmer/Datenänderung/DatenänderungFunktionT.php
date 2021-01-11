@@ -18,6 +18,7 @@ $curr_bid = $_SESSION["b_id"];
 $errors_p = array();
 $errors_e = array();
 $errors_d = array();
+$errors_del = array();
 
 //datenbankverbindung
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
@@ -37,6 +38,8 @@ while($res->fetch()) {
     $_SESSION["Land"] = $Land;
     $_SESSION["Telnummer"] = $Tel;
 }
+$res->close();
+
 //passwort ändern
 if (isset($_POST['änderung_pw_user_t'])) {
 
@@ -51,9 +54,13 @@ if (isset($_POST['änderung_pw_user_t'])) {
         if ($password_2 != $password_3) {
             array_push($errors_p, "passwort stimmt nicht überein");
         }else {
-            $query = "Update Benutzerkonto Set Passwort=md5($password_2) Where B_ID=$curr_bid";
-            mysqli_query($db, $query);
-            array_push($errors_p, "passwort wurde geändert");
+            $password_2 = md5($password_2);
+            $query = "Update Benutzerkonto Set Passwort= '$password_2' Where B_ID=$curr_bid";
+            $res = mysqli_query($db, $query);
+            if($res === TRUE) {
+                array_push($errors_p, "passwort wurde geändert");
+                $_SESSION["passwort"] = $password_2;
+            }
         }
 
     } else {
@@ -101,16 +108,21 @@ if (isset($_POST['änderung_daten_user_t'])) {
 //account löschen
 if (isset($_POST['acc_löschen'])) {
 
-    $query_check = 'SELECT Titel from Veranstaltung JOIN Teilnehmerliste_offen T on Veranstaltung.V_ID = T.V_ID 
-                    Where Status = 1 or 2 or 3 And B_ID = $curr_bid';
+    $query_check = "SELECT V_ID FROM Veranstaltung V JOIN Teilnehmerliste_offen T on V.V_ID = T.V_ID
+                    WHERE B_ID=$curr_bid AND V.Status IN (1,2,3)";
+
     $result = mysqli_query($db,$query_check);
 
-    if(!empty($result)){
+    if(mysqli_num_rows($result) == 0){
         $query1 = "Update Benutzerkonto Set Status=2 Where B_ID=$curr_bid";
         mysqli_query($db, $query1);
         $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=$curr_bid";
         mysqli_query($db, $query2);
-    }
+        array_push($errors_del, "Benutzerkonto wurde gelöscht!");
+
+    }else{
+        array_push($errors_del, "Bitte melden Sie sich zu allen Veranstaltugen ab, um ihr Benutzerkonto zu löschen!");
+    };
 
 
 }

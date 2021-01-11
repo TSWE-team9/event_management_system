@@ -24,4 +24,3 @@ while ($res->fetch()){
 $res->close();
 
 
-
