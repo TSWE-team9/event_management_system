@@ -7,7 +7,7 @@
     padding: 0;
 
 }
-
+ /*Styling des Hintergrundes */
  body {
     background: url("HintergrundRaum.png")  fixed ;
     /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
@@ -21,13 +21,20 @@
     font-family: "Spartan", sans-serif;
     color: #2A293E;
 }
+.mantel {
+    margin-top: 8em;
+    margin-bottom: 5em;
 
+}
+/*styling des Formularkörpers*/
 .contact-us {
     background: #f8f4e5;
     padding: 50px 100px;
     border-top: 10px solid #f45702;
-}
+    margin-bottom:5em;
 
+}
+/*Styling der input felder */
 label, input, textarea {
     display: block;
     width: 100%;
@@ -40,6 +47,7 @@ input {
     margin-bottom: 24pt;
 }
 h1 {
+    font-size: 2em;
     text-align: center;
     margin-bottom: 20px;
     font-family: "Spartan", sans-serif;
@@ -63,7 +71,6 @@ em {
 }
 
 input, textarea,fieldset {
-    border: none;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 2px;
     background: #f8f4e5;
@@ -121,45 +128,58 @@ input[type='radio']:checked  + label::before {
     box-shadow: inset 0 0 0 2px white;
 }
 /*styling der Buttons*/
-#Hinzufügen, .Löschen, .submit{
-    background: #f45702;
- float:right;
+/*#Hinzufügen, .Löschen, .submit{*/
+/*    background: #f45702;*/
+/*    float:right;*/
 
-}
-#Hinzufügen:hover {
-    background: inherit;
-    color: #f45702;
-    border-bottom: 2px solid #f45702;
-}
-
-/*::selection {*/
-/*    background: #ffc7b8;*/
 /*}*/
-.Abbrechen, #Hinzufügen, .Löschen, .submit {
-    display: block;
-    line-height: 24pt;
-    padding: 0 40px;
-    border: none;
-    color: white;
-    letter-spacing: 2px;
-    transition: 0.2s all ease-in-out;
-    border-bottom: 2px solid transparent;
-    outline: none;
-    margin-top: 30px;
-    text-decoration: none;
-    font-size: 1em;
+/*#Hinzufügen:hover {*/
+/*    background: inherit;*/
+/*    color: #f45702;*/
+/*    border-bottom: 2px solid #f45702;*/
+/*}*/
 
-}
-.Abbrechen {
-    background: gray;
-    float: left;
+/*!*::selection {*!*/
+/*!*    background: #ffc7b8;*!*/
+/*!*}*!*/
+/*.Abbrechen, .Löschen, #Hinzufügen {*/
+/*    display: block;*/
+/*    line-height: 24pt;*/
+/*    padding: 0 40px;*/
+/*    border: none;*/
+/*    color: white;*/
+/*    letter-spacing: 2px;*/
+/*    transition: 0.2s all ease-in-out;*/
+/*    border-bottom: 2px solid transparent;*/
+/*    outline: none;*/
+/*    margin-top: 30px;*/
+/*    text-decoration: none;*/
+/*    cursor: pointer;*/
 
-}
-.Abbrechen:hover {
-    background: inherit;
-    color: #605c5a;
-    border-bottom: 2px solid #302c2a;
-}
+
+/*}*/
+/*!*.Löschen {*!*/
+/*!*    font-size: 36px;*!*/
+/*!*    float:right;*!*/
+/*!*    background: #f45702;*!*/
+
+/*!*}*!*/
+/*!*    .Löschen:hover{*!*/
+/*!*    background:white;*!*/
+/*!*    color: #f45702;*!*/
+/*!*    border-bottom: 2px solid #f45702;*!*/
+/*!*}*!*/
+/*.Abbrechen {*/
+/*    background: gray;*/
+/*    float: left;*/
+/*    font-size: 1em;*/
+/*}*/
+/*.Abbrechen:hover {*/
+/*    background: inherit;*/
+/*    color: #605c5a;*/
+/*    border-bottom: 2px solid #302c2a;*/
+/*}*/
+/*Styling des aktuell ausgewählten Feldes */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -171,4 +191,16 @@ textarea:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0 1000px #f8f4e5 inset;
     transition: background-color 5000s ease-in-out 0s;
 }
+/*!*    Anpassung bei größeren Ausgabegeräten*!*/
 
+@media all and (max-width: 100em ) {
+    .contact-us { margin-top: 6em;
+    }
+
+}
+/*@media all and (min-width:100em) {*/
+/*    #Hinzufügen, #Ändern, #Löschen {*/
+/*        display: inline-block;*/
+/*        margin-left: 16em ;*/
+/*    }*/
+/*}*/

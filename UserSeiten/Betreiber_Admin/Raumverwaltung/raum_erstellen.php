@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Raum Hinzufügen</title>
-    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+
     <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+        <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
 
-<!--    Einbinden von icons-->
+    <!--    Einbinden von icons-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+
 <nav>
     <ul class="header">
-        <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a href="#">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a class= "active" href="Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a  href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
+        <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
+        <li class="headerel"><a class= "active" href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
+        <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
@@ -45,6 +48,7 @@ if($conn->connect_error){
 $error = "";
 $error_occured = false;
 $query_status = "";
+$q_status = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -59,6 +63,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     //Abfrage um bereits existierende Bezeichnung zu finden
     $check_query = "SELECT R_ID FROM Raum WHERE Bezeichnung = '$bezeichnung'";
     $res = $conn->query($check_query);
+    if($res->num_rows > 0){
+        $error = "Fehler: Raumbezeichnung existiert bereits.";
+        $error_occured = true;
+    }
 
     //Erlaubte Zeichen bei Bezeichnung prüfen
     $check_sonderzeichen = preg_match('/^[-a-zA-ZÄÖÜäöüß0-9[:space:]]+$/', $bezeichnung);
@@ -68,10 +76,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_occured = true;
     }
 
-    if($res->num_rows > 0){
-        $error = "Fehler: Raumbezeichnung existiert bereits.";
-        $error_occured = true;
-    }
 
     //Wenn alles passt, dann wird der Raum hinzugefügt
     if ($error_occured == false) {
@@ -80,11 +84,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($conn->query($insert_query) === TRUE){
         $query_status = "Der Raum wurde erfolgreich hinzugefügt.";
+        $status = true;
 
         }
         else {
         $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
-        $conn->error;
+        $error_occured = true;
         }
 
     }
@@ -113,14 +118,26 @@ echo "<br><br>";
 
 $conn->close();
 
+//Ausgabe der Fehlermeldungen
 if($error_occured){
-    echo $error;
-} else {
-    echo $query_status;
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Fehler</h2>" ;
+    echo "<a class='close' href='raum_erstellen.php'>&times;</a>" ;
+    echo "<div class='content'>".$error."</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+
 }
-
-echo "<br><br>";
-
+if($q_status){
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>" ;
+    echo "<a class='close' href='Raumverwaltung.php'>&times;</a>" ;
+    echo "<div class='content'>".$query_status."</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+}
 ?>
 
 <div class="contact-us">
@@ -143,19 +160,10 @@ echo "<br><br>";
             <input type="radio" id="inaktiv" name="Status" value="2">
             <label for="inaktiv"> inaktiv</label>
         </fieldset>
-        <!--    <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
-        <!--    <form action="select.html">-->
-        <!--    <label>Raumstatus:-->
-        <!--        <select name="Status" size="2">-->
-        <!--            <option>aktiv</option>-->
-        <!--            <option>inaktiv</option>-->
-        <!--        </select>-->
-        <!--    </label>-->
-        <!--    </form>-->
 
 
 
-        <button id="Hinzufügen">Hinzufügen</button>
+        <button class="Löschen">Hinzufügen</button>
         <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abrechen</a>
 
 

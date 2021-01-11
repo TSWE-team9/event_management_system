@@ -7,15 +7,18 @@ session_start()
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Interne Veranstaltungen</title>
-    <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
+    <title>AbrechnungsFormular</title>
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="InterneVeranstaltungen.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+<!--    <script src="../Abrechnung/Tabs.js"></script>-->
 </head>
 <body>
 <nav >
+
     <ul class="header" style="top: 0">
         <li class="headerel"><a href="../Raumverwaltung/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+
         <li class="headerel"><a  href="Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="#">Abrechnung</a></li>
         <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
@@ -110,38 +113,11 @@ angebot_refresh();
 </div>
 <!-Button zum Anlegen einer neuen Veranstaltung -->
 <div class="container">
-<a href="KapazitätenabfrageV3.php" class="Auslösen" type="button" >Veranstaltung hinzufügen &#10010;</a>
+<a href="KapazitätenabfrageV3.php" style="width:15%" class="Auslösen" type="button" >Veranstaltung hinzufügen &#10010;</a>
 
 </div>
 
-<script>
-
-    // function to display different tabs
-    function openList(evt, listName) {
-        // Declare all variables
-        var i, tabcontent, tablinks;
-
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        // Show the current tab, and add an "active" class to the link that opened the tab
-        document.getElementById(listName).style.display = "block";
-        evt.currentTarget.className += " active";
-    }
-
-    // Get the element with id="defaultOpen" and click on it
-    document.getElementById("defaultOpen").click();
-
-</script>
+<script src="../js/Tabs.js"></script>
 
 </body>
 </html>

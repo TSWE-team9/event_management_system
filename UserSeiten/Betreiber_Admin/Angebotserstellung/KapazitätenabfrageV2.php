@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage Änderung</title>
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <nav>
@@ -52,5 +52,5 @@ session_start();
     </form>
 </body>
 </html>
-<script src="Datum.js"></script>
+<script src="../js/Datum.js"></script>
 

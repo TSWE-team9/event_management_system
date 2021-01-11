@@ -14,12 +14,13 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
-$query = "SELECT Haus_nr FROM Teilnehmerkonto WHERE B_ID = 5";
+$query = "SELECT V_ID FROM Veranstaltung WHERE Status = 3";
 $res = $conn->prepare($query);
 $res->execute();
-$res->bind_result($Hausnr);
-$res->fetch();
+$res->bind_result($V_ID);
+while ($res->fetch()){
+    echo $V_ID;
+}
 $res->close();
 
-echo $Hausnr;
 

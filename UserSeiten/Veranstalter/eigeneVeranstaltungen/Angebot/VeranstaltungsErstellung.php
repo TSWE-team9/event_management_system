@@ -77,14 +77,14 @@ if(isset($_POST["annahme"])) {
         $res1->close();
 
         //Erstellen der Veranstaltung in der Datenbank
-        $query2 = "INSERT INTO Veranstaltung VALUES (V_ID, '$Titel', '$Beschreibung', $V_ID, 1, '$V_Art', $Verfuegbarkeit, 1, $R_ID, $Teilnehmer, 0, '$Beginn', '$Uhrzeit', $Dauer, $Frist, $Kosten)";
+        $query2 = "INSERT INTO Veranstaltung VALUES (V_ID, $Angebot_ID, '$Titel', '$Beschreibung', $V_ID, 1, '$V_Art', $Verfuegbarkeit, 1, $R_ID, $Teilnehmer, 0, '$Beginn', '$Uhrzeit', $Dauer, $Frist, $Kosten)";
         $res2 = $conn->query($query2);
         if ($res2 === FALSE) {
             $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)";
             $error_occured = true;
         } else {
             //Endgültige Belegung des Raumes im Kalender
-            $query3 = "UPDATE Kalender SET Status = 1, V_ID = (SELECT V_ID FROM Veranstaltung WHERE Titel='$Titel' AND Beginn = '$Beginn' AND Veranstalter = $V_ID) WHERE B_ID = $Angebot_ID";
+            $query3 = "UPDATE Kalender SET Status = 1, V_ID = (SELECT V_ID FROM Veranstaltung WHERE Angebot_ID = $Angebot_ID) WHERE B_ID = $Angebot_ID";
             $res3 = $conn->query($query3);
             if ($res3 === FALSE) {
                 $error = $error . "<br>" . "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Kalender)";

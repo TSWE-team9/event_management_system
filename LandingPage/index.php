@@ -1,11 +1,13 @@
 <?php
 session_start();
+
 //Default Wert für Benutzerrolle
 $res_rolle = 0;
 
 include('register.php');
 include("passwort_vergessen.php");
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
     <head>

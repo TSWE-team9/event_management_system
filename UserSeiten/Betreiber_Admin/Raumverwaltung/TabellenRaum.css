@@ -1,18 +1,110 @@
 
-
-/*tabellengerüst*/
-.container {
-margin-top: 3em;
-    border: none;
-    width: 40%;
+@import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    /*display: grid;*/
+    /*align-items: center;*/
+    /*justify-items: center;*/
+    /*color:black;*/
+    background: url("HintergrundRaumseite.jpg") fixed ;
+    /*background-size: 100% auto;*/
 }
+/*Css Überschrift der Tabelle*/
+h1 {
+    font-size: 2em;
+    font-weight: 400;
+    line-height:1em;
+    text-align: center;
+    color: black;
+    padding-top:2em;
+    text-underline-mode: 10px;
+    text-underline: black ;
+}
+ /*wrapper um die Tabelle in der Mitte zu positionieren*/
+ .wrapper {
+     display: grid;
+     align-items: center;
+     justify-items: center;
+ }
+/*tabellengerüst*/
+    .container {
+    text-align: left;
+    overflow: hidden;
+    width: 50%;
+    display:  table ;
+        /*align-items: center;*/
+        /*justify-items: center;*/
+    padding: 0 0 5em 0;
+    /*muss so sein sonst rutscht tabelle in Raumändern nach oben*/
+    margin-top: 20em;
+    margin-bottom:15em;
+    border: none;
+
+
+}
+/*Css des Tabellenkopfs*/
+
+.container th h2 {
+    font-size:1em;
+    line-height:0;
+    text-align: left;
+    font-weight: bold;
+    color: black;
+
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
 
 .container td, .container th {
-    padding: 2%;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    padding-left:2%;
 }
+
+/*farbe für ungerade reihen*/
+.container tr:nth-child(odd) {
+    background-color:rgba(255, 255, 255, 0.90);
+
+}
+
+/*farbe für gerade reihen*/
+.container tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.80);
+}
+/*Farbe für Tabellenkopf*/
+.container th {
+    background-color: #f8f4e5;
+}
+
+
+.container td:first-child:hover { color: white; }
+/*styling bei hover*/
+.container tr:hover {
+    background-color: #f45702;
+    color: black;
+    font-weight: bold;
+
+    box-shadow: whitesmoke -1px 1px, whitesmoke 2px 2px, whitesmoke -3px 3px, whitesmoke -4px 4px, whitesmoke -5px 5px, whitesmoke -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: linear;
+}
+
 /*Anpassung der Tabellen an kleinere Displays : */
-@media (max-width: 100em) {
-    .container{
-       width:50%
-    }
-}
+/*@media (max-width: 100em) {*/
+/*    .container{*/
+/*       width:50%*/
+/*    }*/
+/*}*/

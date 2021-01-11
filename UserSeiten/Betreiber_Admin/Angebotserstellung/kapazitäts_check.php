@@ -8,6 +8,8 @@ session_start();
     <meta charset="UTF-8">
     <title>Kapazitätscheck</title>
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
+
 </head>
 
 <body>
