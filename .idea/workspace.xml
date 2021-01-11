@@ -38,18 +38,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/header.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/VeranstalterDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/VeranstalterDatenänderung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/VeranstaltungsErstellung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/VeranstaltungsErstellung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Gast/Veranstaltungsangebot.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Gast/Veranstaltungsangebot.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +118,7 @@
       <workItem from="1609928920246" duration="3229000" />
       <workItem from="1610009707803" duration="7610000" />
       <workItem from="1610096956055" duration="1195000" />
-      <workItem from="1610355375995" duration="7728000" />
+      <workItem from="1610355375995" duration="9114000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
