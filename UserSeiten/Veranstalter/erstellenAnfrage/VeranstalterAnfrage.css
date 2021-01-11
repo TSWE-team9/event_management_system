@@ -15,7 +15,8 @@ label {
   
 .container {
     border-radius: 5px;
-    background-color: #f2f2f285;
+    background-color: #f8f4e5;
+    border-top: 10px solid #f45702;
     padding: 20px;
     width: 50%;
     margin: auto;
@@ -55,7 +56,7 @@ label {
 }
 
 .btnanfrage {
-    background-color: #ccc;
+    background-color: #f45702;
     color: black;
     padding: 14px 20px;
     margin: 8px 0;

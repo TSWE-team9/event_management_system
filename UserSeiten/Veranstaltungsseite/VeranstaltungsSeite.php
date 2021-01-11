@@ -58,6 +58,7 @@ $j = $res3->fetch_row();
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
+    <link rel="stylesheet" href="../Betreiber_Admin/style/header.css">
     <title>Veranstaltungsseite</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
@@ -68,13 +69,13 @@ $j = $res3->fetch_row();
 switch ($_SESSION["rolle"]){
     case 0: //header Gast -> kein header
         break;
-    case 1:  include './header/headerVeranstalter.php';    //header Veranstalter
+    case 1:  include './header/headerVeranstalter.php';      // header Veranstalter
         break;
-    case 2:  include './header/headerTeilnehmer.php';      //header Teilnehmer
+    case 2:  include './header/headerTeilnehmer.php';        // header Teilnehmer
         break;
-    case 3: //header Betreiber
+    case 3: include './header/headerBetreiber.php';          // header Betreiber
         break;
-    case 4: //header Admin
+    case 4: include './header/headerAdmin.php';              // header Admin
         break;
 
 }

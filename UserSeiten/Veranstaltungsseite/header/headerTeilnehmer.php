@@ -1,7 +1,7 @@
 <?php echo
 '<nav>
     <ul>
-        <li><a id="startseite" class="active" href="../../Teilnehmer/Startseite/TeilnehmerStartseite.php">Startseite</a></li>
+        <li><a href="../../Teilnehmer/Startseite/TeilnehmerStartseite.php">Startseite</a></li>
         <li><a href="../../Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
         <li><a href="../../Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>

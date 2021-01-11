@@ -9,7 +9,7 @@ include "../../send_email.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="VeranstalterAnfrage.css">
-    <link rel="stylesheet" type="text/css" href="../../CSS/Fehlermeldung.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/popup.css">
     <title>Anfrage erstellen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>

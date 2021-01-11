@@ -22,6 +22,7 @@ if($conn->connect_error){
     <link rel="stylesheet" type="text/css" href="../../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="Angebotseite.css">
+    <link rel="stylesheet" href="../../../CSS/popup.css">
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -82,12 +83,17 @@ if(isset($_POST["angebot_ablehnen"])){
         echo "Es ist ein Fehler bei der Delete Query aufgetreten";
     }
 
-    else{
-
-        //TODO Pop Up Meldung
+    else{echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2>Info</h2>
+                <a class="close" href="../../Startseiten/VeranstalterStartseite.php">&times;</a>
+                <div class="content">Sie haben das Angebot abgelehnt</div>
+            </div>
+        </div>';
 
         //Weiterleitung zur Startseite
-        header("Location: ../../Startseite/VeranstalterStartseite.php");
+        // header("Location: ../../Startseite/VeranstalterStartseite.php");
     }
 }
 
