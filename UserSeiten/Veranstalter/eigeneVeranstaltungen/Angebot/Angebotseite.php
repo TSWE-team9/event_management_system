@@ -83,8 +83,11 @@ if(isset($_POST["angebot_ablehnen"])){
     }
 
     else{
+
+        //TODO Pop Up Meldung
+
         //Weiterleitung zur Startseite
-        header("Location: VeranstalterStartseite.php");
+        header("Location: ../../Startseite/VeranstalterStartseite.php");
     }
 }
 

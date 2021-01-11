@@ -60,8 +60,8 @@ angebot_refresh();
         ?>
 
     <!--foreach Schleife Beginn-->
-    <form action="" method="post">
-        <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
+    <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
         <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
     </form>
     <?php } ?>
@@ -73,16 +73,16 @@ angebot_refresh();
     <h3 style="text-align: center;">Zukünftige Veranstaltungen</h3>
     <!--SQL Abfrage-->
     <?php
-    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    //Abfrage aller aktiven (Status = 1) Veranstaltungen des Veranstalters
     $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 1";
     $res2 = $db->query($query2);
-    if($res2->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine zukünfitigen Veranstaltungen</P>";}
+    if($res2->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine zukünftigen Veranstaltungen</P>";}
     //Ausgabe der Abfrage in HTML
     while($i = $res2->fetch_row()){
     ?>
     <!--foreach Schleife Beginn-->
-    <form action="" method="post">
-        <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
+    <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
         <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
     </form>
     <?php } ?>
@@ -94,7 +94,7 @@ angebot_refresh();
     <h3 style="text-align: center;">Abgeschlossene Veranstaltungen</h3>
     <!--SQL Abfrage-->
     <?php
-    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    //Abfrage aller abgeschlossenen (Status = 3) Veranstaltungen des Veranstalters
     $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 3";
     $res3 = $db->query($query3);
     if($res3->num_rows == 0){ echo "<p class='txt'>Sie haben derzeit keine abgeschlossenen Veranstaltungen</P>";}
@@ -104,8 +104,8 @@ angebot_refresh();
         ?>
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
-        <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->

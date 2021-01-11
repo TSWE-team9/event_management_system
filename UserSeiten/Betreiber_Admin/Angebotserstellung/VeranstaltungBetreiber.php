@@ -34,8 +34,8 @@
         <label for="Veranstaltungs-Titel">Veranstaltungs-Titel <em>&#x2a;</em></label><input id="Veranstaltungs-Titel" name="Veranstaltungs-Titel" required="" type="text"/>
         <label for="Uhrzeit">Uhrzeit des Veranstaltungsbeginns <em>&#x2a;</em></label><input id="Uhrzeit" name="Uhrzeit" type="time" min="08:00" max="18:00" />
         <label for="Zeitraum">An- und Abmeldezeitraum in Tagen <em>&#x2a;</em></label><input id="Zeitraum" name="Zeitraum" type="Number"  min="1" max="14"/>
-        <label for="Teilnahmekosten">Teinahmekosten in Euro pro Teilnehmer<em>&#x2a;</em></label><input id="Teilnahmekosten" name="Teilnahmekosten" required="" type="Number"  min="0"/>
-        <label for="Auswahl">Verabstaltungsart <em>&#x2a;</em></label>
+        <label for="Teilnahmekosten">Teilnahmekosten in Euro pro Teilnehmer<em>&#x2a;</em></label><input id="Teilnahmekosten" name="Teilnahmekosten" required="" type="Number"  min="0"/>
+        <label for="Auswahl">Veranstaltungsart <em>&#x2a;</em></label>
         <div class="select-wrapper" style="margin-bottom: 3em">
         <select class="auswahl" name="Auswahl" id="Auswahl" style="background: none;">
             <option value="Veranstaltung">Veranstaltung</option>
@@ -54,7 +54,8 @@
     <label for="Veranstaltungsbeschreibung">Veranstaltungsbeschreibung </label> <textarea  cols="40" rows="8" maxlength="300" id="Veranstaltungsbeschreibung" name="Veranstaltungsbeschreibung"> </textarea>
 <!--       Buttons zum Anlegen der Veranstaltung oder Rückkehr zur Eigenen Veranstaltungsübersicht -->
         <button type="submit" class="Auslösen" name="Hinzufügen"> Erstellen</button>
-        <a href="#" type="button" class="Abbrechen">Abrechen</a>
+        <a href="#" type="button" class="Abbrechen">Abbrechen</a>
+        <!--TODO Bei Abbruch den Kalendereintrag wieder freigeben -->
 
 
     </form>
