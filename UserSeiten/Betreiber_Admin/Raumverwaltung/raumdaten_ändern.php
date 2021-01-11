@@ -6,7 +6,8 @@
     <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 
 </head>
@@ -14,12 +15,12 @@
 <body>
 <!--header-->
 <nav>
-    <ul class="header">
-        <li class="headerel"><a  href="StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a href="#">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a class= "active" href="Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
+    <ul class="header" >
+        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
+        <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
+        <li class="headerel"><a  class= "active" href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
+        <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
@@ -43,13 +44,14 @@ if($conn->connect_error){
     die('Connect Error (' . $conn->connect_errno . ') '
         . $conn->connect_error);
 }
+//Error_occured Variable (zunächst false)
+$error = "";
+$error_occured = false;
+$query_status = "";
+$status = false;
+$show_table = false;
 
 if($_SERVER["REQUEST_METHOD"] == "POST") {
-
-//Error_occured Variable (zunächst false)
-    $error = "";
-    $error_occured = false;
-    $query_status = "";
 
 //Abspeichern der zu ändernden Daten
     $R_ID = $_POST["Raum-ID"];
@@ -74,7 +76,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                      UNION
                      SELECT BeAr_ID, 'Angebot bearbeitet', Veranstalter, Teilnehmer_gepl, Beginn FROM Anfrage_Angebot WHERE R_ID = $R_ID AND Teilnehmer_gepl > $kapazitaet AND Status IN (2, 3)";
     $res2 = $conn->query($check_query2);
-    $show_table = false;
 
     if($res2->num_rows > 0){
         $error = "Es existieren Veranstaltungen und Angebote, die durch die Änderung der Kapazität betroffen sind!";
@@ -110,10 +111,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($conn->query($update_query) === TRUE) {
             $query_status = "Die Raumdaten wurden erfolgreich geändert.";
+            $status = true;
 
         } else {
             $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
-            $conn->error;
+            $error_occured = true;
             echo "<br>";
         }
     }
@@ -143,9 +145,25 @@ echo "<br><br>";
 
 //Fehlermeldung oder Erfolgsmeldung wird ausgegeben
 if($error_occured){
-    echo $error;
-} else {
-    echo $query_status;
+
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Fehler</h2>" ;
+    echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
+    echo "<div class='content'>" .$error. "</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+
+}
+if($status) {
+
+   echo "<div class='overlay'>";
+   echo "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>";
+   echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
+   echo "<div class='content'>" . $query_status . "</div>";
+   echo "</div>";
+   echo "</div>";
 }
 
 echo "<br><br>";
@@ -153,7 +171,8 @@ echo "<br><br>";
 
 //Anzeige der Tabelle der betroffenen Veranstaltungen
 if($show_table){
-    echo "<table border=\"1\">";
+    echo "<div class='mantel '>" ;
+    echo "<table border=\"1\" class='container' style='padding-top:8em '>";
     echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
     while($i = $res2->fetch_row()){
         echo "<tr>";
@@ -163,6 +182,7 @@ if($show_table){
         echo "</tr>\n";
     }
     echo "</table>\n";
+    echo "</div>";
 }
 ?>
 
@@ -182,28 +202,10 @@ if($show_table){
         <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="0" />
         <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
         <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
-        <!--<fieldset id = "Status">
-            <label for = "Status"> Raumstatus</label>
-            <input type= "radio" id="aktiv" name="Status" value="1">
-            <label for="aktiv"> aktiv</label>
-            <input type="radio" id="inaktiv" name="Status" value="2">
-            <label for="inaktiv"> inaktiv</label>
-        </fieldset>
-           <label for="Raumstatus">Raumstatus<em>&#x2a;</em></label><input id="Raumstatus" name="Raumstatus" required="" type="Number"  />-->
-        <!--    <form action="select.html">-->
-        <!--    <label>Raumstatus:-->
-        <!--        <select name="Status" size="2">-->
-        <!--            <option>aktiv</option>-->
-        <!--            <option>inaktiv</option>-->
-        <!--        </select>-->
-        <!--    </label>-->
-        <!--    </form>-->
 
 
-
-        <button id="Hinzufügen">Ändern</button>
-            <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abrechen</a>
-
+        <button class="Löschen"style="margin-top: 0; ">Ändern</button>
+            <a href="Raumverwaltung.php" type="button" class="Abbrechen" style="margin-top: 0">Abrechen</a>
 
     </form>
 

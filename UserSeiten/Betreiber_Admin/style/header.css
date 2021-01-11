@@ -4,15 +4,16 @@
 
 .header{
     list-style-type: none;
-    overflow: hidden;
+    overflow: auto;
     background-color: #333 ;
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 0 !important;
+    left: 0 !important;
     width: 100%;
+    margin-top: 0;
     font-family:Helvetica, sans-serif ;
-    display: block  ;
-    margin-bottom: 0;
+    display: block !important  ;
+    margin-bottom: 2em !important;
 
 }
 /*styling der Elemente*/
@@ -27,6 +28,7 @@
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+
 
     /*    background-color: #333;*/
 }
