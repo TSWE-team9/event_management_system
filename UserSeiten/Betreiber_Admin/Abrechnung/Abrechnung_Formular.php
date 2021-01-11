@@ -299,7 +299,7 @@ if($status) {
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include '../Header/header.php' ; ?>
+<?php include '../Header/header.php'; ?>
 <script>document.getElementById("Reiter_Abrechnung").classList.add("active");  </script>
 
 <div class="contact-us">
