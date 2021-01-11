@@ -10,24 +10,9 @@
 </head>
 <body>
 
-<nav>
-    <ul class="header">
-        <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a  href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
-        <li class="headerel"><a class= "active" href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
-        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
+<?php include '../Header/header.php'; ?>
+<script>document.getElementById("Reiter_Raumverwaltung").classList.add("active");  </script>
 
-    </ul>
-</nav>
-<!--<div id="wrapper">-->
-<!--    <div id="content">-->
-<!---->
-<!--    </div>-->
-<!--</div>-->
 
 <?php
 //Zugangsdaten zur Datenbank

@@ -8,21 +8,8 @@
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a class= "active" href="StartseiteBetreiber.php">Startseite</a></li>
-        <li><a href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
-        <li><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
-        <li><a href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li><a href="#">Statistiken</a></li>
-        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="#"> <i class="fas fa-user-circle"></i> </a></li>
-
-    </ul>
-</nav>
-
-
+<?php include '../Header/header.php'; ?>
+<script>document.getElementById("Reiter_Startseite").classList.add("active");  </script>
 <div class="footer">
     <div id="button"></div>
     <div id="container">
