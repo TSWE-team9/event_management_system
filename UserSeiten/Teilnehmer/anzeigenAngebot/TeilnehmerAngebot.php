@@ -29,7 +29,7 @@ veranstaltung_refresh();
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background3">
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_angebot").classList.add("active");</script>
 

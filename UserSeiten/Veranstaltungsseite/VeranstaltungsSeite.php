@@ -62,7 +62,7 @@ $j = $res3->fetch_row();
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="background2">
 <?php
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
@@ -211,8 +211,7 @@ switch ($_SESSION["rolle"]){
 //Anzeige für Rolle Gast, keine Buttons
 if($_SESSION["rolle"]==0){
 ?>
-<div class="container-80">
-    <h1 class="center">Gast</h1>
+<div class="container-80-noborder">
     <p class="center">Anmeldung nur als registrierter Nutzer möglich.</p>
     <a class="center" href="../../LandingPage/index.php">zur Registrierung</a>
 </div>
@@ -223,8 +222,7 @@ if($_SESSION["rolle"]==0){
 if($_SESSION["rolle"]==2){
 ?>
     <?php    include("VeranstaltungÄndernError.php");    ?>
-<div class="container-80">
-    <h1 class="center">Teilnehmer</h1>
+<div class="container-80-noborder">
     <!--if nicht angemeldet-->
     <?php
     $query_check = "SELECT * FROM Teilnehmerliste_offen WHERE V_ID =$V_ID AND B_ID=$Bid";
@@ -267,9 +265,9 @@ if($_SESSION["rolle"]==2){
     <?php
     if (mysqli_num_rows($res_check) == 1) {
         ?>
-    <button type="button" name="abmelden" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
+    <button type="button" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
     <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
-    <!--
+    
     <div id="t02" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
@@ -277,15 +275,15 @@ if($_SESSION["rolle"]==2){
                 <p>Wollen Sie sich wircklich von dieser Veranstaltung abmelden?</p>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
-                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Abmelden</button>
+                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="abmelden" onclick="document.getElementById('id01').style.display='none'">Abmelden</button>
                     <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
     </div>
-    -->
+    
     <?php }?>
-    <!--Modal falls Abmeldezeitraum abgelaufen-->
+    <!--Modal falls Abmeldezeitraum abgelaufen
     <div id="t02" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
@@ -296,7 +294,7 @@ if($_SESSION["rolle"]==2){
                 </div>
             </div>
         </div>
-    </div> 
+    </div> -->
 </div>
 <?php }?>
 

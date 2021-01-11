@@ -37,8 +37,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Gast/Veranstaltungsangebot.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Gast/Veranstaltungsangebot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Startseiten/AdminStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Startseiten/AdminStartseite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Startseiten/StartseiteBetreiber.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Betreiber_Admin/Startseiten/StartseiteBetreiber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Bilder/HintergrundAbrechnung.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Bilder/HintergrundRaum.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Bilder/HintergrundRaumseite.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Startseite/TeilnehmerStartseite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/AngebotAendern.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/AngebotAendern.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungsSeite.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/headerTeilnehmer.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/headerTeilnehmer.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +129,7 @@
       <workItem from="1609928920246" duration="3229000" />
       <workItem from="1610009707803" duration="7610000" />
       <workItem from="1610096956055" duration="1195000" />
-      <workItem from="1610355375995" duration="9114000" />
+      <workItem from="1610355375995" duration="14157000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>

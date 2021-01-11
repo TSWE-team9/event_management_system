@@ -33,7 +33,7 @@ $B_ID = $_SESSION["b_id"];
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background2">
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_veranstaltungen").classList.add("active");</script>
 

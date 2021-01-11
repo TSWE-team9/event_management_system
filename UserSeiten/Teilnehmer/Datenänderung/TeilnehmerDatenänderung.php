@@ -11,7 +11,7 @@
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background1">
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_daten").classList.add("active");</script>
 
