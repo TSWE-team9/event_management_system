@@ -58,11 +58,9 @@ if(isset($_POST["Stornieren"])) {
                     $empfaenger = get_mail_address($i[0]);
                     send_email($empfaenger, $betreff, $nachricht);
                 }
-            }
-
-            //Alle Einträge aus der Teilnehmerliste (offen) löschen
-            $query4 = "DELETE FROM Teilnehmerliste_offen WHERE V_ID = $V_ID";
-            $res4 = $conn->query($query4);
+                //Alle Einträge aus der Teilnehmerliste (offen) löschen
+                $query4 = "DELETE FROM Teilnehmerliste_offen WHERE V_ID = $V_ID";
+                $res4 = $conn->query($query4);}
 
         }
 
@@ -89,7 +87,7 @@ if(isset($_POST["Stornieren"])) {
         $error_occured = true;
     }
     if($res3 == FALSE){
-        $error = $error . "<br>" . "Fehler bei Benachrichtung (keine Teilnehmer oder Fehler bei Abfrage der B_ID";
+        $error = $error . "<br>" . "Fehler bei Benachrichtung (keine Teilnehmer oder Fehler bei Abfrage der B_ID)";
         $error_occured = true;
     }
     if($res4 == FALSE){
@@ -105,7 +103,7 @@ if(isset($_POST["Stornieren"])) {
         $error_occured = true;
     }
 
-    //TODO Ausgabe möglicher Fehlermeldungen
+    //TODO Ausgabe möglicher Fehlermeldungen PopUp und dann Weiterleitung
     if($error_occured){
         echo $error;
     }

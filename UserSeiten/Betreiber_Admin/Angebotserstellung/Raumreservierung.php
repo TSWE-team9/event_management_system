@@ -107,7 +107,7 @@ if($status){
         //Abspeichern der nötigen Daten für den INSERT in den Kalender
         $Beginn = $_SESSION["Beginn_final"];
         $Dauer = $_SESSION["Dauer_final"];
-        $R_status = 1;
+        $R_status = 2;
 
         //Insert
         $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', (SELECT DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY)), $R_ID, $R_status, NULL, NULL)";
@@ -117,7 +117,7 @@ if($status){
             echo "<div class='overlay'>" ;
             echo  "<div class='popup'>";
             echo "<h2>Bestätigung</h2>" ;
-            echo "<a class='close' href='InterneVeranstaltungen.php'>&times;</a>" ;
+            echo "<a class='close' href='VeranstaltungBetreiber.php'>&times;</a>" ;
             echo "<div class='content' >"  .$query_status."</div>";
             echo "</div>" ;
             echo "</div>" ;

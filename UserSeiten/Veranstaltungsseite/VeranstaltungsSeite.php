@@ -39,6 +39,10 @@ $res->close();
 $query2 = "SELECT Firma FROM Veranstalterkonto WHERE B_ID = $veranstalter";
 $res2 = $conn->query($query2);
 $i = $res2->fetch_row();
+$Veranstalter_name = $i[0];
+if(empty($Veranstalter_name)){
+    $Veranstalter_name = "VMS Grup9";
+}
 
 //Abfrage Name des Raums
 $query3 = "SELECT Bezeichnung FROM Raum WHERE R_ID = $ort";
@@ -87,7 +91,7 @@ switch ($_SESSION["rolle"]){
             <p class="info">Veranstalter</p>
         </div>
         <div class="col-desc">
-            <p class="desc"><?php echo $i[0];?></p>
+            <p class="desc"><?php echo $Veranstalter_name;?></p>
         </div>
     </div>
 

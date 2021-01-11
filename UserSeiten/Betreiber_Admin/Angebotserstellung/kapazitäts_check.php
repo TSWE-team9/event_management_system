@@ -131,70 +131,6 @@ if(isset($_POST["Abbrechen"])){
     header("Location: InterneVeranstaltungen.php");
 }
 
-/*$today = date("Y-m-d");
-echo $today;
-
-//Prüfung, ob Datum 4 Wochen in Zukunft liegt und Enddatum hinter Startdatum liegt
-if($Beginn <= $today + 28){
-    $error_occured1 = true;
-    $error = "Das Datum liegt nicht 4 Wochen in der Zukunft!";
-}*/
-
-
-//$beginn = date("Y-m-d", strtotime('2020-12-22'));
-//$ende = date("Y-m-d", strtotime('2020-12-23'));
-//$dauer = 2;
-//$teilnehmerzahl = 30;
-
-
-    /*Überprüfung ob Regeln für Veranstaltungen eingehalten wurden (Dauer=max 7 Tage; Keine Veranstaltungen über Wochenende hinaus)
-    //$unix_timestamp = strtotime($beginn);
-    $wochentag = date("l", $beginn);
-        echo $wochentag;
-
-        switch ($wochentag) {
-            case "Monday":
-                if ($Dauer > 7) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Tuesday":
-                if ($Dauer > 6) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Wednesday":
-                if ($Dauer > 5) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Thursday":
-                if ($Dauer > 4) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Friday":
-                if ($Dauer > 3) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Saturday":
-                if ($Dauer > 2) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Sunday":
-                if ($Dauer > 1) {
-                    $error_occured1 = true;
-                }
-                break;
-        }*/
 
 
 //Abfrage im Kalender, welche Räume zu den angegebenen Daten frei sind
@@ -214,8 +150,14 @@ if($Beginn <= $today + 28){
 
         if ($res2->num_rows == 0) {
             //Weiterleitung zu Formular V2"
-            echo "<a href='KapazitätenabfrageV2.php'>Erneute Überprüfung mit anderen Daten</a>";
-            //header("Location: KapazitätenabfrageV2.php");
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Fehler</h2>" ;
+            echo "<a class='close' href='KapazitätenabfrageV2.php'>&times;</a>" ;
+            echo "<div class='content' >" , 'Es sind zu diesem Zeitpunkt keine freien Kapazitäten verfügbar. ';
+            echo "</div>";
+            echo "</div>" ;
+            echo "</div>" ;
 
         } else {
 
