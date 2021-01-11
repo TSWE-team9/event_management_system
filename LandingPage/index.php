@@ -2,10 +2,11 @@
 session_start();
 
 //Default Wert für Benutzerrolle
-$res_rolle = 0;
+$_SESSION["rolle"] = 0;
 
+include('../UserSeiten/send_email.php');
 include('register.php');
-include("passwort_vergessen.php");
+include('passwort_vergessen.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +23,13 @@ include("passwort_vergessen.php");
             <br>
             <?php include('errors_t.php'); ?>
             <?php include('errors_v.php'); ?>
+            <?php include('login.php'); ?>
+            <?php include('register.php'); ?>
+            <?php include('passwort_vergessen.php'); ?>
+            
              <button class="accordion">Login</button>
                 <div class="panel">
-                  <form action="login.php" method="post">
+                  <form action="#" method="post">
                     <br>
                     <label for="email">E-Mail-Adresse</label>
                     <input type="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
@@ -32,7 +37,7 @@ include("passwort_vergessen.php");
                     <label for="passwort">Passwort</label>
                     <input type="password" placeholder="Passwort" name="passwort" pattern=".{10,50}" required>
 
-                    <button class="login-button" type="submit" name="submit">Anmelden</button>
+                    <button class="login-button" type="submit" name="login_submit">Anmelden</button>
                   </form>
                 </div>
 
