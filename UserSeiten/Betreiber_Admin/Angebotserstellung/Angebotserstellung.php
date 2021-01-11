@@ -17,19 +17,19 @@ if($conn->connect_error){
 include "../../angebot_refresh.php";
 angebot_refresh();
 
-$query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
+$query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer, Teilnehmer_gepl FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
 if($res->num_rows == 0){
 //    Fehlermeldung wenn die Abfrage nicht funktioniert 
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
-    echo "<h2>Bestätigung</h2>" ;
-    echo "<a class='close' href='Angebotserstellung.php'>&times;</a>" ;
-    echo "<div class='content' >" , 'Bei der Abfrage der Anfragen ist ein Fehler aufgetreten ';
+    echo "<h2>Info</h2>" ;
+    echo "<a class='close' href='../Startseiten/StartseiteBetreiber.html'>&times;</a>" ;
+    echo "<div class='content' >" , 'Es existieren derzeit keine unbearbeiteten Anfragen ';
     echo "</div>";
     echo "</div>" ;
     echo "</div>" ;
-//    echo "Bei der Abfrage der Anfragen ist ein Fehler aufgetreten";
+
 }
 
 ?>
@@ -43,6 +43,7 @@ if($res->num_rows == 0){
     <link rel="stylesheet" type="text/css" href="../Angebotserstellung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -68,6 +69,7 @@ if($res->num_rows == 0){
         <th><h2>Veranstalter_ID</h2></th>
         <th><h2>Gepl. Beginn</h2></th>
         <th><h2>Gepl. Dauer</h2></th>
+        <th><h2>Gepl. Teilnehmerzahl</h2></th>
     </tr>
     </thead>
     <tbody>

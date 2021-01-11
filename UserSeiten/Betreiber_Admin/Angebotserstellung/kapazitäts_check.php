@@ -202,7 +202,7 @@ if($Beginn <= $today + 28){
 
         $teilnehmerzahl = $_SESSION["Teilnehmerzahl"];
         $Dauer = $_SESSION["Dauer_final"];
-        $query = "SELECT R.R_ID, R.Bezeichnung FROM Raum R
+        $query = "SELECT R.R_ID, R.Bezeichnung, R.Kapazitaet FROM Raum R
               WHERE R.Kapazitaet >= $teilnehmerzahl AND R.Status = 1
               AND NOT EXISTS(SELECT * FROM Kalender WHERE R.R_ID = Kalender.R_ID AND
                              Von <= '$Beginn' AND '$Beginn' <= Bis)
@@ -226,7 +226,7 @@ if($Beginn <= $today + 28){
             echo "<br>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
             echo "<br><br>";
             echo "<table border=\"1\">";
-            echo "<th>R_ID</th><th>Bezeichnung</th>";
+            echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th>";
             while ($i = $res2->fetch_row()) {
                 if ($i[0]) {
                     array_push($_SESSION["R_ID_Array"], $i[0]);

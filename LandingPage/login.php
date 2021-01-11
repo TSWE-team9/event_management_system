@@ -51,11 +51,11 @@ if(isset($_POST["login_submit"])){
                 break;
             //Betreiber ist Rolle 3
             case 3:
-                header("Location: ../UserSeiten/Betreiber_Admin/StartseiteBetreiber.php");
+                header("Location: ../UserSeiten/Betreiber_Admin/Startseiten/StartseiteBetreiber.html");
                 break;
             //Admin ist Rolle 4
             case 4:
-                header("Location: ../UserSeiten/Betreiber_Admin/StartseiteBetreiber.php");
+                header("Location: ../UserSeiten/Betreiber_Admin/Startseiten/AdminStartseite.php");
                 break;
         }
 

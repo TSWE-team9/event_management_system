@@ -9,6 +9,7 @@ include "../../send_email.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="VeranstalterAnfrage.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Fehlermeldung.css">
     <title>Anfrage erstellen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -46,11 +47,10 @@ if(isset($_POST["anfrage"])){
     $veranstalter_id = $_SESSION["b_id"];
 
 
-
 //Insert Query für das Anlegen in der DB
 if($error == false) {
 
-    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, NULL, NULL, '$anmerkungen', NULL)";
+    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, NULL, NULL, NULL, '$anmerkungen', NULL)";
 
     $res = $conn->query($query);
     if ($res === TRUE) {
@@ -61,15 +61,28 @@ if($error == false) {
         $nachricht = "Danke für Ihr Interesse an unserem Veranstaltungshaus. Wir werden Ihre Anfrage bearbeiten und melden uns möglichst schnell bei Ihnen per Mail zurück.";
         send_email($empfaenger, $betreff, $nachricht);
 
+        //Ausgabe des Status der Abfrage
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Bestätigung</h2>" ;
+        echo "<a class='close' href='VeranstalterAnfrage.php'>&times;</a>" ;
+        echo "<div class='content'>"  .$query_status. "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
+
     } else {
         $query_status = "Beim Erstellen der Anfrage ist ein Fehler aufgetreten";
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='VeranstalterAnfrage.php'>&times;</a>" ;
+        echo "<div class='content'>"  .$query_status. "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
     }
 }
 }
 
-
-//Ausgabe des Status der Abfrage
-echo "<br>" . $query_status;
 
 ?>
 

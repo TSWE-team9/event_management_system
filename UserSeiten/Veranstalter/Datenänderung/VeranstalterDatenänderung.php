@@ -102,7 +102,7 @@
                 </div>
             </div>
         </form>
-        <?php if (count($errors_del) > 0){include('errorsDatenänderungV.php');} //TODO Weiterleitung ändern!?>
+        <?php if (count($errors_del) > 0){include('errorsDatenänderungV.php');} //TODO Weiterleitung!?>
     </div>
 </div>
 
