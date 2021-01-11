@@ -4,11 +4,12 @@
 
 .header{
     list-style-type: none;
-    overflow: auto;
+    overflow: hidden;
     background-color: #333 ;
     position: fixed;
     top: 0 !important;
     left: 0 !important;
+    right:0;
     width: 100%;
     margin-top: 0;
     font-family:Helvetica, sans-serif ;
