@@ -127,7 +127,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <nav>
         <ul class="header">
-            <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+            <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
             <li class="headerel"><a  href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
             <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
             <li class="headerel"><a class= "active" href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
