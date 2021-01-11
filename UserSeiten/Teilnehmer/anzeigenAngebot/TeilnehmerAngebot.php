@@ -51,7 +51,7 @@ veranstaltung_refresh();
     ?>
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0]; ?>">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: " . $i[1]; ?></div><div class="btntitel"><?php echo $i[2]; ?></div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: " . $i[1]; ?></div><div class="btntitel"><?php echo $i[2]; ?></div></button>
     </form> 
     <?php }} ?>
 </div>

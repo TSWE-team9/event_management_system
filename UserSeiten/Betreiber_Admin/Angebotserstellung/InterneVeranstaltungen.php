@@ -62,7 +62,7 @@ angebot_refresh();
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
@@ -83,7 +83,7 @@ angebot_refresh();
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
@@ -105,7 +105,7 @@ angebot_refresh();
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
