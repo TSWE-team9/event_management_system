@@ -33,10 +33,7 @@ veranstaltung_refresh();
 <nav>
     <ul>
         <li><a class="active" href="Veranstaltungsangebots.php">Veranstaltungsangebot</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
         <li style="float: right;"> <a href="../../LandingPage/index.php">zur Anmeldung</a></li>
-
     </ul>
 </nav>
 
