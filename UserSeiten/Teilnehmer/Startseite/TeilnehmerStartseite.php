@@ -34,8 +34,8 @@ $B_ID = $_SESSION["b_id"];
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<?php include 'header.php';?>
-<script>document.getElementById("startseite").classList.add("active");</script>
+<?php include '../header.php';?>
+<script>document.getElementById("reiter_startseite").classList.add("active");</script>
 
 <div class="container-50-outer">
 
