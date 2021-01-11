@@ -5,6 +5,8 @@ session_start();
 $_SESSION["rolle"] = 0;
 
 include('../UserSeiten/send_email.php');
+include('register.php');
+include('passwort_vergessen.php');
 ?>
 
 <!DOCTYPE html>
@@ -22,9 +24,6 @@ include('../UserSeiten/send_email.php');
             <?php include('errors_t.php'); ?>
             <?php include('errors_v.php'); ?>
             <?php include('login.php'); ?>
-            <?php include('register.php'); ?>
-            <?php include('passwort_vergessen.php'); ?>
-            
              <button class="accordion">Login</button>
                 <div class="panel">
                   <form action="#" method="post">

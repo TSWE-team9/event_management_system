@@ -30,18 +30,8 @@ veranstaltung_refresh();
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="../Startseite/TeilnehmerStartseite.php">Startseite</a></li>
-        <li><a class="active" href="TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a href="../angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Datenänderung/TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
-
-    </ul>
-</nav>
+<?php include '../header.php';?>
+<script>document.getElementById("reiter_angebot").classList.add("active");</script>
 
 <div class="container-50-outer">
     <h1 class="hdln">Aktuelles Angebot</h1>

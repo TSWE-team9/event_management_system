@@ -87,22 +87,10 @@ if($error == false) {
 ?>
 
 
-<nav>
-    <ul>
-        <li><a href="../Startseite/VeranstalterStartseite.php">Startseite</a></li>
-        <li><a class="active" href="VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+<?php include '../header.php';?>
+<script>document.getElementById("reiter_anfrage").classList.add("active");</script>
 
-    </ul>
-</nav>
-
-<h1 style="text-align: center;, margin-top: 50px;">Anfrageformular für Veranstaltung</h1>
-<p>Beschreibung Formular</p>
-
+<br><br><br><br><br><br><br><br><br>
 <!-- Anfrageformular -->
 <div class="container">
     <form action="VeranstalterAnfrage.php" method="post">
