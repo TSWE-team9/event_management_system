@@ -33,19 +33,8 @@ if($conn->connect_error) {
 </head>
 
 <body>
-<nav>
-    <ul class="header" style="margin-top: 0">
-        <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a class= "active" href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
-        <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
-
-    </ul>
-</nav>
+<?php include '../Header/header.php' ; ?>
+<script>document.getElementById("Reiter_Abrechnung").classList.add("active");  </script>
 <!--Tab auf der linken Seite zum auswählen zwischen internen und externen Veranstaltungen -->
 <div class="tab">
     <button class="tablinks" onclick="openList(event, 'interne')" id="defaultOpen">Interne Veranstaltungen</button>

@@ -10,7 +10,7 @@
 <body>
 <nav>
     <ul>
-        <li><a class= "active" href="StartseiteBetreiber.html">Startseite</a></li>
+        <li><a class= "active" href="StartseiteBetreiber.php">Startseite</a></li>
         <li><a href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
         <li><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
         <li><a href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
@@ -21,13 +21,7 @@
 
     </ul>
 </nav>
-<!--<footer>
-   <div>
-       <a href="#">Impressum</a>
-        <a href="#">AGB</a> <br>
-   VMS
-  < /div>
-</footer>-->
+
 
 <div class="footer">
     <div id="button"></div>
