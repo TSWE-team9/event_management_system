@@ -98,7 +98,9 @@ if (isset($_POST['änderung_daten_user_v'])) {
 //account löschen
 if (isset($_POST['acc_delete'])) {
 
-    $query_check = "SELECT V_ID FROM Veranstaltung WHERE Veranstalter = $curr_bid AND Status IN (1,2,3)";
+    $query_check = "SELECT V_ID FROM Veranstaltung WHERE Veranstalter = $curr_bid AND Status IN (1,2,3)
+                    UNION
+                    SELECT BeAr_ID FROM Anfrage_Angebot WHERE Veranstalter = $curr_bid AND Status IN (1,2,3)";
 
     $result = mysqli_query($db,$query_check);
 
@@ -112,7 +114,7 @@ if (isset($_POST['acc_delete'])) {
         array_push($errors_del, "Benutzerkonto wurde gelöscht!");
 
     }else{
-        array_push($errors_del, "Bitte melden Sie sich zu allen Veranstaltugen ab, um ihr Benutzerkonto zu löschen!");
+        array_push($errors_del, "Sie haben noch nicht abgeschlossene oder nicht abgerechnete Veranstaltungen bzw. offene Anfragen!");
     };
 
 

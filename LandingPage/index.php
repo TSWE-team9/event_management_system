@@ -5,8 +5,6 @@ session_start();
 $_SESSION["rolle"] = 0;
 
 include('../UserSeiten/send_email.php');
-include('register.php');
-include('passwort_vergessen.php');
 ?>
 
 <!DOCTYPE html>
