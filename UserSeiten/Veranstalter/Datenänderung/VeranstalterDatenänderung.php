@@ -26,6 +26,9 @@
 </nav>
 
 <div class="box">
+    <?php if (count($errors_p) > 0){include('errorsDatenänderungV.php');} ?>
+    <?php if (count($errors_e) > 0){include('errorsDatenänderungV.php');} ?>
+    <?php if (count($errors_d) > 0){include('errorsDatenänderungV.php');} ?>
 
     <button class="accordion">Passwort ändern</button>
         <div class="panel">

@@ -39,10 +39,8 @@
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LandingPage/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/passwort_vergessen.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/passwort_vergessen.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/VeranstalterDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/VeranstalterDatenänderung.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +120,7 @@
       <workItem from="1609928920246" duration="3229000" />
       <workItem from="1610009707803" duration="7610000" />
       <workItem from="1610096956055" duration="1195000" />
-      <workItem from="1610355375995" duration="4553000" />
+      <workItem from="1610355375995" duration="5898000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
