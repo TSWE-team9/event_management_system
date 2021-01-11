@@ -46,7 +46,7 @@ $res->close();
     <!--Importierung Excel library-->
     <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
 </head>
-<body>
+<body class="background3">
 <nav>
     <ul>
         <li><a href="../Veranstalter/Startseite/VeranstalterStartseite.php">Startseite</a></li>

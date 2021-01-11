@@ -48,7 +48,7 @@ $res->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.69/pdfmake.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.69/vfs_fonts.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background1">
 <nav>
     <ul>
         <li><a href="../Veranstalter/Startseite/VeranstalterStartseite.php">Startseite</a></li>

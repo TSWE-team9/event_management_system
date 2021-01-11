@@ -27,7 +27,7 @@ if($conn->connect_error){
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
     <script src="../script.js"></script>
 </head>
-<body>
+<body class="background2">
 <nav>
     <ul>
         <li><a href="../../Startseite/VeranstalterStartseite.php">Startseite</a></li>
@@ -83,8 +83,11 @@ if(isset($_POST["angebot_ablehnen"])){
     }
 
     else{
+
+        //TODO Pop Up Meldung
+
         //Weiterleitung zur Startseite
-        header("Location: VeranstalterStartseite.php");
+        header("Location: ../../Startseite/VeranstalterStartseite.php");
     }
 }
 

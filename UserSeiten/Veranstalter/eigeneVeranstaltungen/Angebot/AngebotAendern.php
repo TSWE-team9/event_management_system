@@ -50,7 +50,7 @@ if(isset($_POST["angebot_aendern"])) {
     $res3->close();
 
 //Einfügen der alten sowie neuen Daten in die DB
-    $query4 = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $Teilnehmer, '$Beginn_neu', $Dauer, 1, NULL, NULL, '$Anmerk', NULL)";
+    $query4 = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $Teilnehmer, '$Beginn_neu', $Dauer, 1, NULL, NULL, NULL, '$Anmerk', NULL)"; // beim ersten NULL wird kein Datum mit übergeben
 
     $res4 = $conn->query($query4);
     if ($res4 === TRUE) {
@@ -67,7 +67,7 @@ if(isset($_POST["angebot_aendern"])) {
     } elseif ($res2 === FALSE) {
         echo "Es ist ein Fehler bei der Delete Query aufgetreten";
     } elseif ($res4 === FALSE) {
-        echo "Beim Erstellen der neuen Anfrage ist ein Fehler aufgetreten";
+        echo "Beim Erstellen der neuen Anfrage ist ein Fehler aufgetreten"; //landen hier
     } else {
         echo $query_status;
     }

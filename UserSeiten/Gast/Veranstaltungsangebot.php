@@ -29,14 +29,11 @@ veranstaltung_refresh();
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background2">
 <nav>
     <ul>
         <li><a class="active" href="Veranstaltungsangebots.php">Veranstaltungsangebot</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
         <li style="float: right;"> <a href="../../LandingPage/index.php">zur Anmeldung</a></li>
-
     </ul>
 </nav>
 
