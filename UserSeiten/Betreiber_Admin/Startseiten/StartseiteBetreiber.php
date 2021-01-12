@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+
+//Verbindung zur Datenbank herstellen
+$host = '132.231.36.109';
+$db = 'vms_db';
+$user = 'dbuser';
+$pw = 'dbuser123';
+$conn = new mysqli($host, $user, $pw, $db,3306);
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -13,15 +22,21 @@
 <script>document.getElementById("Reiter_Startseite").classList.add("active");  </script>
 
 <div class="ordnung">
-
     <div id="aktuelle" class="tabcontent" style="margin-left: 15em">
         <h3 style="text-align: center;">Aktuelle Veranstaltungen</h3>
+        <?php
+        $query_check = "SELECT V_ID,Titel FROM Veranstaltung WHERE Status=1";
+        $res_check = mysqli_query($conn, $query_check);;
+        while($i = $res_check->fetch_row()){
+        ?>
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-            <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+            <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+            <?php }?>
         </form>
 
     </div>
+
 </div>
 <div class="footer">
     <div id="button"></div>
