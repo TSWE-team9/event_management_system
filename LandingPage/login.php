@@ -62,7 +62,14 @@ if(isset($_POST["login_submit"])){
     }
 
     //Falls die Anmeldung misslingt, wird eine Fehlermeldung ausgegeben
-    echo '<p class="error">"Es ist ein Fehler beim Login aufgetreten. Bitte versuchen Sie es erneut!"</p>';
+    echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2>Anmeldung</h2>
+                <a class="close" href="./index.php">&times;</a>
+                <div class="content">Es wurden keine gültigen Anmeldedaten eingegeben.</div>
+            </div>
+        </div>';
     $sql->close();
 }
 ?>

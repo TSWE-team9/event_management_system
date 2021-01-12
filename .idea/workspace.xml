@@ -37,9 +37,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/LandingPage/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/LandingPage/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/register.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Gast/Veranstaltungsangebot.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Gast/Veranstaltungsangebot.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/header/headerGast.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/header/headerGast.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +121,7 @@
       <workItem from="1610009707803" duration="7610000" />
       <workItem from="1610096956055" duration="1195000" />
       <workItem from="1610355375995" duration="19568000" />
-      <workItem from="1610442431298" duration="5627000" />
+      <workItem from="1610442431298" duration="8463000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
