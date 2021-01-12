@@ -67,7 +67,7 @@ $j = $res3->fetch_row();
 <?php
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
-    case 0: include '.header/headerGast.php';               //header Gast
+    case 0: include './header/headerGast.php';               //header Gast
         break;
     case 1: include './header/headerVeranstalter.php';      // header Veranstalter
         break;
