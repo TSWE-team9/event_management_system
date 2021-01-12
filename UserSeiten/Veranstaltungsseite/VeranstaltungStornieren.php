@@ -105,7 +105,13 @@ if(isset($_POST["Stornieren"])) {
 
     //TODO Ausgabe möglicher Fehlermeldungen PopUp und dann Weiterleitung
     if($error_occured){
-        echo $error;
+        echo "<div class='overlay'>" ;
+        echo "<div class='popup'>";
+        echo "<h2 class='hdln'>Fehler Veranstaltungserstellung</h2>" ;
+        echo "<a class='close' href='../VeranstalterVeranstaltungen.php'>&times;</a>" ;
+        echo "<div class='content'>"  .$error. "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
     }
 
 
