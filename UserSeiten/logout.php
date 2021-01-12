@@ -31,6 +31,10 @@ echo "</div>";
 </html>
 <style>
     body{
-    background: url("../UserSeiten/Betreiber_Admin/style/safe-913452_1920.jpg") fixed;
+    background: url("Betreiber_Admin/style/door-5831240_1920.jpg") fixed ;
+       background-size: contain;
+        width: 100%;
+        height: 100%;
+        position: fixed;
     }
 </style>
