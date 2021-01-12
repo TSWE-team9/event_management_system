@@ -67,11 +67,11 @@ $j = $res3->fetch_row();
 <?php
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
-    case 0: //header Gast -> kein header
+    case 0: include '.header/headerGast.php';               //header Gast
         break;
-    case 1:  include './header/headerVeranstalter.php';      // header Veranstalter
+    case 1: include './header/headerVeranstalter.php';      // header Veranstalter
         break;
-    case 2:  include './header/headerTeilnehmer.php';        // header Teilnehmer
+    case 2: include './header/headerTeilnehmer.php';        // header Teilnehmer
         break;
     case 3: include './header/headerBetreiber.php';          // header Betreiber
         break;
@@ -306,11 +306,12 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
 <div class="container-80-noborder">
 
     <!--Stornierung Beginn-->
+    <?php include 'VeranstaltungStornieren.php' ?> <!--TODO include der stornieren fkt-->
     <button type="button" style="float: left;" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
     <?php if($status == 1){?>
     <!--Modal falls Stornozeitraum noch nicht abgelaufen (Veranstaltung "aktiv")-->
     <div id="v01" class="modal">
-        <form class="modal_content" action="VeranstaltungStornieren.php" method="post">
+        <form class="modal_content" action="#" method="post">
             <div class="modal_container">
                 <h1>Stornierung</h1>
                 <?php

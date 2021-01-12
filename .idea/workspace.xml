@@ -38,20 +38,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/Fehlermeldung.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/Startseite.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/listen.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/listen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/tabs.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/tabs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Startseite/VeranstalterStartseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/Angebotseite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungStornieren.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungStornieren.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungsSeite.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/header/headerTeilnehmer.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/header/headerTeilnehmer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/header/headerVeranstalter.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/header/headerVeranstalter.php" afterDir="false" />
-
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,11 +84,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\Angebotserstellung" />
-      <recent name="C:\Users\flami\PhpstormProjects\event_management_system\UserSeiten\Betreiber_Admin\style" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstaltungsseite\header" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen\Angebot" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten" />
       <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\Startseite" />
+      <recent name="C:\Users\chris\Documents\GitHub\event_management_system\UserSeiten\Veranstalter\eigeneVeranstaltungen" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -131,7 +121,8 @@
       <workItem from="1609928920246" duration="3229000" />
       <workItem from="1610009707803" duration="7610000" />
       <workItem from="1610096956055" duration="1195000" />
-      <workItem from="1610355375995" duration="19304000" />
+      <workItem from="1610355375995" duration="19568000" />
+      <workItem from="1610442431298" duration="2960000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>
@@ -147,14 +138,7 @@
       <option name="project" value="LOCAL" />
       <updated>1608217397753</updated>
     </task>
-    <task id="LOCAL-00003" summary="header ausgelagert">
-      <created>1610384797444</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1610384797444</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,8 +159,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Sessionvariablen festgelegt" />
     <MESSAGE value="komments hinzugefügt" />
-    <MESSAGE value="header ausgelagert" />
-    <option name="LAST_COMMIT_MESSAGE" value="header ausgelagert" />
+    <option name="LAST_COMMIT_MESSAGE" value="komments hinzugefügt" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
