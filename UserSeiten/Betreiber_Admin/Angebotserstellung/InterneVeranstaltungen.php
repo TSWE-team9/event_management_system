@@ -17,7 +17,7 @@ session_start()
 <body>
 <nav >
     <?php include '../Header/header.php'; ?>
-    <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
+    <script>document.getElementById("Reiter_MeineVeranstaltungen").classList.add("active");  </script>
 </nav>
 
 <!--<h1 >Meine Veranstaltungen</h1>-->

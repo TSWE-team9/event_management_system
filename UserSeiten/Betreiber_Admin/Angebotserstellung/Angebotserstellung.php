@@ -24,7 +24,7 @@ if($res->num_rows == 0){
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Info</h2>" ;
-    echo "<a class='close' href='../Startseiten/StartseiteBetreiber.html'>&times;</a>" ;
+    echo "<a class='close' href='../Startseiten/StartseiteBetreiber.php'>&times;</a>" ;
     echo "<div class='content' >" , 'Es existieren derzeit keine unbearbeiteten Anfragen ';
     echo "</div>";
     echo "</div>" ;

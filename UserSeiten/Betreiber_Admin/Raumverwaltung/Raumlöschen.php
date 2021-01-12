@@ -34,12 +34,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Abspeichern der vom Formular übergebenen Daten
     $R_ID = $_POST["Raum-ID"];
-    $bezeichnung = $_POST["Raumbezeichnung"];
+//    $bezeichnung = $_POST["Raumbezeichnung"];
     $status_inaktiv = false;
 
 
     //Abfrage, ob Raum ID mit Bezeichnung des zu löschenden Raums existiert
-    $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID AND Bezeichnung='$bezeichnung'";
+    $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID" ;
+//                        AND Bezeichnung='$bezeichnung'";
     $res1 = $conn->query($check_query);
 
     if ($res1->num_rows == 0) {
@@ -138,7 +139,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
             <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
-    <label for="Raumbezeichnung">Raumbezeichnung <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text"/>
+<!--    <label for="Raumbezeichnung">Raumbezeichnung <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text"/>-->
 
 <!--    <button id="Löschen">Löschen</button>-->
             <button type="submit" class="Löschen" formaction="#">Löschen</button>
