@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
 
 body {
-    background: url("../style/Raumlöschen.jpg")  fixed ;
+    background: url("Raumlöschen.jpg")  fixed ;
     /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
     background-size: cover;
     width: 100vw;

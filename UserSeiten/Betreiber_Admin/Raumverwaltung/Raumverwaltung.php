@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>Raumverwaltung</title>
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../style/Raumverwaltung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>

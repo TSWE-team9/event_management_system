@@ -18,7 +18,7 @@ veranstaltung_refresh();
     <meta charset="UTF-8">
     <title>Startseite</title>
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../Angebotserstellung/InterneVeranstaltungen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/InterneVeranstaltungen.css" media="screen" />
     <title>Title</title>
     <script src="../js/Tabs.js"></script>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
