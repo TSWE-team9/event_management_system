@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../CSS/Startseite.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../../CSS/modal.css" type="text/css">
     <link rel="stylesheet" href="TeilnehmerDatenänderung.css" type="text/css">
+    <link rel="stylesheet" href="../../CSS/popup.css">
     <title>Datenänderung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>

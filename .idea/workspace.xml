@@ -38,16 +38,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/errors_pw.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/errors_pw.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/errors_t.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/errors_t.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/errors_v.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/errors_v.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/veranstaltungen.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungsSeite.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungsSeite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungÄndernError.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungÄndernError.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungÄndernFunktion.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungÄndernFunktion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/DatenänderungFunktionT.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/DatenänderungFunktionT.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Teilnehmer/Datenänderung/TeilnehmerDatenänderung.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/VeranstalterDatenänderung.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/Datenänderung/VeranstalterDatenänderung.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +122,7 @@
       <workItem from="1610009707803" duration="7610000" />
       <workItem from="1610096956055" duration="1195000" />
       <workItem from="1610355375995" duration="19568000" />
-      <workItem from="1610442431298" duration="10313000" />
+      <workItem from="1610442431298" duration="11303000" />
     </task>
     <task id="LOCAL-00001" summary="Sessionvariablen festgelegt">
       <created>1608217249429</created>

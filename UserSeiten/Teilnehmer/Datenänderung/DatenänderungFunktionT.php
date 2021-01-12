@@ -118,7 +118,16 @@ if (isset($_POST['acc_löschen'])) {
         mysqli_query($db, $query1);
         $query2 = "Update Benutzerkonto Set Passwort=NULL Where B_ID=$curr_bid";
         mysqli_query($db, $query2);
-        array_push($errors_del, "Benutzerkonto wurde gelöscht!");
+        // array_push($errors_del, "Benutzerkonto wurde gelöscht!");
+        // Nachricht bei erfolgreicher Löschng
+        echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2  class="hdln">Kontolöschung erfolgreich</h2>
+                <a class="close" href="../../../LandingPage/index.php">&times;</a>
+                <div class="content">Sie haben ihr Nutzerkonto erfolgreich gelöscht.</div>
+            </div>
+        </div>';
 
     }else{
         array_push($errors_del, "Bitte melden Sie sich zu allen Veranstaltugen ab, um ihr Benutzerkonto zu löschen!");
