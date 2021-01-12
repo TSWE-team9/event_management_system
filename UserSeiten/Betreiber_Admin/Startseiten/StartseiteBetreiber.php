@@ -25,13 +25,13 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
     <div id="aktuelle" class="tabcontent" style="margin-left: 15em">
         <h3 style="text-align: center;">Aktuelle Veranstaltungen</h3>
         <?php
-        $query_check = "SELECT V_ID,Titel FROM Veranstaltung WHERE Status=1";
+        $query_check = "SELECT V_ID,Beginn,Titel FROM Veranstaltung WHERE Status=1";
         $res_check = mysqli_query($conn, $query_check);;
         while($i = $res_check->fetch_row()){
         ?>
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-            <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+            <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[2];?></div></button>
             <?php }?>
         </form>
 
