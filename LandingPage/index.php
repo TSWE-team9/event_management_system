@@ -14,16 +14,19 @@ include('passwort_vergessen.php');
     <head>
         <title>Landing Page</title>
         <meta charset="utf-8"/>
-        <link href="index.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="../UserSeiten/CSS/popup.css">
     </head>
 
     <body>
+      <?php include('errors_t.php'); ?>
+      <?php include('errors_v.php'); ?>
+      <?php include('login.php'); ?>
+      <?php include "errors_pw.php" ?>
+
         <div class="login-box">
           <img id="logo" src="img/vmslogo.png">
             <br>
-            <?php include('errors_t.php'); ?>
-            <?php include('errors_v.php'); ?>
-            <?php include('login.php'); ?>
              <button class="accordion">Login</button>
                 <div class="panel">
                   <form action="#" method="post">
@@ -42,7 +45,6 @@ include('passwort_vergessen.php');
 
                 <button class="accordion">Passwort vergessen</button>
                   <div class="panel">
-                      <?php include "errors_pw.php" ?>
                       <form action="#" method="post">
                       <p>Geben Sie ihre E-Mail-Adresse an. Ihnen wird dann ein neues Passwort zugesendet, mit welchem Sie sich anmelden können.</p>
                         
@@ -57,7 +59,6 @@ include('passwort_vergessen.php');
             <button class="accordion">Registrieren als Teilnehmer</button>
               <div class="panel">
                 <form action="#" method="post">
-                  <?php include('errors_t.php'); ?>
                   <br>
                   <label for="email">E-Mail-Adresse</label>
                   <input type="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
@@ -110,7 +111,6 @@ include('passwort_vergessen.php');
             <button class="accordion">Registrieren als Veranstalter</button>
               <div class="panel">
                 <form action="#" method="post">
-                  <?php include('errors_v.php'); ?>
                   <br>
                   <label for="email">E-Mail-Adresse</label>
                   <input type="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>

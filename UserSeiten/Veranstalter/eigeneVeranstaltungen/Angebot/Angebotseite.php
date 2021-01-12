@@ -87,7 +87,7 @@ if(isset($_POST["angebot_ablehnen"])){
         '<div class="overlay">
             <div class="popup">
                 <h2>Info</h2>
-                <a class="close" href="../../Startseiten/VeranstalterStartseite.php">&times;</a>
+                <a class="close" href="../../Startseite/VeranstalterStartseite.php">&times;</a>
                 <div class="content">Sie haben das Angebot abgelehnt</div>
             </div>
         </div>';

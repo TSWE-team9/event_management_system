@@ -59,6 +59,7 @@ $j = $res3->fetch_row();
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" href="../Betreiber_Admin/style/header.css">
+    <link rel="stylesheet" href="../CSS/popup.css">
     <title>Veranstaltungsseite</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
@@ -67,7 +68,7 @@ $j = $res3->fetch_row();
 <?php
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
-    case 0: include '.header/headerGast.php';               //header Gast
+    case 0: include './header/headerGast.php';               //header Gast
         break;
     case 1: include './header/headerVeranstalter.php';      // header Veranstalter
         break;
@@ -214,7 +215,6 @@ if($_SESSION["rolle"]==0){
 ?>
 <div class="container-80-noborder">
     <p class="center">Anmeldung nur als registrierter Nutzer möglich.</p>
-    <a class="center" href="../../LandingPage/index.php">zur Registrierung</a>
 </div>
 <?php }?>
 

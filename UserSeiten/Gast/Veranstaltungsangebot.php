@@ -32,7 +32,7 @@ veranstaltung_refresh();
 <body class="background2">
 <nav>
     <ul>
-        <li><a class="active" href="Veranstaltungsangebots.php">Veranstaltungsangebot</a></li>
+        <li><a class="active" href="Veranstaltungsangebot.php">Veranstaltungsangebot</a></li>
         <li style="float: right;"> <a href="../../LandingPage/index.php">zur Anmeldung</a></li>
     </ul>
 </nav>
