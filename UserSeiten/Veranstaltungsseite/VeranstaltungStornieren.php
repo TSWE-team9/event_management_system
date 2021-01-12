@@ -1,6 +1,6 @@
 <?php
-session_start();
-include "../send_email.php";
+// session_start();
+// include "../send_email.php";
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -87,15 +87,15 @@ if(isset($_POST["Stornieren"])) {
         $error_occured = true;
     }
     if($res3 == FALSE){
-        $error = $error . "<br>" . "Fehler bei Benachrichtung (keine Teilnehmer oder Fehler bei Abfrage der B_ID)";
+        $error = $error . "<br>" . "Fehler bei Benachrichtung (keine Teilnehmer oder Fehler bei Abfrage der B_ID)"; // Fehler bei leerer Liste TODO
         $error_occured = true;
     }
     if($res4 == FALSE){
-        $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (offen)";
+        $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (offen)";   // Fehler bei leerer Liste TODO
         $error_occured = true;
     }
     if($res5 == FALSE){
-        $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (geschlossen)";
+        $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (geschlossen)"; // Fehler kommt bei offender Veranstaltung TODO
         $error_occured = true;
     }
     if($res6 == FALSE){
