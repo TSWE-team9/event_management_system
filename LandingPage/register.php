@@ -43,7 +43,7 @@ if (isset($_POST['reg_user_t'])) {
     if (empty($land)) { array_push($errors_t, "Land wird benötigt"); }
 
     if ($password_1 != $password_2) {
-        array_push($errors_t, "The two passwords do not match");
+        array_push($errors_t, "Die beiden Passwörter stimmen nicht überein.");
     }
 
     //check age
@@ -58,7 +58,7 @@ if (isset($_POST['reg_user_t'])) {
 
     if ($user) { // if user exists
         if ($user['E_mail'] === $email) {
-            array_push($errors_t, "email already exists");
+            array_push($errors_t, "Diese E-Mail wird bereits benutzt.");
         }
     }
 
@@ -125,7 +125,7 @@ if (isset($_POST['reg_user_v'])) {
     if (empty($land)) { array_push($errors_v, "Land wird benötigt"); }
 
     if ($password_1 != $password_2) {
-        array_push($errors_v, "The two passwords do not match");
+        array_push($errors_v, "Die beiden Passwörter stimmen nicht überein.");
     }
 
     //check age
@@ -140,7 +140,7 @@ if (isset($_POST['reg_user_v'])) {
 
     if ($user) { // if user exists
         if ($user['E_mail'] === $email) {
-            array_push($errors_v, "email already exists");
+            array_push($errors_v, "Diese E-Mail wird bereits benutzt.");
         }
     }
 
@@ -162,7 +162,7 @@ if (isset($_POST['reg_user_v'])) {
         echo 
         '<div class="overlay">
             <div class="popup">
-                <h2>Registrierung</h2>
+                <h2  class="hdln">Registrierung</h2>
                 <a class="close" href="./index.php">&times;</a>
                 <div class="content">Sie haben sich erfolgreich registriert.</div>
             </div>

@@ -65,7 +65,7 @@ if(isset($_POST["login_submit"])){
     echo 
         '<div class="overlay">
             <div class="popup">
-                <h2>Anmeldung</h2>
+                <h2 class="hdln">Anmeldung</h2>
                 <a class="close" href="./index.php">&times;</a>
                 <div class="content">Es wurden keine gültigen Anmeldedaten eingegeben.</div>
             </div>
