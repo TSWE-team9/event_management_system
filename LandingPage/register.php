@@ -77,7 +77,14 @@ if (isset($_POST['reg_user_t'])) {
         //Email Bestätigung
         send_email($email, "Registrierung erfolgreich", "Sie haben sich erfolgreich im VMS registriert und können sich nun anmelden.");
 
-        echo '<p class="succes">"Sie haben sich erfolgreich angemeldet."</p>';
+        echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2>Registrierung</h2>
+                <a class="close" href="./index.php">&times;</a>
+                <div class="content">Sie haben sich erfolgreich registriert.</div>
+            </div>
+        </div>';
 
         //For redirection
         //$_SESSION['email'] = $email;

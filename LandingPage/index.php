@@ -14,7 +14,8 @@ include('passwort_vergessen.php');
     <head>
         <title>Landing Page</title>
         <meta charset="utf-8"/>
-        <link href="index.css" type="text/css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="index.css">
+        <link rel="stylesheet" type="text/css" href="../UserSeiten/CSS/popup.css">
     </head>
 
     <body>
