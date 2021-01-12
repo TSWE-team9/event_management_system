@@ -1,6 +1,5 @@
 <?php
 
-include "../send_email.php";
 
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';

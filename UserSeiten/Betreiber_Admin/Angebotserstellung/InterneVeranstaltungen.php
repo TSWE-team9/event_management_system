@@ -1,6 +1,6 @@
 <?php
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 
@@ -63,7 +63,7 @@ angebot_refresh();
     <h3 style="text-align: center;">Zukünftige Veranstaltungen</h3>
     <!--SQL Abfrage-->
     <?php
-    //Abfrage aller aktiven (Status = 1) Veranstaltungen des Veranstalters
+    //Abfrage aller zukünftige (Status = 1) Veranstaltungen des Veranstalters
     $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 1";
     $res2 = $db->query($query2);
     if($res2->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine zukünftigen Veranstaltungen</P>";}

@@ -88,7 +88,7 @@ else {
     echo  "<div class='popup'>";
     echo "<h2>Bestätigung</h2>" ;
     echo "<a class='close' href='Angebotserstellung.php'> &times;</a>" ;
-    echo "<div class='content' >" ,  'Das Angebot für Raum '. $R_ID . ' zum Preis von ' . $Angebotspreis . ' wurde erfolgreich erstellt.' ,"</div>";
+    echo "<div class='content' >" ,  'Das Angebot für Raum '. $R_ID . ' wurde erfolgreich erstellt.' ,"</div>";
     echo "</div>" ;
     echo "</div>" ;
 

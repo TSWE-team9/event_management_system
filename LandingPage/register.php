@@ -70,8 +70,15 @@ if (isset($_POST['reg_user_t'])) {
   			  VALUES(B_ID,'$password',2,'$email','$bdate',1)";
         mysqli_query($db, $query);
 
-        $query_t = "INSERT INTO Teilnehmerkonto
+        if (empty($tel)) {
+            $query_t = "INSERT INTO Teilnehmerkonto
+  			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$geschlecht','$street','$hnummer','$plz','$ort','$land', NULL, current_date, current_date )";
+        }
+        else {
+            $query_t = "INSERT INTO Teilnehmerkonto
   			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$geschlecht','$street','$hnummer','$plz','$ort','$land','$tel',current_date, current_date )";
+        }
+
         mysqli_query($db, $query_t);
 
         //Email Bestätigung
@@ -152,8 +159,15 @@ if (isset($_POST['reg_user_v'])) {
   			  VALUES(B_ID,'$password',1,'$email','$bdate',1)";
         mysqli_query($db, $query);
 
-        $query_v = "INSERT INTO Veranstalterkonto
+        if(empty($tel)){
+            $query_v = "INSERT INTO Veranstalterkonto
+  			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$firma','$street','$hnummer','$plz','$ort','$land', NULL)";
+
+        }
+        else {
+            $query_v = "INSERT INTO Veranstalterkonto
   			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$firma','$street','$hnummer','$plz','$ort','$land','$tel')";
+        }
         mysqli_query($db, $query_v);
 
         //Email Bestätigung

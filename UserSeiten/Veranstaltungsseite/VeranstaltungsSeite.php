@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../send_email.php");
 include("VeranstaltungÄndernFunktion.php");
 
 //Verbindung zur Datenbank herstellen

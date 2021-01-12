@@ -1,6 +1,4 @@
 <?php
-// session_start();
-// include "../send_email.php";
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -26,10 +24,10 @@ if(isset($_POST["Stornieren"])) {
     $V_ID = $_POST["v_id"];
 
     //Abfragen der Verfügbarkeit, Titel der Veranstaltung
-    $query = "SELECT Verfügbarkeit, Titel FROM Veranstaltung WHERE V_ID = $V_ID";
+    $query = "SELECT Verfügbarkeit, Titel, Kategorie FROM Veranstaltung WHERE V_ID = $V_ID";
     $res = $conn->prepare($query);
     $res->execute();
-    $res->bind_result($verfuegbarkeit, $titel);
+    $res->bind_result($verfuegbarkeit, $titel, $kategorie);
     $res->fetch();
     $res->close();
 
@@ -38,10 +36,18 @@ if(isset($_POST["Stornieren"])) {
     $res1 = $conn->query($query1);
     if($res1 === TRUE){
 
-        //Stornodatum in Anfrage_Angebot festhalten
-        $query2 = "UPDATE Anfrage_Angebot SET Stornodatum = LOCALTIMESTAMP
+
+        if($kategorie == 1) {
+            //Stornodatum in Anfrage_Angebot festhalten
+            $query2 = "UPDATE Anfrage_Angebot SET Stornodatum = LOCALTIMESTAMP
                 WHERE BeAr_ID = (SELECT Angebot_ID FROM Veranstaltung WHERE V_ID = $V_ID)";
-        $res2 = $conn->query($query2);
+            $res2 = $conn->query($query2);
+
+            if($res2 == FALSE){
+                $error = $error . "<br>" . "Fehler bei Stornodatum in der DB";
+                $error_occured = true;
+            }
+        }
 
         //Bei offenen Veranstaltungen
         if($verfuegbarkeit == 1){
@@ -58,9 +64,15 @@ if(isset($_POST["Stornieren"])) {
                     $empfaenger = get_mail_address($i[0]);
                     send_email($empfaenger, $betreff, $nachricht);
                 }
+
                 //Alle Einträge aus der Teilnehmerliste (offen) löschen
                 $query4 = "DELETE FROM Teilnehmerliste_offen WHERE V_ID = $V_ID";
-                $res4 = $conn->query($query4);}
+                $res4 = $conn->query($query4);
+                if($res4 == FALSE){
+                    $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (offen)";   // Fehler bei leerer Liste TODO
+                    $error_occured = true;
+                }
+            }
 
         }
 
@@ -70,46 +82,55 @@ if(isset($_POST["Stornieren"])) {
             //Alle Einträge aus der Teilnehmerliste (geschlossen) löschen
             $query5 = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
             $res5 = $conn->query($query5);
+
+            if($res5 == FALSE){
+                $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (geschlossen)"; // Fehler kommt bei offender Veranstaltung TODO
+                $error_occured = true;
+            }
         }
 
         //Kalender updaten -> betroffenen Eintrag löschen
         $query6 = "DELETE FROM Kalender WHERE V_ID = $V_ID";
         $res6 = $conn->query($query6);
 
+        if($res6 == FALSE){
+            $error = $error . "<br>" . "Fehler beim Löschen aus dem Kalender";
+            $error_occured = true;
+        }
+
     } else{
         $error = "Fehler: Stornierung der Veranstaltung ist fehlgeschlagen";
         $error_occured = true;
     }
 
-    //Error Block
-    if($res2 == FALSE){
-        $error = $error . "<br>" . "Fehler bei Stornodatum in der DB";
-        $error_occured = true;
-    }
-    if($res3 == FALSE){
-        $error = $error . "<br>" . "Fehler bei Benachrichtung (keine Teilnehmer oder Fehler bei Abfrage der B_ID)"; // Fehler bei leerer Liste TODO
-        $error_occured = true;
-    }
-    if($res4 == FALSE){
-        $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (offen)";   // Fehler bei leerer Liste TODO
-        $error_occured = true;
-    }
-    if($res5 == FALSE){
-        $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (geschlossen)"; // Fehler kommt bei offender Veranstaltung TODO
-        $error_occured = true;
-    }
-    if($res6 == FALSE){
-        $error = $error . "<br>" . "Fehler beim Löschen aus dem Kalender";
-        $error_occured = true;
-    }
-
-    //TODO Ausgabe möglicher Fehlermeldungen PopUp und dann Weiterleitung
+    //Ausgabe der Meldungen
     if($error_occured){
         echo "<div class='overlay'>" ;
         echo "<div class='popup'>";
-        echo "<h2 class='hdln'>Fehler Veranstaltungserstellung</h2>" ;
-        echo "<a class='close' href='../VeranstalterVeranstaltungen.php'>&times;</a>" ;
+        echo "<h2 class='hdln'>Fehler</h2>" ;
+        echo "<a class='close' href='VeranstaltungsSeite.php'>&times;</a>" ;
         echo "<div class='content'>"  .$error. "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
+    }
+    else {
+        $href = "";
+        if($_SESSION["rolle"] == 1){
+            $href = "../Veranstalter/Startseite/VeranstalterStartseite.php";
+        }
+        if($_SESSION["rolle"] == 3){
+            $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
+        }
+        if($_SESSION["rolle"] == 4){
+            $href = "../Betreiber_Admin/Startseiten/AdminStartseite.php";
+        }
+
+
+        echo "<div class='overlay'>" ;
+        echo "<div class='popup'>";
+        echo "<h2 class='hdln'>Bestätigung</h2>" ;
+        echo "<a class='close' href=".$href.">&times;</a>" ;
+        echo "<div class='content'>Veranstaltung erfolgreich storniert</div>";
         echo "</div>" ;
         echo "</div>" ;
     }

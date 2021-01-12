@@ -73,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($conn->query($insert_query) === TRUE){
         $query_status = "Der Raum wurde erfolgreich hinzugefügt.";
-        $status = true;
+        $q_status = true;
 
         }
         else {
@@ -118,7 +118,7 @@ if($error_occured){
     echo "</div>" ;
 
 }
-//Melding für neuen Raum kommt nicht TODO
+//Melding für neuen Raum kommt nicht
 if($q_status){
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";

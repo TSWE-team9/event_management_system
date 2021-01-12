@@ -50,13 +50,14 @@ if(isset($_POST["anfrage"])){
 //Insert Query für das Anlegen in der DB
 if($error == false) {
 
-    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, NULL, NULL, NULL, '$anmerkungen', NULL)";
+    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, LOCALTIMESTAMP, NULL, NULL, '$anmerkungen', NULL)";
 
     $res = $conn->query($query);
     if ($res === TRUE) {
         $query_status = "Die Anfrage wurde erfolgreich erstellt und wird nun vom Betreiber bearbeitet.";
         //Versenden einer Bestätigungsmail an den Veranstalter
         $empfaenger = get_mail_address($veranstalter_id);
+
         $betreff = "Anfrage für Ihre Veranstaltung erhalten";
         $nachricht = "Danke für Ihr Interesse an unserem Veranstaltungshaus. Wir werden Ihre Anfrage bearbeiten und melden uns möglichst schnell bei Ihnen per Mail zurück.";
         send_email($empfaenger, $betreff, $nachricht);
