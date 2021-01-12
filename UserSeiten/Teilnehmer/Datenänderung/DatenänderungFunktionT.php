@@ -2,15 +2,6 @@
 session_start();
 ?>
 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <title>Login</title>
-    </head>
-
-    <body>
-
 <?php
 //Variablen festgelegt
 $curr_pw = $_SESSION["passwort"];
