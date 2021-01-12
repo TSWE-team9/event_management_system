@@ -27,13 +27,13 @@
                 <?php if (count($errors_p) > 0){
                     include('errorsDatenänderung.php');} ?>
                 <br>
-                <label for="passwortalt">altes Passwort</label>
+                <label for="passwortalt">     altes Passwort     </label>
                 <input type="password" placeholder="altes Passwort" name="passwortalt" pattern=".{10,50}" required>
 
-                <label for="passwortneu1">neues Passwort</label>
+                <label for="passwortneu1">     neues Passwort     </label>
                 <input type="password" placeholder="neues Passwort" name="passwortneu1" pattern=".{10,50}" required>
 
-                <label for="passwortneu2">neues Passwort</label>
+                <label for="passwortneu2">     neues Passwort     </label>
                 <input type="password" placeholder="neues Passwort" name="passwortneu2" pattern=".{10,50}" required>
                 <br>
                 <button class="button" type="submit" name="änderung_pw_user_t">Passwort ändern</button>

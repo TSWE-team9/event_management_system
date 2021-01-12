@@ -60,6 +60,14 @@ if(isset($_POST["angebot_aendern"])) {
         $betreff = "Anfrage für Ihre Veranstaltung erhalten";
         $nachricht = "Danke für Ihr Interesse an unserem Veranstaltungshaus. Wir werden Ihre Anfrage bearbeiten und melden uns möglichst schnell bei Ihnen per Mail zurück.";
         send_email($empfaenger, $betreff, $nachricht);
+        echo 
+            '<div class="overlay">
+                <div class="popup">
+                    <h2 class="hdln">Angebot geändert</h2>
+                    <a class="close" href="../VeranstalterVeranstaltungen.php">&times;</a>
+                    <div class="content">Ihre Anfrage wurde erfolgreich versendet.</div>
+                </div>
+            </div>';
     }
 
     if ($res1 === FALSE) {
