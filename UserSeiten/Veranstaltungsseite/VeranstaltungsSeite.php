@@ -276,8 +276,8 @@ if($_SESSION["rolle"]==2){
                 <p>Wollen Sie sich wircklich von dieser Veranstaltung abmelden?</p>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
-                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="abmelden" onclick="document.getElementById('id01').style.display='none'">Abmelden</button>
-                    <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="abmelden" onclick="document.getElementById('t02').style.display='none'">Abmelden</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t02').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
