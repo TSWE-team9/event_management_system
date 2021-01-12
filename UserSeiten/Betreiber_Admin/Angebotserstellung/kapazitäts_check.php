@@ -9,7 +9,8 @@ session_start();
     <title>Kapazitätscheck</title>
     <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-
+    <link rel="stylesheet" type="text/css" href="../Raumverwaltung/TabellenRaum.css">
+    <link rel="stylesheet" type="text/css" href="../Raumverwaltung/Buttons.css">
 </head>
 
 <body>
@@ -167,7 +168,7 @@ if(isset($_POST["Abbrechen"])){
             //Ausgabe der verfügbaren Räume in einer Tabelle
             echo "<br>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
             echo "<br><br>";
-            echo "<table border=\"1\">";
+            echo "<table border=\"1\" class='container'>";
             echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th>";
             while ($i = $res2->fetch_row()) {
                 if ($i[0]) {
@@ -185,7 +186,7 @@ if(isset($_POST["Abbrechen"])){
 
 
             //Reservierungsformular muss hier erscheinen
-            echo "<a href='Raumreservierung.php'>Reservierungsformular</a>";
+            echo "<a href='Raumreservierung.php' class='Löschen'>Reservierungsformular</a>";
 
 
         }

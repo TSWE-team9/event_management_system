@@ -7,7 +7,7 @@
     <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Buttons.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
 
     <!--    Einbinden von icons-->
