@@ -101,19 +101,8 @@ if(isset($_POST["erstellen"])){
 </head>
 <body>
 
-<nav>
-    <ul class="header">
-        <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.php" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a  href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
-        <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
-        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a class= "active" href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
-
-    </ul>
-</nav>
+<?php include '../Header/header.php'; ?>
+<script>document.getElementById("Reiter_Logout").classList.add("active");  </script>
 <div class="contact-us" style="margin-top: 5em">
     <h1> Account erstellen</h1>
     <!-- Fomular Spalten -->
@@ -141,7 +130,7 @@ if(isset($_POST["erstellen"])){
             <label for="Admin"> Administrator</label>
         </fieldset>
         <button class="Löschen" type="submit" name="erstellen">Erstellen</button>
-        <a href="../Startseiten/StartseiteBetreiber.html" type="button" class="Abbrechen">Abrechen</a>
+        <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abrechen</a>
     </form>
 </div>
 <script src="../../../LandingPage/index.js"></script>

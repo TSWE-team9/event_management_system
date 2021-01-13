@@ -51,8 +51,6 @@ veranstaltung_refresh();
 <div class="footer">
     <div id="button"></div>
     <div id="container">
-<!--        <div id="cont">-->
-            <!--         <div class="footer_center">-->
 
             <a class ="impressum " href="Impressum.php"> Impressum </a>
             <a class ="agb"   href="AGB.php">AGB</a>
