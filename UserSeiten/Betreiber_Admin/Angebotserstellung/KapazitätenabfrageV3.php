@@ -24,7 +24,6 @@
         <label for="Dauer"> Dauer in Tagen <em>&#x2a;</em></label><input id="Dauer"  onclick="setDays()" name="Dauer" required="" type="number" min="1" max="7"/>
         <label for="Teilnehmerzahl">Teilnehmerzahl <em>&#x2a;</em></label><input id="Teilnehmerzahl" name="Teilnehmerzahl" required="" type="number" min="1"/>
         <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Startseite oder Abfrage nach freien Raum Kapazitäten -->
-        <!--  Startdatum muss mindestens einen Monat in der Zukunft liegen über Backend lösen?-->
         <button type="submit"  name="Kapazitätsprüfung3" class="Auslösen">Abfragen</button>
         <a href="InterneVeranstaltungen.php" class="Abbrechen" type="button" >Abbrechen</a>
     </form>

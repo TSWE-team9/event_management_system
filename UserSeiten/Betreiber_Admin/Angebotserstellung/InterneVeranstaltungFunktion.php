@@ -1,13 +1,13 @@
 <?php
 session_start();
 
+include '../style/Fehlermeldung.css';
 // initializing variables
 $datum = $_SESSION["Beginn_final"];
 $dauer    = $_SESSION["Dauer_final"];
 $tanzahl = $_SESSION["Teilnehmerzahl"];
 $Rid = $_SESSION["R_ID"];
 $Bid = $_SESSION["b_id"];
-
 
 
 // connect to the database
@@ -38,9 +38,9 @@ if (isset($_POST['Hinzufügen'])) {
 $query_v = "INSERT INTO Veranstaltung VALUES(V_ID, NULL, '$titel', '$beschreibung', $Bid, 2, '$art', $verfügbarkeit, 1, $Rid, $tanzahl, 0, '$datum', '$zeit', $dauer, $zeitraum, $tkosten)";
 $res2 = mysqli_query($db, $query_v);
 
-if ($res2 === FALSE) {
-    $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)";
-    echo "<div class='overlay'>" ;
+    if ($res2 === FALSE) {
+    $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)" ;
+        echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Fehler</h2>" ;
     echo "<a class='close' href='InterneVeranstaltungen.php'> &times;</a>" ;

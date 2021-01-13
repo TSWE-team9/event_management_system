@@ -15,8 +15,8 @@
 <div class="b">
 <div class="c">
 <p><strong>Impressum</strong></p>
-<p>Anbieter:<br />Group9<br />Musterstraße 1<br />94032 Passau</p>
-<p>Kontakt:<br />Telefon: 089/1234567-8<br />Telefax: 089/1234567-9<br />E-Mail: mail@mustermann.de<br />Website: 132.231.36.109/index.php</p>
+<p>Anbieter:<br />Group9<br />Innstraße 1<br />94032 Passau</p>
+<p>Kontakt:<br />Telefon: 089/1234567-8<br />Telefax: 089/1234567-9<br />E-Mail: grup9<br />Website: 132.231.36.109/index.php</p>
 <p> </p>
 <p>Bei redaktionellen Inhalten:</p>
 <p>Verantwortlich nach § 55 Abs.2 RStV<br />Gandalf der Graue<br />  in Lórien 2<br />80999 Mittelerde</p>
