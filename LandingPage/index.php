@@ -88,7 +88,7 @@ include('passwort_vergessen.php');
                   <input type="text" placeholder="Straße" name="straße" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="hnummer">Hausnummer</label>
-                  <input type="text" placeholder="Hausnummer" name="hnummer" pattern="[0-9]{1,50}" required>
+                  <input type="text" placeholder="Hausnummer" name="hnummer" pattern="[0-9a-z]{1,50}" required>
 
                   <label for="postleitzahl">Postleitzahl</label>
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" pattern="[0-9]{1,50}" required>
@@ -136,7 +136,7 @@ include('passwort_vergessen.php');
                   <input type="text" placeholder="Straße" name="straße" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="straße">Hausnummer</label>
-                  <input type="text" placeholder="Hausnummer" name="hnummer" pattern="[0-9]{1,50}" required>
+                  <input type="text" placeholder="Hausnummer" name="hnummer" pattern="[0-9a-z]{1,50}" required>
 
                   <label for="postleitzahl">Postleitzahl</label>
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" pattern="[0-9]{1,50}" required>
