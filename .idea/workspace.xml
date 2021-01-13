@@ -38,13 +38,6 @@
   <component name="ChangeListManager">
     <list default="true" id="5f2bfe33-85f0-46fc-a4b5-a4a5ec1de02e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LandingPage/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/LandingPage/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/CSS/popup.css" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/CSS/popup.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/AngebotAendern.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstalter/eigeneVeranstaltungen/Angebot/AngebotAendern.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/SeiteMitteilung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/SeiteMitteilung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/SeiteTeilnehmerliste.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/SeiteTeilnehmerliste.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/SeiteTeilnehmerübermittlung.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/SeiteTeilnehmerübermittlung.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungStornieren.php" beforeDir="false" afterPath="$PROJECT_DIR$/UserSeiten/Veranstaltungsseite/VeranstaltungStornieren.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
