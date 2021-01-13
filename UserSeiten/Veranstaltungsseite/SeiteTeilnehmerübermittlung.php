@@ -130,43 +130,92 @@ switch ($_SESSION["rolle"]){
         //Abspeichern der manuell eingegebenen Teilnehmer
         if(isset($_POST["liste-übermitteln"])){
 
-            //Alte Liste löschen
-            $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
-            $conn->query($query);
-
             //Variablen
             $counter = 1;
+            $counter2 = 1;
             $teilnehmer_nr = 1;
             $V_ID = $_POST["v_id"];
+            $vorname_array = array();
+            $nachname_array = array();
+            $status_empty = false;
+            $status_meldung = "";
 
             while($counter <= $teilnehmer_max) {
 
                 $nachname = $_POST["nachname".$counter];
                 $vorname = $_POST["vorname".$counter];
-                //echo "<br>"."<br>"."<br>"."<br>";
-                //echo $nachname . $vorname;
+
+                //Überprüfen, ob Nachname oder Vorname leer
+                if(empty($nachname)){
+                    break;
+                }
+
+                if(empty($vorname)){
+                    $status_empty = true;
+                    $status_meldung = "Vorname ". $counter. " fehlt";
+                    break;
+                }
+
+                //Wenn nicht, dann speichern in ein Array
+                if($status_empty == false){
+                    array_push($nachname_array, $nachname);
+                    array_push($vorname_array, $vorname);
+                    }
+
+                $counter++;
+            }
+
+            //Wenn ein Nachname oder Vorname nicht angegeben wurde, Fehlermeldung und alte Liste bleibt
+            if($status_empty){
+                //TODO Fehlermeldung
+                echo $status_meldung;
+            }
+            else{
+
+                //Alte Liste löschen
+                $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
+                $conn->query($query);
+
+                $i = 0;
+                $query_status= true;
 
                 //Einfügen der Namen in die Teilnehmerliste
-                if(!empty($nachname) && !empty($vorname)){
+                while($counter2 <= $teilnehmer_max){
+
+                    $nachname = $nachname_array[$i];
+                    $vorname = $vorname_array[$i];
+
+                    if(!empty($nachname) && !empty($vorname)){
 
                     $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $teilnehmer_nr, '$nachname', '$vorname', LOCALTIMESTAMP)";
                     $res = $conn->query($query);
                     $teilnehmer_nr++;
-                    if($res === FALSE){
-                        echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
+
+                        if($res === FALSE){
+                            //TODO
+                            echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
+                            $query_status = false;
+                            break;
+                        }
                     }
+                    $i++;
+                    $counter2++;
                 }
-                $counter++;
 
+                if($query_status){
+
+                    //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
+                    $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
+                    $res_update = $conn->query($update_query);
+                    if($res_update === FALSE){
+                        //TODO
+                        echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
+                    }
+
+                    //TODO Erfolgsmeldung
+
+                }
             }
-
-            //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
-            $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
-            $res_update = $conn->query($update_query);
-            if($res_update === FALSE){
-                echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
-            }
-
         }
 
         ?>

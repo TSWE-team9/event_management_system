@@ -22,10 +22,9 @@ session_start();
 
 <!--<h1 >Meine Veranstaltungen</h1>-->
 <?php
-//Refresh der Angebote (Status)
-include "../../angebot_refresh.php";
-angebot_refresh();
-
+//Refresh der Veranstaltungen (Status)
+include "../../veranstaltung_refresh.php";
+veranstaltung_refresh();
 ?>
 <!--Tabs auf der linken Seite zum auswählen der gewünschten Liste-->
 <div class="tab">
@@ -52,7 +51,7 @@ angebot_refresh();
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[2];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
@@ -73,7 +72,7 @@ angebot_refresh();
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[2];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
@@ -95,7 +94,7 @@ angebot_refresh();
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[2];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
