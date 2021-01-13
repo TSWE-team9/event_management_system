@@ -26,7 +26,7 @@
         <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Startseite oder Abfrage nach freien Raum Kapazitäten -->
         <!--  Startdatum muss mindestens einen Monat in der Zukunft liegen über Backend lösen?-->
         <button type="submit"  name="Kapazitätsprüfung3" class="Auslösen">Abfragen</button>
-        <a href="#" class="Abbrechen" type="button" >Abbrechen</a>
+        <a href="InterneVeranstaltungen.php" class="Abbrechen" type="button" >Abbrechen</a>
     </form>
 </body>
 </html>
