@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';
 $db = 'vms_db';
@@ -20,11 +20,19 @@ angebot_refresh();
 $query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer, Teilnehmer_gepl FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
 if($res->num_rows == 0){
+    $href = "";
+    if($_SESSION["rolle"] == 3){
+        $href = "../Startseiten/StartseiteBetreiber.php";
+    }
+    if($_SESSION["rolle"] == 4){
+        $href = "../Startseiten/AdminStartseite.php";
+    }
+
 //    Fehlermeldung wenn die Abfrage nicht funktioniert 
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Info</h2>" ;
-    echo "<a class='close' href='../Startseiten/StartseiteBetreiber.php'>&times;</a>" ;
+    echo "<a class='close' href=".$href.">&times;</a>" ;
     echo "<div class='content' >" , 'Es existieren derzeit keine unbearbeiteten Anfragen ';
     echo "</div>";
     echo "</div>" ;

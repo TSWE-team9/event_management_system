@@ -2,7 +2,7 @@
     <div class="overlay">
         <div class="popup">
             <h2 class="hdln">Passwortänderung</h2>
-            <a class="close" href="./TeilnehmerDatenänderung.php">&times;</a>
+            <a class="close" href="./VeranstalterDatenänderung.php">&times;</a>
             <div class="content">
                 <?php foreach ($errors_p as $error) : ?>
                     <p><?php echo $error ?></p>
@@ -16,7 +16,7 @@
     <div class="overlay">
         <div class="popup">
             <h2 class="hdln">E-Mail Änderung</h2>
-            <a class="close" href="./TeilnehmerDatenänderung.php">&times;</a>
+            <a class="close" href="./VeranstalterDatenänderung.php">&times;</a>
             <div class="content">
                 <?php foreach ($errors_e as $error) : ?>
                     <p><?php echo $error ?></p>
@@ -30,7 +30,7 @@
     <div class="overlay">
         <div class="popup">
             <h2 class="hdln">Adressdaten Änderung</h2>
-            <a class="close" href="./TeilnehmerDatenänderung.php">&times;</a>
+            <a class="close" href="./VeranstalterDatenänderung.php">&times;</a>
             <div class="content">
                 <?php foreach ($errors_d as $error) : ?>
                     <p><?php echo $error ?></p>
@@ -44,7 +44,7 @@
     <div class="overlay">
         <div class="popup">
             <h2 class="hdln">Kontolöschung fehlgeschlagen</h2>
-            <a class="close" href="./TeilnehmerDatenänderung.php">&times;</a>
+            <a class="close" href="./VeranstalterDatenänderung.php">&times;</a>
             <div class="content">
                 <?php foreach ($errors_del as $error) : ?>
                     <p><?php echo $error ?></p>
