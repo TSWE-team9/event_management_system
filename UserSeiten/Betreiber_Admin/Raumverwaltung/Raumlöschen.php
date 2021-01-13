@@ -100,8 +100,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<div class='overlay'>";
         echo "<div class='popup ' style='z-index: 3'>";
         echo "<h2>Fehler</h2>";
-        echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>";
-        echo "<div class='content'>", 'Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!,';
+        echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
+        echo "<div class='content'>", 'Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!';
         echo "</div>";
         echo "</div>";
 //        echo "<br>" . "Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!";
