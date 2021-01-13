@@ -374,6 +374,9 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     </form>
     <!--Teilnehmer anzeigen Ende-->
 
+    <?php
+    if($verfuegbarkeit == 1){
+    ?>
     <!--Nachricht versenden Beginn-->
     <form action="SeiteMitteilung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
@@ -382,7 +385,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <!--Nachricht versenden Ende-->
 
 </div>  
-<?php }?>
+<?php }}?>
 
 <script></script>
 </body>
