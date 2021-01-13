@@ -63,3 +63,12 @@ if ($res2 === FALSE) {
 }
 }
 
+if(isset($_POST["Abbrechen"])){
+
+    $query4 = "DELETE FROM Kalender WHERE Von = '$datum' AND R_ID = $Rid";
+    $res4 = $db->query($query4);
+    if($res4 == TRUE){
+        header("Location: InterneVeranstaltungen.php");
+    }
+}
+

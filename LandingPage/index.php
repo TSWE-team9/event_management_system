@@ -41,7 +41,6 @@ include('passwort_vergessen.php');
                   </form>
                 </div>
 
-                <!--TODO Passwort generieren, ändern und per E-Mail verschicken-->
 
                 <button class="accordion">Passwort vergessen</button>
                   <div class="panel">

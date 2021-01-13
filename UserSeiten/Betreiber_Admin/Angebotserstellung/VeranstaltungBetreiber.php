@@ -44,13 +44,14 @@
     <label for="Veranstaltungsbeschreibung">Veranstaltungsbeschreibung </label> <textarea  cols="40" rows="8" maxlength="300" id="Veranstaltungsbeschreibung" name="Veranstaltungsbeschreibung"> </textarea>
 <!--       Buttons zum Anlegen der Veranstaltung oder Rückkehr zur Eigenen Veranstaltungsübersicht -->
         <button type="submit" class="Auslösen" name="Hinzufügen"> Erstellen</button>
-        <a href="InterneVeranstaltungen.php" type="button" class="Abbrechen">Abbrechen</a>
-        <!--TODO Bei Abbruch den Kalendereintrag wieder freigeben -->
-
 
     </form>
 
 </div>
+
+<form method="post">
+    <button type="submit" class="Auslösen" name="Abbrechen">Abbrechen</button>
+</form>
 
 </body>
 

@@ -112,7 +112,6 @@ if(isset($_POST["Ablehnen"])){
         echo "</div>" ;
     }
     else {
-        //TODO: Ausgabe in HTML
         echo "<div class='overlay'>" ;
         echo  "<div class='popup'>";
         echo "<h2>Bestätigung</h2>" ;
