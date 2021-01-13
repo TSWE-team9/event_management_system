@@ -23,18 +23,17 @@ if($conn->connect_error){
     <link rel="stylesheet" type="text/css" href="../../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../erstellenAnfrage/VeranstalterAnfrage.css">
     <link rel="stylesheet" href="../../../CSS/modal.css">
+    <link rel="stylesheet" href="../../../CSS/popup.css">
     
     <title>Meine Veranstaltungen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background3">
 <nav>
     <ul>
         <li><a href="../../Startseite/VeranstalterStartseite.php">Startseite</a></li>
         <li><a href="../../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
         <li><a class="active" href="../VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li style="float: right;"> <a href="../../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
@@ -43,8 +42,6 @@ if($conn->connect_error){
 </nav>
 
 <br><br>
-<h1 style="text-align: center;, margin-top: 150px;">Veranstaltung Erstellung</h1>
-<p style="text-align:center;">Zusätzlich nötige Informationen zur Erstellung einer Veranstaltung</p>
 
 <?php
 $error = "";
@@ -100,14 +97,27 @@ if(isset($_POST["annahme"])) {
         }
         //Falls ein Fehler aufgetreten ist, TODO Ausgabe der Fehlermeldung
         if ($error_occured) {
-            echo $error;
+            echo "<div class='overlay'>" ;
+            echo "<div class='popup'>";
+            echo "<h2 class='hdln'>Fehler Veranstaltungserstellung</h2>" ;
+            echo "<a class='close' href='../VeranstalterVeranstaltungen.php'>&times;</a>" ;
+            echo "<div class='content'>"  .$error. "</div>";
+            echo "</div>" ;
+            echo "</div>" ;
         } else {
             //Ausgabe einer Erfolgsmeldung und TODO:Weiterleitung & Erfolgsmeldung
             $empfaenger = get_mail_address($V_ID);
             $betreff = "Ihre Veranstaltung wurde erstellt";
             $nachricht = "Ihre Veranstaltung ".$Titel." wurde erfolgreich im System erstellt.";
             send_email($empfaenger, $betreff, $nachricht);
-            echo "Alles hat funktioniert.";
+            echo 
+                '<div class="overlay">
+                    <div class="popup">
+                        <h2 class="hdln">Veranstaltungserstellung erfolgreich</h2>
+                        <a class="close" href="../VeranstalterVeranstaltungen.php">&times;</a>
+                        <div class="content">Sie haben diese Veranstaltung erfolgreich erstellt.</div>
+                    </div>
+                </div>';
         }
 
     }
@@ -115,6 +125,10 @@ if(isset($_POST["annahme"])) {
 ?>
 <!-- Erstellungsformular -->
 <div class="container">
+
+    <h1 class="hdln">Veranstaltung Erstellung</h1>
+    <p class="txt">Geben Sie die zusätzlichen Informationen zu ihrer Veranstaltung an und bestätigen im Anschluss die Erstellung der Veranstaltung.</p>
+
     <form action="VeranstaltungsErstellung.php" method="post">
 
         <div class="row">

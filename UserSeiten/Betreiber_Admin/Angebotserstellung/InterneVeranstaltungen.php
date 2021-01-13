@@ -1,41 +1,30 @@
 <?php
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
-session_start()
+session_start();
 ?>
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>AbrechnungsFormular</title>
+    <title>Interne Veranstaltungen</title>
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="InterneVeranstaltungen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/InterneVeranstaltungen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 <!--    <script src="../Abrechnung/Tabs.js"></script>-->
 </head>
 <body>
 <nav >
-
-    <ul class="header" style="top: 0">
-        <li class="headerel"><a href="../Raumverwaltung/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-
-        <li class="headerel"><a  href="Angebotserstellung.php">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a class= "active" href="#">Meine Veranstaltungen</a></li>
-        <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
-
-    </ul>
+    <?php include '../Header/header.php'; ?>
+    <script>document.getElementById("Reiter_MeineVeranstaltungen").classList.add("active");  </script>
 </nav>
 
 <!--<h1 >Meine Veranstaltungen</h1>-->
 <?php
-//Refresh der Angebote (Status)
-include "../../angebot_refresh.php";
-angebot_refresh();
-
+//Refresh der Veranstaltungen (Status)
+include "../../veranstaltung_refresh.php";
+veranstaltung_refresh();
 ?>
 <!--Tabs auf der linken Seite zum auswählen der gewünschten Liste-->
 <div class="tab">
@@ -60,9 +49,9 @@ angebot_refresh();
         ?>
 
     <!--foreach Schleife Beginn-->
-    <form action="" method="post">
-        <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
+    <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[2];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
@@ -73,17 +62,17 @@ angebot_refresh();
     <h3 style="text-align: center;">Zukünftige Veranstaltungen</h3>
     <!--SQL Abfrage-->
     <?php
-    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    //Abfrage aller zukünftige (Status = 1) Veranstaltungen des Veranstalters
     $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 1";
     $res2 = $db->query($query2);
-    if($res2->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine zukünfitigen Veranstaltungen</P>";}
+    if($res2->num_rows == 0){echo "<p class='txt'>Sie haben derzeit keine zukünftigen Veranstaltungen</P>";}
     //Ausgabe der Abfrage in HTML
     while($i = $res2->fetch_row()){
     ?>
     <!--foreach Schleife Beginn-->
-    <form action="" method="post">
-        <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo $i[2];?></div><div class="btntitel"><?php echo $i[1];?></div></button>
+    <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[2];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->
@@ -94,7 +83,7 @@ angebot_refresh();
     <h3 style="text-align: center;">Abgeschlossene Veranstaltungen</h3>
     <!--SQL Abfrage-->
     <?php
-    //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
+    //Abfrage aller abgeschlossenen (Status = 3) Veranstaltungen des Veranstalters
     $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Kategorie=2 AND Status = 3";
     $res3 = $db->query($query3);
     if($res3->num_rows == 0){ echo "<p class='txt'>Sie haben derzeit keine abgeschlossenen Veranstaltungen</P>";}
@@ -104,8 +93,8 @@ angebot_refresh();
         ?>
     <!--foreach Schleife Beginn-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
-        <input type="hidden" name="veranstaltung_id" value="#veranstaltungs_id#">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn">#Veranstaltungsbeginn#</div><div class="btntitel">#Veranstaltungstitel#</div></button>
+        <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo $i[1];?></div><div class="btntitel"><?php echo $i[2];?></div></button>
     </form>
     <?php } ?>
     <!--foreach Schleife Ende-->

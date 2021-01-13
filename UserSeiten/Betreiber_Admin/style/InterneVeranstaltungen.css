@@ -1,7 +1,7 @@
 
 
     body {
-    background: url("../Abrechnung/HintergrundAbrechnung.jpg")  fixed ;
+    background: url("HintergrundAbrechnung.jpg")  fixed ;
 
     /*https://pixabay.com/de/photos/st%C3%BChle-zeitgen%C3%B6ssische-m%C3%B6bel-2181960/!*/
     /*background-size: cover ;*/
@@ -46,15 +46,17 @@ h3 {
     transition: 0.3s;
     font-size: 0.9em;
 }
+
+
     .txt {
     text-align: center !important;
     }
 /* Create an active/current "tab button" class */
 .tab button.active {
-    background-color: #ccc;
+    background-color: #f45702;
 }
 
-/* Style the tab content */
+ /*Style the tab content*/
 .tabcontent {
 
     float: left;

@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../send_email.php");
 include("VeranstaltungÄndernFunktion.php");
 
 //Verbindung zur Datenbank herstellen
@@ -39,6 +40,10 @@ $res->close();
 $query2 = "SELECT Firma FROM Veranstalterkonto WHERE B_ID = $veranstalter";
 $res2 = $conn->query($query2);
 $i = $res2->fetch_row();
+$Veranstalter_name = $i[0];
+if(empty($Veranstalter_name)){
+    $Veranstalter_name = "VMS Grup9";
+}
 
 //Abfrage Name des Raums
 $query3 = "SELECT Bezeichnung FROM Raum WHERE R_ID = $ort";
@@ -54,23 +59,25 @@ $j = $res3->fetch_row();
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
+    <link rel="stylesheet" href="../Betreiber_Admin/style/header.css">
+    <link rel="stylesheet" href="../CSS/popup.css">
     <title>Veranstaltungsseite</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="background2">
 <?php
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
-    case 0: //header Gast -> kein header
+    case 0: include './header/headerGast.php';               //header Gast
         break;
-    case 1:  include 'headerVeranstalter.php';    //header Veranstalter
+    case 1: include './header/headerVeranstalter.php';      // header Veranstalter
         break;
-    case 2:  include 'headerTeilnehmer.php';      //header Teilnehmer
+    case 2: include './header/headerTeilnehmer.php';        // header Teilnehmer
         break;
-    case 3: //header Betreiber
+    case 3: include './header/headerBetreiber.php';          // header Betreiber
         break;
-    case 4: //header Admin
+    case 4: include './header/headerAdmin.php';              // header Admin
         break;
 
 }
@@ -87,7 +94,7 @@ switch ($_SESSION["rolle"]){
             <p class="info">Veranstalter</p>
         </div>
         <div class="col-desc">
-            <p class="desc"><?php echo $i[0];?></p>
+            <p class="desc"><?php echo $Veranstalter_name;?></p>
         </div>
     </div>
 
@@ -207,10 +214,8 @@ switch ($_SESSION["rolle"]){
 //Anzeige für Rolle Gast, keine Buttons
 if($_SESSION["rolle"]==0){
 ?>
-<div class="container-80">
-    <h1 class="center">Gast</h1>
+<div class="container-80-noborder">
     <p class="center">Anmeldung nur als registrierter Nutzer möglich.</p>
-    <a class="center" href="../../LandingPage/index.php">zur Registrierung</a>
 </div>
 <?php }?>
 
@@ -219,8 +224,7 @@ if($_SESSION["rolle"]==0){
 if($_SESSION["rolle"]==2){
 ?>
     <?php    include("VeranstaltungÄndernError.php");    ?>
-<div class="container-80">
-    <h1 class="center">Teilnehmer</h1>
+<div class="container-80-noborder">
     <!--if nicht angemeldet-->
     <?php
     $query_check = "SELECT * FROM Teilnehmerliste_offen WHERE V_ID =$V_ID AND B_ID=$Bid";
@@ -263,9 +267,9 @@ if($_SESSION["rolle"]==2){
     <?php
     if (mysqli_num_rows($res_check) == 1) {
         ?>
-    <button type="button" name="abmelden" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
+    <button type="button" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
     <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
-    <!--
+    
     <div id="t02" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
@@ -273,15 +277,15 @@ if($_SESSION["rolle"]==2){
                 <p>Wollen Sie sich wircklich von dieser Veranstaltung abmelden?</p>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
-                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="anmelden" onclick="document.getElementById('id01').style.display='none'">Abmelden</button>
-                    <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
+                    <button class="modal_btnconfirm" type="submit"  id="anmelden" name="abmelden" onclick="document.getElementById('t02').style.display='none'">Abmelden</button>
+                    <button class="modal_btnabort" type="button" onclick="document.getElementById('t02').style.display='none'">Abbrechen</button>
                 </div>
             </div>
         </form>
     </div>
-    -->
+    
     <?php }?>
-    <!--Modal falls Abmeldezeitraum abgelaufen-->
+    <!--Modal falls Abmeldezeitraum abgelaufen
     <div id="t02" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
@@ -292,7 +296,7 @@ if($_SESSION["rolle"]==2){
                 </div>
             </div>
         </div>
-    </div> 
+    </div> -->
 </div>
 <?php }?>
 
@@ -303,11 +307,12 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
 <div class="container-80-noborder">
 
     <!--Stornierung Beginn-->
+    <?php include 'VeranstaltungStornieren.php' ?> <!--TODO include der stornieren fkt-->
     <button type="button" style="float: left;" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
     <?php if($status == 1){?>
     <!--Modal falls Stornozeitraum noch nicht abgelaufen (Veranstaltung "aktiv")-->
     <div id="v01" class="modal">
-        <form class="modal_content" action="VeranstaltungStornieren.php" method="post">
+        <form class="modal_content" action="#" method="post">
             <div class="modal_container">
                 <h1>Stornierung</h1>
                 <?php

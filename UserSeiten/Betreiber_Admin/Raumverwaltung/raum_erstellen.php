@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Raum Hinzufügen</title>
 
-    <link rel="stylesheet" type="text/css" href="Raumverwaltung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="TabellenRaum.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Raumverwaltung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Buttons.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
 
     <!--    Einbinden von icons-->
@@ -16,19 +16,8 @@
 
 <body>
 
-<nav>
-    <ul class="header">
-        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a  href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
-        <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
-        <li class="headerel"><a class= "active" href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="../Angebotserstellung/InterneVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
-
-    </ul>
-</nav>
+<?php include '../Header/header.php'; ?>
+<script>document.getElementById("Reiter_Raumverwaltung").classList.add("active");  </script>
 <?php
 
 //Zugangsdaten zur Datenbank
@@ -84,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($conn->query($insert_query) === TRUE){
         $query_status = "Der Raum wurde erfolgreich hinzugefügt.";
-        $status = true;
+        $q_status = true;
 
         }
         else {
@@ -129,6 +118,7 @@ if($error_occured){
     echo "</div>" ;
 
 }
+//Melding für neuen Raum kommt nicht
 if($q_status){
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";

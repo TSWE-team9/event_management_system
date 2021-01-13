@@ -50,7 +50,7 @@ if(isset($_POST["angebot_aendern"])) {
     $res3->close();
 
 //Einfügen der alten sowie neuen Daten in die DB
-    $query4 = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $Teilnehmer, '$Beginn_neu', $Dauer, 1, NULL, NULL, '$Anmerk', NULL)";
+    $query4 = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $Teilnehmer, '$Beginn_neu', $Dauer, 1, LOCALTIMESTAMP, NULL, NULL, '$Anmerk', NULL)"; // beim ersten NULL wird kein Datum mit übergeben
 
     $res4 = $conn->query($query4);
     if ($res4 === TRUE) {
@@ -60,6 +60,14 @@ if(isset($_POST["angebot_aendern"])) {
         $betreff = "Anfrage für Ihre Veranstaltung erhalten";
         $nachricht = "Danke für Ihr Interesse an unserem Veranstaltungshaus. Wir werden Ihre Anfrage bearbeiten und melden uns möglichst schnell bei Ihnen per Mail zurück.";
         send_email($empfaenger, $betreff, $nachricht);
+        echo 
+            '<div class="overlay">
+                <div class="popup">
+                    <h2 class="hdln">Angebot geändert</h2>
+                    <a class="close" href="../VeranstalterVeranstaltungen.php">&times;</a>
+                    <div class="content">Ihre Anfrage wurde erfolgreich versendet.</div>
+                </div>
+            </div>';
     }
 
     if ($res1 === FALSE) {

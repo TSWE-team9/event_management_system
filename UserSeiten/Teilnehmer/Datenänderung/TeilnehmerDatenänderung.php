@@ -7,40 +7,33 @@
     <link rel="stylesheet" href="../../CSS/Startseite.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="../../CSS/modal.css" type="text/css">
     <link rel="stylesheet" href="TeilnehmerDatenänderung.css" type="text/css">
+    <link rel="stylesheet" href="../../CSS/popup.css">
     <title>Datenänderung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<nav>
-    <ul>
-        <li><a href="../Startseite/TeilnehmerStartseite.php">Startseite</a></li>
-        <li><a href="../anzeigenAngebot/TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a href="../angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a class="active" href="TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
-
-    </ul>
-</nav>
+<body class="background1">
+<?php include '../header.php';?>
+<script>document.getElementById("reiter_daten").classList.add("active");</script>
 
 
 <div class="box">
-
+    <?php if (count($errors_p) > 0){include('errorsDatenänderung.php');} ?> 
+    <?php if (count($errors_e) > 0){include('errorsDatenänderung.php');} ?>
+    <?php if (count($errors_d) > 0){include('errorsDatenänderung.php');} ?>
     <button class="accordion">Passwort ändern</button>
         <div class="panel">
             <form action="#" method="post">
                 <?php if (count($errors_p) > 0){
                     include('errorsDatenänderung.php');} ?>
                 <br>
-                <label for="passwortalt">altes Passwort</label>
+                <label for="passwortalt">     altes Passwort     </label>
                 <input type="password" placeholder="altes Passwort" name="passwortalt" pattern=".{10,50}" required>
 
-                <label for="passwortneu1">neues Passwort</label>
+                <label for="passwortneu1">     neues Passwort     </label>
                 <input type="password" placeholder="neues Passwort" name="passwortneu1" pattern=".{10,50}" required>
 
-                <label for="passwortneu2">neues Passwort</label>
+                <label for="passwortneu2">     neues Passwort     </label>
                 <input type="password" placeholder="neues Passwort" name="passwortneu2" pattern=".{10,50}" required>
                 <br>
                 <button class="button" type="submit" name="änderung_pw_user_t">Passwort ändern</button>
@@ -69,19 +62,19 @@
                 <?php if (count($errors_d) > 0){include('errorsDatenänderung.php');} ?>
 
                 <label for="straße">Straße</label>
-                <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['Strasse'];?>' pattern="[A-Za-z]{1,50}">
+                <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['Strasse'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="hnummer">Hausnummer</label>
-                <input type="text" placeholder="Hausnummer" name="hnummer" value='<?php echo $_SESSION['Hausnummer'];?>' pattern="[0-9]{1,50}">
+                <input type="text" placeholder="Hausnummer" name="hnummer" value='<?php echo $_SESSION['Hausnummer'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="postleitzahl">Postleitzahl</label>
                 <input type="text" placeholder="Postleitzahl" name="postleitzahl" value='<?php echo $_SESSION['PLZ'];?>' pattern="[0-9]{1,50}">
 
                 <label for="ort">Ort</label>
-                <input type="text" placeholder="Ort" name="ort" value='<?php echo $_SESSION['Ort'];?>' pattern="[A-Za-z]{1,50}">
+                <input type="text" placeholder="Ort" name="ort" value='<?php echo $_SESSION['Ort'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="land">Land</label>
-                <input type="text" placeholder="Land" name="land" value='<?php echo $_SESSION['Land'];?>' pattern="[A-Za-z]{1,50}">
+                <input type="text" placeholder="Land" name="land" value='<?php echo $_SESSION['Land'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="telefonnummer">Telefonnummer</label>
                 <input type="text" placeholder="Telefonnummer" name="telefonnummer" value='<?php echo $_SESSION['Telnummer'];?>' pattern="[0-9]{1,50}">
@@ -102,10 +95,9 @@
                 </div>
             </div>
         </form>
-        <?php if (count($errors_del) > 0){include('errorsDatenänderung.php');} //TODO Weiterleitung ändern!?>
+        <?php if (count($errors_del) > 0){include('errorsDatenänderung.php');} ?>
     </div>
 </div>
-//TODO Weiterleitung ändern!
 <script src="./TeilnehmerDatenänderung.js"></script>
 
 </body>

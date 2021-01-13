@@ -1,6 +1,4 @@
 <?php
-session_start();
-include "../UserSeiten/send_email.php";
 $errors_pw = array();
 
 

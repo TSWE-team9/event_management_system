@@ -1,6 +1,4 @@
 <?php
-session_start();
-include "../UserSeiten/send_email.php";
 
 // initializing variables
 $email    = "";
@@ -45,7 +43,7 @@ if (isset($_POST['reg_user_t'])) {
     if (empty($land)) { array_push($errors_t, "Land wird benötigt"); }
 
     if ($password_1 != $password_2) {
-        array_push($errors_t, "The two passwords do not match");
+        array_push($errors_t, "Die beiden Passwörter stimmen nicht überein.");
     }
 
     //check age
@@ -60,7 +58,7 @@ if (isset($_POST['reg_user_t'])) {
 
     if ($user) { // if user exists
         if ($user['E_mail'] === $email) {
-            array_push($errors_t, "email already exists");
+            array_push($errors_t, "Diese E-Mail wird bereits benutzt.");
         }
     }
 
@@ -72,14 +70,28 @@ if (isset($_POST['reg_user_t'])) {
   			  VALUES(B_ID,'$password',2,'$email','$bdate',1)";
         mysqli_query($db, $query);
 
-        $query_t = "INSERT INTO Teilnehmerkonto
+        if (empty($tel)) {
+            $query_t = "INSERT INTO Teilnehmerkonto
+  			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$geschlecht','$street','$hnummer','$plz','$ort','$land', NULL, current_date, current_date )";
+        }
+        else {
+            $query_t = "INSERT INTO Teilnehmerkonto
   			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$geschlecht','$street','$hnummer','$plz','$ort','$land','$tel',current_date, current_date )";
+        }
+
         mysqli_query($db, $query_t);
 
         //Email Bestätigung
         send_email($email, "Registrierung erfolgreich", "Sie haben sich erfolgreich im VMS registriert und können sich nun anmelden.");
 
-        echo "SUCCESS";
+        echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2>Registrierung</h2>
+                <a class="close" href="./index.php">&times;</a>
+                <div class="content">Sie haben sich erfolgreich registriert.</div>
+            </div>
+        </div>';
 
         //For redirection
         //$_SESSION['email'] = $email;
@@ -120,7 +132,7 @@ if (isset($_POST['reg_user_v'])) {
     if (empty($land)) { array_push($errors_v, "Land wird benötigt"); }
 
     if ($password_1 != $password_2) {
-        array_push($errors_v, "The two passwords do not match");
+        array_push($errors_v, "Die beiden Passwörter stimmen nicht überein.");
     }
 
     //check age
@@ -135,7 +147,7 @@ if (isset($_POST['reg_user_v'])) {
 
     if ($user) { // if user exists
         if ($user['E_mail'] === $email) {
-            array_push($errors_v, "email already exists");
+            array_push($errors_v, "Diese E-Mail wird bereits benutzt.");
         }
     }
 
@@ -147,14 +159,28 @@ if (isset($_POST['reg_user_v'])) {
   			  VALUES(B_ID,'$password',1,'$email','$bdate',1)";
         mysqli_query($db, $query);
 
-        $query_v = "INSERT INTO Veranstalterkonto
+        if(empty($tel)){
+            $query_v = "INSERT INTO Veranstalterkonto
+  			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$firma','$street','$hnummer','$plz','$ort','$land', NULL)";
+
+        }
+        else {
+            $query_v = "INSERT INTO Veranstalterkonto
   			  VALUES((SELECT B_ID FROM Benutzerkonto where E_mail='$email'),'$v_name','$n_name','$firma','$street','$hnummer','$plz','$ort','$land','$tel')";
+        }
         mysqli_query($db, $query_v);
 
         //Email Bestätigung
         send_email($email, "Registrierung erfolgreich", "Sie haben sich erfolgreich im VMS registriert und können sich nun anmelden.");
 
-        echo "SUCCESS";
+        echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2  class="hdln">Registrierung</h2>
+                <a class="close" href="./index.php">&times;</a>
+                <div class="content">Sie haben sich erfolgreich registriert.</div>
+            </div>
+        </div>';
 
         //For redirection
         //$_SESSION['email'] = $email;

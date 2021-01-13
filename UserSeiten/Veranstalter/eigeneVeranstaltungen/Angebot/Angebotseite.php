@@ -22,18 +22,17 @@ if($conn->connect_error){
     <link rel="stylesheet" type="text/css" href="../../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="Angebotseite.css">
-    <title>Meine Veranstaltungen</title>
+    <link rel="stylesheet" href="../../../CSS/popup.css">
+    <title>Angebot</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
     <script src="../script.js"></script>
 </head>
-<body>
+<body class="background2">
 <nav>
     <ul>
         <li><a href="../../Startseite/VeranstalterStartseite.php">Startseite</a></li>
         <li><a href="../../erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
         <li><a class="active" href="../VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
         <li style="float: right;"> <a href="../../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
         <li style="float: right;"> <a href="../../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
@@ -84,9 +83,17 @@ if(isset($_POST["angebot_ablehnen"])){
         echo "Es ist ein Fehler bei der Delete Query aufgetreten";
     }
 
-    else{
+    else{echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2 class="hdln">Ablehnung erfolgreich</h2>
+                <a class="close" href="../../Startseite/VeranstalterStartseite.php">&times;</a>
+                <div class="content">Sie haben das Angebot abgelehnt.</div>
+            </div>
+        </div>';
+
         //Weiterleitung zur Startseite
-        header("Location: VeranstalterStartseite.php");
+        // header("Location: ../../Startseite/VeranstalterStartseite.php");
     }
 }
 

@@ -7,26 +7,15 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Raumreservierung</title>
-    <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Kapazitätenstylesheet.css" media="screen" />
    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-<nav>
-    <ul class="header">
-        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a class= "active" href="Angebotserstellung.php">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a  href="Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
-        <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
-
-    </ul>
-</nav>
+<?php include '../Header/header.php'; ?>
+<script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
 
 <?php
 //Zugangsdaten zur Datenbank
@@ -107,7 +96,7 @@ if($status){
         //Abspeichern der nötigen Daten für den INSERT in den Kalender
         $Beginn = $_SESSION["Beginn_final"];
         $Dauer = $_SESSION["Dauer_final"];
-        $R_status = 1;
+        $R_status = 2;
 
         //Insert
         $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', (SELECT DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY)), $R_ID, $R_status, NULL, NULL)";
@@ -117,7 +106,7 @@ if($status){
             echo "<div class='overlay'>" ;
             echo  "<div class='popup'>";
             echo "<h2>Bestätigung</h2>" ;
-            echo "<a class='close' href='InterneVeranstaltungen.php'>&times;</a>" ;
+            echo "<a class='close' href='VeranstaltungBetreiber.php'>&times;</a>" ;
             echo "<div class='content' >"  .$query_status."</div>";
             echo "</div>" ;
             echo "</div>" ;

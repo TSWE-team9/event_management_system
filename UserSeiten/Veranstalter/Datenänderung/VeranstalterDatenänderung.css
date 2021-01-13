@@ -2,13 +2,20 @@ html {
     overflow-y: scroll;
 }
 
+label {
+    font-weight: bold;
+}
+
 .box {
-    width:500px; 
+    width: 550px; 
     margin: auto; 
     padding-top:50px;
-    padding-bottom: 10px;
+    padding-bottom: 50px;
     text-align: center;
-    border-radius:10px;
+    border-radius:5px;
+    margin-top: 150px;
+    background-color:#f8f4e5;
+    border-top: 10px solid #f45702;
 }
 
 .button {
@@ -38,7 +45,7 @@ html {
 }
 
 input[type="text"], input[type="password"], select, [type="date"], [type="email"] {
-    width: 450px;
+    width: 500px;
     height: 30px;
     font-size: 18px;
     margin-bottom: 20px;
@@ -46,11 +53,12 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
 }
 
 #löschen {
-    background-color: rgba(61, 199, 102, 0.733);
+    background-color: #f45702;
+    opacity: 0.8;
     color: #444;
     cursor: pointer;
     padding: 18px;
-    width: 500px;
+    width: 525px;
     border: none;
     text-align: center;
     outline: none;
@@ -59,11 +67,12 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
 }
 
 .accordion {
-    background-color: rgba(61, 199, 102, 0.733);
+    background-color: #f45702;
+    opacity: 0.8;
     color: #444;
     cursor: pointer;
     padding: 18px;
-    width: 500px;
+    width: 525px;
     border: none;
     text-align: center;
     outline: none;
@@ -73,13 +82,15 @@ input[type="text"], input[type="password"], select, [type="date"], [type="email"
   }
 
   .accordion:hover {
-      background-color:rgb(10, 153, 22);
-      cursor: pointer;
-      color:black;
+    background-color:#f45702;
+    opacity: 1;
+    cursor: pointer;
+    color:black;
   }
 
   #löschen:hover {
-    background-color:rgb(10, 153, 22);
+    background-color:#f45702;
+    opacity: 1;
     cursor: pointer;
     color: black;
   }

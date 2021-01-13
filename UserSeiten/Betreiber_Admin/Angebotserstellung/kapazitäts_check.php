@@ -7,9 +7,10 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Kapazitätscheck</title>
-    <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Kapazitätenstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-
+    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css">
+    <link rel="stylesheet" type="text/css" href="../style/Buttons.css">
 </head>
 
 <body>
@@ -111,7 +112,6 @@ if(isset($_POST["Ablehnen"])){
         echo "</div>" ;
     }
     else {
-        //TODO: Ausgabe in HTML
         echo "<div class='overlay'>" ;
         echo  "<div class='popup'>";
         echo "<h2>Bestätigung</h2>" ;
@@ -131,70 +131,6 @@ if(isset($_POST["Abbrechen"])){
     header("Location: InterneVeranstaltungen.php");
 }
 
-/*$today = date("Y-m-d");
-echo $today;
-
-//Prüfung, ob Datum 4 Wochen in Zukunft liegt und Enddatum hinter Startdatum liegt
-if($Beginn <= $today + 28){
-    $error_occured1 = true;
-    $error = "Das Datum liegt nicht 4 Wochen in der Zukunft!";
-}*/
-
-
-//$beginn = date("Y-m-d", strtotime('2020-12-22'));
-//$ende = date("Y-m-d", strtotime('2020-12-23'));
-//$dauer = 2;
-//$teilnehmerzahl = 30;
-
-
-    /*Überprüfung ob Regeln für Veranstaltungen eingehalten wurden (Dauer=max 7 Tage; Keine Veranstaltungen über Wochenende hinaus)
-    //$unix_timestamp = strtotime($beginn);
-    $wochentag = date("l", $beginn);
-        echo $wochentag;
-
-        switch ($wochentag) {
-            case "Monday":
-                if ($Dauer > 7) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Tuesday":
-                if ($Dauer > 6) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Wednesday":
-                if ($Dauer > 5) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Thursday":
-                if ($Dauer > 4) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Friday":
-                if ($Dauer > 3) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Saturday":
-                if ($Dauer > 2) {
-                    $error_occured1 = true;
-                }
-                break;
-
-            case "Sunday":
-                if ($Dauer > 1) {
-                    $error_occured1 = true;
-                }
-                break;
-        }*/
 
 
 //Abfrage im Kalender, welche Räume zu den angegebenen Daten frei sind
@@ -202,7 +138,7 @@ if($Beginn <= $today + 28){
 
         $teilnehmerzahl = $_SESSION["Teilnehmerzahl"];
         $Dauer = $_SESSION["Dauer_final"];
-        $query = "SELECT R.R_ID, R.Bezeichnung FROM Raum R
+        $query = "SELECT R.R_ID, R.Bezeichnung, R.Kapazitaet FROM Raum R
               WHERE R.Kapazitaet >= $teilnehmerzahl AND R.Status = 1
               AND NOT EXISTS(SELECT * FROM Kalender WHERE R.R_ID = Kalender.R_ID AND
                              Von <= '$Beginn' AND '$Beginn' <= Bis)
@@ -214,8 +150,14 @@ if($Beginn <= $today + 28){
 
         if ($res2->num_rows == 0) {
             //Weiterleitung zu Formular V2"
-            echo "<a href='KapazitätenabfrageV2.php'>Erneute Überprüfung mit anderen Daten</a>";
-            //header("Location: KapazitätenabfrageV2.php");
+            echo "<div class='overlay'>" ;
+            echo  "<div class='popup'>";
+            echo "<h2>Fehler</h2>" ;
+            echo "<a class='close' href='KapazitätenabfrageV2.php'>&times;</a>" ;
+            echo "<div class='content' >" , 'Es sind zu diesem Zeitpunkt keine freien Kapazitäten verfügbar. ';
+            echo "</div>";
+            echo "</div>" ;
+            echo "</div>" ;
 
         } else {
 
@@ -225,8 +167,8 @@ if($Beginn <= $today + 28){
             //Ausgabe der verfügbaren Räume in einer Tabelle
             echo "<br>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
             echo "<br><br>";
-            echo "<table border=\"1\">";
-            echo "<th>R_ID</th><th>Bezeichnung</th>";
+            echo "<table border=\"1\" class='container'>";
+            echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th>";
             while ($i = $res2->fetch_row()) {
                 if ($i[0]) {
                     array_push($_SESSION["R_ID_Array"], $i[0]);
@@ -243,7 +185,7 @@ if($Beginn <= $today + 28){
 
 
             //Reservierungsformular muss hier erscheinen
-            echo "<a href='Raumreservierung.php'>Reservierungsformular</a>";
+            echo '<a href="Raumreservierung.php" type="button" class="Auslösen">Reservierungsformular</a>';
 
 
         }

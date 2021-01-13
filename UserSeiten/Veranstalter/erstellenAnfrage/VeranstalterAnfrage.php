@@ -9,11 +9,12 @@ include "../../send_email.php";
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="VeranstalterAnfrage.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/popup.css">
     <title>Anfrage erstellen</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background1">
 
 <?php
 
@@ -46,50 +47,51 @@ if(isset($_POST["anfrage"])){
     $veranstalter_id = $_SESSION["b_id"];
 
 
-
 //Insert Query für das Anlegen in der DB
 if($error == false) {
 
-    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, NULL, NULL, '$anmerkungen', NULL)";
+    $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, LOCALTIMESTAMP, NULL, NULL, '$anmerkungen', NULL)";
 
     $res = $conn->query($query);
     if ($res === TRUE) {
         $query_status = "Die Anfrage wurde erfolgreich erstellt und wird nun vom Betreiber bearbeitet.";
         //Versenden einer Bestätigungsmail an den Veranstalter
         $empfaenger = get_mail_address($veranstalter_id);
+
         $betreff = "Anfrage für Ihre Veranstaltung erhalten";
         $nachricht = "Danke für Ihr Interesse an unserem Veranstaltungshaus. Wir werden Ihre Anfrage bearbeiten und melden uns möglichst schnell bei Ihnen per Mail zurück.";
         send_email($empfaenger, $betreff, $nachricht);
 
+        //Ausgabe des Status der Abfrage
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Bestätigung</h2>" ;
+        echo "<a class='close' href='VeranstalterAnfrage.php'>&times;</a>" ;
+        echo "<div class='content'>"  .$query_status. "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
+
     } else {
         $query_status = "Beim Erstellen der Anfrage ist ein Fehler aufgetreten";
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='VeranstalterAnfrage.php'>&times;</a>" ;
+        echo "<div class='content'>"  .$query_status. "</div>";
+        echo "</div>" ;
+        echo "</div>" ;
     }
 }
 }
 
 
-//Ausgabe des Status der Abfrage
-echo "<br>" . $query_status;
-
 ?>
 
 
-<nav>
-    <ul>
-        <li><a href="../Startseite/VeranstalterStartseite.php">Startseite</a></li>
-        <li><a class="active" href="VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a href="../eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
+<?php include '../header.php';?>
+<script>document.getElementById("reiter_anfrage").classList.add("active");</script>
 
-    </ul>
-</nav>
-
-<h1 style="text-align: center;, margin-top: 50px;">Anfrageformular für Veranstaltung</h1>
-<p>Beschreibung Formular</p>
-
+<br><br><br><br><br><br><br><br><br>
 <!-- Anfrageformular -->
 <div class="container">
     <form action="VeranstalterAnfrage.php" method="post">

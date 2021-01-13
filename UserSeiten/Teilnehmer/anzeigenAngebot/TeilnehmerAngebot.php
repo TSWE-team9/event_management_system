@@ -29,26 +29,16 @@ veranstaltung_refresh();
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
-<nav>
-    <ul>
-        <li><a href="../Startseite/TeilnehmerStartseite.php">Startseite</a></li>
-        <li><a class="active" href="TeilnehmerAngebot.php">Veranstaltungsangebot</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a href="../angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Datenänderung/TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
-
-    </ul>
-</nav>
+<body class="background3">
+<?php include '../header.php';?>
+<script>document.getElementById("reiter_angebot").classList.add("active");</script>
 
 <div class="container-50-outer">
     <h1 class="hdln">Aktuelles Angebot</h1>
 
     <!--SQL Abfrage-->
     <?php
-    $query = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1";
+    $query = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1 AND Verfügbarkeit = 1";
     $res = $conn->query($query);
 
     //Wenn nichts gefunden
@@ -61,7 +51,7 @@ veranstaltung_refresh();
     ?>
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0]; ?>">
-        <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: " . $i[1]; ?></div><div class="btntitel"><?php echo $i[2]; ?></div></button>
+        <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: " . $i[1]; ?></div><div class="btntitel"><?php echo $i[2]; ?></div></button>
     </form> 
     <?php }} ?>
 </div>

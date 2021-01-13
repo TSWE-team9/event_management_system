@@ -1,6 +1,5 @@
 <?php
 
-include "../send_email.php";
 
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';
@@ -75,7 +74,7 @@ if (isset($_POST['anmelden'])) {
         $query_add = "UPDATE Veranstaltung SET Teilnehmer_akt=Teilnehmer_akt+1 WHERE V_ID=$Vid";
         mysqli_query($conn, $query_add);
 
-        array_push($errors_anmeldung, "Anmeldung erfolgreich!");
+        // array_push($errors_anmeldung, "Anmeldung erfolgreich!");
 
         //Anmeldung per Mail versenden
         $empfaenger = get_mail_address($Bid);
@@ -84,6 +83,16 @@ if (isset($_POST['anmelden'])) {
                       Nähere Informationen finden Sie auch auf der Veranstaltungsseite im VMS.";
 
         send_email($empfaenger, $betreff, $nachricht);
+        
+        // Nachricht erfolgreiche Anmeldung
+        echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2 class="hdln">Anmeldung erfolgreich</h2>
+                <a class="close" href="../Teilnehmer/angemeldeteVeranstaltungen/Teilnehmerveranstaltungen.php">&times;</a>
+                <div class="content">Sie haben sich erfolgreich zu dieser Veranstaltung angemeldet.</div>
+            </div>
+        </div>';
 
     }
 }
@@ -114,7 +123,7 @@ if (isset($_POST['abmelden'])) {
 
         $query_sub = "UPDATE Veranstaltung SET Teilnehmer_akt=Teilnehmer_akt-1 WHERE V_ID=$Vid";
         mysqli_query($conn, $query_sub);
-        array_push($errors_abmeldung, "Abmeldung erfolgreich!");
+        // array_push($errors_abmeldung, "Abmeldung erfolgreich!");
 
         //Abmeldung per Mail versenden
         $empfaenger = get_mail_address($Bid);
@@ -122,6 +131,16 @@ if (isset($_POST['abmelden'])) {
         $nachricht = "Sie haben sich erfolgreich von der Veranstaltung ".$titel. " abgemeldet.";
 
         send_email($empfaenger, $betreff, $nachricht);
+
+        // Nachricht erfolgreiche Abmeldung
+        echo 
+        '<div class="overlay">
+            <div class="popup">
+                <h2 class="hdln">Abmeldung erfolgreich</h2>
+                <a class="close" href="../Teilnehmer/Startseite/Teilnehmerstartseite.php">&times;</a>
+                <div class="content">Sie haben sich erfolgreich von der Veranstaltung abgemeldet.</div>
+            </div>
+        </div>';
 
     }
 }

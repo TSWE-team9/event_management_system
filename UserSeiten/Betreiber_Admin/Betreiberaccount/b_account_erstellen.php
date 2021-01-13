@@ -92,9 +92,9 @@ if(isset($_POST["erstellen"])){
     <meta charset="utf-8"/>
     <title>BetreiberAccount</title>
 
-    <link rel="stylesheet" type="text/css" href="../Raumverwaltung/Raumverwaltung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Raumverwaltung.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../Raumverwaltung/Raumformularstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Buttons.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <!--    Einbinden von icons-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -103,7 +103,7 @@ if(isset($_POST["erstellen"])){
 
 <nav>
     <ul class="header">
-        <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
+        <li class="headerel"><a href="../Startseiten/StartseiteBetreiber.php" class ="headerel">Startseite</a></li>
         <li class="headerel"><a  href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="../Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
         <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>

@@ -4,7 +4,8 @@
 
 .container-50-outer {
     border-radius: 5px;
-    background-color: #f2f2f285;
+    background-color: #f8f4e5;
+    border-top: 10px solid #f45702;
     padding: 20px;
     width: 50%;
     min-height: 500px;
@@ -15,7 +16,8 @@
 
 .container-80-outer {
     border-radius: 5px;
-    background-color: #f2f2f285;
+    background-color: #f8f4e5;
+    border-top: 10px solid #f45702;
     padding: 20px;
     width: 80%;
     margin: auto;
@@ -25,7 +27,7 @@
 
 .container-50-inner {
     border-radius: 5px;
-    background-color: #f2f2f285;
+    background-color: #f8f4e5;
     padding: 10px 10px 20px 10px;
     width: 50%;
     margin: auto;
@@ -33,14 +35,14 @@
 
 .container-80-inner {
     border-radius: 5px;
-    background-color: #f2f2f285;
+    background-color: #f8f4e5;
     padding: 10px 10px 20px 10px;
     width: 80%;
     margin: auto;
 }
 
 .btnveranstaltung {
-    background-color: #ccc;
+    background-color: white;
     color: black;
     padding: 14px 20px;
     margin: 8px 10% 0px 10%;

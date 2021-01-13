@@ -1,14 +1,14 @@
 
 /*styling von hintergrund und schrift der Tabelle*/
 /*sollte durch ein allgemeines Tabellen Stylesheet ersetzt werden */
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.42em;
-    color:black;
-    /*background: url("HintergrundRaum.png") fixed ;*/
-    background-size: 100% auto;
-}
+/*body {*/
+/*    font-family: 'Open Sans', sans-serif;*/
+/*    font-weight: 300;*/
+/*    line-height: 1.42em;*/
+/*    color:black;*/
+/*    background: url("../style/HintergrundRaum.png") fixed ;*/
+/*    background-size: 100% auto;*/
+/*}*/
 /*Css Überschrift der Tabelle*/
 h1 {
     font-size: 3em;

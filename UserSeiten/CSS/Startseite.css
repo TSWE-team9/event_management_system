@@ -30,7 +30,7 @@ li a:hover {
     background-color: #111;
 }
 .active {
-    background-color: #4CAF50;
+    background-color: #f45702;
 }
 
 /*footer {
@@ -152,3 +152,16 @@ footer a {
 
     color: #FFFFFF;
 }
+
+.background1 {
+    background: url("../Bilder/Hintergrund1.jpg") fixed;
+}
+
+.background2 {
+    background: url("../Bilder/Hintergrund2.png") fixed;
+}
+
+.background3 {
+    background: url("../Bilder/Hintergrund3.jpg") fixed;
+}
+

@@ -1,13 +1,13 @@
 <?php
 session_start();
 
+include '../style/Fehlermeldung.css';
 // initializing variables
 $datum = $_SESSION["Beginn_final"];
 $dauer    = $_SESSION["Dauer_final"];
 $tanzahl = $_SESSION["Teilnehmerzahl"];
 $Rid = $_SESSION["R_ID"];
-//$Bid = $_SESSION["b_ID"];
-
+$Bid = $_SESSION["b_id"];
 
 
 // connect to the database
@@ -31,18 +31,18 @@ if (isset($_POST['Hinzufügen'])) {
         $verfügbarkeit = 2;
     }
 
-    echo "<br>"."<br>"."<br>". $titel ."<br>". $beschreibung ."<br>". 48 ."<br>". 2 ."<br>". $art ."<br>". $verfügbarkeit ."<br>". 1 ."<br>".   $Rid ."<br>". $tanzahl ."<br>". 0 ."<br>". $datum ."<br>". $zeit ."<br>". $dauer ."<br>". $zeitraum ."<br>". $tkosten;
+    //echo "<br>"."<br>"."<br>". $titel ."<br>". $beschreibung ."<br>". $Bid ."<br>". 2 ."<br>". $art ."<br>". $verfügbarkeit ."<br>". 1 ."<br>".   $Rid ."<br>". $tanzahl ."<br>". 0 ."<br>". $datum ."<br>". $zeit ."<br>". $dauer ."<br>". $zeitraum ."<br>". $tkosten;
 
-}
 
-$query_v = "INSERT INTO Veranstaltung VALUES(Null, '$titel', '$beschreibung', 48, 2, '$art', $verfügbarkeit, 1, $Rid, $tanzahl, 0, '$datum', '$zeit', $dauer, $zeitraum, $tkosten)";
+
+$query_v = "INSERT INTO Veranstaltung VALUES(V_ID, NULL, '$titel', '$beschreibung', $Bid, 2, '$art', $verfügbarkeit, 1, $Rid, $tanzahl, 0, '$datum', '$zeit', $dauer, $zeitraum, $tkosten)";
 $res2 = mysqli_query($db, $query_v);
 
-if ($res2 === FALSE) {
-    $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)";
-    echo "<div class='overlay'>" ;
+    if ($res2 === FALSE) {
+    $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)" ;
+        echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
-    echo "<h2>Bestätigung</h2>" ;
+    echo "<h2>Fehler</h2>" ;
     echo "<a class='close' href='InterneVeranstaltungen.php'> &times;</a>" ;
     echo "<div class='content' >"  .$error."</div>";
     echo "</div>" ;
@@ -50,6 +50,25 @@ if ($res2 === FALSE) {
     $error_occured = true;
 } else {
     //Endgültige Belegung des Raumes im Kalender
-    $query3 = "UPDATE Kalender SET Status = 1, V_ID = (SELECT V_ID FROM Veranstaltung WHERE Titel='$titel' AND Beginn = '$datum' AND Veranstalter = 48) WHERE Von= $datum AND R_ID = $Rid";
-    $res3 = $db->query($query3);}
+    $query3 = "UPDATE Kalender SET Status = 1, V_ID = (SELECT V_ID FROM Veranstaltung WHERE Titel='$titel' AND Beginn = '$datum' AND Veranstalter = $Bid) WHERE Von= '$datum' AND R_ID = $Rid";
+    $res3 = $db->query($query3);
+    $status = "Veranstaltung erfolgreich erstellt";
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Bestätigung</h2>" ;
+    echo "<a class='close' href='InterneVeranstaltungen.php'> &times;</a>" ;
+    echo "<div class='content' >"  .$status."</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+}
+}
+
+if(isset($_POST["Abbrechen"])){
+
+    $query4 = "DELETE FROM Kalender WHERE Von = '$datum' AND R_ID = $Rid";
+    $res4 = $db->query($query4);
+    if($res4 == TRUE){
+        header("Location: InterneVeranstaltungen.php");
+    }
+}
 

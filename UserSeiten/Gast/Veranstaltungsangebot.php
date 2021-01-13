@@ -29,14 +29,11 @@ veranstaltung_refresh();
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="background2">
 <nav>
     <ul>
-        <li><a class="active" href="Veranstaltungsangebots.php">Veranstaltungsangebot</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
+        <li><a class="active" href="Veranstaltungsangebot.php">Veranstaltungsangebot</a></li>
         <li style="float: right;"> <a href="../../LandingPage/index.php">zur Anmeldung</a></li>
-
     </ul>
 </nav>
 
@@ -45,7 +42,7 @@ veranstaltung_refresh();
 
     <?php
     //Abfrage aller aktiven (Status = 1) Veranstaltungen
-    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1";
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1 AND Verfügbarkeit = 1";
     $res1 = $conn->query($query1);
     if($res1->num_rows == 0){
         echo "<p class='txt'>Es werden zur Zeit keine Veranstaltungen angeboten, zu denen Sie sich anmelden können</P>";

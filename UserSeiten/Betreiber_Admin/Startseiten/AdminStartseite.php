@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Raum Hinzufügen</title>
+    <title>Startseite</title>
 
 
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
@@ -23,10 +23,15 @@
         <li class="headerel"><a href="#">Statistiken</a></li>
         <li class="headerel"><a href="http://132.231.36.109/phpmyadmin/index.php">Datenbank</a></li>
         <li class="headerel" style="float: right;"> <a href="../../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a href="../Betreiberaccount/b_account_erstellen.php"  > <i class="fas fa-user-circle" ></i> </a></li>
+        <li class="headerel" style="float:right;"> <a href="../Betreiberaccount/b_account_erstellen.php"  > <i class="fas fa-user-circle" ></i> </a></li>
 
     </ul>
 </nav>
+
+
+
+
+
 <!--<div class="footer">-->
 <!--    <div id="button"></div>-->
 <!--    <div id="container">-->

@@ -40,28 +40,37 @@ $res->close();
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
-    <title>Veranstaltung</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
+    <title>Teilnehmerübermittlung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
     <!--Importierung Excel library-->
     <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
 </head>
-<body>
-<nav>
-    <ul>
-        <li><a href="../Veranstalter/Startseite/VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="../Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a class="active" href="../Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Veranstalter/Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
-    </ul>
-</nav>
+<body class="background3">
+
+<?php
+//Header unterscheidung
+switch ($_SESSION["rolle"]){
+    case 0: include './header/headerGast.php';               //header Gast
+        break;
+    case 1: include './header/headerVeranstalter.php';      // header Veranstalter
+        break;
+    case 2: include './header/headerTeilnehmer.php';        // header Teilnehmer
+        break;
+    case 3: include './header/headerBetreiber.php';          // header Betreiber
+        break;
+    case 4: include './header/headerAdmin.php';              // header Admin
+        break;
+
+}
+?>
 
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
-    <p class="txt">Um eine Teilnehmerliste von einer Excel Datei zu importieren, wählen Sie zuerst die Datei aus und importieren diese dann. Alternativ können Sie die Teilnehmerliste manuell eingeben.</p>
+    <p class="txt">Um eine Teilnehmerliste von einer Excel Datei zu importieren, wählen Sie zuerst die Datei aus und importieren diese dann. 
+                    Dabei muss in der ersten Spalte der Excel Datei der Nachname stehen und in der zweiten Spalte der Vorname. 
+                    Die Namen werden dann in die Liste übernommen, wo diese überprüft werden können und im Anschluss übermittelt werden können.</p>
 
     <div class="container-80-inner">
         <h2 class="hdln">Importierung aus Excel Datei</h2>
@@ -121,43 +130,136 @@ $res->close();
         //Abspeichern der manuell eingegebenen Teilnehmer
         if(isset($_POST["liste-übermitteln"])){
 
-            //Alte Liste löschen
-            $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
-            $conn->query($query);
-
             //Variablen
             $counter = 1;
+            $counter2 = 1;
             $teilnehmer_nr = 1;
             $V_ID = $_POST["v_id"];
+            $vorname_array = array();
+            $nachname_array = array();
+            $status_empty = false;
+            $status_meldung = "";
 
             while($counter <= $teilnehmer_max) {
 
                 $nachname = $_POST["nachname".$counter];
                 $vorname = $_POST["vorname".$counter];
-                //echo "<br>"."<br>"."<br>"."<br>";
-                //echo $nachname . $vorname;
+
+                //Überprüfen, ob Nachname oder Vorname leer
+                if(empty($nachname)){
+                    break;
+                }
+
+                if(empty($vorname)){
+                    $status_empty = true;
+                    $status_meldung = "Vorname ". $counter. " fehlt";
+                    break;
+                }
+
+                //Wenn nicht, dann speichern in ein Array
+                if($status_empty == false){
+                    array_push($nachname_array, $nachname);
+                    array_push($vorname_array, $vorname);
+                    }
+
+                $counter++;
+            }
+
+            //Wenn ein Nachname oder Vorname nicht angegeben wurde, Fehlermeldung und alte Liste bleibt
+            if($status_empty){
+                // TODO Fehlermeldung
+                // DONE echo $status_meldung;
+                // Nachricht erfolgreiche Abmeldung
+                echo "<div class='overlay'>" ;
+                echo "<div class='popup'>";
+                echo "<h2 class='hdln'>Fehler bei Übermittlung</h2>" ;
+                echo "<a class='close' href='./SeiteTeilnehmerübermittlung.php'>&times;</a>" ;
+                echo "<div class='content'>".$status_meldung."</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+            else{
+
+                //Alte Liste löschen
+                $query = "DELETE FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
+                $conn->query($query);
+
+                $i = 0;
+                $query_status= true;
 
                 //Einfügen der Namen in die Teilnehmerliste
-                if(!empty($nachname) && !empty($vorname)){
+                while($counter2 <= $teilnehmer_max){
+
+                    $nachname = $nachname_array[$i];
+                    $vorname = $vorname_array[$i];
+
+                    if(!empty($nachname) && !empty($vorname)){
 
                     $query = "INSERT INTO Teilnehmerliste_ges VALUES ($V_ID, $teilnehmer_nr, '$nachname', '$vorname', LOCALTIMESTAMP)";
                     $res = $conn->query($query);
                     $teilnehmer_nr++;
-                    if($res === FALSE){
-                        echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
+
+                        if($res === FALSE){
+                            // TODO
+                            // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
+                            // Nachricht über Fehler
+                            echo 
+                            '<div class="overlay">
+                                <div class="popup">
+                                    <h2 class="hdln">Fehler bei Übermittlung</h2>
+                                    <a class="close" href="./SeiteTeilnehmerübermittlung.php">&times;</a>
+                                    <div class="content">FEHLER aufgetreten beim manuellen Einfügen.</div>
+                                </div>
+                            </div>';
+                            $query_status = false;
+                            break;
+                        }
                     }
+                    $i++;
+                    $counter2++;
                 }
-                $counter++;
 
+                if($query_status){
+
+                    //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
+                    $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
+                    $res_update = $conn->query($update_query);
+                    if($res_update === FALSE){
+                        // TODO
+                        // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
+                        // Nachricht über Fehler
+                        echo 
+                        '<div class="overlay">
+                            <div class="popup">
+                                <h2 class="hdln">Fehler bei Übermittlung</h2>
+                                <a class="close" href="./SeiteTeilnehmerübermittlung.php">&times;</a>
+                                <div class="content">FEHLER aufgetreten beim Update der akt. Teilnehmerzahl</div>
+                            </div>
+                        </div>';
+                    }
+
+                    $href = "";
+                    if($_SESSION["rolle"] == 1){
+                        $href = "../Veranstalter/Startseite/VeranstalterStartseite.php";
+                    }
+                    if($_SESSION["rolle"] == 3){
+                        $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
+                    }
+                    if($_SESSION["rolle"] == 4){
+                        $href = "../Betreiber_Admin/Startseiten/AdminStartseite.php";
+                    }
+
+                    // Nachricht erfolgreiche Abmeldung
+                    echo "<div class='overlay'>" ;
+                    echo "<div class='popup'>";
+                    echo "<h2 class='hdln'>Teilnehmerübermittlung</h2>" ;
+                    echo "<a class='close' href=".$href.">&times;</a>" ;
+                    echo "<div class='content'>Die Teilnehmerliste wurde erfolgreich übermittelt.</div>";
+                    echo "</div>";
+                    echo "</div>";
+
+                }
             }
-
-            //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
-            $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
-            $res_update = $conn->query($update_query);
-            if($res_update === FALSE){
-                echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
-            }
-
         }
 
         ?>

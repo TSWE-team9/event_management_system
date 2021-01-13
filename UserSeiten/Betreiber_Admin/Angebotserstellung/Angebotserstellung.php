@@ -17,19 +17,19 @@ if($conn->connect_error){
 include "../../angebot_refresh.php";
 angebot_refresh();
 
-$query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
+$query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer, Teilnehmer_gepl FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
 if($res->num_rows == 0){
 //    Fehlermeldung wenn die Abfrage nicht funktioniert 
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
-    echo "<h2>Bestätigung</h2>" ;
-    echo "<a class='close' href='Angebotserstellung.php'>&times;</a>" ;
-    echo "<div class='content' >" , 'Bei der Abfrage der Anfragen ist ein Fehler aufgetreten ';
+    echo "<h2>Info</h2>" ;
+    echo "<a class='close' href='../Startseiten/StartseiteBetreiber.php'>&times;</a>" ;
+    echo "<div class='content' >" , 'Es existieren derzeit keine unbearbeiteten Anfragen ';
     echo "</div>";
     echo "</div>" ;
     echo "</div>" ;
-//    echo "Bei der Abfrage der Anfragen ist ein Fehler aufgetreten";
+
 }
 
 ?>
@@ -40,26 +40,16 @@ if($res->num_rows == 0){
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage für Anfrage</title>
 
-    <link rel="stylesheet" type="text/css" href="../Angebotserstellung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Angebotserstellung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Kapazitätenstylesheet.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<nav>
-    <ul class="header">
-        <li class="headerel"><a href="../StartseiteBetreiber.html" class ="headerel">Startseite</a></li>
-        <li class="headerel"><a class= "active" href="#">Angebotserstellung</a></li>
-        <li class="headerel"><a href="#">Abrechnung</a></li>
-        <li class="headerel"><a  href="../Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>
-        <li class="headerel"><a href="#">Meine Veranstaltungen</a></li>
-        <li class="headerel"><a href="#">Statistiken</a></li>
-        <li class="headerel" style="float: right;"> <a href="#"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li class="headerel" style=float:right;"> <a href="#"  > <i class="fas fa-user-circle" ></i> </a></li>
-
-    </ul>
-</nav>
+<?php include '../Header/header.php'; ?>
+<script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
 
 <table class="container">
     <thead>
@@ -68,6 +58,7 @@ if($res->num_rows == 0){
         <th><h2>Veranstalter_ID</h2></th>
         <th><h2>Gepl. Beginn</h2></th>
         <th><h2>Gepl. Dauer</h2></th>
+        <th><h2>Gepl. Teilnehmerzahl</h2></th>
     </tr>
     </thead>
     <tbody>
