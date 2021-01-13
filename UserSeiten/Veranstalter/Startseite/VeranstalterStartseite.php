@@ -30,6 +30,7 @@ $V_ID = $_SESSION["b_id"];
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Footer.css">
     
     <title>Startseite</title>
 
@@ -109,15 +110,12 @@ $V_ID = $_SESSION["b_id"];
 <div class="footer">
     <div id="button"></div>
     <div id="container">
-        <div id="cont">
-            <!--         <div class="footer_center">-->
-            <!--                <h3>VMS</h3>-->
-            <!--             <a href="AGB">AGB </a>-->
-            <a class ="impressum " href="#"> Impressum </a>
-            <a class ="agb"   href="#">AGB</a>
 
-            <!-- agb col-xs-12 col-sm-3 col-sm-pull-6 -->
-        </div>
+            <a class ="impressum " href="../../Betreiber_Admin/Startseiten/Impressum.php"> Impressum </a>
+            <a class ="agb"   href="../../Betreiber_Admin/Startseiten/AGB.php">AGB</a>
+        <h3>Herzlich Willkommen im VMS der Gruppe 9 </h3>
+
+
 
     </div>
 </div>
