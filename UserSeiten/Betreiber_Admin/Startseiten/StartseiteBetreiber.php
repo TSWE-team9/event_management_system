@@ -17,7 +17,8 @@ veranstaltung_refresh();
 <head>
     <meta charset="UTF-8">
     <title>Startseite</title>
-    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Footer.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/InterneVeranstaltungen.css" media="screen" />
     <title>Title</title>
     <script src="../js/Tabs.js"></script>
@@ -50,15 +51,14 @@ veranstaltung_refresh();
 <div class="footer">
     <div id="button"></div>
     <div id="container">
-        <div id="cont">
+<!--        <div id="cont">-->
             <!--         <div class="footer_center">-->
-            <!--                <h3>VMS</h3>-->
-            <!--             <a href="AGB">AGB </a>-->
-            <a class ="impressum " href="#"> Impressum </a>
-            <a class ="agb"   href="#">AGB</a>
 
-            <!-- agb col-xs-12 col-sm-3 col-sm-pull-6 -->
-        </div>
+            <a class ="impressum " href="Impressum.php"> Impressum </a>
+            <a class ="agb"   href="#">AGB</a>
+        <h3>Herzlich Willkommen im VMS der Gruppe 9 </h3>
+
+
 
     </div>
 </div>
