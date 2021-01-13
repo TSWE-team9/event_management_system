@@ -42,8 +42,6 @@ if($conn->connect_error){
 </nav>
 
 <br><br>
-<h1 style="text-align: center;, margin-top: 150px;">Veranstaltung Erstellung</h1>
-<p style="text-align:center;">Zusätzlich nötige Informationen zur Erstellung einer Veranstaltung</p>
 
 <?php
 $error = "";
@@ -127,6 +125,10 @@ if(isset($_POST["annahme"])) {
 ?>
 <!-- Erstellungsformular -->
 <div class="container">
+
+    <h1 class="hdln">Veranstaltung Erstellung</h1>
+    <p class="txt">Geben Sie die zusätzlichen Informationen zu ihrer Veranstaltung an und bestätigen im Anschluss die Erstellung der Veranstaltung.</p>
+
     <form action="VeranstaltungsErstellung.php" method="post">
 
         <div class="row">

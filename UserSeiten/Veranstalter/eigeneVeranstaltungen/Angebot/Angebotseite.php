@@ -23,7 +23,7 @@ if($conn->connect_error){
     <link rel="stylesheet" type="text/css" href="../../../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="Angebotseite.css">
     <link rel="stylesheet" href="../../../CSS/popup.css">
-    <title>Meine Veranstaltungen</title>
+    <title>Angebot</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
     <script src="../script.js"></script>

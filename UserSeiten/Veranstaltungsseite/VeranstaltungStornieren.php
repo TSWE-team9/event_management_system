@@ -131,8 +131,8 @@ if(isset($_POST["Stornieren"])) {
         echo "<h2 class='hdln'>Bestätigung</h2>" ;
         echo "<a class='close' href=".$href.">&times;</a>" ;
         echo "<div class='content'>Veranstaltung erfolgreich storniert</div>";
-        echo "</div>" ;
-        echo "</div>" ;
+        echo "</div>";
+        echo "</div>";
     }
 
 

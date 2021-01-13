@@ -48,11 +48,38 @@ if(isset($_POST["mitteilung_senden"])){
             $empfaenger = get_mail_address($i[0]);
             send_email($empfaenger, $betreff, $nachricht);
         }
+
+        $href = "";
+        if($_SESSION["rolle"] == 1){
+            $href = "../Veranstalter/Startseite/VeranstalterStartseite.php";
+        }
+        if($_SESSION["rolle"] == 3){
+            $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
+        }
+        if($_SESSION["rolle"] == 4){
+            $href = "../Betreiber_Admin/Startseiten/AdminStartseite.php";
+        }
+
+        // Erfolgsmeldung
+        echo "<div class='overlay'>" ;
+        echo "<div class='popup'>";
+        echo "<h2 class='hdln'>Mitteilung versendet</h2>" ;
+        echo "<a class='close' href=".$href.">&times;</a>" ;
+        echo "<div class='content'>Mitteilung wurde erfolgreich versendet.</div>";
+        echo "</div>" ;
+        echo "</div>" ;
     }
 
-    //TODO Fehlermeldung ausgeben
+    // Fehlermeldung ausgeben
     else {
-        echo "Fehler: Es wurden keine Nachrichten verschickt (Keine Teilnehmer bzw. Fehler bei der Abfrage)";
+        echo 
+            '<div class="overlay">
+                <div class="popup">
+                    <h2 class="hdln">Fehler Mitteilung</h2>
+                    <a class="close" href="./SeiteMitteilung.php">&times;</a>
+                    <div class="content">Fehler: Es wurden keine Nachrichten verschickt (Keine Teilnehmer bzw. Fehler bei der Abfrage).</div>
+                </div>
+            </div>';
     }
 
 }
@@ -67,26 +94,33 @@ if(isset($_POST["mitteilung_senden"])){
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
     <title>Veranstaltung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body class="background2">
-<nav>
-    <ul>
-        <li><a href="../Veranstalter/Startseite/VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="../Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a class="active" href="../Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Veranstalter/Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
-    </ul>
-</nav>
+
+<?php
+//Header unterscheidung
+switch ($_SESSION["rolle"]){
+    case 0: include './header/headerGast.php';               //header Gast
+        break;
+    case 1: include './header/headerVeranstalter.php';      // header Veranstalter
+        break;
+    case 2: include './header/headerTeilnehmer.php';        // header Teilnehmer
+        break;
+    case 3: include './header/headerBetreiber.php';          // header Betreiber
+        break;
+    case 4: include './header/headerAdmin.php';              // header Admin
+        break;
+
+}
+?>
 
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
-    <p class="txt">Beschreibung</p>
+    <p class="txt">Hier können Sie eine Mitteilung mit maximal 300 Zeichen verfassen, welche an alle Teilnehmer ihrer Veranstaltung versendet werden.</p>
 
     <form action="SeiteMitteilung.php" method="post">
         <textarea name="nachricht" placeholder="Schreiben Sie hier den Inhalt ihrer Mitteilung" cols="30" rows="10" maxlength="300" required></textarea>

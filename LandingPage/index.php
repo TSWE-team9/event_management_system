@@ -70,10 +70,10 @@ include('passwort_vergessen.php');
                   <input type="password" placeholder="Passwort" name="passwort_2" pattern=".{10,50}" required>
 
                   <label for="vorname">Vorname</label>
-                  <input type="text" placeholder="Vorname" name="vorname" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Vorname" name="vorname" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="nachname">Nachname</label>
-                  <input type="text" placeholder="Nachname" name="nachname" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Nachname" name="nachname" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="geburtsdatum">Geburtsdatum</label>
                   <input type="date" name="geburtsdatum" id="geb_t" required>                 
@@ -86,7 +86,7 @@ include('passwort_vergessen.php');
                   </select>
 
                   <label for="straße">Straße</label>
-                  <input type="text" placeholder="Straße" name="straße" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Straße" name="straße" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="hnummer">Hausnummer</label>
                   <input type="text" placeholder="Hausnummer" name="hnummer" pattern="[0-9]{1,50}" required>
@@ -95,10 +95,10 @@ include('passwort_vergessen.php');
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" pattern="[0-9]{1,50}" required>
 
                   <label for="ort">Ort</label>
-                  <input type="text" placeholder="Ort" name="ort" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Ort" name="ort" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="land">Land</label>
-                  <input type="text" placeholder="Land" name="land" pattern="[A-Za-z]{1,50}"required>
+                  <input type="text" placeholder="Land" name="land" pattern="[A-Za-zäöüÄÖÜ ]{1,50}"required>
 
                   <label for="telefonnummer">Telefonnummer</label>
                   <input type="text" placeholder="Telefonnummer" name="telefonnummer" pattern="[0-9]{1,50}">
@@ -122,19 +122,19 @@ include('passwort_vergessen.php');
                   <input type="password" placeholder="Passwort" name="passwort_2" pattern=".{10,50}" required>
 
                   <label for="vorname">Vorname</label>
-                  <input type="text" placeholder="Vorname" name="vorname" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Vorname" name="vorname" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="nachname">Nachname</label>
-                  <input type="text" placeholder="Nachname" name="nachname" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Nachname" name="nachname" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="geburtsdatum">Geburtsdatum</label>
                   <input type="date" name="geburtsdatum" id="geb_v" required>  
 
                   <label for="firmenname">Firmenname</label>
-                  <input type="text" placeholder="Firmenname" name="firmenname" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Firmenname" name="firmenname" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="straße">Straße</label>
-                  <input type="text" placeholder="Straße" name="straße" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Straße" name="straße" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="straße">Hausnummer</label>
                   <input type="text" placeholder="Hausnummer" name="hnummer" pattern="[0-9]{1,50}" required>
@@ -143,10 +143,10 @@ include('passwort_vergessen.php');
                   <input type="text" placeholder="Postleitzahl" name="postleitzahl" pattern="[0-9]{1,50}" required>
 
                   <label for="ort">Ort</label>
-                  <input type="text" placeholder="Ort" name="ort" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Ort" name="ort" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="land">Land</label>
-                  <input type="text" placeholder="Land" name="land" pattern="[A-Za-z]{1,50}" required>
+                  <input type="text" placeholder="Land" name="land" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
 
                   <label for="telefonnummer">Telefonnummer</label>
                   <input type="text" placeholder="Telefonnummer" name="telefonnummer" pattern="[0-9]{1,50}">

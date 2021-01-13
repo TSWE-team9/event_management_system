@@ -40,28 +40,37 @@ $res->close();
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
-    <title>Veranstaltung</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
+    <title>Teilnehmerübermittlung</title>
 
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
     <!--Importierung Excel library-->
     <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
 </head>
 <body class="background3">
-<nav>
-    <ul>
-        <li><a href="../Veranstalter/Startseite/VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="../Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a class="active" href="../Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Veranstalter/Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
-    </ul>
-</nav>
+
+<?php
+//Header unterscheidung
+switch ($_SESSION["rolle"]){
+    case 0: include './header/headerGast.php';               //header Gast
+        break;
+    case 1: include './header/headerVeranstalter.php';      // header Veranstalter
+        break;
+    case 2: include './header/headerTeilnehmer.php';        // header Teilnehmer
+        break;
+    case 3: include './header/headerBetreiber.php';          // header Betreiber
+        break;
+    case 4: include './header/headerAdmin.php';              // header Admin
+        break;
+
+}
+?>
 
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
-    <p class="txt">Um eine Teilnehmerliste von einer Excel Datei zu importieren, wählen Sie zuerst die Datei aus und importieren diese dann. Alternativ können Sie die Teilnehmerliste manuell eingeben.</p>
+    <p class="txt">Um eine Teilnehmerliste von einer Excel Datei zu importieren, wählen Sie zuerst die Datei aus und importieren diese dann. 
+                    Dabei muss in der ersten Spalte der Excel Datei der Nachname stehen und in der zweiten Spalte der Vorname. 
+                    Die Namen werden dann in die Liste übernommen, wo diese überprüft werden können und im Anschluss übermittelt werden können.</p>
 
     <div class="container-80-inner">
         <h2 class="hdln">Importierung aus Excel Datei</h2>

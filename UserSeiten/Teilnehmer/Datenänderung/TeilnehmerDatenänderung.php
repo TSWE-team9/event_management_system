@@ -62,19 +62,19 @@
                 <?php if (count($errors_d) > 0){include('errorsDatenänderung.php');} ?>
 
                 <label for="straße">Straße</label>
-                <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['Strasse'];?>' pattern="[A-Za-z]{1,50}">
+                <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['Strasse'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="hnummer">Hausnummer</label>
-                <input type="text" placeholder="Hausnummer" name="hnummer" value='<?php echo $_SESSION['Hausnummer'];?>' pattern="[0-9]{1,50}">
+                <input type="text" placeholder="Hausnummer" name="hnummer" value='<?php echo $_SESSION['Hausnummer'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="postleitzahl">Postleitzahl</label>
                 <input type="text" placeholder="Postleitzahl" name="postleitzahl" value='<?php echo $_SESSION['PLZ'];?>' pattern="[0-9]{1,50}">
 
                 <label for="ort">Ort</label>
-                <input type="text" placeholder="Ort" name="ort" value='<?php echo $_SESSION['Ort'];?>' pattern="[A-Za-z]{1,50}">
+                <input type="text" placeholder="Ort" name="ort" value='<?php echo $_SESSION['Ort'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="land">Land</label>
-                <input type="text" placeholder="Land" name="land" value='<?php echo $_SESSION['Land'];?>' pattern="[A-Za-z]{1,50}">
+                <input type="text" placeholder="Land" name="land" value='<?php echo $_SESSION['Land'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="telefonnummer">Telefonnummer</label>
                 <input type="text" placeholder="Telefonnummer" name="telefonnummer" value='<?php echo $_SESSION['Telnummer'];?>' pattern="[0-9]{1,50}">

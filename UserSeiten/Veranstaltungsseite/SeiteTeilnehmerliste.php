@@ -49,17 +49,23 @@ $res->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.69/vfs_fonts.js" crossorigin="anonymous"></script>
 </head>
 <body class="background1">
-<nav>
-    <ul>
-        <li><a href="../Veranstalter/Startseite/VeranstalterStartseite.php">Startseite</a></li>
-        <li><a href="../Veranstalter/erstellenAnfrage/VeranstalterAnfrage.php">Angebot einholen</a></li>
-        <li><a href="#">Kontakt</a></li>
-        <li><a href="#">Hilfe</a></li>
-        <li><a class="active" href="../Veranstalter/eigeneVeranstaltungen/VeranstalterVeranstaltungen.php">Meine Veranstaltungen</a></li>
-        <li style="float: right;"> <a href="../logout.php"> <i class="fas fa-sign-out-alt"></i> </a></li>
-        <li style="float: right;"> <a href="../Veranstalter/Datenänderung/VeranstalterDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
-    </ul>
-</nav>
+
+<?php
+//Header unterscheidung
+switch ($_SESSION["rolle"]){
+    case 0: include './header/headerGast.php';               //header Gast
+        break;
+    case 1: include './header/headerVeranstalter.php';      // header Veranstalter
+        break;
+    case 2: include './header/headerTeilnehmer.php';        // header Teilnehmer
+        break;
+    case 3: include './header/headerBetreiber.php';          // header Betreiber
+        break;
+    case 4: include './header/headerAdmin.php';              // header Admin
+        break;
+
+}
+?>
 
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
