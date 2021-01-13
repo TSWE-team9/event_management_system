@@ -55,7 +55,7 @@ veranstaltung_refresh();
             <!--         <div class="footer_center">-->
 
             <a class ="impressum " href="Impressum.php"> Impressum </a>
-            <a class ="agb"   href="#">AGB</a>
+            <a class ="agb"   href="AGB.php">AGB</a>
         <h3>Herzlich Willkommen im VMS der Gruppe 9 </h3>
 
 
