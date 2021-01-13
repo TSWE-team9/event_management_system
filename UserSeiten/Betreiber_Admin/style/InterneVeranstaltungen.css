@@ -4,7 +4,7 @@
     background: url("HintergrundAbrechnung.jpg")  fixed ;
 
     /*https://pixabay.com/de/photos/st%C3%BChle-zeitgen%C3%B6ssische-m%C3%B6bel-2181960/!*/
-    /*background-size: cover ;*/
+    background-size: cover ;
     width: 100vw;
     height: 100vh;
     /*display: grid;*/
@@ -70,7 +70,7 @@ h3 {
 
 .btnveranstaltung {
     background-color: #ccc;
-    color: black;
+    color: #6bd4b1;
     padding: 14px 20px;
     margin: 8px 10% 0px 10%;
     border: none;
@@ -83,6 +83,9 @@ h3 {
 
 .btnveranstaltung:hover {
     opacity: 1;
+}
+.btnveranstaltung:checked {
+    border: #6bd4b1;
 }
 
 .btnbeginn {

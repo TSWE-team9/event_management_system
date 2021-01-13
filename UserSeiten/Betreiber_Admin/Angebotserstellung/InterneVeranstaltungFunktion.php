@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include '../style/Fehlermeldung.css';
+
 // initializing variables
 $datum = $_SESSION["Beginn_final"];
 $dauer    = $_SESSION["Dauer_final"];
@@ -40,6 +40,7 @@ $res2 = mysqli_query($db, $query_v);
 
     if ($res2 === FALSE) {
     $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten (Veranstaltung)" ;
+        echo  "<link rel='stylesheet' type='text/css' href='../style/Fehlermeldung.css' media='screen' />";
         echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Fehler</h2>" ;
@@ -53,8 +54,9 @@ $res2 = mysqli_query($db, $query_v);
     $query3 = "UPDATE Kalender SET Status = 1, V_ID = (SELECT V_ID FROM Veranstaltung WHERE Titel='$titel' AND Beginn = '$datum' AND Veranstalter = $Bid) WHERE Von= '$datum' AND R_ID = $Rid";
     $res3 = $db->query($query3);
     $status = "Veranstaltung erfolgreich erstellt";
+    echo  "<link rel='stylesheet' type='text/css' href='../style/Fehlermeldung.css' media='screen' />";
     echo "<div class='overlay'>" ;
-    echo  "<div class='popup'>";
+    echo  "<div class='popup' style='z-index: 3'>";
     echo "<h2>Bestätigung</h2>" ;
     echo "<a class='close' href='InterneVeranstaltungen.php'> &times;</a>" ;
     echo "<div class='content' >"  .$status."</div>";

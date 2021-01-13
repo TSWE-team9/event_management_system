@@ -1,4 +1,4 @@
-<?php include ("InterneVeranstaltungFunktion.php")?>
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -8,8 +8,10 @@
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylsheet" type="text/css"   href="../style/Fehlermeldung.css"
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
+<?php include ("InterneVeranstaltungFunktion.php")?>
 <?php include '../Header/header.php'; ?>
 <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
 
