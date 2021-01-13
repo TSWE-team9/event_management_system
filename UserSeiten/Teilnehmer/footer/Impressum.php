@@ -3,13 +3,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="css/text" href="../../CSS/footer.css">
-    <link rel="stylesheet" type="css/text" href="../../CSS/Startseite.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/footer.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css">
     <title>Impressum</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <?php include '../header.php'; ?>
-<body>
+<body class="background1">
 <div class="b">
 <div class="c">
 <p><strong>Impressum</strong></p>
