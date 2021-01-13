@@ -167,8 +167,16 @@ switch ($_SESSION["rolle"]){
 
             //Wenn ein Nachname oder Vorname nicht angegeben wurde, Fehlermeldung und alte Liste bleibt
             if($status_empty){
-                //TODO Fehlermeldung
-                echo $status_meldung;
+                // TODO Fehlermeldung
+                // DONE echo $status_meldung;
+                // Nachricht erfolgreiche Abmeldung
+                echo "<div class='overlay'>" ;
+                echo "<div class='popup'>";
+                echo "<h2 class='hdln'>Fehler bei Übermittlung</h2>" ;
+                echo "<a class='close' href='./SeiteTeilnehmerübermittlung.php'>&times;</a>" ;
+                echo "<div class='content'>".$status_meldung."</div>";
+                echo "</div>";
+                echo "</div>";
             }
             else{
 
@@ -192,8 +200,17 @@ switch ($_SESSION["rolle"]){
                     $teilnehmer_nr++;
 
                         if($res === FALSE){
-                            //TODO
-                            echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
+                            // TODO
+                            // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
+                            // Nachricht über Fehler
+                            echo 
+                            '<div class="overlay">
+                                <div class="popup">
+                                    <h2 class="hdln">Fehler bei Übermittlung</h2>
+                                    <a class="close" href="./SeiteTeilnehmerübermittlung.php">&times;</a>
+                                    <div class="content">FEHLER aufgetreten beim manuellen Einfügen.</div>
+                                </div>
+                            </div>';
                             $query_status = false;
                             break;
                         }
@@ -208,11 +225,38 @@ switch ($_SESSION["rolle"]){
                     $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
                     $res_update = $conn->query($update_query);
                     if($res_update === FALSE){
-                        //TODO
-                        echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
+                        // TODO
+                        // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
+                        // Nachricht über Fehler
+                        echo 
+                        '<div class="overlay">
+                            <div class="popup">
+                                <h2 class="hdln">Fehler bei Übermittlung</h2>
+                                <a class="close" href="./SeiteTeilnehmerübermittlung.php">&times;</a>
+                                <div class="content">FEHLER aufgetreten beim Update der akt. Teilnehmerzahl</div>
+                            </div>
+                        </div>';
                     }
 
-                    //TODO Erfolgsmeldung
+                    $href = "";
+                    if($_SESSION["rolle"] == 1){
+                        $href = "../Veranstalter/Startseite/VeranstalterStartseite.php";
+                    }
+                    if($_SESSION["rolle"] == 3){
+                        $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
+                    }
+                    if($_SESSION["rolle"] == 4){
+                        $href = "../Betreiber_Admin/Startseiten/AdminStartseite.php";
+                    }
+
+                    // Nachricht erfolgreiche Abmeldung
+                    echo "<div class='overlay'>" ;
+                    echo "<div class='popup'>";
+                    echo "<h2 class='hdln'>Teilnehmerübermittlung</h2>" ;
+                    echo "<a class='close' href=".$href.">&times;</a>" ;
+                    echo "<div class='content'>Die Teilnehmerliste wurde erfolgreich übermittelt.</div>";
+                    echo "</div>";
+                    echo "</div>";
 
                 }
             }
