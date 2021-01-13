@@ -186,7 +186,7 @@ if(isset($_POST["Abbrechen"])){
 
 
             //Reservierungsformular muss hier erscheinen
-            echo "<a href='Raumreservierung.php' class='Löschen'>Reservierungsformular</a>";
+            echo '<a href="Raumreservierung.php" type="button" class="Auslösen">Reservierungsformular</a>';
 
 
         }
