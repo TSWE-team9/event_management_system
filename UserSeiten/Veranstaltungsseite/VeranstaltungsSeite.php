@@ -23,6 +23,7 @@ if(isset($_POST["veranstaltung"])){
 }
 
 $V_ID = $_SESSION["V_ID"];
+$V_ID = 37;
 $Bid = $_SESSION['b_id'];
 
 //Abfrage der benötigten Daten
