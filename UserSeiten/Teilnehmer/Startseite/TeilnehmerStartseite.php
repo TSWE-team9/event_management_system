@@ -110,8 +110,8 @@ $B_ID = $_SESSION["b_id"];
     <div id="button"></div>
     <div id="container">
 
-            <a class ="impressum " href="../../Betreiber_Admin/Startseiten/Impressum.php"> Impressum </a>
-            <a class ="agb"   href="../../Betreiber_Admin/Startseiten/AGB.php">AGB</a>
+            <a class ="impressum " href="../footer/Impressum.php"> Impressum </a>
+            <a class ="agb"   href="../footer/AGB.php">AGB</a>
         <h3>Herzlich Willkommen im VMS der Gruppe 9 </h3>
 
 
