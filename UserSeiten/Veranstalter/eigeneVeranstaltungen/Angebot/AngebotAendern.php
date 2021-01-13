@@ -3,6 +3,17 @@ session_start();
 include "../../../send_email.php";
 ?>
 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../../../CSS/Startseite.css" media="screen" />
+        <link rel="stylesheet" href="../../../CSS/popup.css">
+        <title>Angebot</title>
+    </head>
+    <body class="background3">
+    </body>
+    </html>
 <?php
 
 //Verbindung zur Datenbank herstellen
@@ -76,10 +87,5 @@ if(isset($_POST["angebot_aendern"])) {
         echo "Es ist ein Fehler bei der Delete Query aufgetreten";
     } elseif ($res4 === FALSE) {
         echo "Beim Erstellen der neuen Anfrage ist ein Fehler aufgetreten";
-    } else {
-        echo $query_status;
     }
-}
-else{
-    echo "Es ist ein Fehler beim Ändern des Angebots aufgetreten";
 }

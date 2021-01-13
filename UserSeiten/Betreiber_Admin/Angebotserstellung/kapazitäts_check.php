@@ -99,6 +99,7 @@ if(isset($_POST["Kapazitätsprüfung3"])) {
 if(isset($_POST["Ablehnen"])){
 
     $anfrage_id = $_SESSION["BeAr_ID"];
+    $error_occured1 = true;
 
     $status = $conn->query("UPDATE Anfrage_Angebot SET Status = 5 WHERE BeAr_ID = $anfrage_id");
     if($status === FALSE){
@@ -112,14 +113,14 @@ if(isset($_POST["Ablehnen"])){
         echo "</div>" ;
     }
     else {
-        echo "<div class='overlay'>" ;
-        echo  "<div class='popup'>";
-        echo "<h2>Bestätigung</h2>" ;
-        echo "<a class='close' href='Angebotserstellung.php'>&times;</a>" ;
-        echo "<div class='content' >" , 'Die Anfrage wurde erfolgreich abgelehnt ';
+        echo "<div class='overlay'>";
+        echo "<div class='popup'>";
+        echo "<h2>Bestätigung</h2>";
+        echo "<a class='close' href='Angebotserstellung.php'>&times;</a>";
+        echo "<div class='content' >", 'Die Anfrage wurde erfolgreich abgelehnt ';
         echo "</div>";
-        echo "</div>" ;
-        echo "</div>" ;
+        echo "</div>";
+        echo "</div>";
 //        echo "Die Anfrage wurde erfolgreich abgelehnt";
 //        header("Location: Angebotserstellung.php");
     }

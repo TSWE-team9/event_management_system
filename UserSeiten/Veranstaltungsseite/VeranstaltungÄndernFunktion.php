@@ -89,7 +89,7 @@ if (isset($_POST['anmelden'])) {
         '<div class="overlay">
             <div class="popup">
                 <h2 class="hdln">Anmeldung erfolgreich</h2>
-                <a class="close" href="../Teilnehmer/angemeldeteVeranstaltungen/Teilnehmerveranstaltungen.php">&times;</a>
+                <a class="close" href="../Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php">&times;</a>
                 <div class="content">Sie haben sich erfolgreich zu dieser Veranstaltung angemeldet.</div>
             </div>
         </div>';
@@ -137,7 +137,7 @@ if (isset($_POST['abmelden'])) {
         '<div class="overlay">
             <div class="popup">
                 <h2 class="hdln">Abmeldung erfolgreich</h2>
-                <a class="close" href="../Teilnehmer/Startseite/Teilnehmerstartseite.php">&times;</a>
+                <a class="close" href="../Teilnehmer/Startseite/TeilnehmerStartseite.php">&times;</a>
                 <div class="content">Sie haben sich erfolgreich von der Veranstaltung abgemeldet.</div>
             </div>
         </div>';
