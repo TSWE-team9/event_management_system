@@ -1,7 +1,6 @@
 <?php
 session_start();
 include("../send_email.php");
-include("VeranstaltungÄndernFunktion.php");
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -23,7 +22,6 @@ if(isset($_POST["veranstaltung"])){
 }
 
 $V_ID = $_SESSION["V_ID"];
-$V_ID = 37;
 $Bid = $_SESSION['b_id'];
 
 //Abfrage der benötigten Daten
@@ -222,6 +220,7 @@ if($_SESSION["rolle"]==0){
 
 <?php
 //Anzeige für Rolle Teilnehmer
+include("VeranstaltungÄndernFunktion.php");
 if($_SESSION["rolle"]==2){
 ?>
     <?php    include("VeranstaltungÄndernError.php");    ?>
