@@ -65,7 +65,7 @@
                 <input type="text" placeholder="Straße" name="straße" value='<?php echo $_SESSION['Strasse'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
 
                 <label for="hnummer">Hausnummer</label>
-                <input type="text" placeholder="Hausnummer" name="hnummer" value='<?php echo $_SESSION['Hausnummer'];?>' pattern="[A-Za-zäöüÄÖÜ ]{1,50}">
+                <input type="text" placeholder="Hausnummer" name="hnummer" value='<?php echo $_SESSION['Hausnummer'];?>' pattern="[0-9a-z]{1,50}">
 
                 <label for="postleitzahl">Postleitzahl</label>
                 <input type="text" placeholder="Postleitzahl" name="postleitzahl" value='<?php echo $_SESSION['PLZ'];?>' pattern="[0-9]{1,50}">

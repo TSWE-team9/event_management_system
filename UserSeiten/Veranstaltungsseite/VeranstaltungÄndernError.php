@@ -3,7 +3,7 @@
     <div class="overlay">
         <div class="popup">
             <h2 class="hdln">Anmeldung fehlgeschlagen</h2>
-            <a class="close" href="../Teilnehmer/anzeigenAngebot/Teilnehmerangebot.php">&times;</a>
+            <a class="close" href="../Teilnehmer/anzeigenAngebot/TeilnehmerAngebot.php">&times;</a>
             <div class="content">
                 <?php foreach ($errors_anmeldung as $error) : ?>
                     <p><?php echo $error ?></p>
@@ -17,7 +17,7 @@
     <div class="overlay">
         <div class="popup">
             <h2 class="hdln">Abmeldung fehlgeschlagen</h2>
-            <a class="close" href="../Teilnehmer/angemeldeteVeranstaltungen/Teilnehmerveranstaltungen.php">&times;</a>
+            <a class="close" href="../Teilnehmer/angemeldeteVeranstaltungen/TeilnehmerVeranstaltungen.php">&times;</a>
             <div class="content">
                 <?php foreach ($errors_abmeldung as $error) : ?>
                     <p><?php echo $error ?></p>
