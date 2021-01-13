@@ -38,7 +38,7 @@ veranstaltung_refresh();
 
     <!--SQL Abfrage-->
     <?php
-    $query = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1";
+    $query = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1 AND Verfügbarkeit = 1";
     $res = $conn->query($query);
 
     //Wenn nichts gefunden

@@ -42,7 +42,7 @@ veranstaltung_refresh();
 
     <?php
     //Abfrage aller aktiven (Status = 1) Veranstaltungen
-    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1";
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1 AND Verfügbarkeit = 1";
     $res1 = $conn->query($query1);
     if($res1->num_rows == 0){
         echo "<p class='txt'>Es werden zur Zeit keine Veranstaltungen angeboten, zu denen Sie sich anmelden können</P>";
