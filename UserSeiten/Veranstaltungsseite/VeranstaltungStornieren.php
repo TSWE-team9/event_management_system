@@ -69,7 +69,7 @@ if(isset($_POST["Stornieren"])) {
                 $query4 = "DELETE FROM Teilnehmerliste_offen WHERE V_ID = $V_ID";
                 $res4 = $conn->query($query4);
                 if($res4 == FALSE){
-                    $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (offen)";   // Fehler bei leerer Liste TODO
+                    $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (offen)";
                     $error_occured = true;
                 }
             }
@@ -84,7 +84,7 @@ if(isset($_POST["Stornieren"])) {
             $res5 = $conn->query($query5);
 
             if($res5 == FALSE){
-                $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (geschlossen)"; // Fehler kommt bei offender Veranstaltung TODO
+                $error = $error . "<br>" . "Fehler beim Löschen aus der Teilnehmerliste (geschlossen)";
                 $error_occured = true;
             }
         }
@@ -131,8 +131,8 @@ if(isset($_POST["Stornieren"])) {
         echo "<h2 class='hdln'>Bestätigung</h2>" ;
         echo "<a class='close' href=".$href.">&times;</a>" ;
         echo "<div class='content'>Veranstaltung erfolgreich storniert</div>";
-        echo "</div>" ;
-        echo "</div>" ;
+        echo "</div>";
+        echo "</div>";
     }
 
 
