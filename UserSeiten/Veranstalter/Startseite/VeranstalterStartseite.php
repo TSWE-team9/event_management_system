@@ -21,7 +21,7 @@ angebot_refresh();
 veranstaltung_refresh();
 
 //Variablen
-$V_ID = $_SESSION["b_id"];
+$B_ID = $_SESSION["b_id"];
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,7 @@ $V_ID = $_SESSION["b_id"];
 
         <?php
         //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
-        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2";
+        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $B_ID AND Status = 2";
         $res1 = $conn->query($query1);
         $counter = 0;
         if($res1->num_rows == 0){
@@ -66,7 +66,7 @@ $V_ID = $_SESSION["b_id"];
 
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-            <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+            <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
         </form>
         <?php }} ?>
     </div>
@@ -78,7 +78,7 @@ $V_ID = $_SESSION["b_id"];
 
         <?php
         //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten Veranstalters
-        $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
+        $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $B_ID AND Status IN (2, 3)";
         $res4 = $conn->query($query4);
         $counter = 0;
         if($res4->num_rows == 0){

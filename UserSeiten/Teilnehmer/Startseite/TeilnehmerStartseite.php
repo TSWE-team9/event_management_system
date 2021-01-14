@@ -44,8 +44,8 @@ $B_ID = $_SESSION["b_id"];
         <h2 class="hdln">laufende Veranstaltungen</h2>
 
         <?php
-        $query1 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
-                AND T.B_ID = $B_ID AND V.Status IN (2)";
+        $query1 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T ON V.V_ID = T.V_ID 
+                WHERE T.B_ID = $B_ID AND V.Status = 2";
         $res1 = $conn->query($query1);
         $counter = 0;
         if($res1->num_rows == 0){
@@ -62,7 +62,7 @@ $B_ID = $_SESSION["b_id"];
 
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-            <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+            <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
         </form>
         <?php }} ?>
     </div>
@@ -73,8 +73,8 @@ $B_ID = $_SESSION["b_id"];
         <h2 class="hdln">anstehende Veranstaltungen</h2>
 
         <?php
-        $query2 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
-                AND T.B_ID = $B_ID AND V.Status IN (1)";
+        $query2 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T ON V.V_ID = T.V_ID 
+                WHERE T.B_ID = $B_ID AND V.Status 1";
         $res2 = $conn->query($query2);
         $counter = 0;
         if($res2->num_rows == 0){
@@ -91,7 +91,7 @@ $B_ID = $_SESSION["b_id"];
 
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
-            <button type="submit" class="btnveranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
+            <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
         </form>
         <?php }} ?>
     </div>
