@@ -24,7 +24,7 @@ function veranstaltung_refresh(){
     }
 
     //Aktive Veranstaltungen, die bereits begonnen haben werden auf "begonnen" gesetzt
-    $query1 = "SELECT V_ID FROM Veranstaltung WHERE Status = 1 AND date(LOCALTIMESTAMP) > Beginn";
+    $query1 = "SELECT V_ID FROM Veranstaltung WHERE Status = 1 AND date(LOCALTIMESTAMP) >= Beginn";
     $res1 = $conn->query($query1);
     if($res1->num_rows > 0){
         while($i = $res1->fetch_row()){

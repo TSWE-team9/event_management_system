@@ -74,7 +74,7 @@ $B_ID = $_SESSION["b_id"];
 
         <?php
         $query2 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T ON V.V_ID = T.V_ID 
-                WHERE T.B_ID = $B_ID AND V.Status 1";
+                WHERE T.B_ID = $B_ID AND V.Status = 1";
         $res2 = $conn->query($query2);
         $counter = 0;
         if($res2->num_rows == 0){
