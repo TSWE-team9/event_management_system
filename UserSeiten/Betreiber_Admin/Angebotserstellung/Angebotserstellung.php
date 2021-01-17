@@ -25,7 +25,7 @@ if($res->num_rows == 0){
         $href = "../Startseiten/StartseiteBetreiber.php";
     }
     if($_SESSION["rolle"] == 4){
-        $href = "../Startseiten/AdminStartseite.php";
+        $href = "../Startseiten/StartseiteBetreiber.php";
     }
 
 //    Fehlermeldung wenn die Abfrage nicht funktioniert 

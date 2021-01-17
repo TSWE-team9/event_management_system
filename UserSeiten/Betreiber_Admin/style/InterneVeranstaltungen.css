@@ -122,4 +122,8 @@ h3 {
     color: #f45702;
     border-bottom: 2px solid #f45702;
 }
+@media ( max-width: 90em ){ .Auslösen{
+    padding: 0  2em;
+}
 
+}

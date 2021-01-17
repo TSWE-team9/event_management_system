@@ -106,10 +106,15 @@ h1 {
     transition-property: all;
     transition-timing-function: linear;
 }
-
+.container th:hover {
+    box-shadow: none;
+    transform:none ;
+    transition-property: none;
+;
+}
 /*Anpassung der Tabellen an kleinere Displays : */
-/*@media (max-width: 100em) {*/
-/*    .container{*/
-/*       width:50%*/
-/*    }*/
-/*}*/
+@media (max-width: 91em) {
+    .container{
+       width:60%
+    }
+}

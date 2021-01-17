@@ -1,6 +1,6 @@
 .grid-container {
     display: grid;
-    grid-template-columns: 25% 75%;
+    grid-template-columns: 30% 70%;
     margin-top: 10%;
     /*align-items: center;*/
     grid-column-gap: 100px;
