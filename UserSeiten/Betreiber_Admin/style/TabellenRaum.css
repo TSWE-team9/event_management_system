@@ -51,6 +51,7 @@ h1 {
     font-size:1em;
     line-height:0;
     text-align: left;
+
     font-weight: bold;
     color: black;
     min-width: 100px;
@@ -64,6 +65,7 @@ h1 {
     -moz-box-shadow: 0 2px 2px -2px #0E1119;
     box-shadow: 0 2px 2px -2px #0E1119;
     min-width: 30px;
+   padding-right: 1em;
 }
 
 

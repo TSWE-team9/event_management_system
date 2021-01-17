@@ -4,7 +4,7 @@
 
 .header{
     list-style-type: none;
-    overflow: hidden;
+    /*overflow: auto;*/
     background-color: #333 ;
     position: fixed;
     top: 0 ;
@@ -22,8 +22,8 @@
 
 }
 
-.headerel a {
-    display: grid ;
+.headerel a, .dropbtn  {
+    display: inline-block ;
     color: white;
     text-align: center;
     padding: 14px 16px;
@@ -34,10 +34,40 @@
 }
 
 /* Änderung der Farbe des akteuellen Elements bei Hoovering/*/
-.headerel a:hover {
+.headerel a:hover, .dropdown:hover .dropbtn {
     background-color: #111;
 }
 /*Aktuelle Position */
 .active {
     background-color: #f45702 ;
+}
+/*Styyling Drop Down Menü*/
+
+li.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 2;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
