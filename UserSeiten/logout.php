@@ -31,7 +31,7 @@ echo "</div>";
 </html>
 <style>
     body{
-    background: url("Betreiber_Admin/style/door-5831240_1920.jpg") fixed ;
+    background: url("Betreiber_Admin/style/Bild/door-5831240_1920.jpg") fixed ;
        background-size: contain;
         width: 100%;
         height: 100%;

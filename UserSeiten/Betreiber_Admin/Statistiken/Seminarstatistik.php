@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Startseite</title>
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="seminarstatistik.css" media="screen" />
     <title>Seminarstatistik</title>

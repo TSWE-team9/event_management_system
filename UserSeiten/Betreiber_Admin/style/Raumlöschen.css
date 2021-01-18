@@ -1,16 +1,11 @@
 @import url("https://fonts.googleapis.com/css?family=Spartan&display=swap");
 
 body {
-    background: url("Raumlöschen.jpg")  fixed ;
+    background: url("Bild/Raumlöschen.jpg")  fixed ;
     /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
     background-size: cover;
     width: 100vw;
     height: 100vh;
-    /*display: grid;*/
-    /*align-items: center;*/
-    /*justify-items: center;*/
-    /*font-size: 12pt;*/
-    /*font-family: "Spartan", sans-serif;*/
-    /*color: #2A293E;*/
+
 }
 
