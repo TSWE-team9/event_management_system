@@ -1,3 +1,22 @@
+<?php
+session_start();
+include "SeminarstatistikFunktion.php";
+
+$host = '132.231.36.109';
+$db = 'test_vms';
+$user = 'dbuser';
+$pw = 'dbuser123';
+
+$conn = new mysqli($host, $user, $pw, $db,3306);
+
+$_SESSION["Veranstalter1"] = "e";
+$_SESSION["Beginn1"] = "2020-12-25" ;
+$_SESSION["Ende1"] = "2020-12-30" ;
+$ve = $_SESSION["Veranstalter1"];
+$be = $_SESSION["Beginn1"];
+$ee = $_SESSION["Ende1"];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +46,9 @@
         <label for="Auswahl">Veranstalter <em>&#x2a;</em></label>
         <div class="select-wrapper" style="margin-bottom: 3em; width:auto;">
         <select class="auswahl" name="Auswahl" id="Auswahl" style="background: none;">
-            <option value="Veranstalter"></option>
+            <?php for($i = 0; $i<count($_SESSION["V_Array"]); $i++){?>
+                <option value="<?php echo $_SESSION["V_Array"][$i];?>"><?php echo $_SESSION["V_Array"][$i];?> </option>
+            <?php }?>
         </select>
         </div>
         <label for="Startzeitraum">Startzeitraum <em>&#x2a;</em></label><input id="Startzeitraum" name="Startzeitraum" required="" type="date"/>
@@ -89,8 +110,8 @@
         <thead style="color: black; z-index: 6">
         <tr>
         <th>Veranstalter</th>
-        <th>offen</th>
-        <th>geschlossen</th>
+            <!--<th>offen</th>
+            <th>geschlossen</th>-->
         <th>durschnittlicher Preis</th>
         <th>Anzahl der bisherigen Veranstaltungen</th>
         <th>Gesamte Teilnehmer</th>
@@ -100,7 +121,18 @@
     <tbody>
 
 <!--Einfügen der Daten in die Tabelle -->
+<?php $data_query2 = "SELECT AVG(Kosten), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstalterkonto K JOIN Veranstaltung V on K.B_ID=V.Veranstalter Where K.Firma='$ve' and Beginn between '$be' and '$ee' GROUP BY B_ID";
+$res2 = $conn->prepare($data_query2);
+$res2->execute();
+$res2->bind_result($kosten,$count, $summe );
 
+while ($res2->fetch()){
+    echo "<td>$ve</td>"."<td>$kosten</td>"."<td>$count</td>"."<td>$summe</td>";
+}
+
+
+$res2->close();
+ ?>
 <!--    Aufsummierung der offenen und geschlossenen Veranstaltungen -->
 <!-- Durschnittlicher Preis der Veranstaltung eines Veranstalter -->
     <!-- Wie viele Veranstaltungen hat der Veranstalter bisher durchgefüht, also auch laufende Veranstaltungen, aber nicht die stonierten -->
