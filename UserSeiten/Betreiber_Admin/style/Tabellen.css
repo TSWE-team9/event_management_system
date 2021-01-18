@@ -9,7 +9,6 @@ body {
     /*justify-items: center;*/
     /*color:black;*/
     background: url("Bild/HintergrundRaumseite.jpg") fixed ;
-    /*background-size: 100% auto;*/
 }
 /*Css Überschrift der Tabelle*/
 h1 {
@@ -34,10 +33,7 @@ h1 {
     overflow: hidden;
     width: 50%;
     display:  table ;
-        /*align-items: center;*/
-        /*justify-items: center;*/
     padding: 0 0 5em 0;
-    /*muss so sein sonst rutscht tabelle in Raumändern nach oben*/
     margin-top: 20em;
     margin-bottom:15em;
     border: none;

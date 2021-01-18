@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Raumdaten ändern</title>
-    <link rel="stylesheet" type="text/css" href="../style/Buttons.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Button.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />

@@ -48,7 +48,7 @@ if($res->num_rows == 0){
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage für Anfrage</title>
 
-    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />

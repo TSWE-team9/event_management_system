@@ -8,7 +8,7 @@ session_start();
     <meta charset="UTF-8">
     <title>Raumverwaltung</title>
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen">
     <link rel="stylesheet" type="text/css" href="../style/Button.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>

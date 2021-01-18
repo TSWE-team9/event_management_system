@@ -24,7 +24,7 @@ $ee = $_SESSION["Ende1"];
     <title>Startseite</title>
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="seminarstatistik.css" media="screen" />
     <title>Seminarstatistik</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
