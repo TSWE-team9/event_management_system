@@ -15,12 +15,12 @@ while ($i = $res->fetch_row()) {
         array_push($_SESSION["V_Array"], $i[0]);
     }
 // REGISTER USER
-if (isset($_POST['Hinzufügen'])) {
+if (isset($_POST['Statistik'])) {
     $_SESSION["Veranstalter1"] = $_POST['Auswahl'];
     $_SESSION["Beginn1"] = $_POST['Startzeitraum'];
     $_SESSION["Ende1"] = $_POST['Endzeitraum'];
 
-    echo "<br><br>"."test";
-    header("Seminarstatistik.php");
+//    echo "<br><br>"."test";
+//    header("Seminarstatistik.php");
 
 }

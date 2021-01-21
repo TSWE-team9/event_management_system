@@ -9,9 +9,9 @@ $pw = 'dbuser123';
 
 $conn = new mysqli($host, $user, $pw, $db,3306);
 
-$_SESSION["Veranstalter1"] = "e";
-$_SESSION["Beginn1"] = "2020-12-25" ;
-$_SESSION["Ende1"] = "2020-12-30" ;
+//$_SESSION["Veranstalter1"] = "e";
+//$_SESSION["Beginn1"] = "2020-12-25" ;
+//$_SESSION["Ende1"] = "2020-12-30" ;
 $ve = $_SESSION["Veranstalter1"];
 $be = $_SESSION["Beginn1"];
 $ee = $_SESSION["Ende1"];
@@ -34,8 +34,8 @@ $ee = $_SESSION["Ende1"];
 <?php include '../Header/header.php'; ?>
 <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
 <div class="grid-container">
-    <div class="grid-item"
-<form>
+    <div class="grid-item">
+<form action="Seminarstatistik.php"  method="post">
     <div class="contact-us" >
         <h1> Seminarstatistik</h1>
         <!-- Fomular Spalten -->
@@ -53,46 +53,8 @@ $ee = $_SESSION["Ende1"];
         </div>
         <label for="Startzeitraum">Startzeitraum <em>&#x2a;</em></label><input id="Startzeitraum" name="Startzeitraum" required="" type="date"/>
         <label for="Endzeitraum">Endzeitraum <em>&#x2a;</em></label><input id="Endzeitraum" name="Endzeitraum" required="" type="date"/>
-<!---->
-<!--        <label for="Auswahl">Startzeitraum <em>&#x2a;</em></label>-->
-<!--            <select class="auswahl" name="Auswahl" id="Auswahl" style="background: none;">-->
-<!--                <option value="Januar">Januar</option>-->
-<!--                <option value="Februar">Februar</option>-->
-<!--                <option value="März">März</option>-->
-<!--                <option value="April">April</option>-->
-<!--                <option value="Mai">Mai</option>-->
-<!--                <option value="Juni">Juni</option>-->
-<!--                <option value="Juli">Juli</option>-->
-<!--                <option value="August">August</option>-->
-<!--                <option value="September">September</option>-->
-<!--                <option value="Oktober">Oktober</option>-->
-<!--                <option value="November">November</option>-->
-<!--                <option value="Dezember">Dezember</option>-->
-<!--            </select>-->
-<!--        <div class="select-wrapper">-->
-<!--                <label for="Auswahl">Endzeitraum <em>&#x2a;</em></label>-->
-<!--                <select class="auswahl" name="Auswahl" id="Auswahl" style="background: none; margin-bottom: 1em; ">-->
-<!--                    <option value="Januar">Januar</option>-->
-<!--                    <option value="Februar">Februar</option>-->
-<!--                    <option value="März">März</option>-->
-<!--                    <option value="April">April</option>-->
-<!--                    <option value="Mai">Mai</option>-->
-<!--                    <option value="Juni">Juni</option>-->
-<!--                    <option value="Juli">Juli</option>-->
-<!--                    <option value="August">August</option>-->
-<!--                    <option value="September">September</option>-->
-<!--                    <option value="Oktober">Oktober</option>-->
-<!--                    <option value="November">November</option>-->
-<!--                    <option value="Dezember">Dezember</option>-->
-<!--                </select>-->
-<!--            <label for="Auswahl">Jahr <em>&#x2a;</em></label>-->
-<!--            <select class="auswahl" name="Auswahl" id="Auswahl" style="background: none;">-->
-<!--                <option value=""> 2020</option>-->
-<!--                <option value=""> 2021</option>-->
-<!--                <option value=""> 2022</option>-->
-<!--            </select>-->
-<!--        </div>-->
-        <button type="submit" class="Auslösen" name="Hinzufügen" style="margin-top: 0"> Abfragen</button>
+
+        <button type="submit" class="Auslösen" name="Seminar" style="margin-top: 0"> Abfragen</button>
         </div>
 
 

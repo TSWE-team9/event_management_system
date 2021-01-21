@@ -303,7 +303,7 @@ if($status) {
 <script>document.getElementById("Reiter_Abrechnung").classList.add("active");  </script>
 
 <div class="contact-us">
-    <img src="vmslogo.png" width="600px"  height="150px" style="margin-bottom: 2em;padding-left: 1em " >
+    <img src="../style/Bild/vmslogo.png" width="600px" height="150px" style="margin-bottom: 2em;padding-left: 1em " >
     <h1>Rechnung </h1>
     <!-- Fomular  mit Angaben aller Rechnungsdaten-->
     <h3>
