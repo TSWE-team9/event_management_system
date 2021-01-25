@@ -7,10 +7,10 @@ $pw = 'dbuser123';
 
 $conn = new mysqli($host, $user, $pw, $db,3306);
 
-$_SESSION["V_Array"] = array();
-$data_query = "SELECT Firma FROM Veranstalterkonto";
+$_SESSION["R_Array"] = array();
+$data_query = "SELECT Bezeichnung FROM Raum";
 $res = $conn->query($data_query);
 
 while ($i = $res->fetch_row()) {
-        array_push($_SESSION["V_Array"], $i[0]);
-    }
+    array_push($_SESSION["R_Array"], $i[0]);
+}

@@ -9,12 +9,6 @@ $pw = 'dbuser123';
 
 $conn = new mysqli($host, $user, $pw, $db,3306);
 
-//$_SESSION["Veranstalter1"] = "e";
-//$_SESSION["Beginn1"] = "2020-12-25" ;
-//$_SESSION["Ende1"] = "2020-12-30" ;
-$ve = $_SESSION["Veranstalter1"];
-$be = $_SESSION["Beginn1"];
-$ee = $_SESSION["Ende1"];
 ?>
 
 <!DOCTYPE html>
@@ -83,18 +77,26 @@ $ee = $_SESSION["Ende1"];
     <tbody>
 
 <!--Einfügen der Daten in die Tabelle -->
-<?php $data_query2 = "SELECT AVG(Kosten), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstalterkonto K JOIN Veranstaltung V on K.B_ID=V.Veranstalter Where K.Firma='$ve' and Beginn between '$be' and '$ee' GROUP BY B_ID";
+<?php
+if (isset($_POST['Seminar'])) {
+    $firma1 = $_POST['Auswahl'];
+    $start1 = $_POST['Startzeitraum'];
+    $ende1 = $_POST['Endzeitraum'];
+//    header("Seminarstatistik.php");
+
+
+$data_query2 = "SELECT ROUND(AVG(Kosten)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstalterkonto K JOIN Veranstaltung V on K.B_ID=V.Veranstalter Where K.Firma='$firma1' and Beginn between '$start1' and '$ende1' GROUP BY B_ID";
 $res2 = $conn->prepare($data_query2);
 $res2->execute();
 $res2->bind_result($kosten,$count, $summe );
 
 while ($res2->fetch()){
-    echo "<td>$ve</td>"."<td>$kosten</td>"."<td>$count</td>"."<td>$summe</td>";
+    echo "<td>$ve</td>"."<td>$kosten"."€"."</td>"."<td>$count</td>"."<td>$summe</td>";
 }
 
 
 $res2->close();
- ?>
+}?>
 <!--    Aufsummierung der offenen und geschlossenen Veranstaltungen -->
 <!-- Durschnittlicher Preis der Veranstaltung eines Veranstalter -->
     <!-- Wie viele Veranstaltungen hat der Veranstalter bisher durchgefüht, also auch laufende Veranstaltungen, aber nicht die stonierten -->

@@ -1,3 +1,16 @@
+<?php
+session_start();
+include "RaumauslastungFunktion.php";
+
+$host = '132.231.36.109';
+$db = 'test_vms';
+$user = 'dbuser';
+$pw = 'dbuser123';
+
+$conn = new mysqli($host, $user, $pw, $db,3306);
+$temp = FALSE;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +47,9 @@
             <div class="select-wrapper" style="margin-bottom: 3em; width:auto;">
 
                 <select class="auswahl" name="Auswahl" id="Auswahl" style="background: none;">
-                    <option value=""></option>
+                    <?php for($i = 0; $i<count($_SESSION["R_Array"]); $i++){?>
+                        <option value="<?php echo $_SESSION["R_Array"][$i];?>"><?php echo $_SESSION["R_Array"][$i];?> </option>
+                    <?php }?>
                 </select>
             </div>
             <!-- Auswahl des gewünschten Zeitraumes        -->
@@ -56,8 +71,32 @@
     var barChart= new Chart(chart, {
         type: 'doughnut',
         //Definieren der verwendeten Daten
+        <?php
+        if (isset($_POST['Hinzufügen'])) {
+            $raum1 = $_POST['Auswahl'];
+            $start1 = $_POST['Startzeitraum'];
+            $ende1 = $_POST['Endzeitraum'];
+            $temp = TRUE;
+
+
+            $data_query2 = "SELECT SUM(Kapazitaet), SUM(Teilnehmer_akt) FROM Raum R JOIN Veranstaltung V on R.R_ID=V.Ort Where R.Bezeichnung='$raum1' and Beginn between '$start1' and '$ende1' GROUP BY R_ID";
+            $res2 = $conn->prepare($data_query2);
+            $res2->execute();
+            $res2->bind_result($kapa,$count);
+
+            while ($res2->fetch()){
+                $kapa1 = $kapa-$count;
+                $kapa2 = $count;
+
+            }
+
+
+            $res2->close();
+        }?>
         data: {
+            <?php if($temp){?>
             labels: ["belegt", "freie Kapazität"],
+            <?php }?>
             datasets: [
                 {
                     label:"Raumauslastung",
@@ -65,8 +104,9 @@
                     backgroundColor: ["#f45702"],
             //Wert 1 : Raumbelegung innerhalb des ausgewählten Zeitraumes in Prozent
                     //Wert 2: 100% - belegter Zeitraum in % = freie Kapazität in %
-                    data: [59, 100-59]
+                    data: [<?php echo $kapa2?>, <?php echo $kapa1?>]
                 }
+
 
             ],
 
