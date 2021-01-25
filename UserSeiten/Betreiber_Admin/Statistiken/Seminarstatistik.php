@@ -20,6 +20,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
     <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="seminarstatistik.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <title>Seminarstatistik</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
@@ -84,19 +85,60 @@ if (isset($_POST['Seminar'])) {
     $ende1 = $_POST['Endzeitraum'];
 //    header("Seminarstatistik.php");
 
+    $check_query = "SELECT DATEDIFF('$ende1','$start1')";
+    $res1 = $conn->prepare($check_query);
+    $res1->execute();
+    $res1->bind_result($count);
+    $res1->fetch();
+    $res1->close();
 
-$data_query2 = "SELECT Veranstalter,ROUND(AVG(Dauer)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstaltung Where Veranstalter='$firma1' and Beginn between '$start1' and '$ende1' GROUP BY Veranstalter";
-$res2 = $conn->prepare($data_query2);
-$res2->execute();
-$res2->bind_result($veranstalter,$dauer,$count, $summe );
 
-while ($res2->fetch()){
+    $data_query2 = "SELECT Veranstalter,ROUND(AVG(Dauer)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstaltung Where Veranstalter='$firma1' and Beginn BETWEEN '$start1' AND '$ende1' GROUP BY Veranstalter";
+    $res2 = $conn->prepare($data_query2);
+    $res2->execute();
+    $res2->bind_result($veranstalter,$dauer,$count, $summe );
+
+    while ($res2->fetch()){
     echo "<td>$veranstalter</td>"."<td>$dauer</td>"."<td>$count"."</td>"."<td>$summe"."</td>";
-}
+    }
 
-if(mysqli_num_rows($res2)==0){
-//TODO: Fehlermeldung
-}
+    //Fehlerausgabe wenn Ende vor Start
+    if($count < 0){
+        $text = "Endzeitraum liegt vor Startzeitraum";
+
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='Seminarstatistik.php'>&times;</a>" ;
+        echo "<div class='content'>".$text."</div>";
+        echo "</div>" ;
+        echo "</div>" ;
+    }
+
+    elseif($count == 0){
+        $text = "Startzeitraum und Endzeitraum sind ident";
+
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='Seminarstatistik.php'>&times;</a>" ;
+        echo "<div class='content'>".$text."</div>";
+        echo "</div>" ;
+        echo "</div>" ;
+    }
+
+    elseif(mysqli_num_rows($res2)==0){
+
+    $text = "Veranstalter hat in diesem Zeitraum keine Veranstaltungen gebucht";
+
+    echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+    echo "<h2>Fehler</h2>" ;
+    echo "<a class='close' href='Seminarstatistik.php'>&times;</a>" ;
+    echo "<div class='content'>".$text."</div>";
+    echo "</div>" ;
+    echo "</div>" ;
+    }
 
 
 $res2->close();

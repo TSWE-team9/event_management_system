@@ -20,6 +20,7 @@ $temp = FALSE;
     <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="seminarstatistik.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <title>Raumauslastung</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 <!--    Einbindung von Chart.js für das Diagramm-->
@@ -79,11 +80,17 @@ $temp = FALSE;
             $temp = TRUE;
 
 
-            $data_query1 = "SELECT DATEDIFF('$ende1','$start1') from Kalender";
+            $data_query1 = "SELECT DATEDIFF('$ende1','$start1')";
             $res1 = $conn->prepare($data_query1);
             $res1->execute();
             $res1->bind_result($count);
+            $res1->fetch();
             $res1->close();
+
+            if($count == 0){
+                $count = 1;
+            }
+
 
             $data_query2 = "SELECT SUM(DATEDIFF(Bis+1,Von)) FROM Kalender WHERE R_ID=(SELECT R_ID FROM Raum WHERE Bezeichnung='$raum1') And Status=1 Group by R_ID";
             $res2 = $conn->prepare($data_query2);
@@ -93,16 +100,15 @@ $temp = FALSE;
             while ($res2->fetch()){
                 $kapa1 = $kapa;
                 $kapa2 = $count-$kapa;
-
             }
-            if(mysqli_num_rows($res2)==0){
-             $kapa1=0;
-             $kapa2=$count;
-
-            }
-
-
             $res2->close();
+
+            if(mysqli_num_rows($res2)==0){
+             $kapa1= 0;
+             $kapa2= $count;
+            }
+
+
         }?>
         data: {
             <?php if($temp){?>
@@ -115,7 +121,7 @@ $temp = FALSE;
                     backgroundColor: ["#f45702"],
             //Wert 1 : Raumbelegung innerhalb des ausgewählten Zeitraumes in Prozent
                     //Wert 2: 100% - belegter Zeitraum in % = freie Kapazität in %
-                    data: [<?php echo $kapa1?>, <?php echo $kapa2?>]
+                    data: [<?php echo $kapa1;?>, <?php echo $kapa2?>]
                 }
 
 
@@ -166,6 +172,19 @@ $temp = FALSE;
 
 
 </script>
+<?php
+if($count < 0){
+
+    $text = "Endzeitraum liegt vor Startzeitraum";
+
+echo "<div class='overlay'>" ;
+    echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='Raumauslastung.php'>&times;</a>" ;
+        echo "<div class='content'>".$text."</div>";
+        echo "</div>" ;
+    echo "</div>" ;
+}?>
 
     </div>
 </body>
