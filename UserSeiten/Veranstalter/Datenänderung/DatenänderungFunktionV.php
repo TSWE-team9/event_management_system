@@ -10,6 +10,7 @@ $errors_p = array();
 $errors_e = array();
 $errors_d = array();
 $errors_del = array();
+$notin = False;
 
 //datenbankverbindung
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');
@@ -67,8 +68,15 @@ if (isset($_POST['änderung_email_user_v'])) {
     $email_1 = mysqli_real_escape_string($db, $_POST['email1']);
     $email_2 = mysqli_real_escape_string($db, $_POST['email2']);
 
-    if ($email_1 != $email_2) {
-        array_push($errors_e, "The two new Emails do not match");
+    $query2 = "Select E_mail from Benutzerkonto WHERE E_mail='email_1'";
+    $res1 = mysqli_query($db, $query);
+
+    if(mysqli_num_rows($res1) == 0){
+        $notin = True;
+    }
+
+    if ($email_1 != $email_2 or $notin==False) {
+        array_push($errors_e, "The two new Emails do not match or are already in use");
     }else {
         $query = "Update Benutzerkonto Set E_mail='$email_1' Where B_ID=$curr_bid";
         mysqli_query($db, $query);
