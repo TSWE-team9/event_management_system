@@ -1,7 +1,7 @@
 <?php
 
 $host = '132.231.36.109';
-$db = 'test_vms';
+$db = 'vms_db';
 $user = 'dbuser';
 $pw = 'dbuser123';
 

@@ -3,7 +3,7 @@ session_start();
 include "RaumauslastungFunktion.php";
 
 $host = '132.231.36.109';
-$db = 'test_vms';
+$db = 'vms_db';
 $user = 'dbuser';
 $pw = 'dbuser123';
 
@@ -79,15 +79,18 @@ $temp = FALSE;
             $temp = TRUE;
 
 
-            $data_query2 = "SELECT SUM(Kapazitaet), SUM(Teilnehmer_akt) FROM Raum R JOIN Veranstaltung V on R.R_ID=V.Ort Where R.Bezeichnung='$raum1' and Beginn between '$start1' and '$ende1' GROUP BY R_ID";
+            $data_query2 = "SELECT SUM(DATEDIFF(Bis+1,Von)), DATEDIFF('$ende1','$start1') FROM Kalender WHERE R_ID=(SELECT R_ID FROM Raum WHERE Bezeichnung='$raum1') And Status=1 Group by R_ID";
             $res2 = $conn->prepare($data_query2);
             $res2->execute();
             $res2->bind_result($kapa,$count);
 
             while ($res2->fetch()){
-                $kapa1 = $kapa-$count;
-                $kapa2 = $count;
+                $kapa1 = $kapa;
+                $kapa2 = $count-$kapa;
 
+            }
+            if(mysqli_num_rows($res2)==0){
+            //TODO: Fehlermeldung
             }
 
 
@@ -104,7 +107,7 @@ $temp = FALSE;
                     backgroundColor: ["#f45702"],
             //Wert 1 : Raumbelegung innerhalb des ausgewählten Zeitraumes in Prozent
                     //Wert 2: 100% - belegter Zeitraum in % = freie Kapazität in %
-                    data: [<?php echo $kapa2?>, <?php echo $kapa1?>]
+                    data: [<?php echo $kapa1?>, <?php echo $kapa2?>]
                 }
 
 

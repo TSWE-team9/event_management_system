@@ -3,7 +3,7 @@ session_start();
 include "SeminarstatistikFunktion.php";
 
 $host = '132.231.36.109';
-$db = 'test_vms';
+$db = 'vms_db';
 $user = 'dbuser';
 $pw = 'dbuser123';
 
@@ -41,7 +41,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
         <div class="select-wrapper" style="margin-bottom: 3em; width:auto;">
         <select class="auswahl" name="Auswahl" id="Auswahl" style="background: none;">
             <?php for($i = 0; $i<count($_SESSION["V_Array"]); $i++){?>
-                <option value="<?php echo $_SESSION["V_Array"][$i];?>"><?php echo $_SESSION["V_Array"][$i];?> </option>
+                <option value="<?php echo $_SESSION["V_Array"][$i];?>"><?php echo $_SESSION["V_Array"][$i]." ".$_SESSION["F_Array"][$i];?> </option>
             <?php }?>
         </select>
         </div>
@@ -68,7 +68,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
         <th>Veranstalter</th>
             <!--<th>offen</th>
             <th>geschlossen</th>-->
-        <th>durschnittlicher Preis</th>
+        <th>durchschnittliche Dauer</th>
         <th>Anzahl der bisherigen Veranstaltungen</th>
         <th>Gesamte Teilnehmer</th>
         </tr>
@@ -85,13 +85,17 @@ if (isset($_POST['Seminar'])) {
 //    header("Seminarstatistik.php");
 
 
-$data_query2 = "SELECT ROUND(AVG(Kosten)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstalterkonto K JOIN Veranstaltung V on K.B_ID=V.Veranstalter Where K.Firma='$firma1' and Beginn between '$start1' and '$ende1' GROUP BY B_ID";
+$data_query2 = "SELECT Veranstalter,ROUND(AVG(Dauer)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstaltung Where Veranstalter='$firma1' and Beginn between '$start1' and '$ende1' GROUP BY Veranstalter";
 $res2 = $conn->prepare($data_query2);
 $res2->execute();
-$res2->bind_result($kosten,$count, $summe );
+$res2->bind_result($veranstalter,$dauer,$count, $summe );
 
 while ($res2->fetch()){
-    echo "<td>$ve</td>"."<td>$kosten"."€"."</td>"."<td>$count</td>"."<td>$summe</td>";
+    echo "<td>$veranstalter</td>"."<td>$dauer</td>"."<td>$count"."</td>"."<td>$summe"."</td>";
+}
+
+if(mysqli_num_rows($res2)==0){
+//TODO: Fehlermeldung
 }
 
 
