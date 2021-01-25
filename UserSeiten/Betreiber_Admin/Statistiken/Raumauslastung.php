@@ -79,10 +79,16 @@ $temp = FALSE;
             $temp = TRUE;
 
 
-            $data_query2 = "SELECT SUM(DATEDIFF(Bis+1,Von)), DATEDIFF('$ende1','$start1') FROM Kalender WHERE R_ID=(SELECT R_ID FROM Raum WHERE Bezeichnung='$raum1') And Status=1 Group by R_ID";
+            $data_query1 = "SELECT DATEDIFF('$ende1','$start1') from Kalender";
+            $res1 = $conn->prepare($data_query1);
+            $res1->execute();
+            $res1->bind_result($count);
+            $res1->close();
+
+            $data_query2 = "SELECT SUM(DATEDIFF(Bis+1,Von)) FROM Kalender WHERE R_ID=(SELECT R_ID FROM Raum WHERE Bezeichnung='$raum1') And Status=1 Group by R_ID";
             $res2 = $conn->prepare($data_query2);
             $res2->execute();
-            $res2->bind_result($kapa,$count);
+            $res2->bind_result($kapa);
 
             while ($res2->fetch()){
                 $kapa1 = $kapa;
@@ -90,7 +96,9 @@ $temp = FALSE;
 
             }
             if(mysqli_num_rows($res2)==0){
-            //TODO: Fehlermeldung
+             $kapa1=0;
+             $kapa2=$count;
+
             }
 
 
