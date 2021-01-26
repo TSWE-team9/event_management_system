@@ -54,7 +54,7 @@ $V_ID = $_SESSION["b_id"];
 
     <?php
     //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
-    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2";
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2 ORDER BY Beginn";
     $res1 = $conn->query($query1);
     if($res1->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine aktuellen Veranstaltungen</P>";
@@ -81,7 +81,7 @@ $V_ID = $_SESSION["b_id"];
     <?php
     //Abfrage aller aktiven (Status = 1) Veranstaltungen des Veranstalters
 
-    $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 1";
+    $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 1 ORDER BY Beginn";
     $res2 = $conn->query($query2);
     if($res2->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine geplanten Veranstaltungen</P>";
@@ -107,7 +107,7 @@ $V_ID = $_SESSION["b_id"];
     <?php
     //Abfrage aller abgelaufenen (Status = 3) Veranstaltungen des Veranstalters
 
-    $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 3";
+    $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 3 ORDER BY Beginn";
     $res3 = $conn->query($query3);
     if($res3->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine abgeschlossenen Veranstaltungen</P>";
@@ -132,7 +132,7 @@ $V_ID = $_SESSION["b_id"];
 
     <?php
     //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten Veranstalters
-    $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
+    $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3) ORDER BY Beginn";
     $res4 = $conn->query($query4);
     if($res4->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine Angebote des Betreibers</P>";

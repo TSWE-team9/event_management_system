@@ -1,7 +1,7 @@
 <?php echo
 '<nav>
     <ul class="header">
-        <li class="headerel"><a class= "active" href="../../Betreiber_Admin/Startseiten/AdminStartseite.php" >Startseite</a></li>
+        <li class="headerel"><a class= "active" href="../../Betreiber_Admin/Startseiten/StartseiteBetreiber.php" >Startseite</a></li>
         <li class="headerel"><a  href="../../Betreiber_Admin/Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
         <li class="headerel"><a href="../../Betreiber_Admin/Abrechnung/AbrechnungsSeite.php">Abrechnung</a></li>
         <li class="headerel"><a  href="../../Betreiber_Admin/Raumverwaltung/Raumverwaltung.php">Raumverwaltung</a></li>

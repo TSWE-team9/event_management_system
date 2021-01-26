@@ -48,7 +48,7 @@ $B_ID = $_SESSION["b_id"];
 
         <?php
         //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
-        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $B_ID AND Status = 2";
+        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $B_ID AND Status = 2 ORDER BY Beginn";
         $res1 = $conn->query($query1);
         $counter = 0;
         if($res1->num_rows == 0){

@@ -42,7 +42,7 @@ $B_ID = $_SESSION["b_id"];
 
     <?php
     $query1 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
-                AND T.B_ID = $B_ID AND V.Status IN (1, 2)";
+                AND T.B_ID = $B_ID AND V.Status IN (1, 2) ORDER BY V.Beginn";
     $res1 = $conn->query($query1);
     if($res1->num_rows == 0){
         echo "<p class='txt'>Sie sind zur Zeit zu keinen Veranstaltungen angemeldet.</p>";

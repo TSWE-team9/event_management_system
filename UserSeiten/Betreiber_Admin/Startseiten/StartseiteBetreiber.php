@@ -32,7 +32,7 @@ veranstaltung_refresh();
     <div id="aktuelle" class="tabcontent" style="margin-left: 15em">
         <h3 style="text-align: center;">Kommende Veranstaltungen</h3>
         <?php
-        $query_check = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status=1";
+        $query_check = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status=1 ORDER BY Beginn";
         $res_check = $conn->query($query_check);
         if($res_check->num_rows == 0){
             echo "<p class='txt'>Es gibt derzeit keine geplanten Veranstaltungen.</p>";

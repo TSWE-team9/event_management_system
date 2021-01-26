@@ -248,7 +248,7 @@ switch ($_SESSION["rolle"]){
                         $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
                     }
                     if($_SESSION["rolle"] == 4){
-                        $href = "../Betreiber_Admin/Startseiten/AdminStartseite.php";
+                        $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
                     }
 
                     // Nachricht erfolgreiche Abmeldung
