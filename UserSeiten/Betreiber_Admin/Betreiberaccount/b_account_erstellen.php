@@ -92,9 +92,9 @@ if(isset($_POST["erstellen"])){
     <meta charset="utf-8"/>
     <title>BetreiberAccount</title>
 
-    <link rel="stylesheet" type="text/css" href="../style/Raumverwaltung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Button.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/Buttons.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <!--    Einbinden von icons-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>

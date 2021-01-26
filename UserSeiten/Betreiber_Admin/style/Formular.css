@@ -7,7 +7,7 @@
 }
 /*Styling Formualar und Eingabefelder*/
 body {
-    background: url("HintergrundRaum.png")  fixed ;
+    background: url("Bild/HintergrundRaum.png")  fixed ;
     /*https://pixabay.com/de/photos/tabellen-st%C3%BChle-m%C3%B6bel-drinnen-2181979/*/
     background-size: cover;
     width: 100vw;
@@ -50,6 +50,7 @@ h3 {
 h1 {
     text-align: center;
     margin-bottom: 20px;
+    font-family: "Spartan", sans-serif;
 }
 span {
     font-size: 8pt;
@@ -195,4 +196,8 @@ textarea:-webkit-autofill:focus {
     position: relative;
     width:30em;
     margin-bottom: 6em; }
-
+@media all and (max-width: 100em ) {
+    .contact-us {
+        margin-top: 6em;
+    }
+}

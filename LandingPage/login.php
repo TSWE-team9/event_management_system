@@ -55,7 +55,7 @@ if(isset($_POST["login_submit"])){
                 break;
             //Admin ist Rolle 4
             case 4:
-                header("Location: ../UserSeiten/Betreiber_Admin/Startseiten/AdminStartseite.php");
+                header("Location: ../UserSeiten/Betreiber_Admin/Startseiten/StartseiteBetreiber.php");
                 break;
         }
 
