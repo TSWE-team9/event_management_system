@@ -76,7 +76,7 @@ if (isset($_POST['änderung_email_user_v'])) {
     }
 
     if ($email_1 != $email_2 or $notin==False) {
-        array_push($errors_e, "The two new Emails do not match or are already in use");
+        array_push($errors_e, "Die zwei E-Mail Adressen stimmen nicht überein oder sind bereits im System registriert");
     }else {
         $query = "Update Benutzerkonto Set E_mail='$email_1' Where B_ID=$curr_bid";
         mysqli_query($db, $query);
