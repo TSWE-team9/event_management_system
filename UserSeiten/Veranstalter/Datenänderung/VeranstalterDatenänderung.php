@@ -20,6 +20,7 @@
     <?php if (count($errors_p) > 0){include('errorsDatenänderungV.php');} ?>
     <?php if (count($errors_e) > 0){include('errorsDatenänderungV.php');} ?>
     <?php if (count($errors_d) > 0){include('errorsDatenänderungV.php');} ?>
+    <?php if (count($errors_del) > 0){include('errorsDatenänderungV.php');}?>
 
     <button class="accordion">Passwort ändern</button>
         <div class="panel">
@@ -96,7 +97,7 @@
                 </div>
             </div>
         </form>
-        <?php if (count($errors_del) > 0){include('errorsDatenänderungV.php');} //TODO Weiterleitung!?>
+        <?php if (count($errors_del) > 0){include('errorsDatenänderungV.php');}?>
     </div>
 </div>
 

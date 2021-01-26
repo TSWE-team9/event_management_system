@@ -139,10 +139,22 @@ if($error_occured){
     echo  "<div class='popup'>";
     echo "<h2>Fehler</h2>" ;
     echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
-    echo "<div class='content'>" .$error. "</div>";
-    echo "</div>" ;
-    echo "</div>" ;
+    echo "<div class='content' style='margin-bottom: 0px;'>" .$error. "</div>";
 
+    echo "<div class='mantel' style='margin-top: 0px;'>" ;
+    echo "<table border=\"1\" class='container' style='margin: 2em 2em 2em 0;'>";
+    echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
+    while($i = $res2->fetch_row()){
+        echo "<tr>";
+        foreach ($i as $item){
+            echo "<td>$item</td>";
+        }
+        echo "</tr>\n";
+    }
+    echo "</table>\n";
+
+    echo "</div>" ;
+    echo "</div>" ;
 }
 if($status) {
 
@@ -188,7 +200,7 @@ if($show_table){
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
         <label for="Raumbezeichnung">Raumbezeichnung (nur Buchstaben / Leerzeichen und "-") <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text" maxlength="30"/>
-        <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="0" />
+        <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="1" />
         <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
         <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
 

@@ -9,6 +9,7 @@ $curr_bid = $_SESSION["b_id"];
 $errors_p = array();
 $errors_e = array();
 $errors_d = array();
+$errors_del = array();
 
 //datenbankverbindung
 $db = mysqli_connect('132.231.36.109', 'dbuser', 'dbuser123', 'vms_db');

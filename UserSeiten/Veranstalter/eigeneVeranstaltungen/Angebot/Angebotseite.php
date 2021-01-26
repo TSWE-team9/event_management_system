@@ -150,7 +150,7 @@ if(isset($_POST["angebot_ablehnen"])){
             <form class="modal_content" action="Angebotseite.php" method="post">
                 <div class="modal_container">
                     <h1>Angebot ablehnen</h1>
-                    <p>Wollen Sie das Angebot wircklich ablehnen?</p>
+                    <p>Wollen Sie das Angebot wirklich ablehnen?</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
                         <button class="modal_btnconfirm" type="submit" name="angebot_ablehnen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>

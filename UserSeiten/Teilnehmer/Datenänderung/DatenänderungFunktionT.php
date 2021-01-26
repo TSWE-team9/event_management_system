@@ -121,7 +121,7 @@ if (isset($_POST['acc_löschen'])) {
         </div>';
 
     }else{
-        array_push($errors_del, "Bitte melden Sie sich zu allen Veranstaltugen ab, um ihr Benutzerkonto zu löschen!");
+        array_push($errors_del, "Bitte melden Sie sich zu allen Veranstaltungen ab, um ihr Benutzerkonto zu löschen!");
     };
 
 

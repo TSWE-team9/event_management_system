@@ -21,6 +21,8 @@
     <?php if (count($errors_p) > 0){include('errorsDatenänderung.php');} ?> 
     <?php if (count($errors_e) > 0){include('errorsDatenänderung.php');} ?>
     <?php if (count($errors_d) > 0){include('errorsDatenänderung.php');} ?>
+    <?php if (count($errors_del) > 0){include('errorsDatenänderung.php');} ?>
+
     <button class="accordion">Passwort ändern</button>
         <div class="panel">
             <form action="#" method="post">
