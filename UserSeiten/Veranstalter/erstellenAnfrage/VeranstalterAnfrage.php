@@ -124,7 +124,7 @@ if($error == false) {
                 <label for="anmerkungen">Anmerkungen</label>
             </div>
             <div class="col-75">
-                <textarea name="anmerkungen" id="subject" placeholder="Anmerkungen" cols="30" rows="10" maxlength="300"></textarea>
+                <textarea name="anmerkungen" id="subject" placeholder="Anmerkungen maximal 300 Zeichen" cols="30" rows="10" maxlength="300"></textarea>
             </div>
         </div>
         <div class="row">

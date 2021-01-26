@@ -32,10 +32,10 @@
                 <input type="password" placeholder="altes Passwort" name="passwortalt" pattern=".{10,50}" required>
 
                 <label for="passwortneu1">neues Passwort</label>
-                <input type="password" placeholder="neues Passwort" name="passwortneu1" pattern=".{10,50}" required>
+                <input type="password" placeholder="neues Passwort mindestens 10 Zeichen" name="passwortneu1" pattern=".{10,50}" required>
 
                 <label for="passwortneu2">neues Passwort</label>
-                <input type="password" placeholder="neues Passwort" name="passwortneu2" pattern=".{10,50}" required>
+                <input type="password" placeholder="neues Passwort mindestens 10 Zeichen" name="passwortneu2" pattern=".{10,50}" required>
                 <br>
                 <button class="button" type="submit" name="änderung_pw_user_v">Passwort ändern</button>
             </form>

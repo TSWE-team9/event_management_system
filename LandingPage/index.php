@@ -63,10 +63,10 @@ include('passwort_vergessen.php');
                   <input type="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
 
                   <label for="passwort">Passwort</label>
-                  <input type="password" placeholder="Passwort" name="passwort_1" pattern=".{10,50}" required>
+                  <input type="password" placeholder="Passwort mindestens 10 Zeichen" name="passwort_1" pattern=".{10,50}" required>
 
                   <label for="passwort">Passwort</label>
-                  <input type="password" placeholder="Passwort" name="passwort_2" pattern=".{10,50}" required>
+                  <input type="password" placeholder="Passwort mindestens 10 Zeichen" name="passwort_2" pattern=".{10,50}" required>
 
                   <label for="vorname">Vorname</label>
                   <input type="text" placeholder="Vorname" name="vorname" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>
@@ -115,10 +115,10 @@ include('passwort_vergessen.php');
                   <input type="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
 
                   <label for="passwort">Passwort</label>
-                  <input type="password" placeholder="Passwort" name="passwort_1" pattern=".{10,50}" required>
+                  <input type="password" placeholder="Passwort mindestens 10 Zeichen" name="passwort_1" pattern=".{10,50}" required>
 
                   <label for="passwort">Passwort</label>
-                  <input type="password" placeholder="Passwort" name="passwort_2" pattern=".{10,50}" required>
+                  <input type="password" placeholder="Passwort mindestens 10 Zeichen" name="passwort_2" pattern=".{10,50}" required>
 
                   <label for="vorname">Vorname</label>
                   <input type="text" placeholder="Vorname" name="vorname" pattern="[A-Za-zäöüÄÖÜ ]{1,50}" required>

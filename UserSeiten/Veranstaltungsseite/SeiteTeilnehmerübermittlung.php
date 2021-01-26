@@ -69,8 +69,10 @@ switch ($_SESSION["rolle"]){
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
     <p class="txt">Um eine Teilnehmerliste von einer Excel Datei zu importieren, wählen Sie zuerst die Datei aus und importieren diese dann. 
-                    Dabei muss in der ersten Spalte der Excel Datei der Nachname stehen und in der zweiten Spalte der Vorname. 
-                    Die Namen werden dann in die Liste übernommen, wo diese überprüft werden können und im Anschluss übermittelt werden können.</p>
+                    Dabei muss in der ersten Spalte der Excel Datei der Nachname stehen und in der zweiten Spalte der Vorname.
+                    Falls mehr Teilnehmer in der Datei gespeichert sind als für die Veranstaltung zugelassen sind, werden nur soviele Teilnehmer eingelesen wie zugelassen. 
+                    Die Namen werden dann in die Liste übernommen, wo diese überprüft werden können und im Anschluss übermittelt werden können.
+                    Bei der Überprüfung werden nur Namen beachtet solange kein Nachnamefeld frei ist. Namen danach werden nicht überprüft und auch nicht übermittelt.</p>
 
     <div class="container-80-inner">
         <h2 class="hdln">Importierung aus Excel Datei</h2>
