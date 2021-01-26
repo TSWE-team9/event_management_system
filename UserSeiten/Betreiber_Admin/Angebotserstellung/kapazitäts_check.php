@@ -7,10 +7,10 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <title>Kapazitätscheck</title>
-    <link rel="stylesheet" type="text/css" href="../style/Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css">
-    <link rel="stylesheet" type="text/css" href="../style/Buttons.css">
+    <link rel="stylesheet" type="text/css" href="../style/Tabellen.css">
+<!--    <link rel="stylesheet" type="text/css" href="../style/Bild/Buttons.css">-->
 </head>
 
 <body>

@@ -25,7 +25,7 @@ if($res->num_rows == 0){
         $href = "../Startseiten/StartseiteBetreiber.php";
     }
     if($_SESSION["rolle"] == 4){
-        $href = "../Startseiten/AdminStartseite.php";
+        $href = "../Startseiten/StartseiteBetreiber.php";
     }
 
 //    Fehlermeldung wenn die Abfrage nicht funktioniert 
@@ -48,10 +48,11 @@ if($res->num_rows == 0){
     <meta charset="UTF-8">
     <title>Kapazitätenabfrage für Anfrage</title>
 
-    <link rel="stylesheet" type="text/css" href="../style/Angebotserstellung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Angebotserstellung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <body>

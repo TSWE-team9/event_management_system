@@ -8,8 +8,7 @@ body {
     /*align-items: center;*/
     /*justify-items: center;*/
     /*color:black;*/
-    background: url("HintergrundRaumseite.jpg") fixed ;
-    /*background-size: 100% auto;*/
+    background: url("Bild/HintergrundRaumseite.jpg") fixed ;
 }
 /*Css Überschrift der Tabelle*/
 h1 {
@@ -34,10 +33,7 @@ h1 {
     overflow: hidden;
     width: 50%;
     display:  table ;
-        /*align-items: center;*/
-        /*justify-items: center;*/
     padding: 0 0 5em 0;
-    /*muss so sein sonst rutscht tabelle in Raumändern nach oben*/
     margin-top: 20em;
     margin-bottom:15em;
     border: none;
@@ -51,6 +47,7 @@ h1 {
     font-size:1em;
     line-height:0;
     text-align: left;
+
     font-weight: bold;
     color: black;
     min-width: 100px;
@@ -64,6 +61,7 @@ h1 {
     -moz-box-shadow: 0 2px 2px -2px #0E1119;
     box-shadow: 0 2px 2px -2px #0E1119;
     min-width: 30px;
+   padding-right: 1em;
 }
 
 
@@ -104,10 +102,15 @@ h1 {
     transition-property: all;
     transition-timing-function: linear;
 }
-
+.container th:hover {
+    box-shadow: none;
+    transform:none ;
+    transition-property: none;
+;
+}
 /*Anpassung der Tabellen an kleinere Displays : */
-/*@media (max-width: 100em) {*/
-/*    .container{*/
-/*       width:50%*/
-/*    }*/
-/*}*/
+@media (max-width: 91em) {
+    .container{
+       width:60%
+    }
+}

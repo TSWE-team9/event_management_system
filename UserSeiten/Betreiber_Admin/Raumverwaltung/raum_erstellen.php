@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <title>Raum Hinzufügen</title>
 
-    <link rel="stylesheet" type="text/css" href="../style/Raumverwaltung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/TabellenRaum.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Button.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
         <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="../style/Buttons.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
 
     <!--    Einbinden von icons-->

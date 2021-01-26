@@ -293,7 +293,7 @@ if($status) {
 <head>
     <meta charset="UTF-8">
     <title>Abrechnung extern</title>
-    <link rel="stylesheet" type="text/css" href="../style/Kapazitätenstylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -303,7 +303,7 @@ if($status) {
 <script>document.getElementById("Reiter_Abrechnung").classList.add("active");  </script>
 
 <div class="contact-us">
-    <img src="vmslogo.png" width="600px"  height="150px" style="margin-bottom: 2em;padding-left: 1em " >
+    <img src="../style/Bild/vmslogo.png" width="600px" height="150px" style="margin-bottom: 2em;padding-left: 1em " >
     <h1>Rechnung </h1>
     <!-- Fomular  mit Angaben aller Rechnungsdaten-->
     <h3>
