@@ -11,7 +11,7 @@
     <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn" id="Reiter_Statistiken">Statistiken</a>
     <div class="dropdown-content">
-      <a href="#">Raumauslastung</a>
+      <a href="../Statistiken/Raumauslastung.php">Raumauslastung</a>
       <a href="../Statistiken/Seminarstatistik.php">Seminare</a>
 
     </div>
