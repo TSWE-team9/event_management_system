@@ -12,7 +12,7 @@
 <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
 
 <div class="contact-us">
-    <h1> Neue Überprüfung</h1>
+    <h1> Überprüfung</h1>
     <!-- Fomular  mit Abfrage eines alternativen Start- und Enddatums um freie Kapazitäten zu überprüfen-->
     <h3>
         <em>&#x2a; </em> Bitte ein Startdatum und eine Dauer (maximal 7 Tage) angeben.<br>

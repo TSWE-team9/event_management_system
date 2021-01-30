@@ -55,7 +55,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $res1 = $conn->query($check_query);
 
     if ($res1->num_rows == 0) {
-        $error = "Fehler: Angegebene Raum_ID existiert nicht";
+        $error = "Fehler: Angegebene Raum_ID existiert nicht.";
         $error_occured = true;
     }
 
@@ -132,27 +132,27 @@ echo "<table class='container' border=\"1\">";
 
 echo "<br><br>";
 
-//Fehlermeldung oder Erfolgsmeldung wird ausgegeben
+//Fehlermeldung oder Erfolgsmeldung wird ausgegeben mit Tabelle betroffenrer Räume
 if($error_occured){
 
     echo "<div class='overlay'>" ;
-    echo  "<div class='popup'>";
+    echo  "<div class='popup' >";
     echo "<h2>Fehler</h2>" ;
     echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
-    echo "<div class='content' style='margin-bottom: 0px;'>" .$error. "</div>";
+    echo "<div class='content' style='margin-bottom: 0;' style='width: 60%'>" .$error. "</div>";
 
-    echo "<div class='mantel' style='margin-top: 0px;'>" ;
-    echo "<table border=\"1\" class='container' style='margin: 2em 2em 2em 0;'>";
+    echo "<div class='mantel' >" ;
+    echo "<table border=\"1\" class='container' style='margin: 2em 0 2em 0; width: 110%; '>";
     echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
     while($i = $res2->fetch_row()){
         echo "<tr>";
         foreach ($i as $item){
-            echo "<td>$item</td>";
+            echo "<td style='padding-right:6em;'>$item</td>";
         }
         echo "</tr>\n";
     }
     echo "</table>\n";
-
+    echo "</div>";
     echo "</div>" ;
     echo "</div>" ;
 }

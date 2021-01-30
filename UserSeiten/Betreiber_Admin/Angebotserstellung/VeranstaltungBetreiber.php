@@ -6,7 +6,7 @@
     <title>Veranstaltung erstellen</title>
     <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
-    <link rel="stylsheet" type="text/css"   href="../style/Fehlermeldung.css"
+    <link rel="stylsheet" type="text/css"   href="../style/Fehlermeldung.css"/>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 
 </head>
@@ -43,17 +43,17 @@
             <input type="radio" id="geschlossen" name="Verfügbarkeit" value="geschlossen">
             <label for="geschlossen">geschlossen</label>
         </fieldset>
-    <label for="Veranstaltungsbeschreibung">Veranstaltungsbeschreibung </label> <textarea  cols="40" rows="8" maxlength="300" id="Veranstaltungsbeschreibung" name="Veranstaltungsbeschreibung"> </textarea>
+    <label for="Veranstaltungsbeschreibung">Veranstaltungsbeschreibung </label> <textarea  cols="40" rows="6" maxlength="300" id="Veranstaltungsbeschreibung" name="Veranstaltungsbeschreibung"> </textarea>
 <!--       Buttons zum Anlegen der Veranstaltung oder Rückkehr zur Eigenen Veranstaltungsübersicht -->
         <button type="submit" class="Auslösen" name="Hinzufügen"> Erstellen</button>
 
     </form>
-
+    <form method="post">
+        <button type="submit" class="Abbrechen" name="Abbrechen" >Abbrechen</button>
+    </form>
 </div>
 
-<form method="post">
-    <button type="submit" class="Auslösen" name="Abbrechen">Abbrechen</button>
-</form>
+
 
 </body>
 

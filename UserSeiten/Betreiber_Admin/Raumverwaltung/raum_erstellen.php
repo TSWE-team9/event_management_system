@@ -142,12 +142,12 @@ if($q_status){
         <label for="Raumbezeichnung">Raumbezeichnung (nur Buchstaben / Leerzeichen und "-") <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text" maxlength="30"/>
         <label for="RaumKapazität">Raum Kapazität <em>&#x2a;</em></label><input id="RaumKapazität" name="RaumKapazität" required="" type="Number" min="1" />
         <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
-        <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
+        <label for="Preis">Preis pro Tag in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
         <fieldset id = "Status">
             <label for = "Status"> Raumstatus</label>
-            <input type= "radio" id="aktiv" name="Status" value="1">
+            <input type= "radio" id="aktiv" name="Status" value="1" required>
             <label for="aktiv"> aktiv</label>
-            <input type="radio" id="inaktiv" name="Status" value="2">
+            <input type="radio" id="inaktiv" name="Status" value="2" required >
             <label for="inaktiv"> inaktiv</label>
         </fieldset>
 

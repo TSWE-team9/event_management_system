@@ -166,7 +166,7 @@ if(isset($_POST["Abbrechen"])){
             $_SESSION["Beginn_final"] = $Beginn;
 
             //Ausgabe der verfügbaren Räume in einer Tabelle
-            echo "<br>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
+            echo "<br><h1>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "</h1><br>";
             echo "<br><br>";
             echo "<table border=\"1\" class='container'>";
             echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th>";
@@ -186,7 +186,7 @@ if(isset($_POST["Abbrechen"])){
 
 
             //Reservierungsformular muss hier erscheinen
-            echo '<a href="Raumreservierung.php" type="button" class="Auslösen">Reservierungsformular</a>';
+            echo '<a href="Raumreservierung.php" type="button" class="Auslösen" style="margin-bottom: 2em">Reservierungsformular</a>';
 
 
         }

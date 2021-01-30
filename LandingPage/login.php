@@ -68,6 +68,8 @@ if(isset($_POST["login_submit"])){
                 <h2 class="hdln">Anmeldung</h2>
                 <a class="close" href="./index.php">&times;</a>
                 <div class="content">Es wurden keine gültigen Anmeldedaten eingegeben.</div>
+                <br>
+                <img src="img/Gan.gif" style="width: 90%">
             </div>
         </div>';
     $sql->close();

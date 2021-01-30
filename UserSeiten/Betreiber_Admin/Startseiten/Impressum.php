@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Startseite</title>
+    <title>Impressum</title>
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Footer.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Tabs.css" media="screen" />
@@ -20,8 +20,12 @@
 <p> </p>
 <p>Bei redaktionellen Inhalten:</p>
 <p>Verantwortlich nach § 55 Abs.2 RStV<br />Gandalf der Graue<br />  in Lórien 2<br />80999 Mittelerde</p>
+    <img src="G1.gif" alt=" " style=" width: 50%">
 </div>
+
+
 </div>
+
 </body>
 </html>
 
@@ -46,4 +50,5 @@
         margin-top: 5em;
         background: #FFFFFF;
     }
+
 </style>

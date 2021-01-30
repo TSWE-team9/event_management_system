@@ -16,6 +16,7 @@ include('passwort_vergessen.php');
         <meta charset="utf-8"/>
         <link rel="stylesheet" type="text/css" href="index.css">
         <link rel="stylesheet" type="text/css" href="../UserSeiten/CSS/popup.css">
+        <link rel="icon" type="image/gif"  href=" img/favicon.gif">
     </head>
 
     <body>

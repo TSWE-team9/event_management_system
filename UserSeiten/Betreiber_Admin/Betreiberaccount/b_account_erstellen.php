@@ -90,7 +90,7 @@ if(isset($_POST["erstellen"])){
 <head>
     <title>Landing Page</title>
     <meta charset="utf-8"/>
-    <title>BetreiberAccount</title>
+    <title>Account hinzufügen</title>
 
     <link rel="stylesheet" type="text/css" href="../style/Button.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
@@ -113,7 +113,7 @@ if(isset($_POST["erstellen"])){
         <label for="email">E-Mail-Adresse</label>
         <input type="email" id="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
 
-        <label for="passwort">Passwort</label>
+        <label for="passwort">Passwort (min. 10 Zeichen)</label>
         <input type="password" id="passwort" placeholder="Passwort" name="passwort_1" pattern=".{10,50}" required>
 
         <label for="passwort">Passwort wiederholen</label>
@@ -122,11 +122,11 @@ if(isset($_POST["erstellen"])){
         <label for="geb_t">Geburtsdatum</label>
         <input type="date" name="geburtsdatum" id="geb_t" required>
 
-        <fieldset id = "Rolle">
+        <fieldset id = "Rolle" >
             <label for = "Rolle"> Rolle</label>
-            <input type= "radio" id="Betreiber" name="Rolle" value="3">
+            <input type= "radio" id="Betreiber" name="Rolle" value="3" required>
             <label for="Betreiber"> Betreiber</label>
-            <input type="radio" id="Admin" name="Rolle" value="4">
+            <input type="radio" id="Admin" name="Rolle" value="4" required>
             <label for="Admin"> Administrator</label>
         </fieldset>
         <button class="Löschen" type="submit" name="erstellen">Erstellen</button>

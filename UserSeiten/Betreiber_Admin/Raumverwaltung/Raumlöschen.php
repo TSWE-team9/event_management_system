@@ -80,13 +80,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_query = "UPDATE Raum SET Status = 2 WHERE R_ID = $R_ID";
         if ($conn->query($update_query) === TRUE) {
             echo "<div class='overlay'>";
-            echo "<div class='popup'  style='z-index: 3'>";
+            echo "<div class='popup'  style='z-index: 3; '>";
             echo "<h2>Bestätigung</h2>";
             echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
             echo "<div class='content'>", 'Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt),';
             echo "</div>";
             echo "</div>";
-//            echo "<br>" . "Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt).";
+            echo "</div>";
+
+
 
         } else {
             $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
@@ -104,7 +106,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<div class='content'>", 'Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!';
         echo "</div>";
         echo "</div>";
-//        echo "<br>" . "Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!";
+        echo "</div>";
 
     }
     if ($error_occured) {
@@ -115,7 +117,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<div class='content'>" . $error . "</div>";
         echo "</div>";
         echo "</div>";
-//    echo $error;
+        echo "</div>";
 
     }
 }
