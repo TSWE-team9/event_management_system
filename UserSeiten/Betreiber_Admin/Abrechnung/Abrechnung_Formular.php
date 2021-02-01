@@ -87,7 +87,7 @@ if(isset($_POST["Abrechnung"])) {
             $res2->close();
 
             //Erstellen der Abrechnung an Veranstalter
-            $query_abrechnung1 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, $BeAr_ID, $B_ID, LOCALTIMESTAMP, $Preis, '$Strasse', $Haus_Nr, $PLZ, '$Ort', '$Land')";
+            $query_abrechnung1 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, $BeAr_ID, $B_ID, LOCALTIMESTAMP, $Preis, '$Strasse', '$Haus_Nr', $PLZ, '$Ort', '$Land')";
             $res_abrechnung1 = $conn->query($query_abrechnung1);
             if ($res_abrechnung1 === FALSE) {
                 $error = "Fehler bei der Erstellung der Abrechnung (extern) in der Datenbank";
