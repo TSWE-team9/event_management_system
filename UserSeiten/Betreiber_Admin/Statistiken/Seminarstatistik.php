@@ -27,7 +27,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
 <body>
 
 <?php include '../Header/header.php'; ?>
-<script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
+<script>document.getElementById("Reiter_Statistiken").classList.add("active");  </script>
 <div class="grid-container">
     <div class="grid-item">
 <form action="Seminarstatistik.php"  method="post">
@@ -118,7 +118,7 @@ if (isset($_POST['Seminar'])) {
     }
 
     else{
-
+//      Ausgabe der Seminarstatistik in einer Tabelle
     $data_query2 = "SELECT Veranstalter,ROUND(AVG(Dauer)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstaltung Where Veranstalter=$firma1 and Beginn BETWEEN '$start1' AND '$ende1' GROUP BY Veranstalter";
     $res2 = $conn->prepare($data_query2);
     $res2->execute();
@@ -143,13 +143,13 @@ if (isset($_POST['Seminar'])) {
     $res2->close();
     }
 }?>
-<!--    Aufsummierung der offenen und geschlossenen Veranstaltungen -->
-<!-- Durschnittlicher Preis der Veranstaltung eines Veranstalter -->
-    <!-- Wie viele Veranstaltungen hat der Veranstalter bisher durchgefüht, also auch laufende Veranstaltungen, aber nicht die stonierten -->
-    <!-- Wie viele Teilnehmer gab es insgesamt bei diesem Veranstalter-->
+
+
 
     </tbody>
     </table>
+
+
     </div>
 </div>
 </body>

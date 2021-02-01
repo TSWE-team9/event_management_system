@@ -61,6 +61,16 @@ $temp = FALSE;
     </form>
     </div>
             <div class="grid-item">
+        <!--                Überschrift für aktuell abgefragten Raum -->
+                <?php
+        if (isset($_POST['Hinzufügen'])) {
+            $raum1 = $_POST['Auswahl'];
+            $start1 = $_POST['Startzeitraum'];
+            $ende1 = $_POST['Endzeitraum'];
+             echo  "<h1 style='margin-bottom: 1em;'> Auslastung von $raum1 <br>   </h1>" ;
+             ?>;
+        <?php }?>
+
         <!--            Einbindung Diagramm-->
                 <canvas id="myChart"></canvas>
 
