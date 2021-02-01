@@ -117,7 +117,7 @@ if(isset($_POST["Abrechnung"])) {
             if ($res4->num_rows > 0) {
                 while ($i = $res4->fetch_row()) {
 
-                    $query_abrechnung2 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, NULL, $i[0], LOCALTIMESTAMP, $Teilnehmer_Preis, '$i[1]', $i[2], $i[3], '$i[4]', '$i[5]')";
+                    $query_abrechnung2 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, NULL, $i[0], LOCALTIMESTAMP, $Teilnehmer_Preis, '$i[1]', '$i[2]', $i[3], '$i[4]', '$i[5]')";
                     $res_abrechnung2 = $conn->query($query_abrechnung2);
                     if ($res_abrechnung2 === FALSE) {
                         $error = "Fehler bei der Erstellung der Abrechnung (intern) in der Datenbank";
