@@ -322,13 +322,13 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
                     $res = $conn->query($query);
                     while($i = $res->fetch_row()){
                 ?>
-                <p>Wollen Sie diese Veranstaltung wircklich stornieren? Dabei müssen wir Ihnen folgende Stornokosten verrechnen:</p>
+                <p>Wollen Sie diese Veranstaltung wirklich stornieren? Dabei müssen wir Ihnen folgende Stornokosten verrechnen:</p>
                 <p>50% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro ab 7 Tagen bis Beginn am <?php echo $i[1]?></p>
                 <p>75% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro 1-7 Tage bis Beginn am <?php echo $i[1]?></p>
                 <?php }}
                 //Ausgabe für den Betreiber/Admin
                 else{ ?>
-                <p>Wollen Sie diese Veranstaltung wircklich stornieren?</p>
+                <p>Wollen Sie diese Veranstaltung wirklich stornieren?</p>
                 <?php }?>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
