@@ -34,13 +34,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Abspeichern der vom Formular übergebenen Daten
     $R_ID = $_POST["Raum-ID"];
-//    $bezeichnung = $_POST["Raumbezeichnung"];
     $status_inaktiv = false;
 
 
     //Abfrage, ob Raum ID mit Bezeichnung des zu löschenden Raums existiert
     $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID" ;
-//                        AND Bezeichnung='$bezeichnung'";
     $res1 = $conn->query($check_query);
 
     if ($res1->num_rows == 0) {

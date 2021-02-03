@@ -20,15 +20,9 @@ angebot_refresh();
 $query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer, Teilnehmer_gepl FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
 if($res->num_rows == 0){
-    $href = "";
-    if($_SESSION["rolle"] == 3){
-        $href = "../Startseiten/StartseiteBetreiber.php";
-    }
-    if($_SESSION["rolle"] == 4){
-        $href = "../Startseiten/StartseiteBetreiber.php";
-    }
+    $href = "../Startseiten/StartseiteBetreiber.php";
 
-//    Fehlermeldung wenn die Abfrage nicht funktioniert 
+//    Fehlermeldung wenn keine Anfragen existieren
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Info</h2>" ;

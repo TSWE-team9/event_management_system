@@ -130,7 +130,7 @@ if(isset($_POST["erstellen"])){
             <label for="Admin"> Administrator</label>
         </fieldset>
         <button class="Löschen" type="submit" name="erstellen">Erstellen</button>
-        <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abrechen</a>
+        <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abbrechen</a>
     </form>
 </div>
 <script src="../../../LandingPage/index.js"></script>

@@ -118,7 +118,7 @@ if($error_occured){
     echo "</div>" ;
 
 }
-//Melding für neuen Raum kommt nicht
+//Ausgabe einer Bestätigungsmeldung
 if($q_status){
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";

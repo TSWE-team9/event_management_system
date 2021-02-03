@@ -141,21 +141,26 @@ if($error_occured){
     echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
     echo "<div class='content' style='margin-bottom: 0;' style='width: 60%'>" .$error. "</div>";
 
-    echo "<div class='mantel' >" ;
-    echo "<table border=\"1\" class='container' style='margin: 2em 0 2em 0; width: 110%; '>";
-    echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
-    while($i = $res2->fetch_row()){
-        echo "<tr>";
-        foreach ($i as $item){
-            echo "<td style='padding-right:6em;'>$item</td>";
+    //Wenn Angebote oder Veranstaltungen betroffen sind, dann wird eine Tabelle angezeigt
+    if($show_table) {
+        echo "<div class='mantel' >";
+        echo "<table border=\"1\" class='container' style='margin: 2em 0 2em 0; width: 110%; '>";
+        echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
+        while ($i = $res2->fetch_row()) {
+            echo "<tr>";
+            foreach ($i as $item) {
+                echo "<td style='padding-right:6em;'>$item</td>";
+            }
+            echo "</tr>\n";
         }
-        echo "</tr>\n";
+        echo "</table>\n";
+        echo "</div>";
     }
-    echo "</table>\n";
-    echo "</div>";
     echo "</div>" ;
     echo "</div>" ;
 }
+
+//Ausgabe einer Bestätigungsmeldung
 if($status) {
 
    echo "<div class='overlay'>";
@@ -167,24 +172,7 @@ if($status) {
    echo "</div>";
 }
 
-echo "<br><br>";
 
-
-//Anzeige der Tabelle der betroffenen Veranstaltungen
-if($show_table){
-    echo "<div class='mantel '>" ;
-    echo "<table border=\"1\" class='container' style='padding-top:8em '>";
-    echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
-    while($i = $res2->fetch_row()){
-        echo "<tr>";
-        foreach ($i as $item){
-            echo "<td>$item</td>";
-        }
-        echo "</tr>\n";
-    }
-    echo "</table>\n";
-    echo "</div>";
-}
 ?>
 
 <br>
