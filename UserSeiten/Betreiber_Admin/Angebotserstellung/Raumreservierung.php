@@ -158,7 +158,7 @@ if($status){
                 <?php }?>
             </select>
         <button type="submit"  class="Auslösen" name="Reservieren"  value="Auswahl">Reservieren</button>
-        <a href="Angebotserstellung.php" type="button" class="Abbrechen">Abbrechen</a>
+        <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abbrechen</a>
         </form>
     </div>
 
