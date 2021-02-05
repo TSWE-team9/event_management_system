@@ -103,7 +103,7 @@ if(isset($_POST["Stornieren"])) {
         $nachricht = "";
 
         //Veranstalter storniert selbst
-        if($_SESSION["rolle"] == 1){
+        if($_SESSION["b_id"] == $Veranstalter_B_ID){
             $nachricht = "Ihre Veranstaltung ". $titel . " wurde erfolgreich storniert.";
         }
         //Betreiber oder Admin stornieren eine externe Veranstaltung
