@@ -64,10 +64,10 @@ if(isset($_POST["Kapazitätsprüfung1"])) {
     }
 
 //Abfrage und Speichern der Daten Beginn, Dauer und Teilnehmerzahl für die Anfrage
-    $data_query = "SELECT Beginn, Teilnehmer_gepl, Dauer FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
+    $data_query = "SELECT Veranstalter, Beginn, Teilnehmer_gepl, Dauer FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
     $res = $conn->prepare($data_query);
     $res->execute();
-    $res->bind_result($Beginn, $_SESSION["Teilnehmerzahl"], $_SESSION["Dauer_final"]);
+    $res->bind_result($_SESSION["Veranstalter"],$Beginn, $_SESSION["Teilnehmerzahl"], $_SESSION["Dauer_final"]);
     $res->fetch();
     $res->close();
 }
@@ -101,7 +101,13 @@ if(isset($_POST["Ablehnen"])){
     $anfrage_id = $_SESSION["BeAr_ID"];
     $error_occured1 = true;
 
+    //Senden einer Mail an den Veranstalter
+    include("../../send_email.php");
+    $email = get_mail_address($_SESSION["Veranstalter"]);
+    send_email($email, "Anfrage abgelehnt", "Wir mussten Ihre Anfrage ablehnen, da zu angefragten Zeitpunkt oder für ihre Anforderungen keinerlei Kapazitäten vorhanden sind. Sie können jederzeit eine weitere Anfrage erstellen.");
+
     $status = $conn->query("UPDATE Anfrage_Angebot SET Status = 5 WHERE BeAr_ID = $anfrage_id");
+
     if($status === FALSE){
         echo "<div class='overlay'>" ;
         echo  "<div class='popup'>";

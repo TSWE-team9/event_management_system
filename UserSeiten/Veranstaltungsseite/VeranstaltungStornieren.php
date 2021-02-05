@@ -24,10 +24,10 @@ if(isset($_POST["Stornieren"])) {
     $V_ID = $_POST["v_id"];
 
     //Abfragen der Verfügbarkeit, Titel der Veranstaltung
-    $query = "SELECT Verfügbarkeit, Titel, Kategorie FROM Veranstaltung WHERE V_ID = $V_ID";
+    $query = "SELECT Veranstalter, Verfügbarkeit, Titel, Kategorie FROM Veranstaltung WHERE V_ID = $V_ID";
     $res = $conn->prepare($query);
     $res->execute();
-    $res->bind_result($verfuegbarkeit, $titel, $kategorie);
+    $res->bind_result($Veranstalter_B_ID, $verfuegbarkeit, $titel, $kategorie);
     $res->fetch();
     $res->close();
 
@@ -97,6 +97,22 @@ if(isset($_POST["Stornieren"])) {
             $error = $error . "<br>" . "Fehler beim Löschen aus dem Kalender";
             $error_occured = true;
         }
+
+        //Veranstalter über die Stornierung benachrichtigen
+        $Veranstalter_E_Mail = get_mail_address($Veranstalter_B_ID);
+        $nachricht = "";
+
+        //Veranstalter storniert selbst
+        if($_SESSION["rolle"] == 1){
+            $nachricht = "Ihre Veranstaltung ". $titel . " wurde erfolgreich storniert.";
+        }
+        //Betreiber oder Admin stornieren eine externe Veranstaltung
+        else {
+            $nachricht = "Wir haben Ihre Veranstaltung aus internen Gründen storniert. Um alle Details zu klären bitten wir Sie, sich bei uns per Mail unter vms.grup9@gmail.com zu melden.";
+        }
+
+        send_email($Veranstalter_E_Mail, "Stornierung", $nachricht);
+
 
     } else{
         $error = "Fehler: Stornierung der Veranstaltung ist fehlgeschlagen";
