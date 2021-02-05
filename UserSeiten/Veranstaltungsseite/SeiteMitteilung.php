@@ -21,6 +21,7 @@ if(isset($_POST["mitteilung"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
+//Abspeichern der V_ID in lokaler Variable
 $V_ID = $_SESSION["V_ID"];
 
 //Abfragen des Titels der Veranstaltung
@@ -49,6 +50,7 @@ if(isset($_POST["mitteilung_senden"])){
             send_email($empfaenger, $betreff, $nachricht);
         }
 
+        //Je nach Rolle anderer Link zurück zur Startseite
         $href = "";
         if($_SESSION["rolle"] == 1){
             $href = "../Veranstalter/Startseite/VeranstalterStartseite.php";
@@ -60,7 +62,7 @@ if(isset($_POST["mitteilung_senden"])){
             $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
         }
 
-        // Erfolgsmeldung
+        // Erfolgsmeldung ausgeben und Weiterleitung zur Startseite
         echo "<div class='overlay'>" ;
         echo "<div class='popup'>";
         echo "<h2 class='hdln'>Mitteilung versendet</h2>" ;

@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+//Status aller Veranstaltungen auf Aktualisierung prüfen
 include "../../veranstaltung_refresh.php";
 veranstaltung_refresh();
 
@@ -44,7 +46,7 @@ if($conn->connect_error) {
 <div id="interne" class="tabcontent">
     <h3 class="txt" >Interne Veranstaltungen</h3>
 
-    <!--anzeigen der internen abgelaufenen/stornierten Veranstaltungen-->
+    <!--anzeigen der internen abgelaufenen Veranstaltungen-->
     <?php
     $query1 = "SELECT V_ID, Angebot_ID, DATE_ADD(Beginn, INTERVAL Dauer-1 DAY), Titel, Status FROM Veranstaltung WHERE Status = 3 AND Kategorie = 2 AND Teilnehmer_akt != 0 ";
     $res1 = $conn->query($query1);

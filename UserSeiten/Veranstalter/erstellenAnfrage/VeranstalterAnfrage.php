@@ -47,7 +47,7 @@ if(isset($_POST["anfrage"])){
     $veranstalter_id = $_SESSION["b_id"];
 
 
-//Insert Query für das Anlegen in der DB
+//Insert Query für das Anlegen der Anfrage in der DB
 if($error == false) {
 
     $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, LOCALTIMESTAMP, NULL, NULL, '$anmerkungen', NULL)";
@@ -55,6 +55,7 @@ if($error == false) {
     $res = $conn->query($query);
     if ($res === TRUE) {
         $query_status = "Die Anfrage wurde erfolgreich erstellt und wird nun vom Betreiber bearbeitet.";
+
         //Versenden einer Bestätigungsmail an den Veranstalter
         $empfaenger = get_mail_address($veranstalter_id);
 
@@ -71,7 +72,9 @@ if($error == false) {
         echo "</div>" ;
         echo "</div>" ;
 
-    } else {
+    }
+    //Fehlermeldung bei Fehler
+    else {
         $query_status = "Beim Erstellen der Anfrage ist ein Fehler aufgetreten";
         echo "<div class='overlay'>" ;
         echo  "<div class='popup'>";

@@ -21,10 +21,11 @@ if(isset($_POST["veranstaltung"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
+//Lokale Variablen für V_ID und B_ID
 $V_ID = $_SESSION["V_ID"];
 $Bid = $_SESSION['b_id'];
 
-//Abfrage der benötigten Daten
+//Abfrage der benötigten Daten der Veranstaltung
 $query = "SELECT Angebot_ID, Titel, Veranstalter, Beschreibung, Art, Verfügbarkeit, Status, Ort, Teilnehmer_max, Teilnehmer_akt,
        Beginn, DATE_ADD(Beginn, INTERVAL Dauer-1 DAY), Uhrzeit, DATE_SUB(Beginn, INTERVAL Frist DAY ), Kosten FROM Veranstaltung 
        WHERE V_ID = $V_ID";
@@ -40,6 +41,8 @@ $query2 = "SELECT Firma FROM Veranstalterkonto WHERE B_ID = $veranstalter";
 $res2 = $conn->query($query2);
 $i = $res2->fetch_row();
 $Veranstalter_name = $i[0];
+
+//Wenn interne Veranstaltung und kein Veranstaltername vorhanden -> Default Wert
 if(empty($Veranstalter_name)){
     $Veranstalter_name = "VMS Grup9";
 }
@@ -66,6 +69,7 @@ $j = $res3->fetch_row();
 
 <body class="background2">
 <?php
+
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
     case 0: include './header/headerGast.php';               //header Gast
@@ -219,7 +223,7 @@ if($_SESSION["rolle"]==0){
 <?php }?>
 
 <?php
-//Anzeige für Rolle Teilnehmer
+//Funktionen anzeigen für Rolle Teilnehmer
 include("VeranstaltungÄndernFunktion.php");
 if($_SESSION["rolle"]==2){
 ?>
@@ -306,8 +310,8 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
 ?>
 <div class="container-80-noborder">
 
-    <!--Stornierung Beginn-->
-    <?php include 'VeranstaltungStornieren.php' ?> <!--TODO include der stornieren fkt-->
+    <!--Stornierungs Button Beginn-->
+    <?php include 'VeranstaltungStornieren.php' ?>
     <button type="button" style="float: left;" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
     <?php if($status == 1){?>
     <!--Modal falls Stornozeitraum noch nicht abgelaufen (Veranstaltung "aktiv")-->
@@ -316,7 +320,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
             <div class="modal_container">
                 <h1>Stornierung</h1>
                 <?php
-                //Ausgabe für den Veranstalter
+                //Ausgabemeldung für den Veranstalter
                 if($_SESSION["rolle"] == 1){
                     $query = "SELECT Angebotspreis, Beginn FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
                     $res = $conn->query($query);
@@ -326,7 +330,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
                 <p>50% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro ab 7 Tagen bis Beginn am <?php echo $i[1]?></p>
                 <p>75% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro 1-7 Tage bis Beginn am <?php echo $i[1]?></p>
                 <?php }}
-                //Ausgabe für den Betreiber/Admin
+                //Ausgabemeldung für den Betreiber/Admin
                 else{ ?>
                 <p>Wollen Sie diese Veranstaltung wirklich stornieren?</p>
                 <?php }?>
@@ -355,7 +359,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php } ?>
     <!--Stornierung Ende-->
 
-    <!--Liste übermitteln Beginn-->
+    <!--Liste übermitteln Button Beginn-->
     <!--nur bei geschlossenen veranstaltungen-->
     <?php
     if($verfuegbarkeit == 2){

@@ -20,6 +20,7 @@ if(isset($_POST["teilnehmerliste_übermitteln"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
+//Abspeichern der V_ID in lokaler Variable
 $V_ID = $_SESSION["V_ID"];
 
 //Abfragen des Titels, Max. Teilnehmerzahl der Veranstaltung
@@ -97,7 +98,7 @@ switch ($_SESSION["rolle"]){
         <form action="SeiteTeilnehmerübermittlung.php" method="post">
             <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
             <input type="hidden" id="t_max" value="<?php echo $teilnehmer_max; ?>">
-            <!--Schleife für max anzahl-->
+            <!--Schleife für max anzahl, Ausgabe der Eingabefelder bzw. bereits mit Namen aus Excel Import-->
             <?php
             $counter = 1;
             while($counter <= $teilnehmer_max){
@@ -129,7 +130,7 @@ switch ($_SESSION["rolle"]){
         </form>
 
         <?php
-        //Abspeichern der manuell eingegebenen Teilnehmer
+        //Abspeichern der eingegebenen Teilnehmer
         if(isset($_POST["liste-übermitteln"])){
 
             //Variablen
@@ -142,23 +143,27 @@ switch ($_SESSION["rolle"]){
             $status_empty = false;
             $status_meldung = "";
 
+            //Jeweils die übergebenen Namen abspeichern
             while($counter <= $teilnehmer_max) {
 
                 $nachname = $_POST["nachname".$counter];
                 $vorname = $_POST["vorname".$counter];
 
                 //Überprüfen, ob Nachname oder Vorname leer
+
+                //Wenn Nachname fehlt, nur bis dahin die Liste übermitteln also break
                 if(empty($nachname)){
                     break;
                 }
 
+                //Wenn Vorname fehlt, dann Meldung speichern
                 if(empty($vorname)){
                     $status_empty = true;
                     $status_meldung = "Vorname ". $counter. " fehlt";
                     break;
                 }
 
-                //Wenn nicht, dann speichern in ein Array
+                //Wenn alles passt, dann speichern in ein Array für später
                 if($status_empty == false){
                     array_push($nachname_array, $nachname);
                     array_push($vorname_array, $vorname);
@@ -169,9 +174,7 @@ switch ($_SESSION["rolle"]){
 
             //Wenn ein Nachname oder Vorname nicht angegeben wurde, Fehlermeldung und alte Liste bleibt
             if($status_empty){
-                // TODO Fehlermeldung
-                // DONE echo $status_meldung;
-                // Nachricht erfolgreiche Abmeldung
+
                 echo "<div class='overlay'>" ;
                 echo "<div class='popup'>";
                 echo "<h2 class='hdln'>Fehler bei Übermittlung</h2>" ;
@@ -180,6 +183,8 @@ switch ($_SESSION["rolle"]){
                 echo "</div>";
                 echo "</div>";
             }
+
+            //Wenn alles passt dann Einspeichern in Datenbank
             else{
 
                 //Alte Liste löschen
@@ -201,10 +206,9 @@ switch ($_SESSION["rolle"]){
                     $res = $conn->query($query);
                     $teilnehmer_nr++;
 
+                    //Fehlermeldung wenn Fehler (sollte nicht eintreten)
                         if($res === FALSE){
-                            // TODO
-                            // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
-                            // Nachricht über Fehler
+
                             echo 
                             '<div class="overlay">
                                 <div class="popup">
@@ -221,15 +225,14 @@ switch ($_SESSION["rolle"]){
                     $counter2++;
                 }
 
+                //Nur, wenn auch alles funktioniert hat
                 if($query_status){
 
                     //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
                     $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
                     $res_update = $conn->query($update_query);
                     if($res_update === FALSE){
-                        // TODO
-                        // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
-                        // Nachricht über Fehler
+
                         echo 
                         '<div class="overlay">
                             <div class="popup">
@@ -240,6 +243,7 @@ switch ($_SESSION["rolle"]){
                         </div>';
                     }
 
+                    //Fallunterscheidung der Links zur Startseite
                     $href = "";
                     if($_SESSION["rolle"] == 1){
                         $href = "../Veranstalter/Startseite/VeranstalterStartseite.php";
@@ -251,7 +255,7 @@ switch ($_SESSION["rolle"]){
                         $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
                     }
 
-                    // Nachricht erfolgreiche Abmeldung
+                    // Nachricht erfolgreiche Übermittlung
                     echo "<div class='overlay'>" ;
                     echo "<div class='popup'>";
                     echo "<h2 class='hdln'>Teilnehmerübermittlung</h2>" ;

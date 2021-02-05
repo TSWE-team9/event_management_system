@@ -136,7 +136,7 @@ if(isset($_POST["Abrechnung"])) {
 
 }
 
-//Absenden der externen Abrechnung an den Veranstalter
+//Absenden der externen Abrechnung an den Veranstalter wenn Button geklickt wird
 if(isset($_POST["Hinzufügen1"])){
 
     //Abspeichern der Variablen
@@ -205,7 +205,7 @@ if(isset($_POST["Hinzufügen1"])){
 
 }
 
-//Absenden der Rechnung an einen Teilnehmer einer internen Veranstaltung
+//Absenden der Rechnung an einen Teilnehmer einer internen Veranstaltung, wenn Button geklickt wird
 if(isset($_POST["Hinzufügen2"])){
 
     //Variablen für Email abspeichern
@@ -265,7 +265,7 @@ if(isset($_POST["Hinzufügen2"])){
     }
 }
 
-//Ausgabe möglicher Fehlermeldungen oder der Status Nachricht 2
+//Ausgabe möglicher Fehlermeldungen oder der $status_msg2
 if ($error_occured) {
 
     echo "<div class='overlay'>" ;
@@ -305,7 +305,7 @@ if($status) {
 <div class="contact-us">
     <img src="../style/Bild/vmslogo.png" width="600px" height="150px" style="margin-bottom: 2em;padding-left: 1em " >
     <h1>Rechnung </h1>
-    <!-- Fomular  mit Angaben aller Rechnungsdaten-->
+    <!-- Fomular  mit Angaben aller Rechnungsdaten extern-->
     <h3>
      Vielen Dank für ihre Buchung in unserem Seminarhaus. <br> Bitte überweisen sie den genannten Betrag innerhalb der nächsten 14 Tage. <br>
         Wir freuen uns Sie bald wieder bei uns begrüßen zu dürfen.

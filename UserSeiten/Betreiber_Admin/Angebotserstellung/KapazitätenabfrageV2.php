@@ -31,9 +31,11 @@ session_start();
         <button type='submit'  name='Kapazitätsprüfung2' class='Auslösen'>Abfragen</button>
         <?php
 
+        //Abbrechen Button wenn Betreiber eine Veranstaltung erstellt und dann abbricht
         if($_SESSION["Prüfungsart"] == 2){
             echo "<button type='submit'  name='Abbrechen' class='Abbrechen'>Überprüfung Abbrechen</button>";
         }
+        //Ablehnen Button wenn Betreiber ein Angebot erstellt
         elseif ($_SESSION["Prüfungsart"] == 1){
             echo "<button type='submit'  name='Ablehnen' class='Abbrechen'>Anfrage Ablehnen</button>";
         }

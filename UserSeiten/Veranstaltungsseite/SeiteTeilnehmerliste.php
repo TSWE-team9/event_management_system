@@ -21,6 +21,7 @@ if(isset($_POST["teilnehmerliste_anzeigen"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
+//Speichern der V_ID in lokaler Variable
 $V_ID = $_SESSION["V_ID"];
 
 //Abfragen des Titels, Teilnehmerzahlen der Veranstaltung
@@ -70,7 +71,7 @@ switch ($_SESSION["rolle"]){
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
 
-    <!--SQL Abfrage-->
+    <!--SQL Abfrage der angemeldeten Teilnehmer (offen sowie geschlossen schließt sich aus deshalb UNION)->
     <?php
     $query1 = "SELECT Vorname, Nachname FROM Teilnehmerliste_offen WHERE V_ID = $V_ID
                 UNION SELECT Vorname, Nachname FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
@@ -95,7 +96,7 @@ switch ($_SESSION["rolle"]){
         </div>
         <?php
 
-        //Ergebnis-Array für Vornamen und Nachnamen
+        //Ergebnis-Array für Vornamen und Nachnamen für Ausgabe als PDF vorbereiten
         $teilnehmer_array_v = array();
         $teilnehmer_array_n = array();
 

@@ -1,9 +1,4 @@
 <?php
-// session_start();
-?>
-
-<?php
-//Login-Funktion
 
 //Verbindung zur Datenbank herstellen
 $host = '132.231.36.109';
@@ -18,6 +13,7 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Button in index.php wurde geklickt
 if(isset($_POST["login_submit"])){
     //Überprüfung ob Mail und Passwort einen Eintrag in der Datenbank haben
     $query = "Select E_mail, Passwort , B_ID, Rolle FROM Benutzerkonto WHERE E_mail=? AND passwort=?";

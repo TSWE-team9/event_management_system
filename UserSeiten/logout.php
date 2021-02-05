@@ -16,6 +16,7 @@ session_unset();
 //Session wird beendet
 session_destroy();
 
+//Meldung ausgeben und zur Landing Page weiterleiten
 $status = "Sie wurden erfolgreich ausgeloggt.";
 echo "<div class='overlay'>" ;
 echo  "<div class='popup'>";

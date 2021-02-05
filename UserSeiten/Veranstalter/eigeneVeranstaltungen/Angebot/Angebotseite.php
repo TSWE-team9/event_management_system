@@ -41,7 +41,8 @@ if($conn->connect_error){
 </nav>
 
 <?php
-//Aufruf der Angebotsseite
+
+//Aufruf der Angebotsseite nach Klick auf den Button
 if(isset($_POST["Angebotsseite"])){
 
     //Abspeichern der übergebenen BeAr_ID
@@ -61,13 +62,13 @@ $res1->bind_result($Teilnehmer, $V_Beginn, $Dauer, $Anmerk, $Ang_Preis, $Status)
 $res1->fetch();
 $res1->close();
 
-//Ablehnen des Angebots
+//Ablehnen des Angebots nack Klick auf Button Ablehnen
 if(isset($_POST["angebot_ablehnen"])){
 
     //Abspeichern der BeAr_ID des abgelehnten Angebots
     $Angebot_ID = $_POST["angebot_id"];
 
-    //Update Query des Angebots
+    //Update Query des Angebots (Status und Raum)
     $query3 = "UPDATE Anfrage_Angebot SET Status = 5, R_ID = NULL WHERE BeAr_ID = $Angebot_ID";
     $res3 = $conn->query($query3);
 
@@ -83,6 +84,7 @@ if(isset($_POST["angebot_ablehnen"])){
         echo "Es ist ein Fehler bei der Delete Query aufgetreten";
     }
 
+    //Ausgabe einer Bestätigungsmeldung
     else{echo 
         '<div class="overlay">
             <div class="popup">
@@ -92,8 +94,6 @@ if(isset($_POST["angebot_ablehnen"])){
             </div>
         </div>';
 
-        //Weiterleitung zur Startseite
-        // header("Location: ../../Startseite/VeranstalterStartseite.php");
     }
 }
 
@@ -124,9 +124,13 @@ if(isset($_POST["angebot_ablehnen"])){
     <div class="row">
         <div class="col-25">Angebotsstatus</div>
         <div class="col-75">
-            <?php if($Status == 2){
+            <?php
+
+            //Wenn Angebot normal erstellt wurde
+            if($Status == 2){
                 echo "Das Angebot wurde für die angefragten Daten erstellt und ist 7 Tage gültig";
             }
+            //Wenn Betreiber das angefragte Datum geändert hat
             if($Status == 3){
                 echo "Das ursprüngliche Veranstaltungsdatum der Anfrage wurde vom Betreiber geändert";
             }?>

@@ -26,6 +26,7 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Button wurde geklickt
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Error_occured Variable (zunächst false)
@@ -37,7 +38,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $status_inaktiv = false;
 
 
-    //Abfrage, ob Raum ID mit Bezeichnung des zu löschenden Raums existiert
+    //Abfrage, ob Raum ID mit Bezeichnung des zu löschenden Raums überhaupt existiert
     $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID" ;
     $res1 = $conn->query($check_query);
 
@@ -95,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-
+    //Wenn Raum bereits inaktiv, dann Meldung ausgeben
     if ($status_inaktiv) {
         echo "<div class='overlay'>";
         echo "<div class='popup ' style='z-index: 3'>";
@@ -107,6 +108,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "</div>";
 
     }
+
+    //Fehlermeldung bei Fehler ausgeben
     if ($error_occured) {
         echo "<div class='overlay'>";
         echo "<div class='popup'  style='z-index: 3'>";

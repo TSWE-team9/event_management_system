@@ -33,6 +33,7 @@ if($conn->connect_error){
     die('Connect Error (' . $conn->connect_errno . ') '
         . $conn->connect_error);
 }
+
 //Error_occured Variable (zunächst false)
 $error = "";
 $error_occured = false;
@@ -40,6 +41,7 @@ $query_status = "";
 $status = false;
 $show_table = false;
 
+//Button wurde geklickt
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //Abspeichern der zu ändernden Daten
@@ -50,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $preis = number_format((float)$_POST["Preis"], 2, '.', '');
     //$status = $_POST["Status"];
 
-//Abfrage, ob Raum ID des zu ändernden Raums existiert
+//Abfrage, ob Raum ID des zu ändernden Raums überhaupt existiert
     $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID";
     $res1 = $conn->query($check_query);
 
@@ -116,7 +118,8 @@ echo "<br><br>";
 //Ausgabe der existierenden Räume in einer Tabelle
 $räume_query = "SELECT R_ID, Bezeichnung, Kapazitaet, Groesse, Preis, Status FROM Raum";
 $result = $conn->query($räume_query);
-//greift aufraumverwaltung.php zu
+
+//Ausgabe der Räume in einer Tabelle
 if($result->num_rows >0){
 echo "<table class='container' border=\"1\">";
     echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th><th>Größe</th><th>Preis</th><th>Status</th>";
@@ -132,7 +135,7 @@ echo "<table class='container' border=\"1\">";
 
 echo "<br><br>";
 
-//Fehlermeldung oder Erfolgsmeldung wird ausgegeben mit Tabelle betroffenrer Räume
+//Fehlermeldung wird ausgegeben mit Tabelle betroffenrer Räume
 if($error_occured){
 
     echo "<div class='overlay'>" ;

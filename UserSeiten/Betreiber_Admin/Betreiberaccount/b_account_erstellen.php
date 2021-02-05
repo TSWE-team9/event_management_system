@@ -15,9 +15,11 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Variablen setzen
 $status = "";
 $error = false;
 
+//Auslösen der Funktion nach Klick auf Button
 if(isset($_POST["erstellen"])){
 
     //Abspeichern der angegebenen Daten
@@ -28,7 +30,7 @@ if(isset($_POST["erstellen"])){
     $Geburtsdatum = $_POST["geburtsdatum"];
     $Rolle = $_POST["Rolle"];
 
-    //Default Daten für Betreiber
+    //Default Daten für Betreiber - Bei Bedarf ändern, diese werden für jeden Betreiber/Admin gespeichert
     $firma = "VMS Grup9";
     $strasse = "Innstrasse";
     $Haus_nr = 1;
@@ -50,10 +52,13 @@ if(isset($_POST["erstellen"])){
         $error = true;
     }
 
-    //Insert Statements
+    //Insert Statements wenn alles passt
     if($error == false) {
 
+        //Passwort hashen
         $passwort = md5($passwort);
+
+        //Inserts
         $query = "INSERT INTO Benutzerkonto VALUES (B_ID, '$passwort', $Rolle, '$email', '$Geburtsdatum', 1)";
         $query2 = "INSERT INTO Betreiberkonto VALUES ((SELECT B_ID FROM Benutzerkonto WHERE E_mail = '$email'), '$firma', '$strasse', $Haus_nr, $PLZ, '$Ort', '$Land')";
 
@@ -74,6 +79,7 @@ if(isset($_POST["erstellen"])){
         }
     }
 
+    //Ausgabe einer Statusmeldung (Fehler oder Erfolg)
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Meldung</h2>" ;

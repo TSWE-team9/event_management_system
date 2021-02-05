@@ -14,16 +14,17 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
-//Error Variable
+//Error Variablen
 $error = "";
 $error_occured = false;
 
+//Falls Button geklickt wurde -> Stornierung starten
 if(isset($_POST["Stornieren"])) {
 
-    //Abspeichern der V_ID
+    //Abspeichern der V_ID lokal
     $V_ID = $_POST["v_id"];
 
-    //Abfragen der Verfügbarkeit, Titel der Veranstaltung
+    //Abfragen der B_ID, Verfügbarkeit, Titel der Veranstaltung
     $query = "SELECT Veranstalter, Verfügbarkeit, Titel, Kategorie FROM Veranstaltung WHERE V_ID = $V_ID";
     $res = $conn->prepare($query);
     $res->execute();
@@ -31,12 +32,12 @@ if(isset($_POST["Stornieren"])) {
     $res->fetch();
     $res->close();
 
-    //DB UPDATE Stornierung
+    //DB UPDATE Stornierung Status
     $query1 = "UPDATE Veranstaltung SET Status = 4 WHERE V_ID = $V_ID";
     $res1 = $conn->query($query1);
     if($res1 === TRUE){
 
-
+        //Wenn externe Veranstaltung, dann...
         if($kategorie == 1) {
             //Stornodatum in Anfrage_Angebot festhalten
             $query2 = "UPDATE Anfrage_Angebot SET Stornodatum = LOCALTIMESTAMP
@@ -49,7 +50,7 @@ if(isset($_POST["Stornieren"])) {
             }
         }
 
-        //Bei offenen Veranstaltungen
+        //Bei offenen Veranstaltungen...
         if($verfuegbarkeit == 1){
 
             //Angemeldete Teilnehmer per Mail benachrichtigen (nur offene Veranstaltungen)
@@ -76,7 +77,7 @@ if(isset($_POST["Stornieren"])) {
 
         }
 
-        //Bei geschlossenen Veranstaltungen
+        //Bei geschlossenen Veranstaltungen...
         if($verfuegbarkeit == 2){
 
             //Alle Einträge aus der Teilnehmerliste (geschlossen) löschen
@@ -102,11 +103,11 @@ if(isset($_POST["Stornieren"])) {
         $Veranstalter_E_Mail = get_mail_address($Veranstalter_B_ID);
         $nachricht = "";
 
-        //Veranstalter storniert selbst
+        //Veranstalter storniert selbst -> Text für Email wie folgt
         if($_SESSION["b_id"] == $Veranstalter_B_ID){
             $nachricht = "Ihre Veranstaltung ". $titel . " wurde erfolgreich storniert.";
         }
-        //Betreiber oder Admin stornieren eine externe Veranstaltung
+        //Betreiber oder Admin stornieren eine externe Veranstaltung -> Text für Email anders
         else {
             $nachricht = "Wir haben Ihre Veranstaltung aus internen Gründen storniert. Um alle Details zu klären bitten wir Sie, sich bei uns per Mail unter vms.grup9@gmail.com zu melden.
                           Sie müssen selbstverständlich keine Kosten tragen und können die demnächst kommende Rechnung ignorieren. Ihr VMS Team";
@@ -116,6 +117,7 @@ if(isset($_POST["Stornieren"])) {
             $conn->query($query7);
         }
 
+        //Email senden
         send_email($Veranstalter_E_Mail, "Stornierung", $nachricht);
 
 
@@ -124,7 +126,7 @@ if(isset($_POST["Stornieren"])) {
         $error_occured = true;
     }
 
-    //Ausgabe der Meldungen
+    //Ausgabe der Fehlermeldungen (die nie kommen im Normalfall)
     if($error_occured){
         echo "<div class='overlay'>" ;
         echo "<div class='popup'>";
@@ -134,6 +136,8 @@ if(isset($_POST["Stornieren"])) {
         echo "</div>" ;
         echo "</div>" ;
     }
+
+    //Link Unterscheidung für Startseiten
     else {
         $href = "";
         if($_SESSION["rolle"] == 1){
@@ -147,6 +151,7 @@ if(isset($_POST["Stornieren"])) {
         }
 
 
+        //Ausgabe der Bestätigungsmeldung und Weiterleitung
         echo "<div class='overlay'>" ;
         echo "<div class='popup'>";
         echo "<h2 class='hdln'>Bestätigung</h2>" ;

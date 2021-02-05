@@ -1,4 +1,6 @@
 <?php
+
+//Fehler Array für Passwort Vergessen Funktion
 $errors_pw = array();
 
 
@@ -15,9 +17,10 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Button in index.php wurde geklickt
 if(isset($_POST["pw_reset"])){
 
-    //Abspeichern der Email
+    //Abspeichern der eingegebenen Email und in Kleinbuchstaben umwandeln
     $email = $_POST["email"];
     $email = strtolower($email);
 
@@ -27,11 +30,12 @@ if(isset($_POST["pw_reset"])){
     if($res->num_rows == 0){
         array_push($errors_pw, "Es existiert kein Account mit der angegebenen E-Mail-Adresse!");
     }
+    //Zufallszahl generieren und als Passwort hashen
     else{
         $new_pw = rand(1000000000, 2000000000);
         $new_pw_hash = md5($new_pw);
 
-        //Einfügen in die Datenbank
+        //Neues Passwort Einfügen in die Datenbank und an Nutzer per Mail senden
         while($i = $res->fetch_row()){
             $update_query = "UPDATE Benutzerkonto SET Passwort = '$new_pw_hash' WHERE B_ID = $i[0]";
             $res_update = $conn->query($update_query);

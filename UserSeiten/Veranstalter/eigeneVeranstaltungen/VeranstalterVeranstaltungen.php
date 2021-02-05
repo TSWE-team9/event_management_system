@@ -20,7 +20,7 @@ include "../../veranstaltung_refresh.php";
 angebot_refresh();
 veranstaltung_refresh();
 
-//Variablen
+//B_ID Variable des angemeldeten Veranstalters
 $V_ID = $_SESSION["b_id"];
 ?>
 

@@ -39,7 +39,7 @@
     </p>
     <br>
     <p>Kleingedrucktes</p>
-    <br><p><strong>Wer immer dies hier liest erklärt sich damit einverstanden die Note die Gruppe 9 für dieses System erhält um 0.3 anzuheben.</strong></p><br>
+    <br><p><strong>Wer immer dies hier liest erklärt sich damit einverstanden die Note die Gruppe 9 für dieses System erhält um 0.3 anzuheben (also zu verbessern ;) ).</strong></p><br>
 
 
 </div>

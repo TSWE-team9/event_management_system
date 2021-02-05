@@ -23,10 +23,12 @@ function angebot_refresh(){
             . $conn->connect_error);
     }
 
+    //Abfrage aller Angebote die bereits abgelaufen sind
     $query = "SELECT BeAr_ID, Veranstalter, Angebotsdatum FROM Anfrage_Angebot WHERE date(LOCALTIMESTAMP) - Angebotsdatum > 7 AND Status IN (2,3)";
     $res = $conn->query($query);
     if($res->num_rows > 0){
 
+        //Jeden Veranstalter dieser Angebote benachrichtigen, den Status auf abgelehnt setzen und Kalender freigeben
         while($i = $res->fetch_row()){
             //Angebot ablehnen
             $query2 = "UPDATE Anfrage_Angebot SET Status = 5 , R_ID = NULL WHERE BeAr_ID = $i[0]";

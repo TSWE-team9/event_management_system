@@ -44,10 +44,12 @@ if($conn->connect_error){
 <br><br>
 
 <?php
+
+//Error Variablen
 $error = "";
 $error_occured = false;
 
-//Abspeichern der übergebenen Angebot_ID in einer Session Variable
+//Abspeichern der übergebenen Angebot_ID in einer Session Variable nach Buttonklick
 if(isset($_POST["annahme"])) {
     $_SESSION["Angebot_ID"] = $_POST["angebot_id"];
 }
@@ -95,7 +97,7 @@ if(isset($_POST["annahme"])) {
                 }
             }
         }
-        //Falls ein Fehler aufgetreten ist, TODO Ausgabe der Fehlermeldung
+        //Falls ein Fehler aufgetreten ist Ausgabe einer Fehlermeldung
         if ($error_occured) {
             echo "<div class='overlay'>" ;
             echo "<div class='popup'>";
@@ -105,7 +107,7 @@ if(isset($_POST["annahme"])) {
             echo "</div>" ;
             echo "</div>" ;
         } else {
-            //Ausgabe einer Erfolgsmeldung und TODO:Weiterleitung & Erfolgsmeldung
+            //Ausgabe einer Erfolgsmeldung und Senden einer E-Mail
             $empfaenger = get_mail_address($V_ID);
             $betreff = "Ihre Veranstaltung wurde erstellt";
             $nachricht = "Ihre Veranstaltung ".$Titel." wurde erfolgreich im System erstellt.";

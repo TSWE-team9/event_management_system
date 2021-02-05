@@ -36,7 +36,7 @@ veranstaltung_refresh();
 <div class="container-50-outer">
     <h1 class="hdln">Aktuelles Angebot</h1>
 
-    <!--SQL Abfrage-->
+    <!--SQL Abfrage aller offenen Veranstaltungen die noch buchbar sind-->
     <?php
     $query = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status = 1 AND Verfügbarkeit = 1 AND Teilnehmer_akt != Teilnehmer_max ORDER BY Beginn";
     $res = $conn->query($query);

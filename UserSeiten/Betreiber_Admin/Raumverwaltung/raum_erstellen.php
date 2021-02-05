@@ -39,6 +39,7 @@ $error_occured = false;
 $query_status = "";
 $q_status = false;
 
+//Button wurde geklickt
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Zuweisung der im Formular eingegebenen Daten

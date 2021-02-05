@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';
 $db = 'vms_db';
@@ -17,12 +18,14 @@ if($conn->connect_error){
 include "../../angebot_refresh.php";
 angebot_refresh();
 
+//Abfragen aller unbearbeiteten Anfragen
 $query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer, Teilnehmer_gepl FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
+
+//Wenn keine gefunden wurden eine Meldung ausgeben und zurück zur Startseite leiten
 if($res->num_rows == 0){
     $href = "../Startseiten/StartseiteBetreiber.php";
 
-//    Fehlermeldung wenn keine Anfragen existieren
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Info</h2>" ;

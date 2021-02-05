@@ -8,6 +8,7 @@ $user = 'dbuser';
 $pw = 'dbuser123';
 $conn = new mysqli($host, $user, $pw, $db,3306);
 
+//Refresh Status von allen Veranstaltungen
 include "../../veranstaltung_refresh.php";
 veranstaltung_refresh();
 
