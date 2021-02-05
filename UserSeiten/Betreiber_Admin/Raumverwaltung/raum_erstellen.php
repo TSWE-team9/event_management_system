@@ -133,11 +133,10 @@ if($q_status){
 
 <div class="contact-us">
     <h1> Raum Hinzufügen</h1>
-    <!-- Fomular Spalten -->
+    <!-- Fomular um einen neuen Raum zu erstellen -->
     <h3>
         <em>&#x2a; </em> Bitte alle Felder ausfüllen um einen neuen Raum anzulegen.
     </h3>
-    <!--    <label style="position: relative" > Verpflichtend </label>-->
 
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <label for="Raumbezeichnung">Raumbezeichnung (nur Buchstaben / Leerzeichen und "-") <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text" maxlength="30"/>
@@ -153,7 +152,7 @@ if($q_status){
         </fieldset>
 
 
-
+<!--            Buttons zum Hinzufügen des Raumes oder Abbrechen-->
         <button class="Löschen">Hinzufügen</button>
         <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abrechen</a>
 

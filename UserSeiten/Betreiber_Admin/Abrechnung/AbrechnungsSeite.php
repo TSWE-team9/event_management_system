@@ -88,29 +88,29 @@ if($conn->connect_error) {
 
 <!--    <script src="../js/Tabs.js"></script> ; -->
 <script>
-    // function to display different tabs
+    // Funktion um verschiedene Tabs anzuzeigen
     function openList(evt, listName) {
 // Declare all variables
         var i, tabcontent, tablinks;
 
-// Get all elements with class="tabcontent" and hide them
+// Hole alle Elemente mit class="tabcontent" und verstecke sie
         tabcontent = document.getElementsByClassName("tabcontent");
         for (i = 0; i < tabcontent.length; i++) {
             tabcontent[i].style.display = "none";
         }
 
-// Get all elements with class="tablinks" and remove the class "active"
+// Hole alle Elemente mit class="tablinks" und entferne class ="active"
         tablinks = document.getElementsByClassName("tablinks");
         for (i = 0; i < tablinks.length; i++) {
             tablinks[i].className = tablinks[i].className.replace(" active", "");
         }
 
-// Show the current tab, and add an "active" class to the link that opened the tab
+// Zeige den aktuellen Tab, und füge "active" class zu dem link der den Tab geöffnet hat
         document.getElementById(listName).style.display = "block";
         evt.currentTarget.className += " active";
     }
 
-    // Get the element with id="defaultOpen" and click on it
+    // Hole das Element mit der id="defaultOpen" und klicke
     document.getElementById("defaultOpen").click();
 </script>
 

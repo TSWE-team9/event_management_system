@@ -28,7 +28,7 @@ veranstaltung_refresh();
 <body>
 <?php include '../Header/header.php'; ?>
 <script>document.getElementById("Reiter_Startseite").classList.add("active");  </script>
-
+<!--Anzeige aller aktuellen Veranstaltungen-->
 <div class="ordnung">
     <div id="aktuelle" class="tabcontent" style="margin-left: 15em">
         <h3 style="text-align: center;">Kommende Veranstaltungen</h3>
@@ -49,6 +49,7 @@ veranstaltung_refresh();
     </div>
 
 </div>
+<!--Footer-->
 <div class="footer">
     <div id="button"></div>
     <div id="container">

@@ -182,6 +182,7 @@ $temp = FALSE;
 
 
 </script>
+<!--Fehlermeldung-->
 <?php
 if($count < 0){
 

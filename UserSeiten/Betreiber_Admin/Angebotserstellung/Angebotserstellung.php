@@ -56,7 +56,7 @@ if($res->num_rows == 0){
 
 <?php include '../Header/header.php'; ?>
 <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
-
+<!--Anzeigen der eingegangenen Anfragen in einer Tabelle-->
 <table class="container">
     <thead>
     <tr>
@@ -80,7 +80,7 @@ if($res->num_rows == 0){
     </tbody>
 </table>
 
-
+<!--Button für die Kapazitätenabfrage-->
 <a href="KapazitätenabfrageV1.php" class="Auslösen" type="button" >Überprüfen</a>
 </body>
 </html>

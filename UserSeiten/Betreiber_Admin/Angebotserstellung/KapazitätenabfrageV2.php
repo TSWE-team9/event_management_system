@@ -15,10 +15,9 @@ session_start();
 <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
 
 <body>
-<!--//Formular mit neuem eingabefenster für das Datum-->
+<!--//Formular mit neuem Eingabefenster für das Datum um eine ernuete Kpzitätenabfrage zu starten-->
 <div class="contact-us">
     <h1> Neue Überprüfung</h1>
-    <!-- Fomular  mit Abfrage eines alternativen Start- und Enddatums um freie Kapazitäten zu überprüfen-->
     <h3>
         &nbsp;&nbsp;&nbsp;Für den angegebenen Zeitraum konnte kein passender Raum gefunden werden.<br>
         <em>&#x2a; </em> Bitte ein neues Startdatum angeben um einen Ersatztermin zu finden.<br>
@@ -27,7 +26,7 @@ session_start();
 
     <form action="kapazitäts_check.php" method="post">
         <label for="Startdatum">Startdatum <em>&#x2a;</em></label><input id="Startdatum" name="Startdatum" required="" type="date" />
-        <!--Auswahlbuttons zum Ablehnung der Anfrage oder Abfrage nach freien Raum Kapazitäten -->
+        <!--Button zur Abfrage nach freien Raum Kapazitäten -->
         <button type='submit'  name='Kapazitätsprüfung2' class='Auslösen'>Abfragen</button>
         <?php
 

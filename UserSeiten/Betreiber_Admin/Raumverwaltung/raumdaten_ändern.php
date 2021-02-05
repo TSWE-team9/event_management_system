@@ -135,7 +135,7 @@ echo "<table class='container' border=\"1\">";
 
 echo "<br><br>";
 
-//Fehlermeldung wird ausgegeben mit Tabelle betroffenrer Räume
+//Fehlermeldung wird ausgegeben mit Tabelle betroffener Räume
 if($error_occured){
 
     echo "<div class='overlay'>" ;
@@ -179,14 +179,13 @@ if($status) {
 ?>
 
 <br>
-
+<!--Formulat um Raumdaten zu ändern -->
 <div class="contact-us">
     <h1> Raumdaten ändern</h1>
     <!-- Fomular Spalten -->
     <h3>
         <em>&#x2a; </em> Bitte alle Felder ausfüllen um die Raumdaten zu ändern!
     </h3>
-    <!--    <label style="position: relative" > Verpflichtend </label>-->
 
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
@@ -195,7 +194,7 @@ if($status) {
         <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
         <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
 
-
+<!--Buttons zum Änderd der Raumdaten oder Abbrechen-->
         <button class="Löschen"style="margin-top: 0; ">Ändern</button>
             <a href="Raumverwaltung.php" type="button" class="Abbrechen" style="margin-top: 0">Abrechen</a>
 

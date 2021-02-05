@@ -131,7 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php include '../Header/header.php'; ?>
     <script>document.getElementById("Reiter_Raumverwaltung").classList.add("active");  </script>
-
+<!-- Formular um einen Raum zu löschen-->
 <div class="contact-us">
     <h1> Raum Löschen</h1>
 
@@ -142,9 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
             <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
-<!--    <label for="Raumbezeichnung">Raumbezeichnung <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text"/>-->
-
-<!--    <button id="Löschen">Löschen</button>-->
+<!-- Buttons zum Löschen oder Abbrechen-->
             <button type="submit" class="Löschen" formaction="#">Löschen</button>
             <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abbrechen</a>
 

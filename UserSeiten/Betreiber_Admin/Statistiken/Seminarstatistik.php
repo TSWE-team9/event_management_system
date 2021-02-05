@@ -33,7 +33,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
 <form action="Seminarstatistik.php"  method="post">
     <div class="contact-us" >
         <h1> Seminarstatistik</h1>
-        <!-- Fomular Spalten -->
+        <!-- Fomular zum Abfragen von Veranstalter und Zeitraum -->
         <h3>
             <em>&#x2a; </em> Bitte den gewünschten Veranstalter und Zeitraum auswählen um eine Abfrage zu starten .
         </h3>
@@ -48,7 +48,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
         </div>
         <label for="Startzeitraum">Startzeitraum <em>&#x2a;</em></label><input id="Startzeitraum" name="Startzeitraum" required="" type="date"/>
         <label for="Endzeitraum">Endzeitraum <em>&#x2a;</em></label><input id="Endzeitraum" name="Endzeitraum" required="" type="date"/>
-
+<!--    Button zum Auslösen der Veranstaltung-->
         <button type="submit" class="Auslösen" name="Seminar" style="margin-top: 0"> Abfragen</button>
         </div>
 
@@ -61,7 +61,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
 
 </div>
 
-
+<!--Ausgabe der Statistik in einer Tabelle-->
     <div class="grid-item">
     <table class="container">
         <thead style="color: black; z-index: 6">

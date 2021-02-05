@@ -351,7 +351,7 @@ if($status) {
         <label for="Preis">Preis </label><output id="Preis"  name="Preis" type="number" > <?php echo $i[8]; ?></output>
         <label for="Zusatz">Zusätzliche Anmerkung </label> <textarea  cols="40" rows="8" maxlength="300" id="Zusatz" name="Zusatz"> </textarea>
         <label for="Preis">Zahlung an: </label><output style="border-color: #f45702" name="Zahlungsadresse"> VMS Mittelerde IBAN:DE09121688720378475751 Gringotts Zaubererbank  </output>
-<!--        Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
+    <!--   Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
         <button type="submit" class="Auslösen" name="Hinzufügen1"> Senden</button>
         <a href="AbrechnungsSeite.php" type="button" class="Abbrechen">Abrechen</a>
 
@@ -378,7 +378,7 @@ if($status) {
         else{
             while($i = $res->fetch_row()){
         ?>
-
+    <!--Formular interne Abrechnung-->
     <form action="Abrechnung_Formular.php" method="post">
 
         <input type = "hidden" id="Veranstaltung_ID"  name="Veranstaltung_ID" value="<?php echo $V_ID; ?>">

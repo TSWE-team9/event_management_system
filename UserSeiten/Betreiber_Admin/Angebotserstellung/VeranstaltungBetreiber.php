@@ -17,7 +17,7 @@
 
 <div class="contact-us" style="margin-top:8em ">
     <h1> Neue Veranstaltung</h1>
-    <!-- Fomular Spalten -->
+    <!-- Fomular zu Anlegen einer neuen Veranstaltung -->
     <h3>
         <em>&#x2a; </em> Bitte alle Felder ausfüllen um eine neue Veranstaltung anzulegen.
     </h3>

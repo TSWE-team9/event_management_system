@@ -7,11 +7,12 @@
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Footer.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Tabs.css" media="screen" />
-    <title>Title</title>
+    <title>Impressum</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <?php include '../Header/header.php'; ?>
 <body>
+<!--Impressum VMS-->
 <div class="b">
 <div class="c">
 <p><strong>Impressum</strong></p>

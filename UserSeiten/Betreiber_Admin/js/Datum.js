@@ -1,4 +1,5 @@
-function addDays(date, days) {
+//Funktionen um zu kontrolliere dass die Dauer einer Veranstaltugn kein Wochenedne überspannt
+    function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
@@ -70,6 +71,7 @@ function setDays() {
     var maxDays = dayOfWeek(document.getElementById("Startdatum").value);
     var maxDaysHtml = document.getElementById("Dauer").max = maxDays;
 }
+// Funktion damit der Beginn einer Veranstaltung mindestens  einen Maonat in der Zukunft liegt
 
 var currentDate = new Date();
 var minDate = dateToHtml(addDays(currentDate, 28));

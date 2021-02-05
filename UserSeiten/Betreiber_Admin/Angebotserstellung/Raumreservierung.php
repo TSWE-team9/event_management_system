@@ -115,6 +115,7 @@ if($status){
 
 //            header("Location: VeranstaltungBetreiber.php");
         }
+//        Fehlermeldung
         else{
             $query_status = "Es ist ein Fehler beim Eintragen in den Kalender aufgetreten";
             echo "<div class='overlay'>" ;
@@ -127,7 +128,7 @@ if($status){
             echo $query_status;
         }
     }
-
+//Fehlermeldung
     else{
         $query_status = "Die Datenbankabfrage konnte nicht durchgeführt werden, da ein Session Fehler aufgetreten ist";
         echo "<div class='overlay'>" ;
@@ -143,7 +144,7 @@ if($status){
 ?>
 
 
-
+<!--Formular für die Raumreservierung-->
 <div class="contact-us">
     <h1> Raum Reservieren</h1>
     <!-- Fomular Spalten -->
@@ -158,6 +159,7 @@ if($status){
                 <option value="<?php echo $_SESSION["R_ID_Array"][$i];?>"><?php echo "Raum " . $_SESSION["R_ID_Array"][$i];?> </option>
                 <?php }?>
             </select>
+<!--            Buttons zum Reservieren oder Abrechen-->
         <button type="submit"  class="Auslösen" name="Reservieren"  value="Auswahl">Reservieren</button>
         <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abbrechen</a>
         </form>
