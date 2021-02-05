@@ -108,7 +108,8 @@ if(isset($_POST["Stornieren"])) {
         }
         //Betreiber oder Admin stornieren eine externe Veranstaltung
         else {
-            $nachricht = "Wir haben Ihre Veranstaltung aus internen Gründen storniert. Um alle Details zu klären bitten wir Sie, sich bei uns per Mail unter vms.grup9@gmail.com zu melden.";
+            $nachricht = "Wir haben Ihre Veranstaltung aus internen Gründen storniert. Um alle Details zu klären bitten wir Sie, sich bei uns per Mail unter vms.grup9@gmail.com zu melden.
+                          Sie müssen selbstverständlich keine Kosten tragen und können die demnächst kommende Rechnung ignorieren. Ihr VMS Team";
 
             //Angebotspreis auf 0 setzen, da die Stornierung vom Betreiber ausging und somit keine Stornokosten berechnet werden
             $query7 = "UPDATE Anfrage_Angebot SET Angebotspreis = 0 WHERE BeAr_ID = (SELECT Angebot_ID FROM Veranstaltung WHERE V_ID = $V_ID)";
