@@ -14,13 +14,14 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Variablen
 $Bid = $_SESSION['b_id'];
 $Vid = $_SESSION['V_ID'];
 $errors_anmeldung = array();
 $errors_abmeldung = array();
 $current_date = date("Y-m-d");
 
-
+//Variablen aus Query zuweisen
 $query = "SELECT Verfügbarkeit,Status,Teilnehmer_max,Teilnehmer_akt,Beginn,Frist, Titel FROM Veranstaltung WHERE V_ID = $Vid";
 $res = $conn->prepare($query);
 $res->execute();
@@ -36,15 +37,18 @@ $res2->fetch();
 $res2->close();
 
 
-
+//Zeitintervall berechnen
 $datetime1 = strtotime($beginn);
 $datetime2 = strtotime($current_date);
 
 $secs = $datetime1 - $datetime2;// == <seconds between the two times>
 $days = $secs / 86400;
 
+//Veranstaltung anmelden Funktion
 if (isset($_POST['anmelden'])) {
 
+
+    //Fehlerueberpruefung
     if($verfügbarkeit == 2){
         array_push($errors_anmeldung, "Geschlossene Veranstaltung!");
     }
@@ -64,7 +68,7 @@ if (isset($_POST['anmelden'])) {
         array_push($errors_anmeldung, "Anmeldefrist abgelaufen!");
     }
 
-
+    //Wenn keine Fehler: Teilnehmer hinzuf[gen und Teilnehmerzahl updaten
     if (count($errors_anmeldung) == 0) {
 
         $query_v = "INSERT INTO Teilnehmerliste_offen
@@ -97,6 +101,7 @@ if (isset($_POST['anmelden'])) {
     }
 }
 
+//Funktion Abmeldung von Veranstaltung
 if (isset($_POST['abmelden'])) {
 
     if($verfügbarkeit == 2){
@@ -115,7 +120,7 @@ if (isset($_POST['abmelden'])) {
         array_push($errors_abmeldung, "Abmeldefrist abgelaufen!");
     }
 
-
+    //Wenn keine Fehler: Teilnehmer hinzuf[gen und Teilnehmerzahl updaten
     if (count($errors_abmeldung) == 0) {
 
         $query_abmeldung = "DELETE FROM Teilnehmerliste_offen WHERE B_ID=$Bid AND V_ID=$Vid";

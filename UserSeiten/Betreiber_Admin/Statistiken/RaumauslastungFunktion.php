@@ -11,6 +11,7 @@ $_SESSION["R_Array"] = array();
 $data_query = "SELECT Bezeichnung FROM Raum";
 $res = $conn->query($data_query);
 
+
 while ($i = $res->fetch_row()) {
     array_push($_SESSION["R_Array"], $i[0]);
 }
