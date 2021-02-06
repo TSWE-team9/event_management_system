@@ -58,15 +58,20 @@ $j = $res3->fetch_row();
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" href="../Betreiber_Admin/style/header.css">
     <link rel="stylesheet" href="../CSS/popup.css">
+
     <title>Veranstaltungsseite</title>
+
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
+<!--body der Seite mit Hintergrundbild 2-->
 <body class="background2">
 <?php
 
@@ -86,6 +91,8 @@ switch ($_SESSION["rolle"]){
 }
 ?>
 
+<!--Anzeige der Veranstaltungsinformationen
+    in der linken Spalte wird die Art der Information angezeigt und in der rechten Spalte die gespeicherte Information-->
 <div class="container-80">
 
     <div class="row">
@@ -252,7 +259,7 @@ if($_SESSION["rolle"]==2){
         </form>
     </div>
     <?php }?>
-    <!--Modal falls Anmeldezeitraum abgelaufen-->
+    <!--Modal falls Anmeldezeitraum abgelaufen, gelöst über Fehlermeldung-->
     <!--
     <div id="t01" class="modal">
         <div class="modal_content"> 
@@ -271,9 +278,11 @@ if($_SESSION["rolle"]==2){
     <?php
     if (mysqli_num_rows($res_check) == 1) {
         ?>
+
+    <!--Button zum Modal öffnen-->
     <button type="button" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
-    <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     
+    <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     <div id="t02" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
@@ -289,7 +298,7 @@ if($_SESSION["rolle"]==2){
     </div>
     
     <?php }?>
-    <!--Modal falls Abmeldezeitraum abgelaufen
+    <!--Modal falls Abmeldezeitraum abgelaufen, gelöst über Fehlermeldung
     <div id="t02" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
@@ -336,7 +345,9 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
                 <?php }?>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
+                    <!--Button um Stornierung zu bestätigen-->
                     <button class="modal_btnconfirm" type="submit" name="Stornieren" onclick="document.getElementById('v01').style.display='none'">Stornieren</button>
+                    <!--Button um Modal zu schließen-->
                     <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
@@ -351,6 +362,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
                 <h1>Stornierung</h1>
                 <p>Der Stornierungszeitraum ist abgelaufen und eine Stornierung ist nicht mehr möglich.</p>
                 <div class="modal_clearfix">
+                    <!--Button um Modal zu schließen-->
                     <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">OK</button>
                 </div>
             </div>
@@ -364,6 +376,9 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php
     if($verfuegbarkeit == 2){
     ?>
+
+    <!--Teilnehmerliste übermittel
+        Button der zur Seite mit der Teilnehmerübermittlung weiterleitet-->
     <form action="SeiteTeilnehmerübermittlung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_übermitteln">Teilnehmerliste übermitteln</button>
@@ -371,7 +386,8 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <!--Liste übermitteln Ende-->
     <?php } ?>
 
-    <!--Teilnehmer anzeigen Beginn-->
+    <!--Teilnehmer anzeigen Beginn
+        Button der zur Seite mit der Teilnehmeranzeige weiterleitet-->
     <form action="SeiteTeilnehmerliste.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_anzeigen">Teilnehmerliste anzeigen</button>
@@ -381,7 +397,8 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php
     if($verfuegbarkeit == 1){
     ?>
-    <!--Nachricht versenden Beginn-->
+    <!--Nachricht versenden Beginn
+        Button der zur Seite zur Nachrichtenerstellung weiterleitet-->
     <form action="SeiteMitteilung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="mitteilung">Nachricht an Teilnehmer senden</button>
@@ -391,6 +408,5 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
 </div>  
 <?php }}?>
 
-<script></script>
 </body>
 </html>

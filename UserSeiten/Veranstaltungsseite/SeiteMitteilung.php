@@ -92,15 +92,20 @@ if(isset($_POST["mitteilung_senden"])){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
+
     <title>Veranstaltung</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 2-->
 <body class="background2">
 
 <?php
@@ -124,6 +129,7 @@ switch ($_SESSION["rolle"]){
     <h1 class="hdln"><?php echo $titel; ?></h1>
     <p class="txt">Hier können Sie eine Mitteilung mit maximal 300 Zeichen verfassen, welche an alle Teilnehmer ihrer Veranstaltung versendet werden.</p>
 
+    <!--Eingabe einer Nachricht-->
     <form action="SeiteMitteilung.php" method="post">
         <textarea name="nachricht" placeholder="Schreiben Sie hier den Inhalt ihrer Mitteilung" cols="30" rows="10" maxlength="300" required></textarea>
         
@@ -137,7 +143,9 @@ switch ($_SESSION["rolle"]){
                     <p>Wollen Sie diese Mitteilung an alle Teilnemer der Veranstaltung versenden?</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="v_id" value="<?php echo $V_ID; ?>">
+                        <!--Button zum Versenden der Nachricht-->
                         <button class="modal_btnconfirm" type="submit" name="mitteilung_senden" onclick="document.getElementById('id01').style.display='none'">Versenden</button>
+                        <!--Button zum Schließen des Modals-->
                         <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                     </div>
                 </div>           
@@ -153,6 +161,7 @@ switch ($_SESSION["rolle"]){
 
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script src="SeiteMitteilung.js"></script>
 
 </body>

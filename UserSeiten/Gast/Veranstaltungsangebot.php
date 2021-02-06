@@ -23,15 +23,23 @@ veranstaltung_refresh();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
+
     <title>Veranstaltungsangebot</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 2-->
 <body class="background2">
 <nav>
     <ul>
+        <!--Reiterleiste der Seite
+            Reiter für Veranstaltungsangebot (Neuladen der Seite) und Landing Page Weiterleitung-->
         <li><a class="active" href="Veranstaltungsangebot.php">Veranstaltungsangebot</a></li>
         <li style="float: right;"> <a href="../../LandingPage/index.php">zur Anmeldung</a></li>
     </ul>
@@ -54,6 +62,8 @@ veranstaltung_refresh();
 
     ?>
 
+    <!--Anzeige aller gefundenen Veranstaltungen 
+        Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die v_id der geklickten Veranstaltung übergeben und die Veranstaltungsseite aufgerufen-->
     <form action="../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
         <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>

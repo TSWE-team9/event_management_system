@@ -37,6 +37,8 @@ $res->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
@@ -44,10 +46,14 @@ $res->close();
     <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
     <title>Teilnehmerübermittlung</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
-    <!--Importierung Excel library-->
+
+    <!--Importierung einer externen Excel library zum Auslesen von Excel Dateien-->
     <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 3-->
 <body class="background3">
 
 <?php
@@ -78,7 +84,10 @@ switch ($_SESSION["rolle"]){
     <div class="container-80-inner">
         <h2 class="hdln">Importierung aus Excel Datei</h2>
             <label for="t_liste">Wählen Sie eine Datei aus:</label>
+            <!--Einschränkung der möglichen Dateiformate, welche ausgewählt werden können-->
+            <!--bei Klick öffnet sich der Explorer des lokalen PC und Excel Datei kann ausgewählt werden-->
             <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="input" />
+            <!--Button um Teilnehmerliste auszulesen und in die Eingabemaske zu übertragen-->
             <button style="float: right;" type="button" class="btn" onclick="fill()">Teilnehmerliste einlesen</button>
 
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
@@ -95,6 +104,8 @@ switch ($_SESSION["rolle"]){
             <div class="col-50">Nachname</div>
             <div class="col-50">Vorname</div>
         </div>
+
+        <!--Eingabefelder für Nachnamen und Vornamen der Teilnehmer-->
         <form action="SeiteTeilnehmerübermittlung.php" method="post">
             <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
             <input type="hidden" id="t_max" value="<?php echo $teilnehmer_max; ?>">
@@ -121,7 +132,9 @@ switch ($_SESSION["rolle"]){
                         <p>Falls bereits eine Teilnehmerliste übermittelt wurde, wird diese komplett mit der neuen Liste ersetzt.</p>
                         <p>Wollen Sie diese Teilnehmerliste übermitteln?</p>
                         <div class="modal_clearfix">
+                            <!--Button um Importierung zu bestätigen-->
                             <button class="modal_btnconfirm" type="submit"  id="anmelden" name="liste-übermitteln" onclick="document.getElementById('id02').style.display='none'">Übermitteln</button>
+                            <!--Button um Modal zu schließen-->
                             <button class="modal_btnabort" type="button" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
                         </div>
                     </div>
@@ -280,6 +293,7 @@ switch ($_SESSION["rolle"]){
 
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script src="SeiteTeilnehmerübermittlung.js"></script>
 
 </body>

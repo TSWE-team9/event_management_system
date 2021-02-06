@@ -7,13 +7,18 @@ include "../../send_email.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="VeranstalterAnfrage.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/popup.css">
+
     <title>Anfrage erstellen</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 1-->
 <body class="background1">
 
 <?php
@@ -90,12 +95,13 @@ if($error == false) {
 
 ?>
 
-
+<!--Importierung der ausgelagerten Reiterleiste und stylen des aktuellen Reiters mit der CSS Klasse 'active'-->
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_anfrage").classList.add("active");</script>
 
 <br><br><br><br><br><br><br><br><br>
-<!-- Anfrageformular -->
+<!--Anfrageformular
+    Eingabefelder für Teilnehmeranzahl, Veranstaltungsbeginn, Veranstaltungsdauer und Anmerkungen-->
 <div class="container">
     <form action="VeranstalterAnfrage.php" method="post">
         <div class="row">
@@ -131,11 +137,13 @@ if($error == false) {
             </div>
         </div>
         <div class="row">
+            <!--Button zur Erstellung der Anfrage-->
             <button class="btnanfrage" onmouseover="setDays()" type="submit" name="anfrage">Anfrage abschicken</button>
         </div>
     </form>
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script src="VeranstalterAnfrage.js"></script>
 </body>
 </html>
