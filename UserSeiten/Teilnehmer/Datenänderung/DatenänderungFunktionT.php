@@ -68,11 +68,13 @@ if (isset($_POST['änderung_email_user_t'])) {
     $email_1 = mysqli_real_escape_string($db, $_POST['email1']);
     $email_2 = mysqli_real_escape_string($db, $_POST['email2']);
 
-    $query2 = "Select E_mail from Benutzerkonto WHERE E_mail='email_1'";
-    $res23 = mysqli_query($db, $query);
+    $query2 = "Select E_mail from Benutzerkonto WHERE E_mail='$email_1'";
+    $res23 = mysqli_query($db, $query2);
 
-    if(mysqli_num_rows($res23) == 0){
-        $notin1 = True;
+    $notin1 = true;
+
+    if(mysqli_num_rows($res23) > 0){
+        $notin1 = false;
     }
 
     if ($email_1 != $email_2 or $notin1==False) {
