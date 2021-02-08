@@ -98,7 +98,7 @@ if(isset($_POST["mitteilung_senden"])){
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
-    <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="../Betreiber_Admin/style/header.css">
 
     <title>Veranstaltung</title>
 
