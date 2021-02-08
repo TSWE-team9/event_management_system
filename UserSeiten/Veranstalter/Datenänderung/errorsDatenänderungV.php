@@ -1,3 +1,4 @@
+//Error Passwortaenderung
 <?php  if (count($errors_p) > 0) : ?>
     <div class="overlay">
         <div class="popup">
@@ -12,6 +13,7 @@
     </div>
 <?php  endif ?>
 
+//Error Emailaenderung
 <?php  if (count($errors_e) > 0) : ?>
     <div class="overlay">
         <div class="popup">
@@ -26,6 +28,7 @@
     </div>
 <?php  endif ?>
 
+//Error Adressdatenaenderung
 <?php  if (count($errors_d) > 0) : ?>
     <div class="overlay">
         <div class="popup">
@@ -40,6 +43,7 @@
     </div>
 <?php  endif ?>
 
+//Konto loeschen Error
 <?php  if (count($errors_del) > 0) : ?>
     <div class="overlay">
         <div class="popup">

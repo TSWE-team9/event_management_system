@@ -64,7 +64,9 @@ $res2 = mysqli_query($db, $query_v);
     echo "</div>" ;
 }
 }
-//Belegung des Raumes wieder Freigeben
+
+//Abbrechen Funktion
+
 if(isset($_POST["Abbrechen"])){
 
     $query4 = "DELETE FROM Kalender WHERE Von = '$datum' AND R_ID = $Rid";

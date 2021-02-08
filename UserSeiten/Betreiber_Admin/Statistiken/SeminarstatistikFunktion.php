@@ -12,6 +12,8 @@ $_SESSION["F_Array"] = array();
 $data_query = "SELECT B_ID,Firma FROM Veranstalterkonto";
 $res = $conn->query($data_query);
 
+
+//Array mit items f[r das Dropdown menu
 while ($i = $res->fetch_row()) {
         array_push($_SESSION["V_Array"], $i[0]);
     array_push($_SESSION["F_Array"], $i[1]);
