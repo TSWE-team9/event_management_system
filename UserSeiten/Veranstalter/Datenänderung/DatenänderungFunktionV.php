@@ -68,7 +68,7 @@ if (isset($_POST['änderung_email_user_v'])) {
     $email_1 = mysqli_real_escape_string($db, $_POST['email1']);
     $email_2 = mysqli_real_escape_string($db, $_POST['email2']);
 
-    $query2 = "Select E_mail from Benutzerkonto WHERE E_mail='email_1'";
+    $query2 = "Select E_mail from Benutzerkonto WHERE E_mail='$email_1'";
     $res1 = mysqli_query($db, $query);
 
     if(mysqli_num_rows($res1) == 0){
