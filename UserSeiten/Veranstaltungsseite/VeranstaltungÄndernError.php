@@ -1,4 +1,4 @@
-//Errors Anmeldung
+<!--Errors Anmeldung-->
 <?php  if (count($errors_anmeldung) > 0) : ?>
     <div class="overlay">
         <div class="popup">
@@ -13,7 +13,7 @@
     </div>
 <?php  endif ?>
 
-//Errors Abmeldung
+<!--Errors Abmeldung-->
 <?php  if (count($errors_abmeldung) > 0) : ?>
     <div class="overlay">
         <div class="popup">

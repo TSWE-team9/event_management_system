@@ -48,7 +48,7 @@ if($conn->connect_error) {
 
     <!--anzeigen der internen abgelaufenen Veranstaltungen-->
     <?php
-    $query1 = "SELECT V_ID, Angebot_ID, DATE_ADD(Beginn, INTERVAL Dauer-1 DAY), Titel, Status FROM Veranstaltung WHERE Status = 3 AND Kategorie = 2 AND Teilnehmer_akt != 0 ";
+    $query1 = "SELECT V_ID, Angebot_ID, DATE_ADD(Beginn, INTERVAL Dauer-1 DAY), Titel, Status FROM Veranstaltung WHERE Status = 3 AND Verfügbarkeit == 1 AND Kategorie = 2 AND Teilnehmer_akt != 0 ";
     $res1 = $conn->query($query1);
     if($res1->num_rows > 0){
     while($i = $res1->fetch_row()){

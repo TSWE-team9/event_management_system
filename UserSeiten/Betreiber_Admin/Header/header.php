@@ -1,6 +1,6 @@
 <?php echo
 '<nav>
-//Header des Betreibers und Admins 
+<!--Header des Betreibers und Admins -->
     <ul class="header">
         <li class="headerel"><a class="headerel" id="Reiter_Startseite" href="../Startseiten/StartseiteBetreiber.php">Startseite</a></li>
         <li class="headerel"><a class="headerel" id="Reiter_Angebotserstellung" href="../Angebotserstellung/Angebotserstellung.php">Angebotserstellung</a></li>
