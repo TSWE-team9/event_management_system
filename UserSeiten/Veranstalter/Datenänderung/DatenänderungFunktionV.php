@@ -71,8 +71,10 @@ if (isset($_POST['änderung_email_user_v'])) {
     $query2 = "Select E_mail from Benutzerkonto WHERE E_mail='$email_1'";
     $res1 = mysqli_query($db, $query);
 
-    if(mysqli_num_rows($res1) == 0){
-        $notin = True;
+    $notin = true;
+
+    if(mysqli_num_rows($res1) > 0){
+        $notin = false;
     }
 
     if ($email_1 != $email_2 or $notin==False) {
