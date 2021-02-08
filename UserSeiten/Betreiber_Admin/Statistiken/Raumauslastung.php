@@ -97,12 +97,8 @@ $temp = FALSE;
             $res1->fetch();
             $res1->close();
 
-            if($count == 0){
-                $count = 1;
-            }
-            else{
-                $count = $count +1;
-            }
+            //Durch Subtraktion geht ein Tag verloren, also dazu addieren
+            $count = $count + 1;
 
 
             $data_query2 = "SELECT SUM(DATEDIFF(Bis+1,Von)) FROM Kalender WHERE R_ID=(SELECT R_ID FROM Raum WHERE Bezeichnung='$raum1') And Status=1 AND Bis BETWEEN '$start1' AND '$ende1' GROUP BY R_ID";
