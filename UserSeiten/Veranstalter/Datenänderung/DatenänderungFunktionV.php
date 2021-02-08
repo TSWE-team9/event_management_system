@@ -69,7 +69,7 @@ if (isset($_POST['änderung_email_user_v'])) {
     $email_2 = mysqli_real_escape_string($db, $_POST['email2']);
 
     $query2 = "Select E_mail from Benutzerkonto WHERE E_mail='$email_1'";
-    $res1 = mysqli_query($db, $query);
+    $res1 = mysqli_query($db, $query2);
 
     $notin = true;
 
@@ -77,7 +77,7 @@ if (isset($_POST['änderung_email_user_v'])) {
         $notin = false;
     }
 
-    if ($email_1 != $email_2 or $notin==False) {
+    if ($email_1 != $email_2 || $notin == False) {
         array_push($errors_e, "Die zwei E-Mail Adressen stimmen nicht überein oder sind bereits im System registriert");
     }else {
         $query = "Update Benutzerkonto Set E_mail='$email_1' Where B_ID=$curr_bid";
