@@ -374,7 +374,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <!--Liste übermitteln Button Beginn-->
     <!--nur bei geschlossenen veranstaltungen-->
     <?php
-    if($verfuegbarkeit == 2){
+    if($verfuegbarkeit == 2 && $status == 1){
     ?>
 
     <!--Teilnehmerliste übermittel

@@ -57,7 +57,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $res1 = $conn->query($check_query);
 
     if ($res1->num_rows == 0) {
-        $error = "Fehler: Angegebene Raum_ID existiert nicht.";
+        $error = "Angegebene Raum_ID existiert nicht.";
         $error_occured = true;
     }
 
