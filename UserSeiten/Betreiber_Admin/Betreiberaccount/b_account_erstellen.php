@@ -111,7 +111,7 @@ if(isset($_POST["erstellen"])){
 <script>document.getElementById("Reiter_Logout").classList.add("active");  </script>
 <div class="contact-us" style="margin-top: 5em">
     <h1> Account erstellen</h1>
-    <!-- Fomular Spalten -->
+    <!-- Fomular zum Anlegen eines neuen Betreibers -->
     <h3>
         <em>&#x2a; </em> Bitte alle Felder ausfüllen um einen neuen Account anzulegen.
     </h3>

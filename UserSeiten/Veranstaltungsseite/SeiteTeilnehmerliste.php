@@ -43,6 +43,7 @@ $res->close();
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
+    <link rel="stylesheet" href="../Betreiber_Admin/style/header.css">
 
     <title>Veranstaltung</title>
 

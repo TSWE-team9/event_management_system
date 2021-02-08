@@ -44,6 +44,7 @@ $res->close();
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
+    <link rel="stylesheet" href="../Betreiber_Admin/style/header.css">
     <title>Teilnehmerübermittlung</title>
 
     <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
