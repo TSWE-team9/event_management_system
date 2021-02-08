@@ -26,6 +26,7 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Button wurde geklickt
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Error_occured Variable (zunächst false)
@@ -34,13 +35,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     //Abspeichern der vom Formular übergebenen Daten
     $R_ID = $_POST["Raum-ID"];
-//    $bezeichnung = $_POST["Raumbezeichnung"];
     $status_inaktiv = false;
 
 
-    //Abfrage, ob Raum ID mit Bezeichnung des zu löschenden Raums existiert
+    //Abfrage, ob Raum ID mit Bezeichnung des zu löschenden Raums überhaupt existiert
     $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID" ;
-//                        AND Bezeichnung='$bezeichnung'";
     $res1 = $conn->query($check_query);
 
     if ($res1->num_rows == 0) {
@@ -80,13 +79,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $update_query = "UPDATE Raum SET Status = 2 WHERE R_ID = $R_ID";
         if ($conn->query($update_query) === TRUE) {
             echo "<div class='overlay'>";
-            echo "<div class='popup'  style='z-index: 3'>";
+            echo "<div class='popup'  style='z-index: 3; '>";
             echo "<h2>Bestätigung</h2>";
             echo "<a class='close' href='Raumverwaltung.php'>&times;</a>";
             echo "<div class='content'>", 'Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt),';
             echo "</div>";
             echo "</div>";
-//            echo "<br>" . "Der Raum wurde erfolgreich gelöscht (inaktiv gesetzt).";
+            echo "</div>";
+
+
 
         } else {
             $error = "Es ist ein Fehler beim Einfügen in die Datenbank aufgetreten.";
@@ -95,7 +96,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     }
 
-
+    //Wenn Raum bereits inaktiv, dann Meldung ausgeben
     if ($status_inaktiv) {
         echo "<div class='overlay'>";
         echo "<div class='popup ' style='z-index: 3'>";
@@ -104,9 +105,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<div class='content'>", 'Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!';
         echo "</div>";
         echo "</div>";
-//        echo "<br>" . "Der Raum ist bereits gelöscht (inaktiv) und kann nicht gelöscht werden!";
+        echo "</div>";
 
     }
+
+    //Fehlermeldung bei Fehler ausgeben
     if ($error_occured) {
         echo "<div class='overlay'>";
         echo "<div class='popup'  style='z-index: 3'>";
@@ -115,7 +118,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<div class='content'>" . $error . "</div>";
         echo "</div>";
         echo "</div>";
-//    echo $error;
+        echo "</div>";
 
     }
 }
@@ -128,7 +131,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <?php include '../Header/header.php'; ?>
     <script>document.getElementById("Reiter_Raumverwaltung").classList.add("active");  </script>
-
+<!-- Formular um einen Raum zu löschen-->
 <div class="contact-us">
     <h1> Raum Löschen</h1>
 
@@ -139,9 +142,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
             <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
-<!--    <label for="Raumbezeichnung">Raumbezeichnung <em>&#x2a;</em></label><input id="Raumbezeichnung" name="Raumbezeichnung" required="" type="text"/>-->
-
-<!--    <button id="Löschen">Löschen</button>-->
+<!-- Buttons zum Löschen oder Abbrechen-->
             <button type="submit" class="Löschen" formaction="#">Löschen</button>
             <a href="Raumverwaltung.php" type="button" class="Abbrechen">Abbrechen</a>
 

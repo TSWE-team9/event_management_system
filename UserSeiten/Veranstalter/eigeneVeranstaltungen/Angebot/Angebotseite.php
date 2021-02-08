@@ -19,16 +19,24 @@ if($conn->connect_error){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../../CSS/modal.css">
     <link rel="stylesheet" type="text/css" href="Angebotseite.css">
     <link rel="stylesheet" href="../../../CSS/popup.css">
+
     <title>Angebot</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
-    <script src="../script.js"></script>
+    <!--<script src="../script.js"></script>-->
 </head>
+
+<!--body der Seite mit Hintergrundbild 2-->
 <body class="background2">
+
+<!--Reiterleiste-->
 <nav>
     <ul>
         <li><a href="../../Startseite/VeranstalterStartseite.php">Startseite</a></li>
@@ -41,7 +49,8 @@ if($conn->connect_error){
 </nav>
 
 <?php
-//Aufruf der Angebotsseite
+
+//Aufruf der Angebotsseite nach Klick auf den Button
 if(isset($_POST["Angebotsseite"])){
 
     //Abspeichern der übergebenen BeAr_ID
@@ -61,13 +70,13 @@ $res1->bind_result($Teilnehmer, $V_Beginn, $Dauer, $Anmerk, $Ang_Preis, $Status)
 $res1->fetch();
 $res1->close();
 
-//Ablehnen des Angebots
+//Ablehnen des Angebots nack Klick auf Button Ablehnen
 if(isset($_POST["angebot_ablehnen"])){
 
     //Abspeichern der BeAr_ID des abgelehnten Angebots
     $Angebot_ID = $_POST["angebot_id"];
 
-    //Update Query des Angebots
+    //Update Query des Angebots (Status und Raum)
     $query3 = "UPDATE Anfrage_Angebot SET Status = 5, R_ID = NULL WHERE BeAr_ID = $Angebot_ID";
     $res3 = $conn->query($query3);
 
@@ -83,6 +92,7 @@ if(isset($_POST["angebot_ablehnen"])){
         echo "Es ist ein Fehler bei der Delete Query aufgetreten";
     }
 
+    //Ausgabe einer Bestätigungsmeldung
     else{echo 
         '<div class="overlay">
             <div class="popup">
@@ -92,8 +102,6 @@ if(isset($_POST["angebot_ablehnen"])){
             </div>
         </div>';
 
-        //Weiterleitung zur Startseite
-        // header("Location: ../../Startseite/VeranstalterStartseite.php");
     }
 }
 
@@ -124,9 +132,13 @@ if(isset($_POST["angebot_ablehnen"])){
     <div class="row">
         <div class="col-25">Angebotsstatus</div>
         <div class="col-75">
-            <?php if($Status == 2){
+            <?php
+
+            //Wenn Angebot normal erstellt wurde
+            if($Status == 2){
                 echo "Das Angebot wurde für die angefragten Daten erstellt und ist 7 Tage gültig";
             }
+            //Wenn Betreiber das angefragte Datum geändert hat
             if($Status == 3){
                 echo "Das ursprüngliche Veranstaltungsdatum der Anfrage wurde vom Betreiber geändert";
             }?>
@@ -141,11 +153,11 @@ if(isset($_POST["angebot_ablehnen"])){
             </form>
         </div>
 
-        <!--Button zur Ablehnung des Angebots-->
+        <!--Button zur Ablehnung des Angebots, öffnet das Fenster zum Ablehnen des Angebots-->
         <div class="col-33">
             <button class="btn" type="button" id="ablehnen" onclick="document.getElementById('id01').style.display='block'">Angebot ablehnen</button>
         </div>
-        <!--Modal wenn Veranstalter auf Ablehnen klickt-->
+        <!--Fenster wenn Veranstalter auf Ablehnen klickt-->
         <div id="id01" class="modal">
             <form class="modal_content" action="Angebotseite.php" method="post">
                 <div class="modal_container">
@@ -153,7 +165,9 @@ if(isset($_POST["angebot_ablehnen"])){
                     <p>Wollen Sie das Angebot wirklich ablehnen?</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
+                        <!--Button zur Bestätigung der Ablehnung-->
                         <button class="modal_btnconfirm" type="submit" name="angebot_ablehnen" onclick="document.getElementById('id01').style.display='none'">Ablehnen</button>
+                        <!--Button zur Schließen des Fensters-->
                         <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
@@ -165,11 +179,12 @@ if(isset($_POST["angebot_ablehnen"])){
         if($Status == 3){
 
         ?>
+        <!--Fenster zum Ändern des Anfrage Datums-->
         <div class="col-33">
             <button class="btn" type="button" id="aendern" onclick="document.getElementById('id02').style.display='block'">Anfragedatum ändern</button>
         </div>
-        <!--Modal wenn Veranstalter auf Ändern klickt-->
-        <!--TODO Eingrenzung des Datum in Abhängigkeit von der Dauer-->
+        <!--Fenster wenn Veranstalter auf Ändern klickt
+            mit Eingabefeld für Datum-->
         <div id="id02" class="modal">
             <form class="modal_content" action="AngebotAendern.php" method="post">
                 <div class="modal_container">
@@ -180,7 +195,9 @@ if(isset($_POST["angebot_ablehnen"])){
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>">
                         <input type="hidden" name="dauer" id="dauer" value="<?php echo $Dauer; ?>">
                         <input type="date" name="new_date" id="new_date" required>
+                        <!--Button zur Bestätigung des Anfrage Datums-->
                         <button class="modal_btnconfirm" type="submit"  id="btn_new_date" name="angebot_aendern" onclick="document.getElementById('id02').style.display='none'">Anfragedatum ändern</button>
+                        <!--Button zur Schließen des Fensters-->
                         <button class="modal_btnabort" type="button" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
@@ -190,6 +207,7 @@ if(isset($_POST["angebot_ablehnen"])){
     </div>
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script src="Angebotseite.js"></script>
 
 </body>

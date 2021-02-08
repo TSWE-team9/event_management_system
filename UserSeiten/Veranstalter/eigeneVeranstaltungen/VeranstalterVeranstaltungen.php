@@ -20,7 +20,7 @@ include "../../veranstaltung_refresh.php";
 angebot_refresh();
 veranstaltung_refresh();
 
-//Variablen
+//B_ID Variable des angemeldeten Veranstalters
 $V_ID = $_SESSION["b_id"];
 ?>
 
@@ -28,19 +28,27 @@ $V_ID = $_SESSION["b_id"];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../CSS/tabs.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
+
     <title>Meine Veranstaltungen</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 1-->
 <body class="background1">
+
+<!--Importierung der ausgelagerten Reiterleiste und stylen des aktuellen Reiters mit der CSS Klasse 'active'-->
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_veranstaltungen").classList.add("active");</script>
 
 <br><br><br><br><br>
-<!--Tabs auf der linken Seite zum auswählen der gewünschten Liste-->
+<!--Tabs auf der linken Seite zum Auswählen der gewünschten Liste-->
 <div class="tab">
   <button class="tablinks" onclick="openList(event, 'aktuelle')" id="defaultOpen">aktuelle Veranstaltungen</button>
   <button class="tablinks" onclick="openList(event, 'zukünftige')">zukünftige Veranstaltungen</button>
@@ -54,7 +62,7 @@ $V_ID = $_SESSION["b_id"];
 
     <?php
     //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
-    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2";
+    $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 2 ORDER BY Beginn";
     $res1 = $conn->query($query1);
     if($res1->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine aktuellen Veranstaltungen</P>";
@@ -65,13 +73,15 @@ $V_ID = $_SESSION["b_id"];
         while($i = $res1->fetch_row()){
 
     ?>
-  <!--foreach Schleife Beginn-->
+
+  <!--Anzeige aller gefundenen Veranstaltungen 
+      Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die v_id der geklickten Veranstaltung übergeben und die Veranstaltungsseite aufgerufen-->
   <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
   <?php }} ?>
-    <!--foreach Schleife Ende-->
+
 </div>
 
 <!--Tab auf der rechten Seite mit Liste der zukünftigen Veranstaltungen-->
@@ -81,7 +91,7 @@ $V_ID = $_SESSION["b_id"];
     <?php
     //Abfrage aller aktiven (Status = 1) Veranstaltungen des Veranstalters
 
-    $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 1";
+    $query2 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 1 ORDER BY Beginn";
     $res2 = $conn->query($query2);
     if($res2->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine geplanten Veranstaltungen</P>";
@@ -91,12 +101,14 @@ $V_ID = $_SESSION["b_id"];
     else{
     while($i = $res2->fetch_row()){
     ?>
-  <!--foreach Schleife Beginn-->
+  
+  <!--Anzeige aller gefundenen Veranstaltungen 
+      Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die v_id der geklickten Veranstaltung übergeben und die Veranstaltungsseite aufgerufen-->
   <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form> 
-  <!--foreach Schleife Ende-->
+
     <?php }} ?>
 </div>
 
@@ -107,7 +119,7 @@ $V_ID = $_SESSION["b_id"];
     <?php
     //Abfrage aller abgelaufenen (Status = 3) Veranstaltungen des Veranstalters
 
-    $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 3";
+    $query3 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $V_ID AND Status = 3 ORDER BY Beginn";
     $res3 = $conn->query($query3);
     if($res3->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine abgeschlossenen Veranstaltungen</P>";
@@ -117,13 +129,15 @@ $V_ID = $_SESSION["b_id"];
     else{
     while($i = $res3->fetch_row()){
     ?>
-  <!--foreach Schleife Beginn-->
+  
+  <!--Anzeige aller gefundenen Veranstaltungen 
+      Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die v_id der geklickten Veranstaltung übergeben und die Veranstaltungsseite aufgerufen-->
   <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
     <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
   </form>
     <?php }} ?>
-  <!--foreach Schleife Ende-->
+
 </div>
 
 <!--Tab auf der rechten Seite mit Liste von Angeboten-->
@@ -132,7 +146,7 @@ $V_ID = $_SESSION["b_id"];
 
     <?php
     //Abfrage aller bearbeiteten und geänderten Anfragen (Angeboten) des angemeldeten Veranstalters
-    $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3)";
+    $query4 = "SELECT BeAr_ID, Beginn, Angebotsdatum FROM Anfrage_Angebot WHERE Veranstalter = $V_ID AND Status IN (2, 3) ORDER BY Beginn";
     $res4 = $conn->query($query4);
     if($res4->num_rows == 0){
         echo "<p class='txt'>Sie haben derzeit keine Angebote des Betreibers</P>";
@@ -143,14 +157,17 @@ $V_ID = $_SESSION["b_id"];
     while($i = $res4->fetch_row()){
     ?>
 
+  <!--Anzeige aller gefundenen Angebote 
+      Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die angebot_id des geklickten Angebots übergeben und das Angebot aufgerufen-->
   <form action="../eigeneVeranstaltungen/Angebot/Angebotseite.php" method="post">
     <input type="hidden" name="angebot_id" value="<?php echo $i[0];?>">
     <button type="submit" class="btnveranstaltung" name="Angebotsseite"><?php echo "Angebotsdatum: ". $i[2] . " / Geplanter Beginn: ". $i[1]?></button>
   </form>
     <?php }}?>
-  <!--while Schleife Ende-->
+
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script src="VeranstalterVeranstaltungen.js"></script>
 
 </body>

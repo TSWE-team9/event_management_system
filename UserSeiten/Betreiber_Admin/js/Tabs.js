@@ -1,7 +1,7 @@
 
 
 
-//JavaScriptFunktion um die Ausführung der Tabs aus der linken Seite zu unterstützen
+//JavaScriptFunktion um die Ausführung der Tabs aus der linken Seite zu unterstützen bei der Anzeige von Veranstaltungen in Abrechnung und Meine Veranstaltungen
 
     // function to display different tabs
     function openList(evt, listName) {

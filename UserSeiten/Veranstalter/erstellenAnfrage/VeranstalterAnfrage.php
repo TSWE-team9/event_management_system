@@ -7,13 +7,18 @@ include "../../send_email.php";
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="VeranstalterAnfrage.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/popup.css">
+
     <title>Anfrage erstellen</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 1-->
 <body class="background1">
 
 <?php
@@ -47,7 +52,7 @@ if(isset($_POST["anfrage"])){
     $veranstalter_id = $_SESSION["b_id"];
 
 
-//Insert Query für das Anlegen in der DB
+//Insert Query für das Anlegen der Anfrage in der DB
 if($error == false) {
 
     $query = "INSERT INTO Anfrage_Angebot VALUES (BeAr_ID, NULL, $veranstalter_id, $teilnehmerzahl, '$beginn', $dauer, 1, LOCALTIMESTAMP, NULL, NULL, '$anmerkungen', NULL)";
@@ -55,6 +60,7 @@ if($error == false) {
     $res = $conn->query($query);
     if ($res === TRUE) {
         $query_status = "Die Anfrage wurde erfolgreich erstellt und wird nun vom Betreiber bearbeitet.";
+
         //Versenden einer Bestätigungsmail an den Veranstalter
         $empfaenger = get_mail_address($veranstalter_id);
 
@@ -71,7 +77,9 @@ if($error == false) {
         echo "</div>" ;
         echo "</div>" ;
 
-    } else {
+    }
+    //Fehlermeldung bei Fehler
+    else {
         $query_status = "Beim Erstellen der Anfrage ist ein Fehler aufgetreten";
         echo "<div class='overlay'>" ;
         echo  "<div class='popup'>";
@@ -87,12 +95,13 @@ if($error == false) {
 
 ?>
 
-
+<!--Importierung der ausgelagerten Reiterleiste und stylen des aktuellen Reiters mit der CSS Klasse 'active'-->
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_anfrage").classList.add("active");</script>
 
 <br><br><br><br><br><br><br><br><br>
-<!-- Anfrageformular -->
+<!--Anfrageformular
+    Eingabefelder für Teilnehmeranzahl, Veranstaltungsbeginn, Veranstaltungsdauer und Anmerkungen-->
 <div class="container">
     <form action="VeranstalterAnfrage.php" method="post">
         <div class="row">
@@ -124,15 +133,17 @@ if($error == false) {
                 <label for="anmerkungen">Anmerkungen</label>
             </div>
             <div class="col-75">
-                <textarea name="anmerkungen" id="subject" placeholder="Anmerkungen" cols="30" rows="10" maxlength="300"></textarea>
+                <textarea name="anmerkungen" id="subject" placeholder="Anmerkungen maximal 300 Zeichen" cols="30" rows="10" maxlength="300"></textarea>
             </div>
         </div>
         <div class="row">
+            <!--Button zur Erstellung der Anfrage-->
             <button class="btnanfrage" onmouseover="setDays()" type="submit" name="anfrage">Anfrage abschicken</button>
         </div>
     </form>
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script src="VeranstalterAnfrage.js"></script>
 </body>
 </html>

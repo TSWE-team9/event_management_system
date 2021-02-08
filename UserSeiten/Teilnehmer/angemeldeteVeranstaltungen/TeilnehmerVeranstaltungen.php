@@ -26,14 +26,21 @@ $B_ID = $_SESSION["b_id"];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
 
     <title>Angemeldete Veranstaltungen</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 2-->
 <body class="background2">
+
+<!--Importierung der ausgelagerten Reiterleiste und stylen des aktuellen Reiters mit der CSS Klasse 'active'-->
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_veranstaltungen").classList.add("active");</script>
 
@@ -42,7 +49,7 @@ $B_ID = $_SESSION["b_id"];
 
     <?php
     $query1 = "SELECT V.V_ID, Beginn, Titel from Veranstaltung V JOIN Teilnehmerliste_offen T WHERE V.V_ID = T.V_ID 
-                AND T.B_ID = $B_ID AND V.Status IN (1, 2)";
+                AND T.B_ID = $B_ID AND V.Status IN (1, 2) ORDER BY V.Beginn";
     $res1 = $conn->query($query1);
     if($res1->num_rows == 0){
         echo "<p class='txt'>Sie sind zur Zeit zu keinen Veranstaltungen angemeldet.</p>";
@@ -51,6 +58,9 @@ $B_ID = $_SESSION["b_id"];
         while($i = $res1->fetch_row()){
 
     ?>
+
+    <!--Anzeige aller gefundenen Veranstaltungen 
+        Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die v_id der geklickten Veranstaltung übergeben und die Veranstaltungsseite aufgerufen-->
     <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
         <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>

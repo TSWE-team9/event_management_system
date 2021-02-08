@@ -21,6 +21,7 @@ if(isset($_POST["teilnehmerliste_anzeigen"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
+//Speichern der V_ID in lokaler Variable
 $V_ID = $_SESSION["V_ID"];
 
 //Abfragen des Titels, Teilnehmerzahlen der Veranstaltung
@@ -38,16 +39,22 @@ $res->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
+
     <title>Veranstaltung</title>
 
+    <!--Importierung der ausgelagerten Reiterleiste und stylen des aktuellen Reiters mit der CSS Klasse 'active'-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
+
     <!--Import der PDFmake library-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.69/pdfmake.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.69/vfs_fonts.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 1-->
 <body class="background1">
 
 <?php
@@ -70,7 +77,7 @@ switch ($_SESSION["rolle"]){
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
 
-    <!--SQL Abfrage-->
+    <!--SQL Abfrage der angemeldeten Teilnehmer (offen sowie geschlossen schließt sich aus deshalb UNION)-->
     <?php
     $query1 = "SELECT Vorname, Nachname FROM Teilnehmerliste_offen WHERE V_ID = $V_ID
                 UNION SELECT Vorname, Nachname FROM Teilnehmerliste_ges WHERE V_ID = $V_ID";
@@ -90,12 +97,13 @@ switch ($_SESSION["rolle"]){
 
     <div class="container-80-inner">
         <div class="row">
-            <div class="col-50">Nachname</div>
-            <div class="col-50">Vorname</div>
+            <div class="col-50" style="font-weight: bold;">Nachname</div>
+            <div class="col-50" style="font-weight: bold;">Vorname</div>
         </div>
+        <br>
         <?php
 
-        //Ergebnis-Array für Vornamen und Nachnamen
+        //Ergebnis-Array für Vornamen und Nachnamen für Ausgabe als PDF vorbereiten
         $teilnehmer_array_v = array();
         $teilnehmer_array_n = array();
 
@@ -115,7 +123,8 @@ switch ($_SESSION["rolle"]){
 
 
     <div style="width: 80%; margin: auto; margin-top: 20px">
-        
+
+        <!--Button um Teilnehmerliste als PDF auszugeben-->
         <button class="btn" style="float: right;" type="button" onclick="genPDF()">Teilnehmerliste als PDF ausgeben</button>
         
         <!--else Ende-->
@@ -129,21 +138,25 @@ switch ($_SESSION["rolle"]){
     </div>
 </div>
 
+
 <script>
 
-    // getting arrays
+    // holen der Teilnehmerlisten aus den PHP arrays und Speichern in JS arrays
     var jArrayN = <?php echo json_encode($teilnehmer_array_n); ?>;
     var jArrayV = <?php echo json_encode($teilnehmer_array_v); ?>;
 
+    // kombinieren der Vor- und Nachnamen in einen String und Abspeichern in einem neuen array
     var combinedArray = [];
     for(var i = 0; i < jArrayN.length; i++) {
         var temp = [jArrayN[i], jArrayV[i]].join(" ");
         combinedArray.push(temp);
     }
 
+    // Abspeichern des Titels in einer Variable und Abspeichern der Teilnehmerliste in einem String
     var titel = "<?php echo $titel; ?>";
     var header = ["Teilnehmerliste für die Veranstaltung:", titel].join(" ");
 
+    // festlegen des PDF Formats
     var docDefinition = {
         content:[
             {text: header, style: 'header'},
@@ -160,6 +173,7 @@ switch ($_SESSION["rolle"]){
         }
     };
 
+    // Funktion zur Generierung des PDFs und Download des PDFs
     function genPDF() {
         pdfMake.createPdf(docDefinition).download();
     }

@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 //Zugangsdaten zur Datenbank
 $host = '132.231.36.109';
 $db = 'vms_db';
@@ -17,18 +18,14 @@ if($conn->connect_error){
 include "../../angebot_refresh.php";
 angebot_refresh();
 
+//Abfragen aller unbearbeiteten Anfragen
 $query = "SELECT BeAr_ID, Veranstalter, Beginn, Dauer, Teilnehmer_gepl FROM Anfrage_Angebot WHERE Status = 1 ORDER BY Beginn";
 $res = $conn->query($query);
-if($res->num_rows == 0){
-    $href = "";
-    if($_SESSION["rolle"] == 3){
-        $href = "../Startseiten/StartseiteBetreiber.php";
-    }
-    if($_SESSION["rolle"] == 4){
-        $href = "../Startseiten/StartseiteBetreiber.php";
-    }
 
-//    Fehlermeldung wenn die Abfrage nicht funktioniert 
+//Wenn keine gefunden wurden eine Meldung ausgeben und zurück zur Startseite leiten
+if($res->num_rows == 0){
+    $href = "../Startseiten/StartseiteBetreiber.php";
+
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Info</h2>" ;
@@ -59,7 +56,7 @@ if($res->num_rows == 0){
 
 <?php include '../Header/header.php'; ?>
 <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
-
+<!--Anzeigen der eingegangenen Anfragen in einer Tabelle-->
 <table class="container">
     <thead>
     <tr>
@@ -83,7 +80,7 @@ if($res->num_rows == 0){
     </tbody>
 </table>
 
-
+<!--Button für die Kapazitätenabfrage-->
 <a href="KapazitätenabfrageV1.php" class="Auslösen" type="button" >Überprüfen</a>
 </body>
 </html>

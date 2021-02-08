@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="css/text" href="../../CSS/footer.css">
-    <link rel="stylesheet" type="css/text" href="../../CSS/Startseite.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/footer.css">
+    <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css">
     <title>AGB</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 <?php include '../header.php'; ?>
-<body>
+<body class="background2">
 <div class="b">
 <div class="c">
-<div class='impressum'><h1>Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Max Muster <br>
+<div><h1 style="text-align:center;">AGB</h1><p>Angaben gemäß § 5 TMG</p><p>Max Muster <br>
         Musterweg<br>
         12345 Musterstadt <br>
     </p><p> <strong>Vertreten durch: </strong><br>

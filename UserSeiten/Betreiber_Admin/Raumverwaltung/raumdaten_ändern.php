@@ -33,6 +33,7 @@ if($conn->connect_error){
     die('Connect Error (' . $conn->connect_errno . ') '
         . $conn->connect_error);
 }
+
 //Error_occured Variable (zunächst false)
 $error = "";
 $error_occured = false;
@@ -40,6 +41,7 @@ $query_status = "";
 $status = false;
 $show_table = false;
 
+//Button wurde geklickt
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
 //Abspeichern der zu ändernden Daten
@@ -50,12 +52,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $preis = number_format((float)$_POST["Preis"], 2, '.', '');
     //$status = $_POST["Status"];
 
-//Abfrage, ob Raum ID des zu ändernden Raums existiert
+//Abfrage, ob Raum ID des zu ändernden Raums überhaupt existiert
     $check_query = "SELECT R_ID FROM Raum WHERE R_ID = $R_ID";
     $res1 = $conn->query($check_query);
 
     if ($res1->num_rows == 0) {
-        $error = "Fehler: Angegebene Raum_ID existiert nicht";
+        $error = "Fehler: Angegebene Raum_ID existiert nicht.";
         $error_occured = true;
     }
 
@@ -116,7 +118,8 @@ echo "<br><br>";
 //Ausgabe der existierenden Räume in einer Tabelle
 $räume_query = "SELECT R_ID, Bezeichnung, Kapazitaet, Groesse, Preis, Status FROM Raum";
 $result = $conn->query($räume_query);
-//greift aufraumverwaltung.php zu
+
+//Ausgabe der Räume in einer Tabelle
 if($result->num_rows >0){
 echo "<table class='container' border=\"1\">";
     echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th><th>Größe</th><th>Preis</th><th>Status</th>";
@@ -132,30 +135,35 @@ echo "<table class='container' border=\"1\">";
 
 echo "<br><br>";
 
-//Fehlermeldung oder Erfolgsmeldung wird ausgegeben
+//Fehlermeldung wird ausgegeben mit Tabelle betroffener Räume
 if($error_occured){
 
     echo "<div class='overlay'>" ;
-    echo  "<div class='popup'>";
+    echo  "<div class='popup' >";
     echo "<h2>Fehler</h2>" ;
     echo "<a class='close' href='raumdaten_ändern.php'>&times;</a>" ;
-    echo "<div class='content' style='margin-bottom: 0px;'>" .$error. "</div>";
+    echo "<div class='content' style='margin-bottom: 0;' style='width: 60%'>" .$error. "</div>";
 
-    echo "<div class='mantel' style='margin-top: 0px;'>" ;
-    echo "<table border=\"1\" class='container' style='margin: 2em 2em 2em 0;'>";
-    echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
-    while($i = $res2->fetch_row()){
-        echo "<tr>";
-        foreach ($i as $item){
-            echo "<td>$item</td>";
+    //Wenn Angebote oder Veranstaltungen betroffen sind, dann wird eine Tabelle angezeigt
+    if($show_table) {
+        echo "<div class='mantel' >";
+        echo "<table border=\"1\" class='container' style='margin: 2em 0 2em 0; width: 110%; '>";
+        echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
+        while ($i = $res2->fetch_row()) {
+            echo "<tr>";
+            foreach ($i as $item) {
+                echo "<td style='padding-right:6em;'>$item</td>";
+            }
+            echo "</tr>\n";
         }
-        echo "</tr>\n";
+        echo "</table>\n";
+        echo "</div>";
     }
-    echo "</table>\n";
-
     echo "</div>" ;
     echo "</div>" ;
 }
+
+//Ausgabe einer Bestätigungsmeldung
 if($status) {
 
    echo "<div class='overlay'>";
@@ -167,35 +175,17 @@ if($status) {
    echo "</div>";
 }
 
-echo "<br><br>";
 
-
-//Anzeige der Tabelle der betroffenen Veranstaltungen
-if($show_table){
-    echo "<div class='mantel '>" ;
-    echo "<table border=\"1\" class='container' style='padding-top:8em '>";
-    echo "<th>V_ID / Angebot_ID</th><th>Titel</th><th>Veranstalter ID</th><th>Max. Teilnehmerzahl</th><th>Beginn</th>";
-    while($i = $res2->fetch_row()){
-        echo "<tr>";
-        foreach ($i as $item){
-            echo "<td>$item</td>";
-        }
-        echo "</tr>\n";
-    }
-    echo "</table>\n";
-    echo "</div>";
-}
 ?>
 
 <br>
-
+<!--Formulat um Raumdaten zu ändern -->
 <div class="contact-us">
     <h1> Raumdaten ändern</h1>
     <!-- Fomular Spalten -->
     <h3>
         <em>&#x2a; </em> Bitte alle Felder ausfüllen um die Raumdaten zu ändern!
     </h3>
-    <!--    <label style="position: relative" > Verpflichtend </label>-->
 
     <form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
         <label for="Raum-ID">Raum-ID <em>&#x2a;</em></label><input id="Raum-ID" name="Raum-ID" required="" type="Number"/>
@@ -204,7 +194,7 @@ if($show_table){
         <label for="RaumGröße">Raumgröße in Quadratmetern <em>&#x2a;</em></label><input id="RaumGröße" name="RaumGröße" pattern="[0-9][0-9][0-9]" type="Number"  min="0" />
         <label for="Preis">Preis in Euro<em>&#x2a;</em></label><input id="Preis" name="Preis" required="" type="Number"  min="1" max="100000000"/>
 
-
+<!--Buttons zum Änderd der Raumdaten oder Abbrechen-->
         <button class="Löschen"style="margin-top: 0; ">Ändern</button>
             <a href="Raumverwaltung.php" type="button" class="Abbrechen" style="margin-top: 0">Abrechen</a>
 

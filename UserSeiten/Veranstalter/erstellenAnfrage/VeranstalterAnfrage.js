@@ -1,4 +1,4 @@
-
+// neues Datum muss auch in mindestens vier Wochen liegen
 function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
@@ -23,6 +23,7 @@ function dateToHtml(date) {
     return result;
 }
 
+// gets current day of the week and returns number of possible event days -> events duration is limited to one week (monday to sunday)
 function dayOfWeek(date) {
     var day = new Date(date).getDay();
     var result;
@@ -67,11 +68,13 @@ function dayOfWeek(date) {
     return result;
 }
 
+// setzt die maximale Dauer in Abhängigkeit des Startdatums
 function setDays() {
     var maxDays = dayOfWeek(document.getElementById("min_date").value);
     var maxDaysHtml = document.getElementById("max_days").max = maxDays;
 }
 
+// nimmt das aktuelle Datum und addiert 28 Tage; setzt dieses dann als Mindestdatum und als ausgewähltes Datum
 var currentDate = new Date();
 var minDate = dateToHtml(addDays(currentDate, 28));
 var initialDate = document.getElementById("min_date").value = minDate;

@@ -31,14 +31,15 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
-//Variablen
+//Variablen setzen
 $status = false;
 $query_status = "";
 
-//Abspeichern der ID des ausgewählten Raumes und weiteren Variablen
+//Abspeichern der ID des ausgewählten Raumes und weiteren Variablen nach Buttonklick
 if(isset($_POST["Reservieren"])){
 
     $R_ID = $_POST["Auswahl"];
+
     //Session für übergebene R_ID für Angebotserstellung und Veranstaltungserstellung (intern)
     $_SESSION["R_ID"] = $R_ID;
     $status = true;
@@ -60,6 +61,8 @@ if($status){
         //Insert in den Kalender
         $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', (SELECT DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY)), $R_ID, $R_status, NULL, $BeAr_ID)";
         $res = $conn->query($insert_query);
+
+        //Meldung ausgeben und dann Angebot erstellen
         if($res === TRUE){
             $query_status = "Reservierung von Raum " . $R_ID . " war erfolgreich. ";
             echo "<div class='overlay'>" ;
@@ -69,9 +72,7 @@ if($status){
             echo "<div class='content' >"  .$query_status."</div>";
             echo "</div>" ;
             echo "</div>" ;
-//            echo $query_status;
 
-//            echo "<a href='Angebot_erstellen.php'>Angebot erstellen</a>";
 
         }
         else{
@@ -98,7 +99,7 @@ if($status){
         $Dauer = $_SESSION["Dauer_final"];
         $R_status = 2;
 
-        //Insert
+        //Insert in den Kalender und Weiterleitung zum Erstellen
         $insert_query = "INSERT INTO Kalender VALUES ('$Beginn', (SELECT DATE_ADD('$Beginn', INTERVAL $Dauer-1 DAY)), $R_ID, $R_status, NULL, NULL)";
         $res = $conn->query($insert_query);
         if($res === TRUE){
@@ -114,6 +115,7 @@ if($status){
 
 //            header("Location: VeranstaltungBetreiber.php");
         }
+//        Fehlermeldung
         else{
             $query_status = "Es ist ein Fehler beim Eintragen in den Kalender aufgetreten";
             echo "<div class='overlay'>" ;
@@ -126,7 +128,7 @@ if($status){
             echo $query_status;
         }
     }
-
+//Fehlermeldung
     else{
         $query_status = "Die Datenbankabfrage konnte nicht durchgeführt werden, da ein Session Fehler aufgetreten ist";
         echo "<div class='overlay'>" ;
@@ -142,7 +144,7 @@ if($status){
 ?>
 
 
-
+<!--Formular für die Raumreservierung-->
 <div class="contact-us">
     <h1> Raum Reservieren</h1>
     <!-- Fomular Spalten -->
@@ -157,8 +159,9 @@ if($status){
                 <option value="<?php echo $_SESSION["R_ID_Array"][$i];?>"><?php echo "Raum " . $_SESSION["R_ID_Array"][$i];?> </option>
                 <?php }?>
             </select>
+<!--            Buttons zum Reservieren oder Abrechen-->
         <button type="submit"  class="Auslösen" name="Reservieren"  value="Auswahl">Reservieren</button>
-        <a href="Angebotserstellung.php" type="button" class="Abbrechen">Abbrechen</a>
+        <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abbrechen</a>
         </form>
     </div>
 

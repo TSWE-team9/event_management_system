@@ -20,6 +20,7 @@ if(isset($_POST["teilnehmerliste_übermitteln"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
+//Abspeichern der V_ID in lokaler Variable
 $V_ID = $_SESSION["V_ID"];
 
 //Abfragen des Titels, Max. Teilnehmerzahl der Veranstaltung
@@ -36,6 +37,8 @@ $res->close();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
@@ -43,10 +46,14 @@ $res->close();
     <link rel="stylesheet" type="text/css" href="../CSS/popup.css">
     <title>Teilnehmerübermittlung</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
-    <!--Importierung Excel library-->
+
+    <!--Importierung einer externen Excel library zum Auslesen von Excel Dateien-->
     <script src="https://unpkg.com/read-excel-file@4.1.0/bundle/read-excel-file.min.js"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 3-->
 <body class="background3">
 
 <?php
@@ -69,13 +76,18 @@ switch ($_SESSION["rolle"]){
 <div class="container-50-outer">
     <h1 class="hdln"><?php echo $titel; ?></h1>
     <p class="txt">Um eine Teilnehmerliste von einer Excel Datei zu importieren, wählen Sie zuerst die Datei aus und importieren diese dann. 
-                    Dabei muss in der ersten Spalte der Excel Datei der Nachname stehen und in der zweiten Spalte der Vorname. 
-                    Die Namen werden dann in die Liste übernommen, wo diese überprüft werden können und im Anschluss übermittelt werden können.</p>
+                    Dabei muss in der ersten Spalte der Excel Datei der Nachname stehen und in der zweiten Spalte der Vorname.
+                    Falls mehr Teilnehmer in der Datei gespeichert sind als für die Veranstaltung zugelassen sind, werden nur soviele Teilnehmer eingelesen wie zugelassen. 
+                    Die Namen werden dann in die Liste übernommen, wo diese überprüft werden können und im Anschluss übermittelt werden können.
+                    Bei der Überprüfung werden nur Namen beachtet solange kein Nachnamefeld frei ist. Namen danach werden nicht überprüft und auch nicht übermittelt.</p>
 
     <div class="container-80-inner">
         <h2 class="hdln">Importierung aus Excel Datei</h2>
             <label for="t_liste">Wählen Sie eine Datei aus:</label>
+            <!--Einschränkung der möglichen Dateiformate, welche ausgewählt werden können-->
+            <!--bei Klick öffnet sich der Explorer des lokalen PC und Excel Datei kann ausgewählt werden-->
             <input type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" id="input" />
+            <!--Button um Teilnehmerliste auszulesen und in die Eingabemaske zu übertragen-->
             <button style="float: right;" type="button" class="btn" onclick="fill()">Teilnehmerliste einlesen</button>
 
         <!--Button um zur Veranstaltungsseite zurückzukehren-->
@@ -92,10 +104,12 @@ switch ($_SESSION["rolle"]){
             <div class="col-50">Nachname</div>
             <div class="col-50">Vorname</div>
         </div>
+
+        <!--Eingabefelder für Nachnamen und Vornamen der Teilnehmer-->
         <form action="SeiteTeilnehmerübermittlung.php" method="post">
             <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID; ?>">
             <input type="hidden" id="t_max" value="<?php echo $teilnehmer_max; ?>">
-            <!--Schleife für max anzahl-->
+            <!--Schleife für max anzahl, Ausgabe der Eingabefelder bzw. bereits mit Namen aus Excel Import-->
             <?php
             $counter = 1;
             while($counter <= $teilnehmer_max){
@@ -118,7 +132,9 @@ switch ($_SESSION["rolle"]){
                         <p>Falls bereits eine Teilnehmerliste übermittelt wurde, wird diese komplett mit der neuen Liste ersetzt.</p>
                         <p>Wollen Sie diese Teilnehmerliste übermitteln?</p>
                         <div class="modal_clearfix">
+                            <!--Button um Importierung zu bestätigen-->
                             <button class="modal_btnconfirm" type="submit"  id="anmelden" name="liste-übermitteln" onclick="document.getElementById('id02').style.display='none'">Übermitteln</button>
+                            <!--Button um Modal zu schließen-->
                             <button class="modal_btnabort" type="button" onclick="document.getElementById('id02').style.display='none'">Abbrechen</button>
                         </div>
                     </div>
@@ -127,7 +143,7 @@ switch ($_SESSION["rolle"]){
         </form>
 
         <?php
-        //Abspeichern der manuell eingegebenen Teilnehmer
+        //Abspeichern der eingegebenen Teilnehmer
         if(isset($_POST["liste-übermitteln"])){
 
             //Variablen
@@ -140,23 +156,27 @@ switch ($_SESSION["rolle"]){
             $status_empty = false;
             $status_meldung = "";
 
+            //Jeweils die übergebenen Namen abspeichern
             while($counter <= $teilnehmer_max) {
 
                 $nachname = $_POST["nachname".$counter];
                 $vorname = $_POST["vorname".$counter];
 
                 //Überprüfen, ob Nachname oder Vorname leer
+
+                //Wenn Nachname fehlt, nur bis dahin die Liste übermitteln also break
                 if(empty($nachname)){
                     break;
                 }
 
+                //Wenn Vorname fehlt, dann Meldung speichern
                 if(empty($vorname)){
                     $status_empty = true;
                     $status_meldung = "Vorname ". $counter. " fehlt";
                     break;
                 }
 
-                //Wenn nicht, dann speichern in ein Array
+                //Wenn alles passt, dann speichern in ein Array für später
                 if($status_empty == false){
                     array_push($nachname_array, $nachname);
                     array_push($vorname_array, $vorname);
@@ -167,9 +187,7 @@ switch ($_SESSION["rolle"]){
 
             //Wenn ein Nachname oder Vorname nicht angegeben wurde, Fehlermeldung und alte Liste bleibt
             if($status_empty){
-                // TODO Fehlermeldung
-                // DONE echo $status_meldung;
-                // Nachricht erfolgreiche Abmeldung
+
                 echo "<div class='overlay'>" ;
                 echo "<div class='popup'>";
                 echo "<h2 class='hdln'>Fehler bei Übermittlung</h2>" ;
@@ -178,6 +196,8 @@ switch ($_SESSION["rolle"]){
                 echo "</div>";
                 echo "</div>";
             }
+
+            //Wenn alles passt dann Einspeichern in Datenbank
             else{
 
                 //Alte Liste löschen
@@ -199,10 +219,9 @@ switch ($_SESSION["rolle"]){
                     $res = $conn->query($query);
                     $teilnehmer_nr++;
 
+                    //Fehlermeldung wenn Fehler (sollte nicht eintreten)
                         if($res === FALSE){
-                            // TODO
-                            // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim manuellen Einfügen";
-                            // Nachricht über Fehler
+
                             echo 
                             '<div class="overlay">
                                 <div class="popup">
@@ -219,15 +238,14 @@ switch ($_SESSION["rolle"]){
                     $counter2++;
                 }
 
+                //Nur, wenn auch alles funktioniert hat
                 if($query_status){
 
                     //Aktuelle Teilnehmerzahl in Veranstaltung aktualisieren
                     $update_query = "UPDATE Veranstaltung SET Teilnehmer_akt=(SELECT COUNT(*) FROM Teilnehmerliste_ges WHERE Teilnehmerliste_ges.V_ID = $V_ID) WHERE V_ID = $V_ID";
                     $res_update = $conn->query($update_query);
                     if($res_update === FALSE){
-                        // TODO
-                        // DONE echo "<br>"."<br>"."<br>"."<br>"."FEHLER aufgetreten beim Update der akt. Teilnehmerzahl";
-                        // Nachricht über Fehler
+
                         echo 
                         '<div class="overlay">
                             <div class="popup">
@@ -238,6 +256,7 @@ switch ($_SESSION["rolle"]){
                         </div>';
                     }
 
+                    //Fallunterscheidung der Links zur Startseite
                     $href = "";
                     if($_SESSION["rolle"] == 1){
                         $href = "../Veranstalter/Startseite/VeranstalterStartseite.php";
@@ -246,10 +265,10 @@ switch ($_SESSION["rolle"]){
                         $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
                     }
                     if($_SESSION["rolle"] == 4){
-                        $href = "../Betreiber_Admin/Startseiten/AdminStartseite.php";
+                        $href = "../Betreiber_Admin/Startseiten/StartseiteBetreiber.php";
                     }
 
-                    // Nachricht erfolgreiche Abmeldung
+                    // Nachricht erfolgreiche Übermittlung
                     echo "<div class='overlay'>" ;
                     echo "<div class='popup'>";
                     echo "<h2 class='hdln'>Teilnehmerübermittlung</h2>" ;
@@ -274,6 +293,7 @@ switch ($_SESSION["rolle"]){
 
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script src="SeiteTeilnehmerübermittlung.js"></script>
 
 </body>

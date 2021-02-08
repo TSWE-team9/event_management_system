@@ -8,6 +8,7 @@ $user = 'dbuser';
 $pw = 'dbuser123';
 $conn = new mysqli($host, $user, $pw, $db,3306);
 
+//Refresh Status von allen Veranstaltungen
 include "../../veranstaltung_refresh.php";
 veranstaltung_refresh();
 
@@ -27,12 +28,12 @@ veranstaltung_refresh();
 <body>
 <?php include '../Header/header.php'; ?>
 <script>document.getElementById("Reiter_Startseite").classList.add("active");  </script>
-
+<!--Anzeige aller aktuellen Veranstaltungen-->
 <div class="ordnung">
     <div id="aktuelle" class="tabcontent" style="margin-left: 15em">
         <h3 style="text-align: center;">Kommende Veranstaltungen</h3>
         <?php
-        $query_check = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status=1";
+        $query_check = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Status=1 ORDER BY Beginn";
         $res_check = $conn->query($query_check);
         if($res_check->num_rows == 0){
             echo "<p class='txt'>Es gibt derzeit keine geplanten Veranstaltungen.</p>";
@@ -48,6 +49,7 @@ veranstaltung_refresh();
     </div>
 
 </div>
+<!--Footer-->
 <div class="footer">
     <div id="button"></div>
     <div id="container">

@@ -20,7 +20,7 @@ include "../../veranstaltung_refresh.php";
 angebot_refresh();
 veranstaltung_refresh();
 
-//Variablen
+//B_ID des angemeldeten Veranstalters
 $B_ID = $_SESSION["b_id"];
 
 ?>
@@ -28,15 +28,21 @@ $B_ID = $_SESSION["b_id"];
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../CSS/listen.css">
     <link rel="stylesheet" type="text/css" href="../../CSS/Footer.css">
     
     <title>Startseite</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 2-->
 <body class="background2">
+
+<!--Importierung der ausgelagerten Reiterleiste und stylen des aktuellen Reiters mit der CSS Klasse 'active'-->
 <?php include '../header.php';?>
 <script>document.getElementById("reiter_startseite").classList.add("active");</script>
 <br><br><br>
@@ -48,7 +54,7 @@ $B_ID = $_SESSION["b_id"];
 
         <?php
         //Abfrage aller begonnenen (Status = 2) Veranstaltungen des Veranstalters
-        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $B_ID AND Status = 2";
+        $query1 = "SELECT V_ID, Beginn, Titel FROM Veranstaltung WHERE Veranstalter = $B_ID AND Status = 2 ORDER BY Beginn";
         $res1 = $conn->query($query1);
         $counter = 0;
         if($res1->num_rows == 0){
@@ -64,6 +70,8 @@ $B_ID = $_SESSION["b_id"];
 
         ?>
 
+        <!--Anzeige der ersten drei gefundenen Veranstaltungen 
+            Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die v_id der geklickten Veranstaltung übergeben und die Veranstaltungsseite aufgerufen-->
         <form action="../../Veranstaltungsseite/VeranstaltungsSeite.php" method="post">
             <input type="hidden" name="veranstaltung_id" value="<?php echo $i[0];?>">
             <button type="submit" class="btnveranstaltung" name="veranstaltung"><div class="btnbeginn"><?php echo "Beginn: ". $i[1]?></div><div class="btntitel"><?php echo $i[2]?></div></button>
@@ -92,6 +100,8 @@ $B_ID = $_SESSION["b_id"];
             }
 
         ?>
+            <!--Anzeige der ersten drei gefundenen Angebote
+                Anzeige in Form von klickbaren Buttons, beim Anklicken des Buttons wird die angebot_id des geklickten Angebots übergeben und das Angebot aufgerufen-->
             <form action="../eigeneVeranstaltungen/Angebot/Angebotseite.php" method="post">
                 <input type="hidden" name="angebot_id" value="<?php echo $i[0];?>">
                 <button type="submit" class="btnveranstaltung" name="Angebotsseite"><?php echo "Angebotsdatum: ". $i[2] . " / Geplanter Beginn: ". $i[1]?></button>
@@ -99,14 +109,9 @@ $B_ID = $_SESSION["b_id"];
         <?php }}?>
     </div>
 </div>
-<!--<footer>
-   <div>
-       <a href="#">Impressum</a>
-        <a href="#">AGB</a> <br>
-   VMS
-  < /div>
-</footer>-->
 
+
+<!--Footer-->
 <div class="footer">
     <div id="button"></div>
     <div id="container">

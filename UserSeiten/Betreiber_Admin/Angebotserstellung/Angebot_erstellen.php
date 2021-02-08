@@ -41,7 +41,7 @@ $Beginn = $_SESSION["Beginn_final"];
 
 
 
-//Preis für den gewählten Raum berechnen
+//Preis für den gewählten Raum abfragen
 $query = "SELECT Preis FROM Raum WHERE R_ID = $R_ID";
 $res = $conn->prepare($query);
 $res->execute();
@@ -54,6 +54,8 @@ $update_query = "UPDATE Anfrage_Angebot SET R_ID = $R_ID, Beginn = '$Beginn', St
                 WHERE BeAr_ID = $BeAr_ID";
 
 $res = $conn->query($update_query);
+
+//Fehlerfall der nicht eintreten sollte
 if($res === FALSE){
     $error = " Datenbank UPDATE in Anfrage hat nicht funktioniert.";
     echo "<div class='overlay'>" ;
@@ -75,6 +77,7 @@ else {
     $res->fetch();
     $res->close();
 
+    //E-Mail an Veranstalter senden
     $empfaenger = get_mail_address($B_ID);
     $betreff = "Neues Angebot für Ihre Anfrage";
     $nachricht = "Für Ihre Anfrage einer Veranstaltung am ". $Beginn." haben wir ein Angebot erstellt.
@@ -84,6 +87,7 @@ else {
 
     send_email($empfaenger, $betreff, $nachricht);
 
+    //Bestätigungsmeldung ausgeben
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Bestätigung</h2>" ;

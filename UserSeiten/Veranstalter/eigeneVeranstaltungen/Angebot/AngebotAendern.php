@@ -66,12 +66,15 @@ if(isset($_POST["angebot_aendern"])) {
     $res4 = $conn->query($query4);
     if ($res4 === TRUE) {
         $query_status = "Die Anfrage wurde erfolgreich erstellt und wird nun vom Betreiber bearbeitet. Sie bekommen eine Bestätigungsmail zugeschickt.";
+
         //Versenden einer Bestätigungsmail an den Veranstalter
         $empfaenger = get_mail_address($veranstalter_id);
         $betreff = "Anfrage für Ihre Veranstaltung erhalten";
         $nachricht = "Danke für Ihr Interesse an unserem Veranstaltungshaus. Wir werden Ihre Anfrage bearbeiten und melden uns möglichst schnell bei Ihnen per Mail zurück.";
         send_email($empfaenger, $betreff, $nachricht);
-        echo 
+
+        //Ausgabe einer Bestätigungsmeldung
+        echo
             '<div class="overlay">
                 <div class="popup">
                     <h2 class="hdln">Angebot geändert</h2>

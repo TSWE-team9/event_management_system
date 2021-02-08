@@ -19,7 +19,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="seminarstatistik.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Statistik.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <title>Seminarstatistik</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -27,13 +27,13 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
 <body>
 
 <?php include '../Header/header.php'; ?>
-<script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
+<script>document.getElementById("Reiter_Statistiken").classList.add("active");  </script>
 <div class="grid-container">
     <div class="grid-item">
 <form action="Seminarstatistik.php"  method="post">
     <div class="contact-us" >
         <h1> Seminarstatistik</h1>
-        <!-- Fomular Spalten -->
+        <!-- Fomular zum Abfragen von Veranstalter und Zeitraum -->
         <h3>
             <em>&#x2a; </em> Bitte den gewünschten Veranstalter und Zeitraum auswählen um eine Abfrage zu starten .
         </h3>
@@ -48,7 +48,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
         </div>
         <label for="Startzeitraum">Startzeitraum <em>&#x2a;</em></label><input id="Startzeitraum" name="Startzeitraum" required="" type="date"/>
         <label for="Endzeitraum">Endzeitraum <em>&#x2a;</em></label><input id="Endzeitraum" name="Endzeitraum" required="" type="date"/>
-
+<!--    Button zum Auslösen der Veranstaltung-->
         <button type="submit" class="Auslösen" name="Seminar" style="margin-top: 0"> Abfragen</button>
         </div>
 
@@ -61,7 +61,7 @@ $conn = new mysqli($host, $user, $pw, $db,3306);
 
 </div>
 
-
+<!--Ausgabe der Statistik in einer Tabelle-->
     <div class="grid-item">
     <table class="container">
         <thead style="color: black; z-index: 6">
@@ -88,22 +88,12 @@ if (isset($_POST['Seminar'])) {
     $check_query = "SELECT DATEDIFF('$ende1','$start1')";
     $res1 = $conn->prepare($check_query);
     $res1->execute();
-    $res1->bind_result($count);
+    $res1->bind_result($count1);
     $res1->fetch();
     $res1->close();
 
-
-    $data_query2 = "SELECT Veranstalter,ROUND(AVG(Dauer)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstaltung Where Veranstalter='$firma1' and Beginn BETWEEN '$start1' AND '$ende1' GROUP BY Veranstalter";
-    $res2 = $conn->prepare($data_query2);
-    $res2->execute();
-    $res2->bind_result($veranstalter,$dauer,$count, $summe );
-
-    while ($res2->fetch()){
-    echo "<td>$veranstalter</td>"."<td>$dauer</td>"."<td>$count"."</td>"."<td>$summe"."</td>";
-    }
-
     //Fehlerausgabe wenn Ende vor Start
-    if($count < 0){
+    if($count1 < 0){
         $text = "Endzeitraum liegt vor Startzeitraum";
 
         echo "<div class='overlay'>" ;
@@ -115,7 +105,7 @@ if (isset($_POST['Seminar'])) {
         echo "</div>" ;
     }
 
-    elseif($count == 0){
+    elseif($count1 == 0){
         $text = "Startzeitraum und Endzeitraum sind ident";
 
         echo "<div class='overlay'>" ;
@@ -127,29 +117,39 @@ if (isset($_POST['Seminar'])) {
         echo "</div>" ;
     }
 
-    elseif(mysqli_num_rows($res2)==0){
+    else{
+//      Ausgabe der Seminarstatistik in einer Tabelle
+    $data_query2 = "SELECT Veranstalter,ROUND(AVG(Dauer)), COUNT(Titel), SUM(Teilnehmer_akt) FROM Veranstaltung Where Veranstalter=$firma1 and Beginn BETWEEN '$start1' AND '$ende1' GROUP BY Veranstalter";
+    $res2 = $conn->prepare($data_query2);
+    $res2->execute();
+    $res2->bind_result($veranstalter,$dauer, $count2, $summe );
+    $res2->fetch();
+    if(!empty($veranstalter)) {
+        echo "<td>$veranstalter</td>" . "<td>$dauer</td>" . "<td>$count2" . "</td>" . "<td>$summe" . "</td>";
+    }
+    else{
 
-    $text = "Veranstalter hat in diesem Zeitraum keine Veranstaltungen gebucht";
+        $text = "Veranstalter hat in diesem Zeitraum keine Veranstaltungen gebucht";
 
-    echo "<div class='overlay'>" ;
-    echo  "<div class='popup'>";
-    echo "<h2>Fehler</h2>" ;
-    echo "<a class='close' href='Seminarstatistik.php'>&times;</a>" ;
-    echo "<div class='content'>".$text."</div>";
-    echo "</div>" ;
-    echo "</div>" ;
+        echo "<div class='overlay'>" ;
+        echo  "<div class='popup'>";
+        echo "<h2>Fehler</h2>" ;
+        echo "<a class='close' href='Seminarstatistik.php'>&times;</a>" ;
+        echo "<div class='content'>".$text."</div>";
+        echo "</div>" ;
+        echo "</div>" ;
     }
 
-
-$res2->close();
+    $res2->close();
+    }
 }?>
-<!--    Aufsummierung der offenen und geschlossenen Veranstaltungen -->
-<!-- Durschnittlicher Preis der Veranstaltung eines Veranstalter -->
-    <!-- Wie viele Veranstaltungen hat der Veranstalter bisher durchgefüht, also auch laufende Veranstaltungen, aber nicht die stonierten -->
-    <!-- Wie viele Teilnehmer gab es insgesamt bei diesem Veranstalter-->
+
+
 
     </tbody>
     </table>
+
+
     </div>
 </div>
 </body>

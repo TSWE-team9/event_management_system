@@ -32,6 +32,7 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Abfrage aller Räume
 $res = $conn->query("SELECT R_ID, Bezeichnung, Kapazitaet, Preis, Status FROM Raum");
 
 ?>
@@ -51,6 +52,8 @@ $res = $conn->query("SELECT R_ID, Bezeichnung, Kapazitaet, Preis, Status FROM Ra
     </thead>
     <tbody>
     <?php
+
+    //Ausgabe aller Räume in einer Tabelle
     while($i = $res->fetch_row()){
         echo "<tr>";
         foreach($i as $item){

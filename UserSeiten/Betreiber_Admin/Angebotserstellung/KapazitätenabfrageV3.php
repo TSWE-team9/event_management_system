@@ -12,8 +12,8 @@
 <script>document.getElementById("Reiter_Angebotserstellung").classList.add("active");  </script>
 
 <div class="contact-us">
-    <h1> Neue Überprüfung</h1>
-    <!-- Fomular  mit Abfrage eines alternativen Start- und Enddatums um freie Kapazitäten zu überprüfen-->
+    <h1> Überprüfung</h1>
+    <!-- Fomular  um freie Kapazitäten zu überprüfen-->
     <h3>
         <em>&#x2a; </em> Bitte ein Startdatum und eine Dauer (maximal 7 Tage) angeben.<br>
         &nbsp;&nbsp;Startdatum muss mindesten einen Monat in der Zukunft liegen!
@@ -23,7 +23,7 @@
         <label for="Startdatum">Startdatum <em>&#x2a;</em></label><input id="Startdatum" name="Startdatum" required="" type="date" min="0" maxlength="10"/>
         <label for="Dauer"> Dauer in Tagen <em>&#x2a;</em></label><input id="Dauer"  onclick="setDays()" name="Dauer" required="" type="number" min="1" max="7"/>
         <label for="Teilnehmerzahl">Teilnehmerzahl <em>&#x2a;</em></label><input id="Teilnehmerzahl" name="Teilnehmerzahl" required="" type="number" min="1"/>
-        <!--Auswahlbuttons zum Abbrechen und Rückkehr zur Startseite oder Abfrage nach freien Raum Kapazitäten -->
+        <!--Auswahlbuttons zum Abbrechen und Rückkehr zur eigenen Veranstaltungsseize oder Abfrage nach freien Raum Kapazitäten -->
         <button type="submit"  name="Kapazitätsprüfung3" class="Auslösen">Abfragen</button>
         <a href="InterneVeranstaltungen.php" class="Abbrechen" type="button" >Abbrechen</a>
     </form>

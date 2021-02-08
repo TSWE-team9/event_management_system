@@ -20,6 +20,8 @@ if($conn->connect_error){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../../../CSS/Startseite.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../../erstellenAnfrage/VeranstalterAnfrage.css">
     <link rel="stylesheet" href="../../../CSS/modal.css">
@@ -27,9 +29,14 @@ if($conn->connect_error){
     
     <title>Meine Veranstaltungen</title>
 
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
+
+<!--body der Seite mit Hintergrundbild 3-->
 <body class="background3">
+
+<!--Reiterleiste-->
 <nav>
     <ul>
         <li><a href="../../Startseite/VeranstalterStartseite.php">Startseite</a></li>
@@ -44,10 +51,12 @@ if($conn->connect_error){
 <br><br>
 
 <?php
+
+//Error Variablen
 $error = "";
 $error_occured = false;
 
-//Abspeichern der übergebenen Angebot_ID in einer Session Variable
+//Abspeichern der übergebenen Angebot_ID in einer Session Variable nach Buttonklick
 if(isset($_POST["annahme"])) {
     $_SESSION["Angebot_ID"] = $_POST["angebot_id"];
 }
@@ -95,7 +104,7 @@ if(isset($_POST["annahme"])) {
                 }
             }
         }
-        //Falls ein Fehler aufgetreten ist, TODO Ausgabe der Fehlermeldung
+        //Falls ein Fehler aufgetreten ist Ausgabe einer Fehlermeldung
         if ($error_occured) {
             echo "<div class='overlay'>" ;
             echo "<div class='popup'>";
@@ -105,7 +114,7 @@ if(isset($_POST["annahme"])) {
             echo "</div>" ;
             echo "</div>" ;
         } else {
-            //Ausgabe einer Erfolgsmeldung und TODO:Weiterleitung & Erfolgsmeldung
+            //Ausgabe einer Erfolgsmeldung und Senden einer E-Mail
             $empfaenger = get_mail_address($V_ID);
             $betreff = "Ihre Veranstaltung wurde erstellt";
             $nachricht = "Ihre Veranstaltung ".$Titel." wurde erfolgreich im System erstellt.";
@@ -123,12 +132,14 @@ if(isset($_POST["annahme"])) {
     }
 
 ?>
-<!-- Erstellungsformular -->
+
 <div class="container">
 
     <h1 class="hdln">Veranstaltung Erstellung</h1>
     <p class="txt">Geben Sie die zusätzlichen Informationen zu ihrer Veranstaltung an und bestätigen im Anschluss die Erstellung der Veranstaltung.</p>
 
+    <!--Erstellungsformular der Veranstaltung
+        Eingabefelder für Veranstaltungs-Titel, Veranstaltungsbeschreibung, Start-Uhrzeit, Veranstaltungsart, Verfügbarkeit, Anmeldezeitraum und Teilnehmerkosten-->
     <form action="VeranstaltungsErstellung.php" method="post">
 
         <div class="row">
@@ -205,11 +216,13 @@ if(isset($_POST["annahme"])) {
         </div>
         <br><br>
         <div class="row">
+            <!--Button zur Öffnung des Bestätigungsfensters der Erstellung-->
             <button class="btnanfrage" type="button" id="erstellen" name="erstellen" onclick="document.getElementById('id01').style.display='block'">Veranstaltung erstellen</button>
+            <!--Button um zu den Veranstaltungen zurückzukehren-->
             <a href="../VeranstalterVeranstaltungen.php">zurück zu Veranstaltungen</a>
         </div>
 
-        <!--Modal wenn Veranstalter auf erstellen klickt-->
+        <!--Fenster wenn Veranstalter auf erstellen klickt-->
         <div id="id01" class="modal">
             <div class="modal_content" action="Angebotseite.php" method="post">
                 <div class="modal_container">
@@ -218,7 +231,9 @@ if(isset($_POST["annahme"])) {
                     <p>Wollen Sie diese Veranstaltung erstellen?</p>
                     <div class="modal_clearfix">
                         <input type="hidden" name="angebot_id" value="<?php echo $Angebot_ID; ?>"><!--TODO angebot id richtig? aus angebot übernommen-->
+                        <!--Button zur Veranstaltungserstellung-->
                         <button class="modal_btnconfirm" type="submit" name="v_erstellen" onclick="document.getElementById('id01').style.display='none'">Erstellen</button>
+                        <!--Button zur Schließen des Fensters-->
                         <button class="modal_btnabort" type="button" onclick="document.getElementById('id01').style.display='none'">Abbrechen</button>
                     </div>
                 </div>
@@ -227,6 +242,7 @@ if(isset($_POST["annahme"])) {
     </form>
 </div>
 
+<!--Importierung des ausgelagertes JavaScript Codes-->
 <script class="VeranstaltungsErstellung.js"></script>
 
 </body>

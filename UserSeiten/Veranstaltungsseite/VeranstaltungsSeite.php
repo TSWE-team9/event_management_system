@@ -21,10 +21,11 @@ if(isset($_POST["veranstaltung"])){
     $_SESSION["V_ID"] = $_POST["veranstaltung_id"];
 }
 
+//Lokale Variablen für V_ID und B_ID
 $V_ID = $_SESSION["V_ID"];
 $Bid = $_SESSION['b_id'];
 
-//Abfrage der benötigten Daten
+//Abfrage der benötigten Daten der Veranstaltung
 $query = "SELECT Angebot_ID, Titel, Veranstalter, Beschreibung, Art, Verfügbarkeit, Status, Ort, Teilnehmer_max, Teilnehmer_akt,
        Beginn, DATE_ADD(Beginn, INTERVAL Dauer-1 DAY), Uhrzeit, DATE_SUB(Beginn, INTERVAL Frist DAY ), Kosten FROM Veranstaltung 
        WHERE V_ID = $V_ID";
@@ -40,6 +41,8 @@ $query2 = "SELECT Firma FROM Veranstalterkonto WHERE B_ID = $veranstalter";
 $res2 = $conn->query($query2);
 $i = $res2->fetch_row();
 $Veranstalter_name = $i[0];
+
+//Wenn interne Veranstaltung und kein Veranstaltername vorhanden -> Default Wert
 if(empty($Veranstalter_name)){
     $Veranstalter_name = "VMS Grup9";
 }
@@ -55,17 +58,23 @@ $j = $res3->fetch_row();
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <!--Importierung ausgelagerter CCS Dateien-->
     <link rel="stylesheet" type="text/css" href="../CSS/Startseite.css">
     <link rel="stylesheet" type="text/css" href="../CSS/veranstaltungen.css">
     <link rel="stylesheet" type="text/css" href="../CSS/modal.css">
     <link rel="stylesheet" href="../Betreiber_Admin/style/header.css">
     <link rel="stylesheet" href="../CSS/popup.css">
+
     <title>Veranstaltungsseite</title>
+
+    <!--Importierung einer externen JavaScript Bibliothek für Reitericons in der Reiterleiste-->
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
 </head>
 
+<!--body der Seite mit Hintergrundbild 2-->
 <body class="background2">
 <?php
+
 //Header unterscheidung
 switch ($_SESSION["rolle"]){
     case 0: include './header/headerGast.php';               //header Gast
@@ -82,6 +91,8 @@ switch ($_SESSION["rolle"]){
 }
 ?>
 
+<!--Anzeige der Veranstaltungsinformationen
+    in der linken Spalte wird die Art der Information angezeigt und in der rechten Spalte die gespeicherte Information-->
 <div class="container-80">
 
     <div class="row">
@@ -219,7 +230,7 @@ if($_SESSION["rolle"]==0){
 <?php }?>
 
 <?php
-//Anzeige für Rolle Teilnehmer
+//Funktionen anzeigen für Rolle Teilnehmer
 include("VeranstaltungÄndernFunktion.php");
 if($_SESSION["rolle"]==2){
 ?>
@@ -248,7 +259,7 @@ if($_SESSION["rolle"]==2){
         </form>
     </div>
     <?php }?>
-    <!--Modal falls Anmeldezeitraum abgelaufen-->
+    <!--Modal falls Anmeldezeitraum abgelaufen, gelöst über Fehlermeldung-->
     <!--
     <div id="t01" class="modal">
         <div class="modal_content"> 
@@ -267,9 +278,11 @@ if($_SESSION["rolle"]==2){
     <?php
     if (mysqli_num_rows($res_check) == 1) {
         ?>
+
+    <!--Button zum Modal öffnen-->
     <button type="button" class="btn" id="aendern" onclick="document.getElementById('t02').style.display='block'">Abmelden</button>
-    <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     
+    <!--Modal falls Abmeldezeitraum noch nicht abgelaufen-->
     <div id="t02" class="modal">
         <form class="modal_content" action="#" method="post"> 
             <div class="modal_container">
@@ -285,7 +298,7 @@ if($_SESSION["rolle"]==2){
     </div>
     
     <?php }?>
-    <!--Modal falls Abmeldezeitraum abgelaufen
+    <!--Modal falls Abmeldezeitraum abgelaufen, gelöst über Fehlermeldung
     <div id="t02" class="modal">
         <div class="modal_content"> 
             <div class="modal_container">
@@ -306,8 +319,8 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
 ?>
 <div class="container-80-noborder">
 
-    <!--Stornierung Beginn-->
-    <?php include 'VeranstaltungStornieren.php' ?> <!--TODO include der stornieren fkt-->
+    <!--Stornierungs Button Beginn-->
+    <?php include 'VeranstaltungStornieren.php' ?>
     <button type="button" style="float: left;" class="btn" id="aendern" onclick="document.getElementById('v01').style.display='block'">Stornieren</button>
     <?php if($status == 1){?>
     <!--Modal falls Stornozeitraum noch nicht abgelaufen (Veranstaltung "aktiv")-->
@@ -316,23 +329,25 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
             <div class="modal_container">
                 <h1>Stornierung</h1>
                 <?php
-                //Ausgabe für den Veranstalter
+                //Ausgabemeldung für den Veranstalter
                 if($_SESSION["rolle"] == 1){
                     $query = "SELECT Angebotspreis, Beginn FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
                     $res = $conn->query($query);
                     while($i = $res->fetch_row()){
                 ?>
-                <p>Wollen Sie diese Veranstaltung wircklich stornieren? Dabei müssen wir Ihnen folgende Stornokosten verrechnen:</p>
+                <p>Wollen Sie diese Veranstaltung wirklich stornieren? Dabei müssen wir Ihnen folgende Stornokosten verrechnen:</p>
                 <p>50% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro ab 7 Tagen bis Beginn am <?php echo $i[1]?></p>
                 <p>75% Ihres Angebotspreises in Höhe von <?php echo $i[0]?> Euro 1-7 Tage bis Beginn am <?php echo $i[1]?></p>
                 <?php }}
-                //Ausgabe für den Betreiber/Admin
+                //Ausgabemeldung für den Betreiber/Admin
                 else{ ?>
-                <p>Wollen Sie diese Veranstaltung wircklich stornieren?</p>
+                <p>Wollen Sie diese Veranstaltung wirklich stornieren?</p>
                 <?php }?>
                 <div class="modal_clearfix">  
                     <input type="hidden" name="v_id" id="v_id" value="<?php echo $V_ID;?>">
+                    <!--Button um Stornierung zu bestätigen-->
                     <button class="modal_btnconfirm" type="submit" name="Stornieren" onclick="document.getElementById('v01').style.display='none'">Stornieren</button>
+                    <!--Button um Modal zu schließen-->
                     <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">Abbrechen</button>
                 </div>
             </div>
@@ -347,6 +362,7 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
                 <h1>Stornierung</h1>
                 <p>Der Stornierungszeitraum ist abgelaufen und eine Stornierung ist nicht mehr möglich.</p>
                 <div class="modal_clearfix">
+                    <!--Button um Modal zu schließen-->
                     <button class="modal_btnabort" type="button" onclick="document.getElementById('v01').style.display='none'">OK</button>
                 </div>
             </div>
@@ -355,11 +371,14 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php } ?>
     <!--Stornierung Ende-->
 
-    <!--Liste übermitteln Beginn-->
+    <!--Liste übermitteln Button Beginn-->
     <!--nur bei geschlossenen veranstaltungen-->
     <?php
     if($verfuegbarkeit == 2){
     ?>
+
+    <!--Teilnehmerliste übermittel
+        Button der zur Seite mit der Teilnehmerübermittlung weiterleitet-->
     <form action="SeiteTeilnehmerübermittlung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_übermitteln">Teilnehmerliste übermitteln</button>
@@ -367,7 +386,8 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <!--Liste übermitteln Ende-->
     <?php } ?>
 
-    <!--Teilnehmer anzeigen Beginn-->
+    <!--Teilnehmer anzeigen Beginn
+        Button der zur Seite mit der Teilnehmeranzeige weiterleitet-->
     <form action="SeiteTeilnehmerliste.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="teilnehmerliste_anzeigen">Teilnehmerliste anzeigen</button>
@@ -377,7 +397,8 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
     <?php
     if($verfuegbarkeit == 1){
     ?>
-    <!--Nachricht versenden Beginn-->
+    <!--Nachricht versenden Beginn
+        Button der zur Seite zur Nachrichtenerstellung weiterleitet-->
     <form action="SeiteMitteilung.php" method="post">
         <input type="hidden" name="veranstaltung_id" value="<?php echo $V_ID; ?>">
         <button style="float: left;" type="submit" class="btn" name="mitteilung">Nachricht an Teilnehmer senden</button>
@@ -387,6 +408,5 @@ if($_SESSION["rolle"]==1 || $_SESSION["rolle"]==3 || $_SESSION["rolle"]==4){
 </div>  
 <?php }}?>
 
-<script></script>
 </body>
 </html>

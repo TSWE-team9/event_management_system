@@ -15,9 +15,11 @@ if($conn->connect_error){
         . $conn->connect_error);
 }
 
+//Variablen setzen
 $status = "";
 $error = false;
 
+//Auslösen der Funktion nach Klick auf Button
 if(isset($_POST["erstellen"])){
 
     //Abspeichern der angegebenen Daten
@@ -28,7 +30,7 @@ if(isset($_POST["erstellen"])){
     $Geburtsdatum = $_POST["geburtsdatum"];
     $Rolle = $_POST["Rolle"];
 
-    //Default Daten für Betreiber
+    //Default Daten für Betreiber - Bei Bedarf ändern, diese werden für jeden Betreiber/Admin gespeichert
     $firma = "VMS Grup9";
     $strasse = "Innstrasse";
     $Haus_nr = 1;
@@ -50,10 +52,13 @@ if(isset($_POST["erstellen"])){
         $error = true;
     }
 
-    //Insert Statements
+    //Insert Statements wenn alles passt
     if($error == false) {
 
+        //Passwort hashen
         $passwort = md5($passwort);
+
+        //Inserts
         $query = "INSERT INTO Benutzerkonto VALUES (B_ID, '$passwort', $Rolle, '$email', '$Geburtsdatum', 1)";
         $query2 = "INSERT INTO Betreiberkonto VALUES ((SELECT B_ID FROM Benutzerkonto WHERE E_mail = '$email'), '$firma', '$strasse', $Haus_nr, $PLZ, '$Ort', '$Land')";
 
@@ -74,6 +79,7 @@ if(isset($_POST["erstellen"])){
         }
     }
 
+    //Ausgabe einer Statusmeldung (Fehler oder Erfolg)
     echo "<div class='overlay'>" ;
     echo  "<div class='popup'>";
     echo "<h2>Meldung</h2>" ;
@@ -90,7 +96,7 @@ if(isset($_POST["erstellen"])){
 <head>
     <title>Landing Page</title>
     <meta charset="utf-8"/>
-    <title>BetreiberAccount</title>
+    <title>Account hinzufügen</title>
 
     <link rel="stylesheet" type="text/css" href="../style/Button.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
@@ -113,7 +119,7 @@ if(isset($_POST["erstellen"])){
         <label for="email">E-Mail-Adresse</label>
         <input type="email" id="email" placeholder="E-Mail-Adresse" name="email" maxlength="50" required>
 
-        <label for="passwort">Passwort</label>
+        <label for="passwort">Passwort (min. 10 Zeichen)</label>
         <input type="password" id="passwort" placeholder="Passwort" name="passwort_1" pattern=".{10,50}" required>
 
         <label for="passwort">Passwort wiederholen</label>
@@ -122,15 +128,15 @@ if(isset($_POST["erstellen"])){
         <label for="geb_t">Geburtsdatum</label>
         <input type="date" name="geburtsdatum" id="geb_t" required>
 
-        <fieldset id = "Rolle">
+        <fieldset id = "Rolle" >
             <label for = "Rolle"> Rolle</label>
-            <input type= "radio" id="Betreiber" name="Rolle" value="3">
+            <input type= "radio" id="Betreiber" name="Rolle" value="3" required>
             <label for="Betreiber"> Betreiber</label>
-            <input type="radio" id="Admin" name="Rolle" value="4">
+            <input type="radio" id="Admin" name="Rolle" value="4" required>
             <label for="Admin"> Administrator</label>
         </fieldset>
         <button class="Löschen" type="submit" name="erstellen">Erstellen</button>
-        <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abrechen</a>
+        <a href="../Startseiten/StartseiteBetreiber.php" type="button" class="Abbrechen">Abbrechen</a>
     </form>
 </div>
 <script src="../../../LandingPage/index.js"></script>

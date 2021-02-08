@@ -8,4 +8,13 @@
         <li style="float: right;"> <a id="reiter_daten" href="../Datenänderung/TeilnehmerDatenänderung.php"> <i class="fas fa-user-circle"></i> </a></li>
     </ul>
 </nav>';
+
+/* Die Reiterleiste ist als eine ungeordnete Liste aufgebaut, die einzelnen Listenelemente enthalten dabei die einzelnen Reiter
+    die Reiter sind dabei jeweils eine Weiterleitung zu:
+    1. Startseite
+    2. Veranstaltungsangebot
+    3. Anzeige angemeldeter Veranstaltungen
+    4. Datenänderung
+    5. Logout Funktion
+*/
 ?>

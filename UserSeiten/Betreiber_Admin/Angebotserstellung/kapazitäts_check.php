@@ -40,20 +40,26 @@ $error2 = "";
 
 //Speichert die verfügbaren Räume und ihre IDs in einem Array
 $_SESSION["R_ID_Array"] = array();
-//Platzhalter für das finale Datum von Beginn bei der Reservierung
+
+//Platzhalter für das finale Datum des Beginns für die Reservierung
 $_SESSION["Beginn_final"] = '2020-01-01';
+
 //Platzhalter für den finalen Angebotsstatus (Default: 2 ("bearbeitet"))
 $_SESSION["Angebotsstatus_final"] = 2;
 
-//Variablen für Kapazitätsprüfung definieren
+//Variablenplatzhalter
 $Beginn = "";
 
 //Abspeichern der Daten aus dem Formular für Prüfung über Anfrage/Angebots_ID
 if(isset($_POST["Kapazitätsprüfung1"])) {
 
-//Abspeichern der aus dem Formular übergebenen Daten / Setzen von Session Variablen
+//Abspeichern der aus dem Formular übergebenen Daten
     $angebot_id = $_POST["KapÜberprüfung"];
+
+    //Session Variable für die Angebot_ID
     $_SESSION["BeAr_ID"] = $angebot_id;
+
+    //Session Variable für die Art der Kap. Überprüfung (extern = 1, intern = 2)
     $_SESSION["Prüfungsart"] = 1;
 
 //Überprüfen, ob angegebene BeAr_ID existiert und prüfen, ob Status "angefragt" ist (1)
@@ -63,45 +69,53 @@ if(isset($_POST["Kapazitätsprüfung1"])) {
         $error2 = "Angegebene Angebots_ID existiert nicht oder das Angebot wurde bereits angenommen/abgelehnt";
     }
 
-//Abfrage und Speichern der Daten Beginn, Dauer und Teilnehmerzahl für die Anfrage
-    $data_query = "SELECT Beginn, Teilnehmer_gepl, Dauer FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
+//Abfrage und Speichern der Daten B_ID, Beginn, Dauer und Teilnehmerzahl für die Anfrage
+    $data_query = "SELECT Veranstalter, Beginn, Teilnehmer_gepl, Dauer FROM Anfrage_Angebot WHERE BeAr_ID = $angebot_id";
     $res = $conn->prepare($data_query);
     $res->execute();
-    $res->bind_result($Beginn, $_SESSION["Teilnehmerzahl"], $_SESSION["Dauer_final"]);
+    $res->bind_result($_SESSION["Veranstalter"],$Beginn, $_SESSION["Teilnehmerzahl"], $_SESSION["Dauer_final"]);
     $res->fetch();
     $res->close();
 }
 
-//Abspeichern der Daten aus dem Formular für erneute Prüfung mit anderem Datum
+//Abspeichern der Daten aus KapazitätenabfrageV2 für erneute Prüfung mit anderem Datum
 if(isset($_POST["Kapazitätsprüfung2"])) {
 
     $Beginn = $_POST["Startdatum"];
 
-    //Betreiber hat ursprüngliche Angaben des Veranstalters geändert
+    //Betreiber hat ursprüngliche Angaben des Veranstalters geändert, Status wird 3
     if($_SESSION["Prüfungsart"] == 1){
         $_SESSION["Angebotsstatus_final"] = 3;
     }
 
 }
 
-//Abspeichern der Daten aus dem Formular für interne Veranstaltungen
+//Abspeichern der Daten aus KapazitätenabfrageV3 für interne Veranstaltungen
 if(isset($_POST["Kapazitätsprüfung3"])) {
 
     $Beginn = $_POST["Startdatum"];
     $_SESSION["Dauer_final"] = $_POST["Dauer"];
     $_SESSION["Teilnehmerzahl"] = $_POST["Teilnehmerzahl"];
 
-    //Session Variable setzen
+    //Session Variable setzen, es handelt sich um eine Überprüfung für eine interne Veranstaltung
     $_SESSION["Prüfungsart"] = 2;
 }
 
-//Ablehnen der Anfrage nach unerfolgreicher Kapazitätsabfrage
+//Ablehnen der Anfrage nach unerfolgreicher Kapazitätsabfrage und Buttonklick in KapazitätenabfrageV2
 if(isset($_POST["Ablehnen"])){
 
     $anfrage_id = $_SESSION["BeAr_ID"];
+
+    //Error setzen um nicht eine weitere Abfrage auszulösen in Zeile 152
     $error_occured1 = true;
 
+    //Senden einer Mail an den Veranstalter
+    include("../../send_email.php");
+    $email = get_mail_address($_SESSION["Veranstalter"]);
+    send_email($email, "Anfrage abgelehnt", "Wir mussten Ihre Anfrage ablehnen, da zu angefragten Zeitpunkt oder für ihre Anforderungen keinerlei Kapazitäten vorhanden sind. Sie können jederzeit eine weitere Anfrage erstellen.");
+
     $status = $conn->query("UPDATE Anfrage_Angebot SET Status = 5 WHERE BeAr_ID = $anfrage_id");
+
     if($status === FALSE){
         echo "<div class='overlay'>" ;
         echo  "<div class='popup'>";
@@ -112,6 +126,7 @@ if(isset($_POST["Ablehnen"])){
         echo "</div>" ;
         echo "</div>" ;
     }
+    //Ausgabe einer Bestätigung
     else {
         echo "<div class='overlay'>";
         echo "<div class='popup'>";
@@ -121,20 +136,19 @@ if(isset($_POST["Ablehnen"])){
         echo "</div>";
         echo "</div>";
         echo "</div>";
-//        echo "Die Anfrage wurde erfolgreich abgelehnt";
-//        header("Location: Angebotserstellung.php");
+
     }
 
 }
 
-//Abbrechen der Überprüfung (intern) nach unerfolgreicher Kapazitätsabfrage
+//Abbrechen der Überprüfung (intern) nach unerfolgreicher KapazitätsabfrageV2
 if(isset($_POST["Abbrechen"])){
     header("Location: InterneVeranstaltungen.php");
 }
 
 
 
-//Abfrage im Kalender, welche Räume zu den angegebenen Daten frei sind
+//Abfrage im Kalender, welche Räume zu den angegebenen Daten frei sind, nur wenn keine Fehler aufgetreten sind
     if ($error_occured1 == false && $error_occured2 == false) {
 
         $teilnehmerzahl = $_SESSION["Teilnehmerzahl"];
@@ -150,7 +164,7 @@ if(isset($_POST["Abbrechen"])){
         $res2 = $conn->query($query);
 
         if ($res2->num_rows == 0) {
-            //Weiterleitung zu Formular V2"
+            //Wenn keine freien Räume gefunden wurden Weiterleitung zu Formular V2"
             echo "<div class='overlay'>" ;
             echo  "<div class='popup'>";
             echo "<h2>Fehler</h2>" ;
@@ -166,7 +180,7 @@ if(isset($_POST["Abbrechen"])){
             $_SESSION["Beginn_final"] = $Beginn;
 
             //Ausgabe der verfügbaren Räume in einer Tabelle
-            echo "<br>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "<br>";
+            echo "<br><h1>" . "Folgende Räume sind im eingegebenen Zeitraum verfügbar:" . "</h1><br>";
             echo "<br><br>";
             echo "<table border=\"1\" class='container'>";
             echo "<th>R_ID</th><th>Bezeichnung</th><th>Kapazität</th>";
@@ -185,16 +199,19 @@ if(isset($_POST["Abbrechen"])){
             echo "<br><br>";
 
 
-            //Reservierungsformular muss hier erscheinen
-            echo '<a href="Raumreservierung.php" type="button" class="Auslösen">Reservierungsformular</a>';
+            //Reservierungsformular Button zum Reservieren
+            echo '<a href="Raumreservierung.php" type="button" class="Auslösen" style="margin-bottom: 2em">Reservierungsformular</a>';
 
 
         }
 
     }
+
     if ($error_occured1 == true) {
     echo "<br>" . $error1;
     }
+
+    //Ausgabe einer Fehlermeldung der Abfrage zb falsche Angebot ID
     if ($error_occured2 == true) {
 
         echo "<div class='overlay'>" ;

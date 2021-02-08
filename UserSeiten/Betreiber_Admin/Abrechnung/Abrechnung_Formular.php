@@ -87,7 +87,7 @@ if(isset($_POST["Abrechnung"])) {
             $res2->close();
 
             //Erstellen der Abrechnung an Veranstalter
-            $query_abrechnung1 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, $BeAr_ID, $B_ID, LOCALTIMESTAMP, $Preis, '$Strasse', $Haus_Nr, $PLZ, '$Ort', '$Land')";
+            $query_abrechnung1 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, $BeAr_ID, $B_ID, LOCALTIMESTAMP, $Preis, '$Strasse', '$Haus_Nr', $PLZ, '$Ort', '$Land')";
             $res_abrechnung1 = $conn->query($query_abrechnung1);
             if ($res_abrechnung1 === FALSE) {
                 $error = "Fehler bei der Erstellung der Abrechnung (extern) in der Datenbank";
@@ -117,7 +117,7 @@ if(isset($_POST["Abrechnung"])) {
             if ($res4->num_rows > 0) {
                 while ($i = $res4->fetch_row()) {
 
-                    $query_abrechnung2 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, NULL, $i[0], LOCALTIMESTAMP, $Teilnehmer_Preis, '$i[1]', $i[2], $i[3], '$i[4]', '$i[5]')";
+                    $query_abrechnung2 = "INSERT INTO Abrechnung VALUES (A_ID, $V_ID, NULL, $i[0], LOCALTIMESTAMP, $Teilnehmer_Preis, '$i[1]', '$i[2]', $i[3], '$i[4]', '$i[5]')";
                     $res_abrechnung2 = $conn->query($query_abrechnung2);
                     if ($res_abrechnung2 === FALSE) {
                         $error = "Fehler bei der Erstellung der Abrechnung (intern) in der Datenbank";
@@ -136,7 +136,7 @@ if(isset($_POST["Abrechnung"])) {
 
 }
 
-//Absenden der externen Abrechnung an den Veranstalter
+//Absenden der externen Abrechnung an den Veranstalter wenn Button geklickt wird
 if(isset($_POST["Hinzufügen1"])){
 
     //Abspeichern der Variablen
@@ -205,7 +205,7 @@ if(isset($_POST["Hinzufügen1"])){
 
 }
 
-//Absenden der Rechnung an einen Teilnehmer einer internen Veranstaltung
+//Absenden der Rechnung an einen Teilnehmer einer internen Veranstaltung, wenn Button geklickt wird
 if(isset($_POST["Hinzufügen2"])){
 
     //Variablen für Email abspeichern
@@ -265,7 +265,7 @@ if(isset($_POST["Hinzufügen2"])){
     }
 }
 
-//Ausgabe möglicher Fehlermeldungen oder der Status Nachricht 2
+//Ausgabe möglicher Fehlermeldungen oder der $status_msg2
 if ($error_occured) {
 
     echo "<div class='overlay'>" ;
@@ -305,7 +305,7 @@ if($status) {
 <div class="contact-us">
     <img src="../style/Bild/vmslogo.png" width="600px" height="150px" style="margin-bottom: 2em;padding-left: 1em " >
     <h1>Rechnung </h1>
-    <!-- Fomular  mit Angaben aller Rechnungsdaten-->
+    <!-- Fomular  mit Angaben aller Rechnungsdaten extern-->
     <h3>
      Vielen Dank für ihre Buchung in unserem Seminarhaus. <br> Bitte überweisen sie den genannten Betrag innerhalb der nächsten 14 Tage. <br>
         Wir freuen uns Sie bald wieder bei uns begrüßen zu dürfen.
@@ -351,7 +351,7 @@ if($status) {
         <label for="Preis">Preis </label><output id="Preis"  name="Preis" type="number" > <?php echo $i[8]; ?></output>
         <label for="Zusatz">Zusätzliche Anmerkung </label> <textarea  cols="40" rows="8" maxlength="300" id="Zusatz" name="Zusatz"> </textarea>
         <label for="Preis">Zahlung an: </label><output style="border-color: #f45702" name="Zahlungsadresse"> VMS Mittelerde IBAN:DE09121688720378475751 Gringotts Zaubererbank  </output>
-<!--        Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
+    <!--   Buttons zum Abbrechen und zurückkehren zur Übersicht und zum Senden der Rechnung  -->
         <button type="submit" class="Auslösen" name="Hinzufügen1"> Senden</button>
         <a href="AbrechnungsSeite.php" type="button" class="Abbrechen">Abrechen</a>
 
@@ -378,7 +378,7 @@ if($status) {
         else{
             while($i = $res->fetch_row()){
         ?>
-
+    <!--Formular interne Abrechnung-->
     <form action="Abrechnung_Formular.php" method="post">
 
         <input type = "hidden" id="Veranstaltung_ID"  name="Veranstaltung_ID" value="<?php echo $V_ID; ?>">

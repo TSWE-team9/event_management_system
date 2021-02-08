@@ -19,7 +19,7 @@ $temp = FALSE;
     <link rel="stylesheet" type="text/css" href="../style/header.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Formular.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Tabellen.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="seminarstatistik.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="Statistik.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="../style/Fehlermeldung.css" media="screen" />
     <title>Raumauslastung</title>
     <script src="https://kit.fontawesome.com/23ad5628f9.js" crossorigin="anonymous"></script>
@@ -61,6 +61,16 @@ $temp = FALSE;
     </form>
     </div>
             <div class="grid-item">
+        <!--                Überschrift für aktuell abgefragten Raum -->
+                <?php
+        if (isset($_POST['Hinzufügen'])) {
+            $raum1 = $_POST['Auswahl'];
+            $start1 = $_POST['Startzeitraum'];
+            $ende1 = $_POST['Endzeitraum'];
+             echo  "<h1 style='margin-bottom: 1em;'> Auslastung von $raum1 <br>   </h1>" ;
+             ?>;
+        <?php }?>
+
         <!--            Einbindung Diagramm-->
                 <canvas id="myChart"></canvas>
 
@@ -92,7 +102,7 @@ $temp = FALSE;
             }
 
 
-            $data_query2 = "SELECT SUM(DATEDIFF(Bis+1,Von)) FROM Kalender WHERE R_ID=(SELECT R_ID FROM Raum WHERE Bezeichnung='$raum1') And Status=1 Group by R_ID";
+            $data_query2 = "SELECT SUM(DATEDIFF(Bis+1,Von)) FROM Kalender WHERE R_ID=(SELECT R_ID FROM Raum WHERE Bezeichnung='$raum1') And Status=1 AND Bis BETWEEN '$start1' AND '$ende1' GROUP BY R_ID";
             $res2 = $conn->prepare($data_query2);
             $res2->execute();
             $res2->bind_result($kapa);
@@ -103,7 +113,7 @@ $temp = FALSE;
             }
             $res2->close();
 
-            if(mysqli_num_rows($res2)==0){
+            if(empty($kapa)){
              $kapa1= 0;
              $kapa2= $count;
             }
@@ -172,6 +182,7 @@ $temp = FALSE;
 
 
 </script>
+<!--Fehlermeldung-->
 <?php
 if($count < 0){
 
